@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+	<TextView
+		android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/attendeelist"
+        android:layout_gravity="center_horizontal"
+    />
+    
+    <ListView 
+        android:layout_weight="9"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        ></ListView>
+    
+    <Button 
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="30dip"
+        android:paddingRight="30dip"
+        android:text="@string/add_attendee"
+        android:onClick="attendeeButtonClick"
+        />
+    <Button 
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingLeft="30dip"
+        android:paddingRight="30dip"
+        android:text="@string/add_event"
+        android:onClick="eventButtonClick"
+     />
+	
+    
+    
+</LinearLayout>
