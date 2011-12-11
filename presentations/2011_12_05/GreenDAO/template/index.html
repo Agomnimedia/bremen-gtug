@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>greenDAO</title>
+
+	  <meta charset='utf-8'>
+	  <script src='../slides.js'></script>
+	</head>
+  
+  <style>
+  /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+      
+  </style>
+
+  <body style='display: none'>
+
+  	<section class='slides layout-regular template-bremengtug'>
+      
+  	 	<!-- Your slides (<article>s) go here. Delete or comment out the
+        slides below. -->
+        
+        
+  		<!-- Slide #1 | logo -->
+    	<article class='biglogo'>
+      </article>
+
+      <!-- Slide #2 | title-->
+      <article>
+        <h1>
+          greenDAO
+        </h1>
+				<h3>
+					Android ORM for SQLite
+				</h3>
+        <p>
+          Matthias Friedrich
+          <br>
+          5. Dez. 2011
+        </p>
+				<img src="../images/logo150.png" style="width:350px; margin-top:-310px; margin-left:400px">
+      </article>
+
+			
+			
+			<!-- Slide #3 | motivation #0 -->
+      <article>
+				<h2>
+          motivation
+        </h2>
+				<div><img src="../images/androiddev.png" style="position: absolute;  margin-top:400px; margin-left:655px"></div>
+			</article>
+
+      
+			<!-- Slide #4 | motivation #1 -->
+      <article>
+        <h3>
+					O/R-Mapping - what is it
+        </h3>
+				
+        <ul class="build" >
+          <li>
+            persisting objects into relational databases
+          </li>
+				</ul>
+
+				<ul class="build">
+          <li style="position: absolute; margin-top:-10px; margin-left:60px">
+						write database tables
+          </li>
+					<li style="position: absolute; margin-top:35px; margin-left:60px">
+						write DAOs (data access objects)
+					</li>
+					<li style="position: absolute; margin-top:80px; margin-left:60px">
+						write entities (domain model)
+					</li>
+					<li style="position: absolute; margin-top:125px; margin-left:60px">
+						write parser
+					</li>
+        </ul>
+				<ul class="build" >
+          <li style="position: absolute; margin-top:170px; margin-left:100px">
+            from entities to SQLite
+          </li>
+					<li style="position: absolute; margin-top:215px; margin-left:100px">
+            from SQLite to entities
+          </li>
+				</ul>
+				<div class="build"><img src="../images/boilerplate_trans.png" style="position: absolute;  margin-top:-25px; margin-left:380px"></div>
+
+				<p style="font-size:20px; position: absolute;  margin-top:435px; margin-left:0px">motivation</p>
+      </article>
+
+
+
+			<!-- Slide #5 | motivation #2 -->
+      <article>
+        <h3>
+        	O/R-Mapping - an automated database approach   
+        </h3>
+        <ul class="build" >
+          <li>
+            define the domain model
+          </li>
+				</ul>
+        <div class="build"><img src="../images/file_model.png" style="position: absolute;  margin-top:200px; margin-left:40px"></div>
+								
+				<ul class="build" >
+          <li>
+            let the O/R-Mapper compile it
+          </li>
+				</ul>
+				<div class="build"><img src="../images/ORMapper.png" style="position: absolute;  margin-top:55px; margin-left:200px"></div>
+
+
+				<ul class="build" >
+          <li>
+            use generated entities, DAOs and parser
+          </li>
+				</ul>
+				<div class="build"><img src="../images/file_parser.png" style="position: absolute;  margin-top:30px; margin-left:580px">
+				<img src="../images/file_daos.png" style="position: absolute;  margin-top:50px; margin-left:550px">
+				<img src="../images/file_entities.png" style="position: absolute;  margin-top:70px; margin-left:520px"></div>
+
+								<p style="font-size:20px; position: absolute;  margin-top:283px; margin-left:0px">motivation</p>
+      </article>
+
+
+
+			<!-- Slide #6 | greenDAO - introduction #0 -->
+      <article>
+				<h2>
+          greenDAO - an introduction
+        </h2>
+				<div><img src="../images/androiddev.png" style="position: absolute;  margin-top:400px; margin-left:655px"></div>
+			</article>
+
+			
+			<!-- Slide #7 | greenDAO - introduction #1 -->
+      <article>
+        <h3>
+          greenDAO
+        </h3>
+        <ul class="build">
+          <li>
+            O/R-Mapper for Android
+          </li>
+				</ul>
+				<div><img src="../images/logo150.png" style="position: absolute;  margin-top:-220px; margin-left:140px"></div>
+				
+				<ul class="build">
+					<li>
+            open sourced under GPLv3 respectively Apache 2
+          </li>
+				</ul>
+
+
+				<ul class="build">
+					<li>
+            developed by <a href='http://greenrobot.de'>greenrobot</a> 
+          </li>
+				</ul>
+			
+
+				<ul class="build">
+					<li>
+            preview release on 4th August 2011
+          </li>
+				</ul>
+
+				<ul class="build">
+					<li>
+            version 1.0 and sources published on 24th October 2011
+          </li>
+				</ul>
+
+				<p style="font-size:20px; position: absolute;  margin-top:130px; margin-left:0px">greenDAO - an introduction</p>
+			</article>
+
+
+
+			<!-- Slide #8 | greenDAO - introduction #2 -->
+      <article>
+        <h3>
+          features
+        </h3>
+        <ul class="build">
+          <li>
+            <b>DaoSession</b> - similar to Hibernate Session or JPA's Entity Manager, manages caching of and creates objects 
+          </li>
+				</ul>
+					
+				<ul class="build">
+          <li>
+            <b>to-one, to-many, many-to-many</b> - no matter what, request your relations directly via greenDAO<br>(to-one: lazy & eager, to-many: lazy)
+          </li>
+				</ul>
+
+				<ul class="build">
+          <li>
+            <b>QueryBuilder</b> - make non-simple requests without touching SQL
+          </li>
+				</ul>
+
+				<ul class="build">
+          <li>
+            <b>SQL scripts</b> - Android doesn't support it, greenDAO does
+          </li>
+				</ul>
+
+				<p style="font-size:20px; position: absolute;  margin-top:98px; margin-left:0px">greenDAO - an introduction</p>
+			</article>
+
+
+			<!-- Slide #9 | greenDAO - introduction #3 -->
+      <article>
+        <h3>
+          more features
+        </h3>
+        
+				<ul class="build">
+          <li>
+            <b>active entities, eager and lazy loading</b> - resolve relations within the same select as the base entity or on the fly without making a query directly
+          </li>
+				</ul>
+				
+				<ul class="build">
+          <li>
+            <b>protocol buffers</b> - talk via protobuf to your server? persist the result directly into the database 
+          </li>
+				</ul>
+
+
+				<ul class="build">
+          <li>
+            <b>small library</b> - jar-size < 60KB
+          </li>
+				</ul>
+
+
+				<ul class="build">
+          <li>
+            <b>future plans</b> - generating adapters, maybe CRUD activites
+          </li>
+				</ul>
+
+				<p style="font-size:20px; position: absolute;  margin-top:100px; margin-left:0px">greenDAO - an introduction</p>
+			</article>
+
+
+			<!-- Slide #10 | greenDAO - introduction #4 -->
+      <article>
+        <h3>
+          performance
+        </h3>
+        <ul class="build">
+          <li>
+          	<b>it's fast, very fast</b> - perform queries with a rate of 12.000 cached entities/sec on a Nexus S (20.000 when cached) 
+          </li>
+				</ul>
+				<div class="build"><img src="../images/greenDAO-performance.png" style="position: absolute;  margin-top:20px; margin-left:20px"></div>
+
+				<p style="font-size:20px; position: absolute;  margin-top:400px; margin-left:0px">greenDAO - an introduction</p>
+			</article>
+
+
+			<!-- Slide #11 | greenDAO - introduction #5 -->
+      <article>
+        <h3>
+          consisting of several sub projects
+        </h3>
+        <ul class="build">
+          <li>
+          	<b>DaoCore</b> - core library, loads and handles requests and entities (Apache licence v2)
+          </li>
+					</ul>
+					<ul class="build">
+					<li>
+          	<b>DaoGenerator</b> - reads the model and generates DaoSession, DAOs and entities (GPL v3)
+          </li>
+					</ul>
+					<ul class="build">
+					<li>
+						<b>DaoTest</b> - unit test suite for greenDAO (GPL v3) 
+					</li>					
+				</ul>
+				<p style="font-size:20px; position: absolute;  margin-top:210px; margin-left:0px">greenDAO - an introduction</p>
+      </article>
+
+
+			<!-- Slide #12 | greenDAO - using it #0 -->
+      <article>
+				<h2>
+          greenDAO - using it
+        </h2>
+				<div><img src="../images/androiddev.png" style="position: absolute;  margin-top:400px; margin-left:655px"></div>
+			</article>
+
+
+					
+			<!-- Slide #13 | greenDAO - using it #1 -->
+      <article>
+        <h3>
+          preparations
+        </h3>
+        <ul class="build">
+          <li>
+          	<b>download the starter package</b><br><a href="http://greendao-orm.com/download/">greendao-orm.com/download</a>
+          </li>
+					</ul>
+					<ul class="build">
+					<li>
+          	<b>add the library</b> - greenDAO.jar 
+          </li>
+					</ul>
+					<ul class="build">
+					<li>
+						<b>see the documentation</b><br><a href="http://greendao-orm.com/documentation/">greendao-orm.com/documentation</a> 	
+					</li>					
+				</ul>
+				<p style="font-size:20px; position: absolute;  margin-top:210px; margin-left:0px">greenDAO - using it</p>
+      </article>
+
+
+			<!-- Slide #14 | greenDAO - using it #2 -->
+      <article>
+        <h3>
+          DaoGenerator
+        </h3>
+        <ul class="build">
+          <li>
+          	<b>create util-project</b> - project to generate needed Java-classes
+          </li>
+					</ul>
+					<ul class="build">
+					<li>
+          	<b>add libraries</b> - freemarker.jar, greenDAO-generator.jar
+          </li>
+					</ul>
+					<ul class="build">
+						<li>
+							<b>define your model</b> - via a simple API and specify your Android project location 
+						</li>	
+					</ul>
+					<ul class="build">
+					<li>
+						<b>let greenDAO generate your classes</b> - entites, DAOs and DaoSession will be integrated into your Android project
+					</li>				
+				</ul>
+				<p style="font-size:20px; position: absolute;  margin-top:98px; margin-left:0px">greenDAO - using it</p>
+      </article>
+
+
+			<!-- Slide #15 | greenDAO - using it #3 -->
+      <article class="smaller">
+        <h3>
+          DaoGenerator
+        </h3>
+        <section>
+        <pre>
+public static void main(String[] args) {
+	Schema schema = new Schema(1, "de.peacei.android.foodwatcher.data.database");
+		
+	Entity weekPlan = schema.addEntity("WeekPlanEntity");
+	weekPlan.addIdProperty();
+	weekPlan.addByteProperty("week").notNull();
+	...
+		
+	Entity menu = schema.addEntity("MenuEntity");
+	...
+	Property prop = menu.addLongProperty("weekPlanId").getProperty();
+	menu.addToOne(weekPlan, prop);
+
+	Entity meal = schema.addEntity("MealEntity");
+	meal.addIdProperty();
+	meal.addStringProperty("name").notNull();
+	...
+	prop = meal.addLongProperty("menuId").getProperty();
+	meal.addToOne(menu, prop);
+
+	new DaoGenerator().generateAll("../FoodWatcher/src-gen", schema);
+}</pre></section>
+				<p style="font-size:20px; position: absolute;  margin-top:-15px; margin-left:0px">greenDAO - using it</p>
+      </article>
+
+
+			<!-- Slide #16 | greenDAO - using it #4 -->
+      <article class='smaller'>
+        <h3>
+          example: getting the DaoMaster
+        </h3>
+        <section>
+        <pre>
+
+...
+
+OpenHelper helper = new DaoMaster.DevOpenHelper(context, "fooddatabase", null);
+
+DaoMaster daoMaster = new DaoMaster(helper.getWritableDatabase());
+
+...
+	
+</pre>
+				</section>
+        <p style="font-size:20px; position: absolute;  margin-top:285px; margin-left:0px">greenDAO - using it</p>
+      </article>
+
+
+
+			<!-- Slide #17 | greenDAO - using it #5 -->
+      <article class='smaller'>
+        <h3>
+          example: insert
+        </h3>
+        <section>
+        <pre>
+
+...
+
+daoSession = daoMaster.newSession();
+WeekPlanEntityDao weekPlanEntityDao = daoSession.getWeekPlanEntityDao();
+
+long weekPlanId =
+	(String.valueOf(year)+String.valueOf(weekNumber)+mensaId).hashCode();
+
+WeekPlanEntity weekPlanEntity =
+	new WeekPlanEntity(weekPlanId, weekNumber, year, mensaId.hashCode());
+
+weekPlanEntityDao.insertOrReplace(weekPlanEntity);
+
+...
+	
+</pre>
+				</section>
+        <p style="font-size:20px; position: absolute;  margin-top:103px; margin-left:0px">greenDAO - using it</p>
+      </article>
+
+
+			<!-- Slide #18 | greenDAO - using it #6 -->
+      <article class='smaller'>
+        <h3>
+          example: query
+        </h3>
+        <section>
+        <pre>
+
+...
+
+daoSession = daoMaster.newSession();
+WeekPlanEntityDao weekPlanDao = daoSession.getWeekPlanEntityDao();
+        
+QueryBuilder<WeekPlanEntity> wPQB = weekPlanDao.queryBuilder().
+	where(WeekPlanEntityDao.Properties.Year.eq(CalendarUtil.getYear(new Date())),
+	WeekPlanEntityDao.Properties.Week.eq(weekNumber),
+	WeekPlanEntityDao.Properties.Mensa.eq(mensa.getId().hashCode()));
+
+List<WeekPlanEntity> wPEList = wPQB.list();
+
+...
+	
+</pre>
+				</section>
+        <p style="font-size:20px; position: absolute;  margin-top:122px; margin-left:0px">greenDAO - using it</p>
+      </article>
+      
+
+			<!-- Slide #19 | demo -->
+      <article>
+        <h2>
+          demo
+        </h2>
+        <ul class="build" style="font-size:20px; position: absolute;  margin-top:10px; margin-left:0px">
+					<li>
+						sources on <a href="http://code.google.com/p/bremen-gtug/source/browse/#svn%2Fprojects%2F2011_12_05_greenDAO_demo">bremen-gtug.googlecode.com</a>
+					</li>
+				</ul>
+        <div><img src="../images/androiddev.png" style="position: absolute;  margin-top:400px; margin-left:655px"></div>
+      </article>
+
+
+			<!-- Slide #20 | references -->
+      <article>
+        <h3>
+          references
+        </h3>
+        
+        <ul>
+					<li>
+            <a href='http://greenrobot.de'>greenrobot.de</a>
+					</li>
+				</ul>
+				<ul>          
+					<li>
+            <a href='http://greendao-orm.com'>greendao-orm.com</a>
+					</li>
+					<li>
+            <a href='https://groups.google.com/forum/#!forum/greendao'>greenDAO Google group</a>
+					</li>
+					<li>
+            <a href='https://github.com/greenrobot/greenDAO'>greenDAO sources at github</a>
+					</li>	
+        </ul>
+
+				<ul>
+					<li>
+            <a href='http://twitter.com/green_dao'>@green_dao</a>
+					</li>
+        </ul>
+				<img src="../images/logo150.png" style="width:350px; margin-top:-190px; margin-left:460px">
+      </article>
+						
+
+
+			<!-- Slide #21 | thank you -->
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+        
+        <ul>
+					<li>
+            <a href='http://bremen.gtugs.org'>bremen.gtugs.org</a>
+					</li>		
+        </ul>
+
+				<ul>
+					<li>
+            <a href='http://twitter.com/bremenGTUG'>@bremenGTUG</a>
+					</li>
+          <li>
+            <a href='http://twitter.com/peacei'>@peacei</a>
+					</li>
+        </ul>
+				<img src="../images/questions.jpg" style="width:350px; margin-top:-70px; margin-left:460px">
+      </article>
+
+    </section>
+
+  </body>
+</html>
