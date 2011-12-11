@@ -11,7 +11,7 @@ Under this chapter tutorials of the past regulars' tables are shown.
 
 === November ===
 
-==== What is AppEngine? ====
+==== What is AppEngine ? ====
 
 This tutorial isn't described yet.
 
