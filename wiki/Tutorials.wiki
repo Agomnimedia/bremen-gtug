@@ -9,7 +9,7 @@ Under this chapter tutorials of the past regulars' tables are shown.
 
 === November ===
 
-==== {What is AppEngine} ====
+==== What is App Engine ====
 
 This tutorial isn't described yet.
 
