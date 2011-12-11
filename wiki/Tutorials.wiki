@@ -1,17 +1,15 @@
-#On this page different tutorials are shown
-
-<wiki:toc max_depth="5" />
-
 = Regulars' table presentations =
 
 Under this chapter tutorials of the past regulars' tables are shown.
 
 
+<wiki:toc max_depth="5" />
+
 == 2011 ==
 
 === November ===
 
-==== *What is AppEngine* ====
+==== {What is AppEngine} ====
 
 This tutorial isn't described yet.
 
