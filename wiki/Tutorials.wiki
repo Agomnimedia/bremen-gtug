@@ -1,5 +1,7 @@
 #On this page different tutorials are shown
 
+<wiki:toc max_depth="5" />
+
 = Regulars' table presentations =
 
 Under this chapter tutorials of the past regulars' tables are shown.
