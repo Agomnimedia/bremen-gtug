@@ -10,6 +10,7 @@ public class EventDetailActivity extends FragmentActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		
 		// TODO fill detail form with details received from appengine
 		
 		// TODO show details
