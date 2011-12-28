@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import org.gtugs.bremen.eventmanagement.gui.R;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;

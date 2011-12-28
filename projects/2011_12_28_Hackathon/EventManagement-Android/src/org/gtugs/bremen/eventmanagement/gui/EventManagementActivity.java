@@ -14,9 +14,7 @@
  *******************************************************************************/
 package org.gtugs.bremen.eventmanagement.gui;
 
-import org.gtugs.bremen.eventmanagement.android.AccountsActivity;
 import org.gtugs.bremen.eventmanagement.android.DeviceRegistrar;
-import org.gtugs.bremen.eventmanagement.android.R;
 import org.gtugs.bremen.eventmanagement.android.Util;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory.HelloWorldRequest;

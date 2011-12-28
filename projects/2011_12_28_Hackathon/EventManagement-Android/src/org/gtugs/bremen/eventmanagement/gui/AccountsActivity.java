@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package org.gtugs.bremen.eventmanagement.android;
+package org.gtugs.bremen.eventmanagement.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +25,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.params.ClientPNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.gtugs.bremen.eventmanagement.android.DeviceRegistrar;
+import org.gtugs.bremen.eventmanagement.android.Setup;
+import org.gtugs.bremen.eventmanagement.android.Util;
+import org.gtugs.bremen.eventmanagement.gui.R;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
