@@ -12,19 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package org.gtugs.bremen.eventmanagement.activities;
-
-import com.google.web.bindery.requestfactory.shared.Receiver;
-import com.google.web.bindery.requestfactory.shared.ServerFailure;
+package org.gtugs.bremen.eventmanagement.gui;
 
 import org.gtugs.bremen.eventmanagement.android.AccountsActivity;
 import org.gtugs.bremen.eventmanagement.android.DeviceRegistrar;
 import org.gtugs.bremen.eventmanagement.android.R;
 import org.gtugs.bremen.eventmanagement.android.Util;
-import org.gtugs.bremen.eventmanagement.android.R.id;
-import org.gtugs.bremen.eventmanagement.android.R.layout;
-import org.gtugs.bremen.eventmanagement.android.R.menu;
-import org.gtugs.bremen.eventmanagement.android.R.string;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory.HelloWorldRequest;
 
@@ -43,6 +36,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.google.web.bindery.requestfactory.shared.ServerFailure;
 
 /**
  * Main activity - requests "Hello, World" messages from the server and provides

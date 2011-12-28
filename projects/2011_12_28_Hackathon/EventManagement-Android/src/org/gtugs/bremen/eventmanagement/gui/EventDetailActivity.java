@@ -1,4 +1,4 @@
-package org.gtugs.bremen.eventmanagement.activities;
+package org.gtugs.bremen.eventmanagement.gui;
 
 import android.app.Activity;
 import android.os.Bundle;
