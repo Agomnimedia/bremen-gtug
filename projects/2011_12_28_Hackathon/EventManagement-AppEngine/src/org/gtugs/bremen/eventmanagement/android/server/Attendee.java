@@ -6,6 +6,8 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -24,9 +26,11 @@ public class Attendee {
 	private String email;
 	
 	@Persistent
+	@ManyToMany
 	private List<Event> events;
 	
 	@Persistent
+	@ManyToOne
 	//Default is false
 	private boolean admin = false;
 

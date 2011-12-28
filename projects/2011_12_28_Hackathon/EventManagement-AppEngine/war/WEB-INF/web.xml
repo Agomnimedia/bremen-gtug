@@ -68,6 +68,17 @@
     <url-pattern>/geteventdetails</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>SignInEventServlet</servlet-name>
+    <servlet-class>
+        org.gtugs.bremen.eventmanagement.android.servlets.SignInEventServlet
+    </servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SignInEventServlet</servlet-name>
+    <url-pattern>/signinevent</url-pattern>
+  </servlet-mapping>
  <servlet>
     <servlet-name>GetAllEvents</servlet-name>
     <servlet-class>

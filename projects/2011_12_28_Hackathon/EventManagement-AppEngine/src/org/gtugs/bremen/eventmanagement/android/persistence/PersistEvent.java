@@ -72,17 +72,28 @@ public class PersistEvent {
 		Event event = (Event) pm.getObjectById(id);
 		boolean allowedToSign = false;
 		Query query = pm.newQuery(Attendee.class);
+		Attendee attendee = new Attendee();
 		try {
 			//Check if user exist in attendee datastorage.
 			List<Attendee> attendees = (List<Attendee>) query.execute();
 			for(Attendee pers : attendees){
-				pers.getEmail().equals(user.getEmail()){
+				if(pers.getEmail().equals(user.getEmail())){
 					allowedToSign = true;
+					attendee = pers;
 				}
 			}
 			
+			//User darf sich eintragen
 			if(allowedToSign){
-				if()
+				//Maximale Anzahl ist erreicht.
+				if((event.getMaxAttendees() != 0) && event.getAttendies().size() == event.getMaxAttendees()){
+					return false;
+				} else {
+					if(attendee != null)
+					event.getAttendies().add(attendee);
+				}
+			} else {
+				return false;
 			}
 			
 		} catch(ClassCastException ex) {

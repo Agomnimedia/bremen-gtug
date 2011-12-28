@@ -25,7 +25,9 @@ public class GetEventDetails extends HttpServlet {
 
 		
 		String key = (String) req.getParameter("key");
+		
 		final Key eventKey = KeyFactory.stringToKey(key);
+		
 		JSONObject json = new JSONObject();
 		try{
 			Event event = pEvent.getEventDetails(eventKey);
