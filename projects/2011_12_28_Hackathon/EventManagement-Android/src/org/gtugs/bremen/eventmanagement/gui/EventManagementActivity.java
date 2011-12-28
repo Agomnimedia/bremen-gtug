@@ -29,6 +29,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,7 +45,7 @@ import com.google.web.bindery.requestfactory.shared.ServerFailure;
  * Main activity - requests "Hello, World" messages from the server and provides
  * a menu item to invoke the accounts activity.
  */
-public class EventManagementActivity extends Activity {
+public class EventManagementActivity extends FragmentActivity {
     /**
      * Tag for logging.
      */
@@ -96,11 +97,7 @@ public class EventManagementActivity extends Activity {
         // Register a receiver to provide register/unregister notifications
         registerReceiver(mUpdateUIReceiver, new IntentFilter(Util.UPDATE_UI_INTENT));
         
-        // TODO get all Events
-        
-        // TODO show all events in list
-        
-        // TODO create onclicklistener for list entry 
+        // TODO show DashBoard
     }
 
     @Override
@@ -124,14 +121,14 @@ public class EventManagementActivity extends Activity {
         super.onDestroy();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu, menu);
-        // Invoke the Register activity
-        menu.getItem(0).setIntent(new Intent(this, AccountsActivity.class));
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.main_menu, menu);
+//        // Invoke the Register activity
+//        menu.getItem(0).setIntent(new Intent(this, AccountsActivity.class));
+//        return true;
+//    }
 
     // Manage UI Screens
 
