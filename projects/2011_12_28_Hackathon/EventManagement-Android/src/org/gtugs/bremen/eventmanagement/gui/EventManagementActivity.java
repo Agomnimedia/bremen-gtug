@@ -21,7 +21,6 @@ import org.gtugs.bremen.eventmanagement.android.Util;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory.HelloWorldRequest;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -31,8 +30,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -93,10 +90,11 @@ public class EventManagementActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-
+        
         // Register a receiver to provide register/unregister notifications
         registerReceiver(mUpdateUIReceiver, new IntentFilter(Util.UPDATE_UI_INTENT));
         
+        setContentView(R.layout.welcome);
         // TODO show DashBoard
     }
 

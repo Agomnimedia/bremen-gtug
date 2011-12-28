@@ -14,7 +14,9 @@
  *******************************************************************************/
 package org.gtugs.bremen.eventmanagement.android;
 
-import com.google.android.c2dm.C2DMessaging;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
@@ -24,24 +26,17 @@ import org.apache.http.client.params.ClientPNames;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import android.content.SharedPreferences.Editor;
-
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.accounts.AccountManagerCallback;
 import android.accounts.AccountManagerFuture;
-import android.accounts.AuthenticatorException;
-import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -51,6 +46,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.android.c2dm.C2DMessaging;
 
 /**
  * Account selections activity - handles device registration and unregistration.
