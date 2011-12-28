@@ -3,7 +3,8 @@
 
 	<!-- Preferences Strings -->
 	<string name="settings">Eigenschaften</string>
-	<string name="test">Test</string>
+	<string name="allevents">All events</string>
+	<string name="dummy">dummy</string>
 
 
 
