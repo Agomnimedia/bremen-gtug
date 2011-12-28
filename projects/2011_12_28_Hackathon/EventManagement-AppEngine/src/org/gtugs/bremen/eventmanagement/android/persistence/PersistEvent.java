@@ -84,7 +84,7 @@ public class PersistEvent {
 			}
 			
 			//User darf sich eintragen
-			if(allowedToSign){
+			if(allowedToSign && event != null){
 				//Maximale Anzahl ist erreicht.
 				if((event.getMaxAttendees() != 0) && event.getAttendies().size() == event.getMaxAttendees()){
 					return false;

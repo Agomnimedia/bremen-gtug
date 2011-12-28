@@ -23,11 +23,24 @@ public class SignInEventServlet extends HttpServlet{
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
+        
 		final String key = (String) req.getParameter("key");
-		final Key eventKey = KeyFactory.stringToKey(key);
+
+		Key eventKey;
+		boolean successful = false;
+		if(key != null){
+			eventKey = KeyFactory.stringToKey(key);
+			successful = new PersistEvent().signInEvent(eventKey, user);
+		}
 		
-		new PersistEvent().signInEvent(eventKey, user);
+		resp.setContentType("text/plain");
 		
+		if(successful){
+			resp.getWriter().append("true");		
+		} else {
+			//Error code...
+			resp.getWriter().append("false");
+		}
 		
 	}
 
