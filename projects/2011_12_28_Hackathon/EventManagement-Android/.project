@@ -35,7 +35,7 @@
 		<link>
 			<name>shared</name>
 			<type>2</type>
-			<location>/home/peacei/dev/workspace/EventManagement-AppEngine/shared</location>
+			<location>C:/home/peacei/dev/workspace/EventManagement-AppEngine/shared</location>
 		</link>
 	</linkedResources>
 </projectDescription>
