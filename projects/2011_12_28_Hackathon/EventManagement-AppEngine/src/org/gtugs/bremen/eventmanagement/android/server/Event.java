@@ -7,6 +7,8 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -33,9 +35,11 @@ public class Event {
 	private String url;
 	
 	@Persistent
+	@ManyToMany
 	private List<Attendee> attendies;
 	
 	@Persistent
+	@ManyToOne
 	private Attendee admin;
 	
 	@Persistent
