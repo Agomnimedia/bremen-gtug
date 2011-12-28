@@ -12,11 +12,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package org.gtugs.bremen.eventmanagement.android;
+package org.gtugs.bremen.eventmanagement.activities;
 
 import com.google.web.bindery.requestfactory.shared.Receiver;
 import com.google.web.bindery.requestfactory.shared.ServerFailure;
 
+import org.gtugs.bremen.eventmanagement.android.AccountsActivity;
+import org.gtugs.bremen.eventmanagement.android.DeviceRegistrar;
+import org.gtugs.bremen.eventmanagement.android.R;
+import org.gtugs.bremen.eventmanagement.android.Util;
+import org.gtugs.bremen.eventmanagement.android.R.id;
+import org.gtugs.bremen.eventmanagement.android.R.layout;
+import org.gtugs.bremen.eventmanagement.android.R.menu;
+import org.gtugs.bremen.eventmanagement.android.R.string;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory;
 import org.gtugs.bremen.eventmanagement.android.client.MyRequestFactory.HelloWorldRequest;
 
@@ -91,6 +99,12 @@ public class EventManagementActivity extends Activity {
 
         // Register a receiver to provide register/unregister notifications
         registerReceiver(mUpdateUIReceiver, new IntentFilter(Util.UPDATE_UI_INTENT));
+        
+        // TODO get all Events
+        
+        // TODO show all events in list
+        
+        // TODO create onclicklistener for list entry 
     }
 
     @Override
