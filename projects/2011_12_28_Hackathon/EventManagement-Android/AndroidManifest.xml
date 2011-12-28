@@ -28,7 +28,7 @@
         android:label="@string/app_name">
 
         <!--  Main activity -->
-        <activity android:name=".EventManagementActivity" android:label="@string/app_name"
+        <activity android:name="org.gtugs.bremen.eventmanagement.activities.EventManagementActivity" android:label="@string/app_name"
             android:launchMode="singleTop" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
