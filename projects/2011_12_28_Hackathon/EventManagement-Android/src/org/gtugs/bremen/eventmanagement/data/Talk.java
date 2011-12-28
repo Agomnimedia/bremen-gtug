@@ -1,4 +1,4 @@
-package org.gtugs.org.eventmanagement.data;
+package org.gtugs.bremen.eventmanagement.data;
 
 
 public class Talk {
