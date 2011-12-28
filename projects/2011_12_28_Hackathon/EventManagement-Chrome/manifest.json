@@ -1,0 +1,21 @@
+{
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDescription__",
+  "version": "1",
+  "default_locale": "en",
+  "background_page": "background.html",
+  /*"app": {
+    "launch": {
+      "local_path": "main.html"
+    }
+  },*/
+  "icons": {
+    "16": "icon/icon_16.png",
+    "128": "icon/icon_128.png"
+  },
+  "browser_action": {
+    "default_icon": "icon/icon_19.png",
+    "default_title": "__MSG_actTitle__",
+    "default_popup": "eventlist.html"
+  }
+}

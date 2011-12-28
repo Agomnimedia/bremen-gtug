@@ -1,0 +1,14 @@
+#eventlist {
+	display: none;
+	list-style: none;
+	width: 200px;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid gray;
+}
+
+#eventlist li {
+	margin: 0;
+	padding: 2px 10px;
+	border-bottom: 1px solid gray;
+}

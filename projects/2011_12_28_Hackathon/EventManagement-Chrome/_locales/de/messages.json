@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "GTUG Veranstungsverwaltung",
+    "description": "Extension name."
+  },
+  "extDescription": {
+  	"message": "Übersicht der anstehenden GTUG Events",
+  	"description": "Extension description."
+  },
+  "actTitle": {
+  	"message": "GTUG Veranstaltungen",
+  	"description": "Browser action title."
+  },
+  "loadingTooltip": {
+  	"message": "Daten werden geladen ...",
+  	"description": "loading animation tooltip."
+  }
+}
