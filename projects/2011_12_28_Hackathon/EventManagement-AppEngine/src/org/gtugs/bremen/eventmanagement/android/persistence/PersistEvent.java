@@ -49,13 +49,16 @@ public class PersistEvent {
 		}
 	}
 	
-	public Event getEventDetails(Key id){
+	public Event getEventDetails(Key id) throws IllegalArgumentException{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Event event;
 		try{
 			event = (Event) pm.getObjectById(id);
 			pm.flush();
-		}finally {
+		}catch (IllegalArgumentException e) {
+			throw e;
+		}
+		finally {
 			pm.close();
 		}
 		return event;
