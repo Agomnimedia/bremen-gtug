@@ -22,7 +22,7 @@ public class LastUpdateServlet extends HttpServlet{
 	
 	private static final String KIND = "kind";
 	
-//	private static final String ERROR = "error";
+	private static final String ERROR = "error";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -36,7 +36,11 @@ public class LastUpdateServlet extends HttpServlet{
 			case Update.ALL_EVENTS:
 				try{
 					final Update update = new PersistUpdate().findLastUpdate(kind);
-					result.put(jsonKey, this.parseUpdate2JSOObjectLight(update));
+					if(update == null){
+						result.put(ERROR, "Last update wasn't found!");
+					}else{
+						result.put(jsonKey, this.parseUpdate2JSOObjectLight(update));
+					}
 				}catch(JSONException je){
 					resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				}

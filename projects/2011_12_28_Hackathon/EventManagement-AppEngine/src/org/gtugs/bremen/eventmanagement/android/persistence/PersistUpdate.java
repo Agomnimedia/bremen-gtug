@@ -8,6 +8,8 @@ import javax.jdo.Query;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 import org.gtugs.bremen.eventmanagement.android.server.Update;
 
+import com.google.gwt.core.ext.typeinfo.NotFoundException;
+
 public class PersistUpdate {
 
 	public void insert(Update update) {
@@ -22,12 +24,18 @@ public class PersistUpdate {
 	
 	@SuppressWarnings("unchecked")
 	public Update findLastUpdate(final int kind){
+		final Update result;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		final Query query = pm.newQuery(Update.class, "this.kind == kind && ");
+		final Query query = pm.newQuery(Update.class, "this.kind == kind");
 		query.declareParameters("int age");
 		query.setOrdering("date descending");
 		query.setRange(0, 0);
 		final List<Update> updates = (List<Update>) query.execute(Integer.valueOf(kind));
-		return updates.get(0);
+		if(updates.isEmpty()){
+			result = null;
+		}else{
+			result = updates.get(0);
+		}
+		return result;
 	}
 }

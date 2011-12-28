@@ -3,11 +3,13 @@ package org.gtugs.bremen.eventmanagement.android.server;
 import java.util.Date;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 import com.google.appengine.api.datastore.Key;
 
+@PersistenceCapable
 public class Update {
 
 	public final static int ALL_EVENTS = 1;
