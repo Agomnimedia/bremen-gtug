@@ -5,10 +5,12 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import org.gtugs.bremen.eventmanagement.android.server.Attendee;
 import org.gtugs.bremen.eventmanagement.android.server.Event;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.users.User;
 
 public class PersistEvent {
 	
@@ -62,6 +64,33 @@ public class PersistEvent {
 			pm.close();
 		}
 		return event;
+	}
+	
+	public boolean signInEvent(Key id, User user){
+		//TODO: Email adressen aus der Datenbank laden
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Event event = (Event) pm.getObjectById(id);
+		boolean allowedToSign = false;
+		Query query = pm.newQuery(Attendee.class);
+		try {
+			//Check if user exist in attendee datastorage.
+			List<Attendee> attendees = (List<Attendee>) query.execute();
+			for(Attendee pers : attendees){
+				pers.getEmail().equals(user.getEmail()){
+					allowedToSign = true;
+				}
+			}
+			
+			if(allowedToSign){
+				if()
+			}
+			
+		} catch(ClassCastException ex) {
+			return false;
+		} finally {
+			pm.close();
+		}
+		return true;
 	}
 
 }
