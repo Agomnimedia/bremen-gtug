@@ -55,8 +55,8 @@
     <servlet-name>dataMessagingServlet</servlet-name>
       <url-pattern>/tasks/c2dm</url-pattern>
   </servlet-mapping>
-
- <servlet>
+  
+   <servlet>
     <servlet-name>GetEventDetails</servlet-name>
     <servlet-class>
       org.gtugs.bremen.eventmanagement.android.servlets.GetEventDetails
@@ -67,6 +67,21 @@
     <servlet-name>GetEventDetails</servlet-name>
     <url-pattern>/geteventdetails</url-pattern>
   </servlet-mapping>
+  
+ <servlet>
+    <servlet-name>GetAllEvents</servlet-name>
+    <servlet-class>
+      org.gtugs.bremen.eventmanagement.android.servlets.GetAllEvents
+    </servlet-class>
+  </servlet>
+    
+  <servlet-mapping>
+    <servlet-name>GetAllEvents</servlet-name>
+      <url-pattern>/getallevents</url-pattern>
+  </servlet-mapping>
+  
+  
+
   <!-- Security -->
 
   <!--  Require user login for the .html welcome page -->
