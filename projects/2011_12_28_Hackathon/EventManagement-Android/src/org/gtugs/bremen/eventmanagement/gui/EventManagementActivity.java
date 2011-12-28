@@ -17,20 +17,20 @@ package org.gtugs.bremen.eventmanagement.gui;
 import org.gtugs.bremen.eventmanagement.android.DeviceRegistrar;
 import org.gtugs.bremen.eventmanagement.android.Util;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 /**
  * Main activity - requests "Hello, World" messages from the server and provides
  * a menu item to invoke the accounts activity.
  */
-public class EventManagementActivity extends Activity {
+public class EventManagementActivity extends FragmentActivity {
     /**
      * Tag for logging.
      */
