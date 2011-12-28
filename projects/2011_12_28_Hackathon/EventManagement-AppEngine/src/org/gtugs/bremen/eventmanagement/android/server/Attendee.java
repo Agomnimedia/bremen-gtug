@@ -1,6 +1,5 @@
 package org.gtugs.bremen.eventmanagement.android.server;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -13,6 +12,7 @@ import com.google.appengine.api.datastore.Key;
 @PersistenceCapable
 public class Attendee {
 	
+	//Muss als String verschickt werden
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private Key pkId;

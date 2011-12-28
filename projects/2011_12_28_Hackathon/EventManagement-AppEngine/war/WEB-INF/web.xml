@@ -56,6 +56,10 @@
       <url-pattern>/tasks/c2dm</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>GetEventDetails</servlet-name>
+        <url-pattern>/geteventdetails</url-pattern>
+  </servlet-mapping>
   <!-- Security -->
 
   <!--  Require user login for the .html welcome page -->

@@ -8,6 +8,8 @@ import javax.jdo.Query;
 import org.gtugs.bremen.eventmanagement.android.server.Event;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 
+import com.google.appengine.api.datastore.Key;
+
 public class PersistEvent {
 	
 	@SuppressWarnings("unchecked")
@@ -35,6 +37,28 @@ public class PersistEvent {
 		} finally {
 			pm.close();
 		}
+	}
+	
+	public void delete(Event event){
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try{
+			pm.deletePersistent(event);
+			pm.flush();
+		} finally {
+			pm.close();
+		}
+	}
+	
+	public Event getEventDetails(Key id){
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Event event;
+		try{
+			event = (Event) pm.getObjectById(id);
+			pm.flush();
+		}finally {
+			pm.close();
+		}
+		return event;
 	}
 
 }
