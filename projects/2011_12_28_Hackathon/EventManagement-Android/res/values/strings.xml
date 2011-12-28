@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<!-- Preferences Strings -->
+	<string name="settings">Eigenschaften</string>
+
+
+
+
+	<!-- C2DM Strings -->
     <!-- Menu item text [CHAR LIMIT=NONE] -->
     <string name="accounts">Accounts</string>
 
