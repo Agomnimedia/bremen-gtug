@@ -91,6 +91,16 @@
     <servlet-name>SignInEventServlet</servlet-name>
     <url-pattern>/signinevent</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>IsAdminServlet</servlet-name>
+    <servlet-class>org.gtugs.bremen.eventmanagement.android.servlets.IsAdminServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>IsAdminServlet</servlet-name>
+    <url-pattern>/isadmin</url-pattern>
+  </servlet-mapping>
  <servlet>
     <servlet-name>GetAllEvents</servlet-name>
     <servlet-class>
