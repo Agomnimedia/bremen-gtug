@@ -7,7 +7,7 @@ var lastUpdate = 0;
 var eventCount = 0;
 
 function update() {
-	communication.lastUpdate();
+	communication.lastUpdate(1);
 }
 
 function lastUpdateReceived(data) {

@@ -17,7 +17,7 @@ communication.getAllItems = function() {
 	}, 1000);
 };
 
-communication.lastUpdate = function() {
+communication.lastUpdate = function(kind) {
 	window.setTimeout(function() {
 		lastUpdateReceived({
 			update : {
