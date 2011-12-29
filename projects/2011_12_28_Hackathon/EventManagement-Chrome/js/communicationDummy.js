@@ -51,3 +51,84 @@ communication.getMyEvents = function(key) {
 		});
 	}, 1000);
 };
+
+communication.getEventDetails = function(key) {
+	if (key == "1") {
+		window
+				.setTimeout(
+						function() {
+							eventDetailsReceived({
+								event : {
+									key : "1",
+									name : "Hackathon",
+									location : "Büros des team Neusta, Contrescarpe 1, 28203 Bremen",
+									startDate : 1325059200,
+									endDate : 1325178000,
+									url : "http://bremen.gtugs.org/events/ersterhackathon",
+									attendies : [ {
+										key : "a",
+										nickname : "Matze",
+										email : "matze@example.com",
+										admin : true
+									}, {
+										key : "b",
+										nickname : "Steve",
+										email : "steve@example.com",
+										admin : true
+									}, {
+										key : "c",
+										nickname : "Jan",
+//										email : "jan@example.com",
+										admin : false
+									} ],
+									admin : {
+										key : "a",
+										nickname : "Matze",
+										email : "matze@example.com",
+										admin : true
+									},
+									talks : [],
+									maxAttendees : 15
+								}
+							});
+						}, 1000);
+	}
+	if (key == "2") {
+		window
+				.setTimeout(
+						function() {
+							eventDetailsReceived({
+								event : {
+									key : "2",
+									name : "Stammtisch Januar",
+									location : "Best Western Hotel zur Post (Bahnhofsplatz 11, 28195 Bremen)",
+									startDate : 1326132000,
+									endDate : 1326146400,
+									url : "http://bremen.gtugs.org/events/stammtischjanuar2012",
+									attendies : [],
+									admin : {
+										key : "b",
+										nickname : "Steve",
+										email : "steve@example.com",
+										admin : true
+									},
+									talks : [ {
+										key : "x",
+										speaker : {
+											key : "c",
+											nickname : "Jan",
+											email : "jan@example.com",
+											admin : false
+										},
+										name : "HTML5"
+									}, {
+										key : "y",
+										speaker : null,
+										name : "Ignite Session"
+									} ],
+									maxAttendees : 0
+								}
+							});
+						}, 1000);
+	}
+};
