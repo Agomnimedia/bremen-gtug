@@ -19,11 +19,9 @@ function allItemsReceived(data) {
 		var event = data.events[i];
 		var li = document.createElement("li");
 		li.appendChild(document.createTextNode(event.name));
-		li.onclick = function() {
-			window.open("eventdetails.html?key=" + event.key);
-		}
+		li.setAttribute("onclick", "window.open(\"eventdetails.html?key="
+				+ event.key + "\");");
 		$("eventlist").appendChild(li);
 	}
 	$("eventlist").style.display = "block";
 }
-
