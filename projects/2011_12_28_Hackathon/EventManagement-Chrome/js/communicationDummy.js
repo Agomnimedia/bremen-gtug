@@ -28,3 +28,26 @@ communication.lastUpdate = function(kind) {
 		});
 	}, 1000);
 };
+
+communication.signInEvent = function(key) {
+	window.setTimeout(function() {
+		signInEventReceived();
+	}, 1000);
+};
+
+communication.signOffEvent = function(key) {
+	window.setTimeout(function() {
+		signOffEventReceived();
+	}, 1000);
+};
+
+communication.getMyEvents = function(key) {
+	window.setTimeout(function() {
+		myEventsReceived({
+			events : [ {
+				key : "2",
+				name : "Stammtisch Januar"
+			} ]
+		});
+	}, 1000);
+};
