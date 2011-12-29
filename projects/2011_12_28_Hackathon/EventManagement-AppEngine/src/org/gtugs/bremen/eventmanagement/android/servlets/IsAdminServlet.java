@@ -19,10 +19,12 @@ public class IsAdminServlet extends HttpServlet{
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
-        
-        boolean isAdmin = new PersistAtendee().isAdmin(user);
-        resp.setContentType("text/plain");
-        resp.getWriter().append(isAdmin == true ? "true" : "false");
-		
+        if(user == null){
+        	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        }else{
+	        boolean isAdmin = new PersistAtendee().isAdmin(user);
+	        resp.setContentType("text/plain");
+	        resp.getWriter().append(isAdmin == true ? "true" : "false");
+        }
 	}
 }

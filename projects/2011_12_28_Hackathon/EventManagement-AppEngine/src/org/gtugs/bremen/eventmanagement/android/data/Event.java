@@ -18,7 +18,7 @@ public class Event {
 	
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
-	private Key pkId;
+	private Key key;
 	
 	@Persistent
 	private String name;
@@ -51,12 +51,12 @@ public class Event {
 	private int maxAttendees = 0;
 
 	
-	public Key getPkId() {
-		return pkId;
+	public Key getKey() {
+		return key;
 	}
 
-	public void setPkId(Key pkId) {
-		this.pkId = pkId;
+	public void setKey(Key key) {
+		this.key = key;
 	}
 
 	public String getName() {
@@ -130,7 +130,4 @@ public class Event {
 	public void setMaxAttendees(int maxAttendees) {
 		this.maxAttendees = maxAttendees;
 	}
-	
-	
-	
 }

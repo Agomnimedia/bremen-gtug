@@ -13,7 +13,7 @@ public class Talk {
 
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
-	private Key pkId;
+	private Key key;
 	
 	@Persistent
 	private Attendee speaker;
@@ -21,12 +21,12 @@ public class Talk {
 	@Persistent
 	private String name;
 
-	public Key getPkId() {
-		return pkId;
+	public Key getKey() {
+		return key;
 	}
 
-	public void setPkId(Key pkId) {
-		this.pkId = pkId;
+	public void setKey(Key key) {
+		this.key = key;
 	}
 
 	public Attendee getSpeaker() {

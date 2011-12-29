@@ -18,7 +18,7 @@ public class Attendee {
 	//Muss als String verschickt werden
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
-	private Key pkId;
+	private Key key;
 	
 	@Persistent
 	private String nickname;
@@ -35,12 +35,12 @@ public class Attendee {
 	//Default is false
 	private boolean admin = false;
 
-	public Key getPkId() {
-		return pkId;
+	public Key getKey() {
+		return key;
 	}
 
-	public void setPkId(Key pkId) {
-		this.pkId = pkId;
+	public void setKey(Key key) {
+		this.key = key;
 	}
 
 	public String getNickname() {

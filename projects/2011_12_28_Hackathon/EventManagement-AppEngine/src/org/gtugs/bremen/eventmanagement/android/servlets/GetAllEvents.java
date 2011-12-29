@@ -32,7 +32,7 @@ public class GetAllEvents extends HttpServlet{
 		
 		for (Event event : events){
 			String name = event.getName();
-			Key id = event.getPkId();
+			Key id = event.getKey();
 			String keys = KeyFactory.keyToString(id);
 
 			JSONObject obj = new JSONObject();

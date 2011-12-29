@@ -52,22 +52,20 @@ public class PersistAtendee {
 	}
 	
 	
-//	public Attendee getUser(String email) throws IllegalArgumentException{
-//		
-//		PersistenceManager pManager = PMF.get().getPersistenceManager();
-//		Attendee attendee;
-//		try{
-//			attendee = (Attendee) pManager.getObjectById(id);
-//			pManager.flush();
-//		} catch (IllegalArgumentException e) {
-//			throw e;
-//			
-//		} finally{
-//			pManager.close();
-//		}
-//		
-//		return attendee;
-//	}
+	public Attendee getUser(User user) throws IllegalArgumentException{
+		
+		PersistenceManager pManager = PMF.get().getPersistenceManager();
+		Attendee attendee = null;
+		try{
+			final Query query = pManager.newQuery(Attendee.class, "this.email==email");
+			query.declareParameters("String email");
+			attendee = (Attendee) query.execute(user.getEmail());
+		} finally{
+			pManager.close();
+		}
+		
+		return attendee;
+	}
 	
 	public boolean isAdmin(User user){
 		PersistenceManager pm = PMF.get().getPersistenceManager();

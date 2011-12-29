@@ -24,28 +24,30 @@ public class SignInEventServlet extends HttpServlet{
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
         
-        
-		final String key = (String) req.getParameter("key");
-
-		Key eventKey;
-		boolean successful = false;
-		if(key != null){
-			eventKey = KeyFactory.stringToKey(key);
-			successful = new PersistEvent().signInEvent(eventKey, user);
-		}
-		
-		final JSONObject result = new JSONObject();
-		try {
-			if(successful){
-				result.put("signIn", true);
-			}else{
-				result.put("signIn", false);
+        if(user == null){
+        	resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+        }else{
+			final String key = (String) req.getParameter("key");
+	
+			Key eventKey;
+			boolean successful = false;
+			if(key != null){
+				eventKey = KeyFactory.stringToKey(key);
+				successful = new PersistEvent().signInEvent(eventKey, user);
 			}
-		} catch (JSONException e) {
-			// TODO return error
-		}
-		resp.setContentType("text/plain");
-		resp.getWriter().append(result.toString());
+			
+			final JSONObject result = new JSONObject();
+			try {
+				if(successful){
+					result.put("signIn", true);
+				}else{
+					result.put("signIn", false);
+				}
+			} catch (JSONException e) {
+				// TODO return error
+			}
+			resp.setContentType("text/plain");
+			resp.getWriter().append(result.toString());
+        }
 	}
-
 }

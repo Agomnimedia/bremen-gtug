@@ -31,7 +31,7 @@ public class Update {
 		return key;
 	}
 
-	public void setPkId(Key key) {
+	public void setKey(Key key) {
 		this.key = key;
 	}
 

@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.gtugs.bremen.eventmanagement.android.data.Attendee;
 import org.gtugs.bremen.eventmanagement.android.data.Event;
+import org.gtugs.bremen.eventmanagement.android.data.Update;
+import org.gtugs.bremen.eventmanagement.android.exceptions.NotAllowedException;
 import org.gtugs.bremen.eventmanagement.android.persistence.PersistAtendee;
 import org.gtugs.bremen.eventmanagement.android.persistence.PersistEvent;
 import org.json.JSONException;
@@ -25,12 +28,6 @@ public class CreateEditEventServlet extends HttpServlet{
 	 * generated serialVersionUID.
 	 */
 	private static final long serialVersionUID = 137249123517624948L;
-
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-//			throws ServletException, IOException {
-//		
-//	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -38,50 +35,74 @@ public class CreateEditEventServlet extends HttpServlet{
 		
 		UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-		String jsonValue = req.getParameter("????");
-		
-		try {
-			if (jsonValue != null && !jsonValue.isEmpty()) {
-		        final JSONObject object = new JSONObject(jsonValue);
-				if(object != null){
+        
+		if(user == null){
+			resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+		}else{
+			String jsonValue = req.getParameter("event");
+			try {
+				if (jsonValue != null && !jsonValue.isEmpty()) {
+			        final JSONObject object = new JSONObject(jsonValue);
+					PersistEvent perEvent = new PersistEvent();
 					final Event event = this.parseJSON2Event(object, user);
-					new PersistEvent().insert(event);
-					// TODO return 'successfull' response
+					perEvent.insert(event);
+					final Update update = new Update();
+					update.setDate(new Date());
+					if(object.getString("key") == null){
+						// TODO tell google servers that allevents changed
+						update.setKind(Integer.valueOf(1));
+						update.setAdditionalInfo(String.valueOf(perEvent.getAllEvents().size()));
+					}else{
+						// TODO tell google servers that event x changed
+						update.setKind(Integer.valueOf(2));
+						update.setAdditionalInfo(event.getName());
+					}
 				}else{
-					// TODO return 'error' response
+					resp.setStatus(501);
 				}
-			}else{
-				// TODO return 'error' response
+			} catch (JSONException e) {
+				resp.setStatus(500);
+			} catch(NotAllowedException nae){
+				resp.setStatus(400);
 			}
-		} catch (JSONException e) {
-			// TODO return 'error' response
 		}
 	}
 	
-	private Event parseJSON2Event(final JSONObject object, final User user) {
+	private Event parseJSON2Event(final JSONObject object, final User user) throws NotAllowedException{
+		Event event;
+		try{
+			final PersistAtendee perAtt = new PersistAtendee();
+			Attendee attendee = perAtt.getUser(user);
+			if(attendee == null){
+				attendee = new Attendee();
+				attendee.setAdmin(false);
+				attendee.setEmail(user.getEmail());
+				attendee.setNickname(user.getNickname());
+				perAtt.insert(attendee);
+				throw new NotAllowedException("Unknown User is not allowed to create an event!");
+			}
+			final String key = object.getString("key");
+			if(key == null){
+				event = new Event();
+				if(attendee.isAdmin()){
+					event.setAdmin(attendee);
+				}else{
+					throw new NotAllowedException("User has no authority to create or edit an event!");
+				}
+			}else{
+				event = new PersistEvent().getEventDetails(KeyFactory.stringToKey(key)); 
+			}
 		
-//		try{
-//			final Event event;
-//		if(object.getString("key") == null){
-//			event = new Event();
-//			event.setAdmin(new PersistAtendee().getUser(id))
-//		}else{
-			// TODO get event from database
-			// event = 
-//		}
-//		
-//		event.setName(object.getString("name"));
-//		event.setLocation(object.getString("location"));
-//		event.setStartDate(new Date(Long.parseLong(object.getString("startDate"))));
-//		event.setEndDate(new Date(Long.parseLong(object.getString("endDate"))));
-//		event.setUrl(object.getString("url"));
-		// TODO get admin by 
-//		event.setAdmin(object.getString("admin"));
-//		event.setMaxAttendees(Integer.parseInt(object.getString("maxAttendees")));
-//		}catch(JSONException je){
-//			event = null;
-//			// TODO handle exception
-//		}
-		return null;
+			event.setName(object.getString("name"));
+			event.setLocation(object.getString("location"));
+			event.setStartDate(new Date(Long.parseLong(object.getString("startDate"))));
+			event.setEndDate(new Date(Long.parseLong(object.getString("endDate"))));
+			event.setUrl(object.getString("url"));
+			event.setMaxAttendees(Integer.parseInt(object.getString("maxAttendees")));
+		}catch(JSONException je){
+			event = null;
+			// TODO handle exception
+		}
+		return event;
 	}
 }
