@@ -40,13 +40,20 @@ communication.processJsonGetHttpRequest = function(data, servlet,
 	}
 	if (typeof (receiveHandler) != "undefined") {
 		xmlObj.onreadystatechange = function() {
-			alert(xmlObj.readyState+"\n"+xmlObj.status);
+			//alert(xmlObj.readyState+"\n"+xmlObj.status);
 			if (xmlObj.readyState == 4) {
-				var json = JSON.parse(xmlObj.responseText);
-				if (json.ERROR) {
-					alert("Server ErrorMessage: " + json.error);
-				} else {
-					window[receiveHandler](json);
+				if (xmlObj.status == 200) {
+					var json = JSON.parse(xmlObj.responseText);
+					if (json.ERROR) {
+						alert("Server ErrorMessage: " + json.error);
+						window[receiveHandler](false);
+					} else {
+						window[receiveHandler](json);
+					}
+				}
+				else {
+					alert("HTTP status code: " + xmlObj.status);
+					window[receiveHandler](false);
 				}
 			}
 		};
@@ -63,12 +70,21 @@ communication.processJsonPostHttpRequest = function(data, key, servlet,
 	data = key + "=" + encodeURIComponent(data);
 	if (typeof (receiveHandler) != "undefined") {
 		xmlObj.onreadystatechange = function() {
-			if (xmlObj.readyState == 4 && xmlObj.status == 200) {
-				var json = JSON.parse(xmlObj.responseText);
-				if (json.ERROR) {
-					alert("Server ErrorMessage: " + json.error);
-				} else {
-					window[receiveHandler](json);
+			alert(xmlObj.readyState+"\n"+xmlObj.status);
+			if (xmlObj.readyState == 4) {
+				if (xmlObj.status == 200) {
+					var json = JSON.parse(xmlObj.responseText);
+					if (json.ERROR) {
+						alert("Server ErrorMessage: " + json.error);
+						window[receiveHandler](false);
+					}
+					else {
+						window[receiveHandler](json);
+					}
+				}
+				else {
+					alert("HTTP status code: " + xmlObj.status);
+					window[receiveHandler](false);
 				}
 			}
 		};
