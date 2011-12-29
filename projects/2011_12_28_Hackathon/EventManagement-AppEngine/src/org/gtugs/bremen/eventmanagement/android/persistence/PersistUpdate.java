@@ -8,8 +8,6 @@ import javax.jdo.Query;
 import org.gtugs.bremen.eventmanagement.android.data.Update;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 
-import com.google.gwt.core.ext.typeinfo.NotFoundException;
-
 public class PersistUpdate {
 
 	public void insert(Update update) {

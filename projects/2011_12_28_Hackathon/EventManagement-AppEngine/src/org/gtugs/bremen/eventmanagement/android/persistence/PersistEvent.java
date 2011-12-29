@@ -51,6 +51,15 @@ public class PersistEvent {
 		}
 	}
 	
+	public Event getEventById(Key key){
+		final PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		Event result = (Event) pManager.getObjectById(key);
+		
+		return result;
+		
+	}
+	
 	public Event getEventDetails(Key id) throws IllegalArgumentException{
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Event event;
@@ -66,8 +75,8 @@ public class PersistEvent {
 		return event;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public boolean signInEvent(Key id, User user){
-		//TODO: Email adressen aus der Datenbank laden
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Event event = (Event) pm.getObjectById(id);
 		boolean allowedToSign = false;
@@ -90,7 +99,7 @@ public class PersistEvent {
 					return false;
 				} else {
 					if(attendee != null)
-					event.getAttendies().add(attendee);
+					event.getAttendies().add(attendee.getKey());
 				}
 			} else {
 				return false;

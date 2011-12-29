@@ -7,9 +7,6 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
 
 import com.google.appengine.api.datastore.Key;
 
@@ -36,15 +33,13 @@ public class Event {
 	private String url;
 	
 	@Persistent
-	@ManyToMany
-	private List<Attendee> attendies;
+	private List<Key> attendies;
 	
 	@Persistent
-	@ManyToOne
-	private Attendee admin;
+	private Key admin;
 	
 	@Persistent
-	private List<Talk> talks;
+	private List<Key> talks;
 	
 	@Persistent
 	//Default 0
@@ -99,27 +94,27 @@ public class Event {
 		this.url = url;
 	}
 
-	public List<Attendee> getAttendies() {
+	public List<Key> getAttendies() {
 		return attendies;
 	}
 
-	public void setAttendies(List<Attendee> attendies) {
+	public void setAttendies(List<Key> attendies) {
 		this.attendies = attendies;
 	}
 
-	public Attendee getAdmin() {
+	public Key getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Attendee admin) {
+	public void setAdmin(Key admin) {
 		this.admin = admin;
 	}
 
-	public List<Talk> getTalks() {
+	public List<Key> getTalks() {
 		return talks;
 	}
 
-	public void setTalks(List<Talk> talks) {
+	public void setTalks(List<Key> talks) {
 		this.talks = talks;
 	}
 

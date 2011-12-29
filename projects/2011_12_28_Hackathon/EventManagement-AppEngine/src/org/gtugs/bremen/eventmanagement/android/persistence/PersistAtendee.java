@@ -6,7 +6,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import org.gtugs.bremen.eventmanagement.android.data.Attendee;
-import org.gtugs.bremen.eventmanagement.android.data.Event;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 
 import com.google.appengine.api.datastore.Key;
@@ -14,6 +13,7 @@ import com.google.appengine.api.users.User;
 
 public class PersistAtendee {
 	
+	@SuppressWarnings("unchecked")
 	public List<Attendee> getAllAttendees(){
 		final PersistenceManager pManager = PMF.get().getPersistenceManager();
 		
@@ -27,6 +27,14 @@ public class PersistAtendee {
 		} finally {
 			//pManager.close();
 		}
+	}
+	
+	public Attendee getAttendeeById(Key key){
+		final PersistenceManager pManager = PMF.get().getPersistenceManager();
+		
+		Attendee result = (Attendee) pManager.getObjectById(key);
+		
+		return result;
 	}
 	
 	public void insert(Attendee attendee){
@@ -57,9 +65,9 @@ public class PersistAtendee {
 		PersistenceManager pManager = PMF.get().getPersistenceManager();
 		Attendee attendee = null;
 		try{
-			final Query query = pManager.newQuery(Attendee.class, "this.email==email");
+			final Query query = pManager.newQuery(Attendee.class, "this.email == email");
 			query.declareParameters("String email");
-			attendee = (Attendee) query.execute(user.getEmail());
+			attendee = ((List<Attendee>) query.execute(user.getEmail())).get(0);
 		} finally{
 			pManager.close();
 		}

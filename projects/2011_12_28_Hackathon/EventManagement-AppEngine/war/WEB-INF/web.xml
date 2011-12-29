@@ -126,15 +126,15 @@
   </servlet-mapping>
   
   <servlet>
-    <servlet-name>Test</servlet-name>
+    <servlet-name>Helper</servlet-name>
     <servlet-class>
-      org.gtugs.bremen.eventmanagement.android.servlets.TestServlet
+      org.gtugs.bremen.eventmanagement.android.servlets.HelperServlet
     </servlet-class>
   </servlet>
     
   <servlet-mapping>
-    <servlet-name>Test</servlet-name>
-      <url-pattern>/test</url-pattern>
+    <servlet-name>Helper</servlet-name>
+      <url-pattern>/helper</url-pattern>
   </servlet-mapping>
   
   

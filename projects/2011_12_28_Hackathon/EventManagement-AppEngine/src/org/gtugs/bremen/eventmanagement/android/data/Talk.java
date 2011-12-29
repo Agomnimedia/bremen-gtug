@@ -15,7 +15,7 @@ public class Talk {
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private Key key;
 	
-	@Persistent
+	@Persistent()
 	private Attendee speaker;
 	
 	@Persistent
@@ -44,6 +44,4 @@ public class Talk {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 }

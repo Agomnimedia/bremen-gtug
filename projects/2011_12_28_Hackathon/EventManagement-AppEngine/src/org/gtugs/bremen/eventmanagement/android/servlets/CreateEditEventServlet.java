@@ -85,7 +85,7 @@ public class CreateEditEventServlet extends HttpServlet{
 			if(key == null){
 				event = new Event();
 				if(attendee.isAdmin()){
-					event.setAdmin(attendee);
+					event.setAdmin(attendee.getKey());
 				}else{
 					throw new NotAllowedException("User has no authority to create or edit an event!");
 				}

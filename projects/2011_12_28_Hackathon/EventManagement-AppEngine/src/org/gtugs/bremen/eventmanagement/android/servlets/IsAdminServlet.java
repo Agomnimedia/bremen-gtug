@@ -12,6 +12,11 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 public class IsAdminServlet extends HttpServlet{
 
+	/**
+	 * generated serialVersionUID.
+	 */
+	private static final long serialVersionUID = -6806947646807229878L;
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws javax.servlet.ServletException, 
 			java.io.IOException {

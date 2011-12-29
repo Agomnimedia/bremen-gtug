@@ -6,16 +6,12 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
 
 import com.google.appengine.api.datastore.Key;
 
 @PersistenceCapable
 public class Attendee {
 	
-	//Muss als String verschickt werden
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private Key key;
@@ -27,11 +23,9 @@ public class Attendee {
 	private String email;
 	
 	@Persistent
-	@ManyToMany
-	private List<Event> events;
+	private List<Key> events;
 	
 	@Persistent
-	@ManyToOne
 	//Default is false
 	private boolean admin = false;
 
@@ -59,11 +53,11 @@ public class Attendee {
 		this.email = email;
 	}
 
-	public List<Event> getEvents() {
+	public List<Key> getEvents() {
 		return events;
 	}
 
-	public void setEvents(List<Event> events) {
+	public void setEvents(List<Key> events) {
 		this.events = events;
 	}
 
@@ -74,6 +68,4 @@ public class Attendee {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
-	
-	
 }
