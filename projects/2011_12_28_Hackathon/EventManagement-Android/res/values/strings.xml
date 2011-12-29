@@ -2,8 +2,9 @@
 <resources>
 
 	<!-- Preferences Strings -->
-	<string name="settings">Eigenschaften</string>
-	<string name="allevents">All events</string>
+	<string name="settings">Settings</string>
+	<string name="allEventsTitle">All events</string>
+	<string name="myEventsTitle">My events</string>
 	<string name="dummy">dummy</string>
 
 
@@ -13,7 +14,7 @@
     <string name="accounts">Accounts</string>
 
     <!-- Dialog button [CHAR LIMIT=NONE] -->
-    <string name="add_account">Add account...</string>
+    <string name="add_account">Add account</string>
 
     <!--  Name of the application in the launcher [CHAR LIMIT=NONE] -->
     <string name="app_name">EventManagement</string>

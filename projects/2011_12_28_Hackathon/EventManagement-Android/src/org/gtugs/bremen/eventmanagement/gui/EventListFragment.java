@@ -16,43 +16,64 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class EventListFragment extends Fragment{
 
+	private String servletName = "bla";
+	private String title = "bla";
+	
+	
 	/**
 	 * connection to the results ListView.
 	 */
 	private ArrayAdapter<String> resultsAdapter;
 	
-	/**
-	 * list of customer ids that listed in the results.
-	 */
 	private static ArrayList<String> resultList = new ArrayList<String>();
+	
+	public void setServletName(String servletName) {
+		this.servletName = servletName;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		final View rootView = inflater.inflate(R.layout.allevents, container);
+		final View rootView = inflater.inflate(R.layout.event_list, container);
 		
-		final ListView listView = (ListView) rootView.findViewById(R.id.allEventsView);
+		final TextView titleView = (TextView) rootView.findViewById(R.id.titleView);
+		titleView.setText(this.title);
+		
+		resultsAdapter = new ArrayAdapter<String>(this.getActivity().getApplicationContext(),
+				android.R.layout.simple_list_item_1);
+		
+		final ListView listView = (ListView) rootView.findViewById(R.id.eventListView);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-//				Intent intent = new Intent(AllEventsActivity.this,
-//						EventDetailActivity.class);
-//				// TODO putExtra Info
-//				startActivity(intent);
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				onItemClick(parent, view, position, id);
 			}
-			
+				
 		});
 		
 		final Communication comm = new AllEventsCommunication();
-		comm.servlet = "getallevents";
+		comm.servlet = this.servletName;
 		comm.execute();
 		return rootView;
 	}
+	
+	protected void onItemClick(AdapterView<?> parent, View view, int position, long id) { };
+	
+	//		Intent intent = new Intent(AllEventsActivity.this,
+//		EventDetailActivity.class);
+//// TODO putExtra Info
+//startActivity(intent);
+
+	
 	
 	private class AllEventsCommunication extends Communication{
 		

@@ -27,12 +27,11 @@
         android:layout_weight="1">
         <Button android:id="@+id/btn_event"
             style="@style/HomeButton"
-            android:onClick="onDashboardButtonClick"
             android:text="@string/allEventsTitle"
             android:drawableTop="@drawable/home_btn_events_default"/>
         <Button android:id="@+id/btn_building_plan"
             style="@style/HomeButton"
-            android:onClick="onDashboardButtonClick"
+            android:onClick="onClickFeature"
             android:text="@string/dummy"
             android:drawableTop="@drawable/gtug_icon"/>
     </LinearLayout>
@@ -44,12 +43,12 @@
         android:layout_weight="1">
         <Button android:id="@+id/btn_menu"
             style="@style/HomeButton"
-            android:onClick="onDashboardButtonClick"
+            android:onClick="onClickFeature"
             android:text="@string/dummy"
             android:drawableTop="@drawable/gtug_icon"/>
         <Button android:id="@+id/btn_lecturer"
             style="@style/HomeButton"
-            android:onClick="onDashboardButtonClick"
+            android:onClick="onClickFeature"
             android:text="@string/dummy"
             android:drawableTop="@drawable/gtug_icon"/>
     </LinearLayout>
@@ -61,7 +60,7 @@
         android:layout_weight="1">
         <Button android:id="@+id/btn_timetable"
             style="@style/HomeButton"
-            android:onClick="onDashboardButtonClick"
+            android:onClick="onClickFeature"
             android:text="@string/dummy"
             android:drawableTop="@drawable/gtug_icon"
             />
