@@ -67,25 +67,17 @@ communication.getEventDetails = function(key) {
 									url : "http://bremen.gtugs.org/events/ersterhackathon",
 									attendies : [ {
 										key : "a",
-										nickname : "Matze",
-										email : "matze@example.com",
-										admin : true
+										nickname : "Matze"
 									}, {
 										key : "b",
-										nickname : "Steve",
-										email : "steve@example.com",
-										admin : true
+										nickname : "Steve"
 									}, {
 										key : "c",
-										nickname : "Jan",
-//										email : "jan@example.com",
-										admin : false
+										nickname : "Jan"
 									} ],
 									admin : {
 										key : "a",
-										nickname : "Matze",
-										email : "matze@example.com",
-										admin : true
+										nickname : "Matze"
 									},
 									talks : [],
 									maxAttendees : 15
@@ -108,17 +100,13 @@ communication.getEventDetails = function(key) {
 									attendies : [],
 									admin : {
 										key : "b",
-										nickname : "Steve",
-										email : "steve@example.com",
-										admin : true
+										nickname : "Steve"
 									},
 									talks : [ {
 										key : "x",
 										speaker : {
 											key : "c",
-											nickname : "Jan",
-											email : "jan@example.com",
-											admin : false
+											nickname : "Jan"
 										},
 										name : "HTML5"
 									}, {
