@@ -51,6 +51,7 @@ public class EventListFragment extends Fragment{
 				android.R.layout.simple_list_item_1);
 		
 		final ListView listView = (ListView) rootView.findViewById(R.id.eventListView);
+		listView.setAdapter(resultsAdapter);
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -63,6 +64,7 @@ public class EventListFragment extends Fragment{
 		final Communication comm = new AllEventsCommunication();
 		comm.servlet = this.servletName;
 		comm.execute();
+		
 		return rootView;
 	}
 	
@@ -75,7 +77,7 @@ public class EventListFragment extends Fragment{
 
 	
 	
-	private class AllEventsCommunication extends Communication{
+	private class AllEventsCommunication extends Communication {
 		
 		@Override
 		protected void onPostExecute(final JSONObject result) {
@@ -86,8 +88,8 @@ public class EventListFragment extends Fragment{
 				resultList.clear();
 				for (int i = 0; i < results.length(); i++) {
 					final JSONObject event = results.getJSONObject(i);
-					resultsAdapter.add(event.getString("key"));
-					resultList.add(event.getString("name"));
+					resultsAdapter.add(event.getString("name"));
+					resultList.add(event.getString("key"));
 				}
 				resultsAdapter.notifyDataSetChanged();	
 			} catch (JSONException e) {
