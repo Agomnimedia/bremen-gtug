@@ -5,7 +5,7 @@ var communication = function() {
 communication.BASEURL = "https://bremengtugeventreg.appspot.com";
 
 communication.getAllItems = function() {
-	this.processJsonGetHttpRequest("", "getallevents", "allItemsReceived");
+	this.processJsonGetHttpRequest("", "getallevents", "allEventsReceived");
 };
 
 communication.lastUpdate = function(kind) {

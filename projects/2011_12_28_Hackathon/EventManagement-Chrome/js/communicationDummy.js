@@ -3,9 +3,9 @@
 var communication = function() {
 };
 
-communication.getAllItems = function() {
+communication.getAllEvents = function() {
 	window.setTimeout(function() {
-		allItemsReceived({
+		allEventsReceived({
 			events : [ {
 				key : "1",
 				name : "Hackathon"

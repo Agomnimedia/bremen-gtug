@@ -11,7 +11,7 @@ function resetBadgeText(){
     });
 }
 
-function allItemsReceived(data){
+function allEventsReceived(data){
     if (data == false) {
         window.close();
     }
