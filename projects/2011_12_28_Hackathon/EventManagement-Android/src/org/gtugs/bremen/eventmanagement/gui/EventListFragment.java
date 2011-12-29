@@ -42,7 +42,7 @@ public class EventListFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		final View rootView = inflater.inflate(R.layout.event_list, container);
+		final View rootView = inflater.inflate(R.layout.event_list, container, false);
 		
 		final TextView titleView = (TextView) rootView.findViewById(R.id.titleView);
 		titleView.setText(this.title);

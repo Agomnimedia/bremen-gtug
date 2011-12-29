@@ -15,6 +15,8 @@ import android.widget.AdapterView;
  */
 public class MyEventsFragment extends EventListFragment {
 	
+	public MyEventsFragment() { }
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		this.setServletName("getmyevents");

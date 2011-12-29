@@ -31,11 +31,11 @@ public class EventManagementActivity extends FragmentActivity {
 	public static final String FRAGMENT_TO_START = "toStart";
 	
 	public static final byte DASHBOARD_FRAGMENT = 0;
-	public static final byte MY_EVENTS_FRAGMENT = 0;
-	public static final byte ALL_EVENTS_FRAGMENT = 0;
-	public static final byte EVENT_DETAILS_FRAGMENT = 0;
-	public static final byte CREATE_EDIT_EVENT_FRAGMENT = 0;
-	public static final byte TASK_FRAGMENT = 0;
+	public static final byte MY_EVENTS_FRAGMENT = 1;
+	public static final byte ALL_EVENTS_FRAGMENT = 2;
+	public static final byte EVENT_DETAILS_FRAGMENT = 3;
+	public static final byte CREATE_EDIT_EVENT_FRAGMENT = 4;
+	public static final byte TASK_FRAGMENT = 5;
 
     private boolean isMultiPane=true;
 
@@ -50,7 +50,19 @@ public class EventManagementActivity extends FragmentActivity {
     	
     	this.setContentView(R.layout.event_manage_activity);
     	
-    	if(getSupportFragmentManager().findFragmentById(R.id.myEventsFragment) == null) this.isMultiPane=false;    	
+    	if(this.findViewById(R.id.leftContainer) == null) this.isMultiPane=false;
+    	
+    	FragmentManager manager = this.getSupportFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+    	
+    	if(isMultiPane) {
+    		transaction.add(R.id.leftContainer, new DashboardFragment(), "leftPane");
+    		transaction.add(R.id.rightContainer, new MyEventsFragment(), "rightPane");
+    	} else {
+    		transaction.add(R.id.rootView, new DashboardFragment(), "dashboardFragment");
+    	}
+    	
+    	transaction.commit();
     }
     
   
@@ -63,26 +75,50 @@ public class EventManagementActivity extends FragmentActivity {
     }
     
     public void startFragment(Bundle bundle) {
-    	if(isMultiPane) {
-    		FragmentManager manager = this.getSupportFragmentManager();
-    		ViewGroup container = (ViewGroup) this.findViewById(R.id.eventManagementFragContainer);
-    		FragmentTransaction transaction = manager.beginTransaction();
-    		
-    		byte sender = bundle.getByte(SENDER_FRAGMENT);
-    		byte toStart = bundle.getByte(FRAGMENT_TO_START); 
+    	FragmentManager manager = this.getSupportFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+    	
+		byte sender = bundle.getByte(SENDER_FRAGMENT);
+		byte toStart = bundle.getByte(FRAGMENT_TO_START);
+		
+		if(isMultiPane) {    			 
     		
     		switch(sender) {
     			case DASHBOARD_FRAGMENT:
-    				Fragment fragment = manager.findFragmentByTag("rightPane");
-    				transaction.remove(fragment);
-    				
-    				//transaction.add(container, new AllEventsFragment(), "rightPane");
+    				switch(toStart) {
+    					case ALL_EVENTS_FRAGMENT:
+    						transaction.replace(R.id.rightContainer, new AllEventsFragment(), "rightPane");
+    					break;
+    					case MY_EVENTS_FRAGMENT:
+    						transaction.replace(R.id.rightContainer, new MyEventsFragment(), "rightPane");
+    					break;
+    					default:
+    				}
+    			break;
+    			case ALL_EVENTS_FRAGMENT:
+    				Fragment allEvFrag = manager.findFragmentByTag("rightPane");
+    				transaction.replace(R.id.leftContainer, allEvFrag, "leftPane");
+    				transaction.replace(R.id.rightContainer, new EventDetailFragment(), "rightPane");
     			break;
     			default:
     		}
     		
-    		transaction.commit();
+    	} else {
+    		switch(sender) {
+				case DASHBOARD_FRAGMENT:
+					switch(toStart) {
+						case ALL_EVENTS_FRAGMENT:
+							transaction.replace(R.id.rootView, new AllEventsFragment(), "allEvents");
+							break;
+						default:
+					}
+					break;
+				default:
+    		}
     	}
+    	transaction.addToBackStack(null);
+    	transaction.commit();
+    	
     }
 
     /**

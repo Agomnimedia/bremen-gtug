@@ -3,12 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:id="@+id/eventManagementFragContainer" >
+    android:id="@+id/rootView" >
 	
-	<fragment android:name="org.gtugs.bremen.eventmanagement.gui.DashboardFragment"
-            android:id="@+id/dashboardFragment"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
+	
 	
 </LinearLayout>

@@ -14,6 +14,8 @@ import android.widget.AdapterView;
  *
  */
 public class AllEventsFragment extends EventListFragment {
+	
+	public AllEventsFragment() { }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
