@@ -5,11 +5,12 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import org.gtugs.bremen.eventmanagement.android.server.Attendee;
-import org.gtugs.bremen.eventmanagement.android.server.Event;
+import org.gtugs.bremen.eventmanagement.android.data.Attendee;
+import org.gtugs.bremen.eventmanagement.android.data.Event;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.users.User;
 
 public class PersistAtendee {
 	
@@ -51,20 +52,31 @@ public class PersistAtendee {
 	}
 	
 	
-	public Attendee getUser(Key id) throws IllegalArgumentException{
+//	public Attendee getUser(String email) throws IllegalArgumentException{
+//		
+//		PersistenceManager pManager = PMF.get().getPersistenceManager();
+//		Attendee attendee;
+//		try{
+//			attendee = (Attendee) pManager.getObjectById(id);
+//			pManager.flush();
+//		} catch (IllegalArgumentException e) {
+//			throw e;
+//			
+//		} finally{
+//			pManager.close();
+//		}
+//		
+//		return attendee;
+//	}
+	
+	public boolean isAdmin(User user){
+		PersistenceManager pm = PMF.get().getPersistenceManager();
 		
-		PersistenceManager pManager = PMF.get().getPersistenceManager();
-		Attendee attendee;
-		try{
-			attendee = (Attendee) pManager.getObjectById(id);
-			pManager.flush();
-		} catch (IllegalArgumentException e) {
-			throw e;
-			
-		} finally{
-			pManager.close();
-		}
-		
-		return attendee;
+		//Load atteende with email adress from user object.
+
+		Query query = pm.newQuery(Attendee.class,"this.email == email");
+		query.declareParameters("String email");
+		Attendee attendee = (Attendee) query.execute(user.getEmail());
+		return attendee.isAdmin();
 	}
 }

@@ -1,11 +1,12 @@
 package org.gtugs.bremen.eventmanagement.android.servlets;
 
-import javax.jdo.PersistenceManagerFactory;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.gtugs.bremen.eventmanagement.android.persistence.PersistEvent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -33,15 +34,18 @@ public class SignInEventServlet extends HttpServlet{
 			successful = new PersistEvent().signInEvent(eventKey, user);
 		}
 		
-		resp.setContentType("text/plain");
-		
-		if(successful){
-			resp.getWriter().append("true");		
-		} else {
-			//Error code...
-			resp.getWriter().append("false");
+		final JSONObject result = new JSONObject();
+		try {
+			if(successful){
+				result.put("signIn", true);
+			}else{
+				result.put("signIn", false);
+			}
+		} catch (JSONException e) {
+			// TODO return error
 		}
-		
+		resp.setContentType("text/plain");
+		resp.getWriter().append(result.toString());
 	}
 
 }
