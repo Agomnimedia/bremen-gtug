@@ -4,6 +4,7 @@
   "version": "1",
   "default_locale": "en",
   "background_page": "background.html",
+  "options_page": "options.html",
   /*"app": {
     "launch": {
       "local_path": "main.html"
@@ -17,5 +18,13 @@
     "default_icon": "icon/icon_19.png",
     "default_title": "__MSG_actTitle__",
     "default_popup": "eventlist.html"
-  }
+  },
+  "permissions": [
+  	"tabs",
+  	"https://bremengtugeventreg.appspot.com",
+  	"https://www.googleapis.com/userinfo/email",
+    "https://www.google.com/accounts/OAuthGetRequestToken",
+    "https://www.google.com/accounts/OAuthAuthorizeToken",
+    "https://www.google.com/accounts/OAuthGetAccessToken"
+	]
 }

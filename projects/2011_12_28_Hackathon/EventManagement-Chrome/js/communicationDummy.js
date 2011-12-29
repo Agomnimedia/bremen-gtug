@@ -41,7 +41,7 @@ communication.signOffEvent = function(key) {
 	}, 1000);
 };
 
-communication.getMyEvents = function(key) {
+communication.getMyEvents = function() {
 	window.setTimeout(function() {
 		myEventsReceived({
 			events : [ {
