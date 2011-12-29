@@ -21,7 +21,7 @@
   },
   "permissions": [
   	"tabs",
-  	"https://bremengtugeventreg.appspot.com",
+  	"https://bremengtugeventreg.appspot.com/*",
   	"https://www.googleapis.com/userinfo/email",
     "https://www.google.com/accounts/OAuthGetRequestToken",
     "https://www.google.com/accounts/OAuthAuthorizeToken",

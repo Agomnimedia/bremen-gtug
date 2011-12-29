@@ -5,7 +5,7 @@ var communication = function() {
 communication.BASEURL = "https://bremengtugeventreg.appspot.com";
 
 communication.getAllItems = function() {
-	this.processJsonGetHttpRequest("", "getallitems", "allItemsReceived");
+	this.processJsonGetHttpRequest("", "getallevents", "allItemsReceived");
 };
 
 communication.lastUpdate = function(kind) {
@@ -40,7 +40,8 @@ communication.processJsonGetHttpRequest = function(data, servlet,
 	}
 	if (typeof (receiveHandler) != "undefined") {
 		xmlObj.onreadystatechange = function() {
-			if (xmlObj.readyState == 4 && xmlObj.status == 200) {
+			alert(xmlObj.readyState+"\n"+xmlObj.status);
+			if (xmlObj.readyState == 4) {
 				var json = JSON.parse(xmlObj.responseText);
 				if (json.ERROR) {
 					alert("Server ErrorMessage: " + json.error);
@@ -50,6 +51,7 @@ communication.processJsonGetHttpRequest = function(data, servlet,
 			}
 		};
 	}
+	//alert(this.BASEURL + '/' + servlet + data);
 	xmlObj.open('GET', this.BASEURL + '/' + servlet + data, true);
 	xmlObj.send(null);
 }
