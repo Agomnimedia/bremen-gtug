@@ -5,8 +5,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import org.gtugs.bremen.eventmanagement.android.data.Update;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
-import org.gtugs.bremen.eventmanagement.android.server.Update;
 
 import com.google.gwt.core.ext.typeinfo.NotFoundException;
 

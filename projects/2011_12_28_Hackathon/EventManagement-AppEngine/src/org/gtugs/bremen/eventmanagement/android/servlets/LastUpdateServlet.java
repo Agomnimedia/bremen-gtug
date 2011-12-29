@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.gtugs.bremen.eventmanagement.android.data.Update;
 import org.gtugs.bremen.eventmanagement.android.persistence.PersistUpdate;
-import org.gtugs.bremen.eventmanagement.android.server.Update;
 import org.json.JSONException;
 import org.json.JSONObject;
 

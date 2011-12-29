@@ -3,8 +3,8 @@ package org.gtugs.bremen.eventmanagement.android.servlets;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
+import org.gtugs.bremen.eventmanagement.android.data.Event;
 import org.gtugs.bremen.eventmanagement.android.persistence.PersistEvent;
-import org.gtugs.bremen.eventmanagement.android.server.Event;
 import org.json.JSONException;
 import org.json.JSONObject;
 

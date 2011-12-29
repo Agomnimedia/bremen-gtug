@@ -4,8 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.gtugs.bremen.eventmanagement.android.persistence.PersistAttendee;
-import org.gtugs.bremen.eventmanagement.android.persistence.PersistEvent;
+import org.gtugs.bremen.eventmanagement.android.persistence.PersistAtendee;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -21,7 +20,7 @@ public class IsAdminServlet extends HttpServlet{
         User user = userService.getCurrentUser();
         
         
-        boolean isAdmin = new PersistAttendee().isAdmin(user);
+        boolean isAdmin = new PersistAtendee().isAdmin(user);
         resp.setContentType("text/plain");
         resp.getWriter().append(isAdmin == true ? "true" : "false");
 		

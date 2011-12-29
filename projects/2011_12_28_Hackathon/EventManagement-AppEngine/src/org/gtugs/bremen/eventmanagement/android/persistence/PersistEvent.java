@@ -5,8 +5,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import org.gtugs.bremen.eventmanagement.android.server.Attendee;
-import org.gtugs.bremen.eventmanagement.android.server.Event;
+import org.gtugs.bremen.eventmanagement.android.data.Attendee;
+import org.gtugs.bremen.eventmanagement.android.data.Event;
 import org.gtugs.bremen.eventmanagement.android.server.PMF;
 
 import com.google.appengine.api.datastore.Key;

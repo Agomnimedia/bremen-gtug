@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 
+import org.gtugs.bremen.eventmanagement.android.data.Event;
 import org.gtugs.bremen.eventmanagement.android.persistence.PersistEvent;
-import org.gtugs.bremen.eventmanagement.android.server.Event;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
