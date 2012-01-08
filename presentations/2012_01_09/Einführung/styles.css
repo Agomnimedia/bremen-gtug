@@ -43,8 +43,8 @@ body {
   /*background-image: -moz-radial-gradient(50% 30% 90deg, circle, #b1dfff 0%, #0c54ab 600px);
   background-image: -webkit-gradient(radial, 50% 50%, 200, 50% 50%, 600, from(#b1dfff), to(#0c54ab));
   background-attachment: fixed;*/
-	background-image: -moz-radial-gradient(50% 30% 90deg, circle, #c4c6bf 0%, #a3c634 600px);
-  background-image: -webkit-gradient(radial, 50% 50%, 200, 50% 50%, 600, from(#c4c6bf), to(#a3c634));
+	background-image: -moz-radial-gradient(50% 30% 90deg, circle, #b1dfff 0%, #0c54ab 600px);
+  background-image: -webkit-gradient(radial, 50% 50%, 200, 50% 50%, 600, from(#b1dfff), to(#0c54ab));
   background-attachment: fixed;
 }
 
