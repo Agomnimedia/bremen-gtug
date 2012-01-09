@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title>GTUG Präsentation: HTML5-Beispiele</title>
+        <meta name="author" content="Jan Stalhut" />
+        <meta name="description" content="Im Rahmen des GTUG-Stammtisches am 9. Januar 2012 fand diese Vorstellung von HTML5-Grundlagen statt. In diesem Dokument finden sich einige Beispiele dazu." />
+        <meta charset="utf-8">
+        <!-- The Open Graph Protocol, http://ogp.me/ -->
+        <meta property="og:title" content="Präsentation zu HTML5-Grundlagen" />
+        <meta property="og:site_name" content="HTML5-Beispiele" />
+        <meta property="og:image" content="https://cdb.stalhut.de:446/presentation/images/html5-logo.png" />
+        <meta property="og:url" content="https://cdb.stalhut.de:446/presentation/html5/examples.html" />
+        <meta property="og:description" content="Im Rahmen des GTUG-Stammtisches am 9. Januar 2011 fand diese Vorstellung von HTML5-Grundlagen statt. In diesem Dokument finden sich einige Beispiele dazu." />
+        <meta property="og:locale" content="de_DE" />
+        <!-- test styles -->
+    </head>
+    <body>
+        <nav style="float:right; background-color:#ddd; padding:10px; margin:0 0 10px 10px;">
+            <h2 style="margin-top:0;">Inhalt</h2>
+            <ul>
+                <li>
+                    <a href="#article1">figure- und blockquote-Tag</a>
+                </li>
+                <li>
+                    <a href="#article2">Tabelle mit Header, Footer und Spalten-Formatierungen</a>
+                </li>
+                <li>
+                    <a href="#article3">Liste mit Beschreibungen</a>
+                </li>
+                <li>
+                    <a href="#article4">Formular-Elemente</a>
+                </li>
+            </ul>
+        </nav>
+        <header id="top">
+            <h1>HTML5-Beispiele</h1>
+        </header>
+        <article id="article1">
+            <h2>figure- und blockquote-Tag</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+                massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim
+                justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis
+                pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate
+                <figure>
+                    <img src="../images/gtug-logo.png" />
+                    <figcaption>
+                        Bildbeschriftung
+                    </figcaption>
+                </figure>
+                eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
+                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus
+                varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur
+                ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+                <blockquote>
+                    Die Google Technology User Group “Bremen GTUG” wurde am 21. September 2011 von uns
+                    (Matthias Friedrich und Steve Liedtke) gegründet. Da es in Bremen bis dato keine aktive
+                    Community, jedoch durchaus interessierte Entwickler gab, beschlossen wir selbst etwas auf
+                    die Beine zu stellen. Die GTUG richtet sich dabei vorwiegend an Entwickler mit Interesse
+                    an Google Technologien. Wir beide interessieren uns als Java-Entwickler in ersten Linie
+                    für Android und die AppEngine, jedoch sind wir auch anderer Themen gegenüber nicht
+                    verschlossen.
+                    <cite>
+                        http://bremen.gtugs.org/
+                    </cite>
+                </blockquote>
+                condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam
+                nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
+                tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci
+                eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
+                sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+            </p>
+        </article>
+        <article id="article2">
+            <h2>Tabelle mit Header, Footer und Spalten-Formatierungen</h2>
+            <style>
+                table {
+                    width: 80%;
+                }
+                
+                col.Col1 {
+                    background-color: grey;
+                }
+                
+                col.Col3_5 {
+                    background-color: yellow;
+                }
+                
+                tbody tr {
+                    height: 50px;
+                }
+            </style>
+            <table border="1" cellspacing="0">
+                <colgroup>
+                    <col class="Col1" /><col class="Col2" /><col class="Col3_5" span="3" /><col class="Col6" />
+                </colgroup>
+                <tfoot>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            Footer 1
+                        </th>
+                        <th>
+                            Footer 2
+                        </th>
+                        <th>
+                            Footer 3
+                        </th>
+                        <th>
+                            Footer 4
+                        </th>
+                        <th>
+                            Footer 5
+                        </th>
+                    </tr>
+                </tfoot>
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th>
+                            Header 1
+                        </th>
+                        <th>
+                            Header 2
+                        </th>
+                        <th>
+                            Header 3
+                        </th>
+                        <th>
+                            Header 4
+                        </th>
+                        <th>
+                            Header 5
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            Line 1
+                        </th>
+                        <td>
+                            Inhalt 1a
+                        </td>
+                        <td>
+                            Inhalt 1b
+                        </td>
+                        <td>
+                            Inhalt 1c
+                        </td>
+                        <td>
+                            Inhalt 1d
+                        </td>
+                        <td>
+                            Inhalt 1e
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Line 2
+                        </th>
+                        <td>
+                            Inhalt 2a
+                        </td>
+                        <td>
+                            Inhalt 2b
+                        </td>
+                        <td>
+                            Inhalt 2c
+                        </td>
+                        <td>
+                            Inhalt 2d
+                        </td>
+                        <td>
+                            Inhalt 2e
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Line 3
+                        </th>
+                        <td>
+                            Inhalt 3a
+                        </td>
+                        <td>
+                            Inhalt 3b
+                        </td>
+                        <td>
+                            Inhalt 3c
+                        </td>
+                        <td>
+                            Inhalt 3d
+                        </td>
+                        <td>
+                            Inhalt 3e
+                        </td>
+                    </tr>
+                </tbody>
+                <caption>
+                    Beispieltabelle
+                </caption>
+            </table>
+        </article>
+        <article id="article3">
+            <h2>Liste mit Beschreibungen</h2>
+            <dl>
+                <dt>
+                    CSS
+                </dt>
+                <dd>
+                    Cascading Style Sheets
+                </dd>
+                <dt>
+                    <dfn id="defhtml">HTML</dfn>
+                </dt>
+                <dd>
+                    Hypertext Markup Language
+                </dd>
+                <dt>
+                    XML
+                </dt>
+                <dd>
+                    Extensible Markup Language
+                </dd>
+            </dl>
+        </article>
+        <article id="article4">
+            <h2>Formular-Elemente</h2>
+            <form action="#" method="get">
+                <fieldset>
+                    <legend>
+                        Beispiel-Eingabefelder
+                    </legend>
+                    <label for="exampleText">
+                        Text-Eingabe:
+                    </label>
+                    <input type="text" id="exampleText">
+                    <br/>
+                    <label for="exampleSelect">
+                        Auswahlfeld:
+                    </label>
+                    <select id="exampleSelect">
+                        <optgroup label="Option-Group 1">
+                            <option>Option 1a</option>
+                            <option>Option 1b</option>
+                            <option>Option 1c</option>
+                        </optgroup>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <optgroup label="Option-Group 4">
+                            <option>Option 4a</option>
+                            <option>Option 4b</option>
+                            <option>Option 4c</option>
+                        </optgroup>
+                    </select>
+                    <br/>
+                    <label for="exampleDatalist">
+                        Eingabefeld mit Vorschlägen:
+                    </label>
+                    <input id="exampleDatalist" type="text" name="fruit" list="exampleData" />
+                    <datalist id="exampleData">
+                        <option>Android</option>
+                        <option>Apple</option>
+                        <option>Google</option>
+                    </datalist>
+                    <br/>
+                    <label for="exampleInputSearch">
+                        Suchfeld:
+                    </label>
+                    <input id="exampleInputSearch" type="search" />
+                    <br/>
+                    <label for="exampleInputEmail">
+                        Email-Feld:
+                    </label>
+                    <input id="exampleInputEmail" type="email" />
+                    <br/>
+                    <label for="exampleInputUrl">
+                        URL-Feld:
+                    </label>
+                    <input id="exampleInputUrl" type="url" />
+                    <br/>
+                    <label for="exampleInputTel">
+                        Telefon-Feld:
+                    </label>
+                    <input id="exampleInputTel" type="tel" />
+                    <br/>
+                    <label for="exampleInputRange">
+                        Bereich-Feld:
+                    </label>
+                    <input id="exampleInputRange" type="range" oninput="exampleInputRangeO.value = exampleInputRange.value" />
+                    <output for="exampleInputRange" id="exampleInputRangeO">
+                        0
+                    </output>
+                    <br/>
+                    <label for="exampleInputNumber">
+                        Zahlen-Feld:
+                    </label>
+                    <input id="exampleInputNumber" type="number" oninput="exampleInputNumberO.value = exampleInputNumber.value" />
+                    <output for="exampleInputNumber" id="exampleInputNumberO">
+                        0
+                    </output>
+                    <br/>
+                    <label for="exampleInputDate">
+                        Datums-Feld:
+                    </label>
+                    <input id="exampleInputDate" type="date" oninput="exampleInputNumberO.value = exampleInputDate.value" />
+                    <output for="exampleInputDate" id="exampleInputNumberO">
+                        0
+                    </output>
+                    <br/>
+                    <label for="exampleInputColor">
+                        Farben-Feld:
+                    </label>
+                    <input id="exampleInputColor" type="color" oninput="exampleInputColorO.value = exampleInputColor.value" />
+                    <output for="exampleInputColor" id="exampleInputColorO">
+                        #
+                    </output>
+                    <br/>
+                    <label for="exampleInputTextPlace">
+                        Textfeld:
+                    </label>
+                    <input id="exampleInputTextPlace" type="text" placeholder="Hier kann etwas rein." />
+                    <br/>
+                    <label for="exampleInputTextRequ">
+                        Pflichtfeld:
+                    </label>
+                    <input id="exampleInputTextRequ" type="text" required="required" />
+                    <br/>
+                    Fortschrittsanzeige:
+                    <progress value="0.75">
+                        <span id="percent">75</span>% 
+                    </progress>
+                    <br/>
+                    Ergebnis-Ausgabe: 
+                    <meter min="0" max="31" value="10" title="Tage">
+                        10 Tage
+                    </meter>
+                    <br/>
+                    <input type="submit" value="absenden" />
+                </fieldset>
+            </form>
+        </article>
+        <article>
+            <h2>Einklappbare Details</h2>
+            <details>
+                <p>
+                    Dieser Text sollte erst sichtbar werden, wenn die Details aufgekplatt werden.
+                </p>
+            </details>
+            <p>
+                Dieser Text ist immer sichtbar
+            </p>
+            <details>
+                <summary>
+                    Ein-/Ausklappen
+                </summary>
+                <p>
+                    Dieser Text verbirgt sich hinter der obigen "Zusammenfassung".
+                </p>
+            </details>
+            <details open="open">
+                <summary>
+                    Ein-/Ausklappen
+                </summary>
+                <p>
+                    Dieser Text lässt sich bei Bedarf einklappen.
+                </p>
+            </details>
+
+        </article>
+        <footer style="margin-top:20px;">
+            Beispiele zur <a href="index.html">Präsentation</a>
+            des GTUG-Stammtisches am 9. Januar 2012
+            <address>
+                Jan Stalhut - <a href="http://gplus.to/janstalhut">http://gplus.to/janstalhut</a>
+            </address>
+        </footer>
+    </body>
+</html>
