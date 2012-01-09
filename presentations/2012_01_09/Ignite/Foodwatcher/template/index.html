@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>FoodWatcher</title>
+
+	  <meta charset='utf-8'>
+	  <script src='../slides.js'></script>
+	</head>
+  
+  <style>
+  /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+      
+  </style>
+
+  <body style='display: none'>
+
+  	<section class='slides layout-regular template-bremengtug'>
+      
+  	 	<!-- Your slides (<article>s) go here. Delete or comment out the
+        slides below. -->
+        
+        
+  		<!-- Slide #1 | logo -->
+    	<article class='biglogo'>
+      </article>
+
+      <!-- Slide #2 | title-->
+      <article>
+        <h1>
+          FoodWatcher
+        </h1>
+				<h3>
+					inofficial mensa app for Bremen and Bremerhaven
+				</h3>
+				<img src="../images/foodwatcher.png" style="position:absolute; top:297px; left:420px">
+      </article>
+
+
+			<!-- Slide #3 | backend -->
+      <article>
+				<h2>
+          the backend
+        </h2>
+				<div><img src="../images/appengine.png" style="position: absolute;  top:490px; left:590px"></div>
+			</article>	
+
+      
+			<!-- Slide #3 | active status -->
+      <article>
+        <h3>
+					FoodSupplier
+        </h3>
+
+				<div class="build"><div>				
+				<ul>
+          <li style="position: absolute; top:185px;">
+						running on Google AppEngine
+          </li>
+				</ul>
+        <img src="../images/appengine.png" style="width:120px; position: absolute; top:540px; left:330px">
+				</div></div>
+
+				<div class="build"><div>				
+				<ul>
+         	<li style="position: absolute; top:230px;">
+           	parses html-sources from <a href='http://www.studentenwerk.bremen.de/'>studentenwerk.bremen.de</a> every monday 
+         	</li>
+				</ul>
+					<img src="../images/html_uni.png" style="width:60px; position: absolute; top:410px; left:130px">
+					<img src="../images/html_gw2.png" style="width:60px; position: absolute; top:410px; left:220px">
+					<img src="../images/html_air.png" style="width:60px; position: absolute; top:410px; left:310px">
+					<img src="../images/html_hsb.png" style="width:60px; position: absolute; top:410px; left:400px">
+					<img src="../images/html_wer.png" style="width:60px; position: absolute; top:410px; left:490px">
+					<img src="../images/html_bhv.png" style="width:60px; position: absolute; top:410px; left:580px">
+
+					<img src="../images/arrow_black_1.png" style="
+	 position: absolute; top:470px; left:210px">
+					<img src="../images/arrow_black_2.png" style="
+	 position: absolute; top:480px; left:365px">
+					<img src="../images/arrow_black_3.png" style="
+	 position: absolute; top:470px; left:475px">				
+				
+
+        
+					<img src="../images/arrow_black_4.png" style="position: absolute; width:60px; top:560px; left:260px">
+					<img src="../images/database.png" style="position: absolute; width:60px; top:560px; left:180px">
+				</div></div>
+
+				
+				<div class="build"><div>
+				<ul>
+          <li style="position: absolute; top:310px;">
+						generates XML/JSON on request for a given mensa
+          </li>
+				</ul>
+        
+					<img src="../images/arrow_black.png" style="position: absolute;  width:60px; top:590px; left:260px">
+					<img src="../images/arrow_black.png" style="position: absolute; top:575px; left:555px">
+					<img src="../images/xml_uni.png" style="width:60px; position: absolute; top:555px; left:470px">
+					<img src="../images/foodwatcher.png" style="position: absolute; top:555px; left:660px">
+				</div></div>
+
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">the backend</p>
+      </article>
+
+			
+			<!-- Slide #4 | the app  #0 -->
+      <article>
+				<h2>
+          the app
+        </h2>
+				<div><img src="../images/androiddev.png" style="position: absolute;  top:510px; left:655px"></div>
+			</article>
+
+			
+			<!-- Slide #5 | the app #1 -->
+      <article>
+        <h3>
+        	how it works
+        </h3>
+        <ul class="build" >
+          <li>
+            using 3  different ways to get menues
+          </li>
+				</ul>
+				<div class="build" style="position:absolute; top: 230px; left: 130px;">
+           	<p>1. locale cache (SQLite)</p>
+        </div>
+				<div class="build" style="position:absolute; top: 270px; left: 130px;">
+           	<p>2. XML from FoodSupplier</p>
+				</div>
+				<div class="build" style="position:absolute; top: 310px; left: 130px;">
+           	<p>3. HTML directly from studentenwerk.bremen.de</p>
+				</div>
+				<ul class="build" style="position:absolute; top: 330px; left: 60px;">
+					<li>
+						persisting the fetched menues in SQLite
+					</li>					
+					<li>
+						holding the data in a singleton for each mensa,<br> to reduce db-queries
+					</li>
+					<li>
+						showing menues in 5 "pages", 1 "page" per day per menue
+					</li>	
+				</ul>
+				
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">the app</p>
+      </article>
+
+
+			<!-- Slide #6 | the app #2 -->
+      <article>
+        <h3>
+        	technologies
+        </h3>
+        <ul class="build" >
+          <li>
+            <b>regular expressions</b> for parsing html
+          </li>
+					<li>
+						<b>SAX</b> for parsing xml (<b>S</b>imple <b>A</b>pi for <b>Xml</b>)
+					</li>					
+					<li>
+						<a href='http://greendao-orm.com'><b>greenDAO</b></a> for SQLite-handling
+					</li>	
+				</ul>
+				<br>
+				<ul class="build" >
+          <li>
+            <a href='http://actionbarsherlock.com'><b>ActionBarSherlock</b></a> (Android Compatibility Library + ActionBar)
+          </li>
+					<li>
+						<a href='http://android-developers.blogspot.com/2011/08/horizontal-view-swiping-with-viewpager.html'><b>ViewPager</b></a> (swipe through pages)
+					</li>					
+					<li>
+						<a href='http://viewpagerindicator.com/'><b>ViewPagerIndicator</b></a> (show "tabs" for swippable pages)
+					</li>	
+				</ul>
+				
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">the app</p>
+      </article>
+
+			
+			<!-- Slide #7 | the app #3 -->
+			<article>
+				<div id="phonediv" style="position: absolute; top: 5px; left:269px;" >
+					<img id="phone" src="../images/black.png">
+				</div>
+				<p class="mobilephonecontrol">
+					<label for="ipaddr">IP-Addr.: </label>
+					<input type="text" id="ipaddr" value="192.168.178.27"><br />
+					<input type="button" id="pconn" onclick="phoneConnect()" value="verbinden" />
+					<input type="button" id="pdisconn" disabled="disabled" onclick="phoneDisconnect()" value="trennen" />
+				</p>
+				<p class="mobilephonerotation">
+					<input type="button" id="protateleft" onclick="phoneRotate(-1)" value="horizontal" />
+					<button id="protatemiddle" disabled="disabled" onclick="phoneRotate(0)">ver-<br />ti-<br />kal</button>
+					<input type="button" id="protateright" onclick="phoneRotate(1)" value="horizontal" />
+				</p>
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">the app</p>
+			</article>		
+
+
+			<!-- Slide #8 | the app #4 -->
+      <article>
+        <h3>
+        	usage
+        </h3>
+        <div><img src="../images/usage_0.png" style="position: absolute; top:280px; left:50px"/></div>
+				<div><img src="../images/usage_1.png" style="position: absolute; top:370px; left:330px"/></div>
+
+				<div class="build"><div>
+					<p style="position:absolute; top: 150px; left: 500px;">70 ratings on an<br> average of 4.8 stars</p> 
+					<img src="../images/arrow_black_5.png" style="position: absolute; top:200px; left:400px" /></div>
+				</div>
+
+				<div class="build"><div>
+					<p style="position:absolute; top: 500px; left px;">aprox. 1200 users</p>
+					<img src="../images/arrow_black_3.png" style="position: absolute; top:420px; left:240px"/>
+				</div></div>
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">the app</p>
+      </article>
+
+			
+			<!-- Slide #9 | the app #2 -->
+      <article>
+        <h3>
+        	future features
+        </h3>
+        <ul class="build" >
+					<li>
+            switching to json
+          </li>
+          <li>
+            comments
+          </li>
+					<li>
+						tablet specific ui with fragments
+					</li>					
+					<li>
+						map showing the location of the nearest mensa + navigation
+					</li>
+					<li>
+						pushed updates (C2DM)
+					</li>
+				</ul>
+				
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">future</p>
+      </article>
+
+
+			<!-- Slide #10 | ressources -->
+      <article>
+        <h3>
+          ressources
+        </h3>
+        
+
+				<ul>
+					<li>
+            <a href='https://market.android.com/details?id=de.peacei.android.foodwatcher.gui'>FoodWatcher on AndroidMarket</a>
+					</li>					
+					<li>
+            <a href='http://foodspl.appspot.com'>FoodSupplier</a>
+					</li>					
+        </ul>
+
+        <ul>
+					<li>
+            <a href='http://foodwatcher.googlecode.com'>FoodWatcher on GoogleCode</a>
+					</li>
+					<li>
+            <a href='http://foodsupplier.googlecode.com'>FoodSupplier on GoogleCode</a>
+					</li>
+        </ul>
+				<img src="../images/foodwatcher.png" style="position:absolute; top:580px; left:90px">
+      </article>			
+			
+
+
+			<!-- Slide #11 | thank you -->
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+        <p style="position:absolute; top: 150px; left: 410px;"><b>Don't get hungry, keep watching!<br> With FoodWatcher!</b></p>
+        <ul>
+					<li>
+            <a href='http://bremen.gtugs.org'>bremen.gtugs.org</a>
+					</li>
+        </ul>
+				
+				<ul>
+					<li>
+            <a href='http://gplus.to/foodwatcher'>+FoodWatcher</a>
+					</li>
+					<li>
+            <a href='http://twitter.com/foodwatcher_BRE'>@foodwatcher_BRE</a>
+					</li>
+        </ul>
+
+				<ul>
+					<li>
+            <a href='http://gplus.to/mtthsfrdrch'>+Matthias Friedrich</a>
+					</li>
+					<li>
+            <a href='http://twitter.com/peacei'>@peacei</a>
+					</li>
+        </ul>
+				<img src="../images/foodwatcher.png" style="position:absolute; top:580px; left:90px">
+				<img src="../images/questions.jpg" style="position:absolute; width:350px; top:300px; left:460px">
+      </article>
+			
+    </section>
+
+  </body>
+</html>
