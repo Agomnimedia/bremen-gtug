@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<!--
+    
+    See bartaz.github.com/impress.js/ for documentation.
+    
+-->
+<head>
+    <meta charset="utf-8" />
+    <title>Web Audio API</title>
+    
+    <meta name="description" content="Presentation about Web Audio API - A high-level JavaScript API for processing and synthesizing audio in web applications">
+    <meta name="author" content="Sven Nobis" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Droid+Sans+Mono" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles/impress.css" />
+    <link rel="stylesheet" href="styles/default.css">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="impress" class="impress-not-supported">
+
+    <div class="fallback-message">
+        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+        <p>For the best experience please use the latest <b>Chrome</b> or <b>Safari</b> browser. Firefox 10 (to be released soon) will also handle it.</p>
+    </div>
+
+    <div id="welcome" class="step slide" data-x="-1000" data-y="-1000"  data-rotate-y="30">
+        <div id="logo">♫</div>
+        <h1>Web Audio API</h1>
+        <h3><cite>A high-level JavaScript API for processing and synthesizing audio in web applications</cite></h3>
+        <p>Sven Nobis - <a href="http://www.sven.to">sven.to</a></p>
+        <p>Montag, 6. Februar 2012</p>
+    </div>
+
+    <div class="step slide fill" data-x="0" data-y="-1000"  data-rotate-y="30">
+        <h3>
+          Übersicht
+        </h3>
+        <ul>
+          <li>Kurze Einführung</li>
+          <li>Praktische Vorstellung</li>
+          <ul>
+            <li>Quellcode</li>
+            <li>Vorführung</li>
+          </ul>
+        </ul>
+    </div>
+    
+   <div class="step slide fill" data-x="1000" data-y="-1000" data-rotate-y="30">
+        <h3>
+          Einführung
+        </h3>
+        <ul>
+          <li>Was ist die Web Audio API?</li>
+          <ul>
+            <li><i>"A <b>high-level</b> JavaScript API for <b>processing and synthesizing</b> audio in web applications"</i></li>
+          </ul>
+          <li>Für komplexere Audioverarbeitung (Spiele, etc.)</li>
+          <li>Entwickelt von Google</li>
+          <li>Browseruntersützung <a href="http://caniuse.com/#search=audio">[Link]</a></li>
+          <ul>
+            <li>Chrome 10.0+ (unvollständig!)</li>
+            <li>Firefox 4.0+ (unvollständig!)</li>
+          </ul>
+          <li>Liegt Spezifikations-Vorschlag bei der W3C vor <a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html">[Link]</a></li>
+        </ul>
+        
+        
+   </div>
+   <div id="vorfuehrung" class="slide step" data-x="2000" data-y="-1000" data-rotate-y="-120">
+        <h3>Praktische Vorstellung</h3>
+        <ul>
+          <li>Laden von Audiodaten</li>
+          <li>Audiodaten abspielen</li>
+          <li>Lautstärke regeln</li>
+          <li>Ein/Ausbeldene-Effekt bei Pause &amp; Resume</li>
+          <li>Musik visualisieren</li>
+        </ul>
+   </div>
+
+    
+    
+    
+    <div class="step slide fill" data-x="-1000" data-y="0"  data-rotate-y="30">
+        <h3>Eine Audioquelle muss her...</h3>
+        <p>Woher?</p>
+        <ul>
+            <li>File API</li>
+            <ul>
+              <li><pre><code>&lt;input type="file"&gt;&nbsp;<input type="file"></code></pre></li>
+              <li><pre><code>XMLHttpRequest</code></pre></li>
+              <li>oder...</li>
+            </ul>
+        </ul>
+        
+    </div>
+    
+    <div class="step slide fill" data-x="0" data-y="0"  data-rotate-y="30">
+        <h3>
+          Audioquelle
+        </h3>
+        <p>...per Drag'n'Drop</p>
+        <pre><code class="javascript">var holder = document.querySelector('html');
+holder.ondrop = drop;
+function drop() {
+  var files = e.dataTransfer.files;
+  for(var i = 0; i &lt; files.length; i++)
+  {
+    var file = files[i];
+    playlist.addFile(file);
+  }
+}</code></pre>
+    </div>
+
+    <div id="demo" class="step" data-x="4000" data-y="0" data-z="0" data-rotate-y="-30" data-scale="5">
+       <iframe width="900" height="700" src="http://www.sven.to/FiveMusicPlayer/" id="demo-frame" scrolling="no"></iframe>
+    </div>
+
+    <div class="step slide fill" data-x="-1000" data-y="1000"  data-rotate-y="30">
+        <h3>
+          Let's play it!
+        </h3>
+        <pre><code class="javascript">var context = new (window.AudioContext
+  || window.webkitAudioContext)();
+  
+function play(file) {
+  var reader = new FileReader();
+  reader.onload = decodeAndPlay;
+  reader.readAsArrayBuffer(file);
+}
+
+</code></pre>
+    </div>
+    
+    <div class="step slide fill" data-x="0" data-y="1000"  data-rotate-y="30">
+        <h3>
+          Let's play it! (2)
+        </h3>
+        <pre><code class="javascript">function decodeAndPlay(e) {
+  context.decodeAudioData(e.target.result,
+    playBuffer, error);
+}
+
+function playBuffer(buffer) {
+  source = context.createBufferSource();
+  source.buffer = buffer;
+  source.connect(context.destination);
+  source.noteOn(0);
+}</code></pre>
+    </div>
+    
+    <div class="step" data-x="4000" data-y="0" data-z="0" data-rotate-y="-30" data-scale="5">
+    </div>
+    
+    <div class="step slide fill" data-x="-1000" data-y="2000"  data-rotate-y="30">
+        <h3>
+          Lauter und Leiser
+        </h3>
+        <pre><code class="javascript">var volumeGainNode = context.createGainNode();
+
+function playBuffer(buffer) {
+  [...]
+  source.connect(volumeGainNode);
+  volumeGainNode.connect(context.destination);
+  source.noteOn(0);
+}
+
+function setVolume(volume) {
+  volumeGainNode.gain.setValueAtTime(volume,
+    context.currentTime);
+}</code></pre>
+    </div>
+    
+    <div class="step" data-x="4000" data-y="0" data-z="0" data-rotate-y="-30" data-scale="5">
+    </div>
+    
+    <div class="step slide fill" data-x="-1000" data-y="3000"  data-rotate-y="30">
+        <h3>
+          Pause &amp; Resume
+        </h3>
+        <pre><code class="javascript">var fadeGainNode = context.createGainNode();
+        
+function playBuffer(buffer) {
+  [...]
+  source.connect(fadeGainNode);
+  fadeGainNode.connect(volumeGainNode);
+  volumeGainNode.connect(context.destination);
+  source.noteOn(0);
+}</code></pre>
+    </div>
+    
+    <div class="step slide fill" data-x="0" data-y="3000"  data-rotate-y="30">
+        <h3>
+          Pause: Fade out
+        </h3>
+        <pre><code class="javascript">function pause() {
+    var currTime = context.currentTime;
+    // Cancel possible fade in
+    source.playbackRate.cancelScheduledValues(
+      currTime);
+    fadeGainNode.gain.cancelScheduled[...];
+    // Fade out
+    fadeGainNode.gain.linearRampToValueAtTime(
+      fadeGainNode.gain.value, currTime);
+    fadeGainNode.gain.linearRampToValueAtTime(
+      0, currTime + fadeTime);
+    source.playbackRate.setValueAtTime(
+      0, currTime + fadeTime);
+}</code></pre>
+    </div>
+    
+    <div class="step slide fill" data-x="1000" data-y="3000"  data-rotate-y="30">
+        <h3>
+          Resume: Fade in 
+        </h3>
+        <pre><code class="javascript">function resume() {
+  var currTime = context.currentTime;
+  // Cancel possible fade out
+  [...]
+
+  source.playbackRate.setValueAtTime(1,
+    currTime);
+  // Fade in
+  fadeGainNode.gain.linearRampToValueAtTime(
+    fadeGainNode.gain.value, currTime);
+  fadeGainNode.gain.linearRampToValueAtTime(
+    1, currTime + fadeTime);
+}</code></pre>
+    </div>
+    
+    <div class="step" data-x="4000" data-y="0" data-z="0" data-rotate-y="-30" data-scale="5">
+    </div>
+    
+    <div class="step slide fill" data-x="-1000" data-y="4000"  data-rotate-y="30">
+        <h3>
+          Ton wird sichtbar
+        </h3>
+        <pre><code class="javascript">var analyser = context.createAnalyser();
+        
+function playBuffer(buffer) {
+  [...]
+  fadeGainNode.connect(analyser);
+  analyser.connect(volumeGainNode);
+  [...]
+  processFDRendering();
+}
+
+function processFDRendering() {
+  renderFrequencyData();
+  frameRequest = window.webkitRequest
+    AnimationFrame(processFDRendering);
+}</code></pre>
+    </div>
+    
+    <div class="step slide fill" data-x="0" data-y="4000"  data-rotate-y="30">
+        <h3>
+          Ton wird sichtbar (2)
+        </h3>
+        <pre><code class="javascript">function renderFrequencyData(time) {
+  var freqByteData = new Uint8Array(
+    analyser.frequencyBinCount);
+  analyser.getByteFrequencyData(freqByteData);
+  
+  canvasCtx.clearRect(0, 0, canvas.width,
+    canvas.height);
+  canvasCtx.fillStyle = "rgba(0, 0, 0, 0.4)";
+  
+  const add = Math.floor(
+    analyser.frequencyBinCount/(300/6));
+  const height = canvas.height;</code></pre>
+    </div>
+    
+    <div class="step slide fill" data-x="1000" data-y="4000"  data-rotate-y="30">
+        <h3>
+          Ton wird sichtbar (3)
+        </h3>
+        <pre><code class="javascript">  canvasCtx.beginPath();
+  canvasCtx.moveTo(0,256);
+  x = 0;
+  for (var i = 0; i &lt; canvas.width+8; i+=8) {
+    canvasCtx.lineTo(i, height-freqByteData[x]);
+    x += add;
+  }
+  canvasCtx.lineTo(canvas.width,height);
+  canvasCtx.lineTo(0,height);
+    
+  canvasCtx.fill();
+}</code></pre>
+    </div>
+    
+    <div class="step" data-x="4000" data-y="0" data-z="0" data-rotate-y="-30" data-scale="5">
+    </div>
+    
+    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+      <div style="position: absolute; right: 0; top: 200px;">Fragen?</div>
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+
+<script src="js/impress.js"></script>
+
+</body>
+</html>
