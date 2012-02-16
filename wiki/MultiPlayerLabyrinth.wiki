@@ -2,7 +2,7 @@
 
 = MultiPlayerLabyrinth =
 
-  * [Setup]
+  * Setup
      * [Preparation]
         * [Java]
         * [Tortoise#SVN TortoiseSVN]
