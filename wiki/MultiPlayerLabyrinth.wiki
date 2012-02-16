@@ -1,6 +1,6 @@
 #summary Explanation of the MultiPlayerLabyrinth
 
-= MultiPlayerLabyrinth =
+= Overview =
 <wiki:toc max_depth="3" /> 
   
 
