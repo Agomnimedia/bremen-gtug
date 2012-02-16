@@ -4,18 +4,4 @@
 
 Welcome to the Bremen GTUG code repository. In here we will make presentations and code of projects available for you! Check out the sidebar to go through our wiki ;-)
 
-In this repository we will publish projects, librarys or code snippets created for GTUG or on our events. Visit our [http://bremen.gtugs.org homepage].
-
-===presentations===
-*november 2011* <br>
-[http://docs.google.com/viewer?a=v&pid=sites&srcid=Z3R1Z3Mub3JnfGJyZW1lbmd0dWd8Z3g6N2I1N2IwYjhhNzQ4MjQyYQ Was ist AppEngine?] by [https://plus.google.com/105644643668348314832/ +Steve Liedtke]<br>
-[http://bremen-gtug.googlecode.com/svn/presentations/2011_11_07/ICS/template/index.html#1 Whats new in Android4.0?] by [https://plus.google.com/117981764820200252568/ +Matthias Friedrich]<br><br>
-*december 2011* <br>
-[http://docs.google.com/viewer?a=v&pid=sites&srcid=Z3R1Z3Mub3JnfGJyZW1lbmd0dWd8Z3g6NzFhOWU1NzM3NjNjNTMxMg Google Guice - Dependency Injection] by [https://plus.google.com/105644643668348314832/ +Steve Liedtke]<br>
-[http://bremen-gtug.googlecode.com/svn/presentations/5-12-2011_GreenDAO/template/index.html#1 greenDAO - ORM for Android] ([http://code.google.com/p/bremen-gtug/source/browse/#svn%2Fprojects%2FgreenDAO_demo_5_12_2011 demoproject]) by [https://plus.google.com/117981764820200252568/ +Matthias Friedrich]<br><br>
-*january 2012* <br>
-[http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/HTML5/slides/index.html HTML5 - eine Einführung] by [https://plus.google.com/100559221027275658717/ +Jan Stalhut]<br>
-[http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Ignite/Foodwatcher/template/index.html FoodWatcher-MensaApp] by [https://plus.google.com/117981764820200252568/ +Matthias Friedrich]<br><br>
-*february 2012* <br>
-[http://bremen-gtug.googlecode.com/svn/presentations/2012_02_06/Audio%20API%20Presentation/index.html#/welcome Web Audio API] ([http://www.youtube.com/watch?v=1nXXxnkt6Yk video]) by [https://plus.google.com/113062950789010266684/ +Sven Nobis]<br>
-[https://docs.google.com/presentation/d/1epf5RgniSIKNNY0TFeg9AF5azDPl9yucj1PYtGQwQIE/present#slide=id.g363e16f_9_48 AndEngine] ([http://www.youtube.com/watch?v=1nXXxnkt6Yk#t=31m55s video]) by [https://plus.google.com/107411440384202293942/ +Henrik Voß]
+Visit our [http://bremen.gtugs.org homepage] to check out further details!
