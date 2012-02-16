@@ -53,14 +53,14 @@ In case you need the rights to commit code you'll have to ask [https://plus.goog
 
 The last step will be to import the existing projects to your eclipse. 
 
-=== Import AndEngine extensions ===
+=== Import !AndEngine extensions ===
 
 The following projects are without exception library projects from [https://github.com/nicolasgramlich/]. To import these projects select *File -> Import... -> Open General -> Choose Existing Projects into Workspace -> Next*.
 
 In the next window you have to select (under select root directory -> Use Browse) the subfolder *AE Extensions* of the checked out svn.
 Under projects must be at least one project. Select finished and the import is done.
 
-=== Import MultiPlayerLabyrinth ===
+=== Import !MultiPlayerLabyrinth ===
 
 In the last step you need to import the project which was created. Select *File -> Import... -> Open General -> Choose Existing Projects into Workspace -> Next* again.
 
