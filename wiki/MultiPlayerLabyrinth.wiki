@@ -1,18 +1,7 @@
 #summary Explanation of the MultiPlayerLabyrinth
 
 = MultiPlayerLabyrinth =
-
-  * Setup
-     * [Preparation]
-        * [Java]
-        * [Tortoise#SVN TortoiseSVN]
-        * [Eclipse]
-        * [Android]
-        * [Install#Android#SDKs Install Android SDKs]
-  * [Check#out#project Check out project]
-  * [Import#projects#to#eclipse Import projects to eclipse]
-     * [Import#AndEngine#extensions Import AndEngine extensions]
-     * [Import#MultiPlayerLabyrinth Import MultiPlayerLabyrinth]
+<wiki:toc max_depth="3" /> 
   
 
 == Setup ==
