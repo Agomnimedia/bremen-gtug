@@ -1,0 +1,5 @@
+#summary Welcome page of the bremen-gtug wiki
+
+= Welcome =
+
+Welcome to the Bremen GTUG code repository. In here we will make presentations and code of projects available for you! Check out the sidebar to go through our wiki ;-)
