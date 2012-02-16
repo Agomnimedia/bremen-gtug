@@ -9,7 +9,6 @@
         * [Eclipse]
         * [Android]
         * [Install Android SDKs]
-     * [Presentations Presentations]
   * [Check out project]
   * [Import projects to eclipse]
      * [Import AndEngine extensions]
