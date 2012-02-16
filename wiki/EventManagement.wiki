@@ -1,0 +1,5 @@
+#summary Explanation of the event management
+
+= EventManagement =
+
+// TODO write wiki
