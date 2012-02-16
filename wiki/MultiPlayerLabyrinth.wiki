@@ -1,0 +1,65 @@
+#summary Explanation of the MultiPlayerLabyrinth
+
+= MultiPlayerLabyrinth =
+
+== Setup ==
+
+The following chapter explains how to setup the project.
+
+=== Preparation ===
+
+There are different steps to prepare the setup of the project.
+
+==== Java ====
+
+_If you allready installed atleast the java jdk 1.6 go to the next step!_
+
+Download Java from [http://www.oracle.com/technetwork/java/javase/downloads/index.html]
+
+=== Tortoise SVN ===
+
+_In case you allready installed Tortoise or use another svn client, you can go to the next step!_
+
+Install Tortoise SVN from [http://tortoisesvn.net/downloads.html Tortoise SVN Download]
+
+
+==== Eclipse ====
+
+_If you allready installed Eclipse atleast in the version 3.7 then go to the next step!_
+
+Download the 'Eclipse IDE for Java Developers' from [http://www.eclipse.org/downloads/] and extract it to a selfchoosen directory! Start eclipse and choose a workspace!
+
+==== Android ====
+
+_If you allready installed and configured the adt plugin to eclipse then got to the next step!_
+
+To setup android in eclipse you need to add the adt plugin for eclipse. Check out how to add the plugin on [http://developer.android.com/sdk/eclipse-adt.html#installing http://developer.android.com].
+
+==== Install Android SDKs ====
+
+_In case you allready installed atleast API 15 and API 8 you can go to the actual setup!_
+
+To install the minimum needed Android SDKs you have to call the Android SDK Manager in eclipse and install the API Level 8, 15 and also the api level of your device (smartphone, tablet).
+
+=== Check out project ===
+
+You can check out the project from the url [http://bremen-gtug.googlecode.com/svn/projects/2012_02_18_GADC]
+
+In case you need the rights to commit code you'll have to ask [https://plus.google.com/117981764820200252568/ +Matthias Friedrich] or [https://plus.google.com/105644643668348314832/ +Steve Liedtke]!
+
+=== Import projects to eclipse ===
+
+The last step will be to import the existing projects to your eclipse. 
+
+==== Import AndEngine extensions ====
+
+The following projects are without exception library projects from [https://github.com/nicolasgramlich/]. To import these projects select *File -> Import... -> Open General -> Choose Existing Projects into Workspace -> Next*.
+
+In the next window you have to select (under select root directory -> Use Browse) the subfolder *AE Extensions* of the checked out svn.
+Under projects must be at least one project. Select finished and the import is done.
+
+==== Import MultiPlayerLabyrinth ====
+
+In the last step you need to import the project which was created. Select *File -> Import... -> Open General -> Choose Existing Projects into Workspace -> Next* again.
+
+In the next window you have to select the subfolder *MultiPlayerLabyrinth* of the checked out svn. Under projects you will find the project now. Select finished and the import is done.
