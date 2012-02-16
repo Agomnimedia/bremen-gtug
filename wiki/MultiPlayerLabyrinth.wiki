@@ -2,6 +2,20 @@
 
 = MultiPlayerLabyrinth =
 
+  * [Setup]
+     * [Preparation]
+        * [Java]
+        * [Tortoise SVN]
+        * [Eclipse]
+        * [Android]
+        * [Install Android SDKs]
+     * [Presentations Presentations]
+  * [Check out project]
+  * [Import projects to eclipse]
+     * [Import AndEngine extensions]
+     * [Import MultiPlayerLabyrinth]
+  
+
 == Setup ==
 
 The following chapter explains how to setup the project.
@@ -16,7 +30,7 @@ _If you allready installed atleast the java jdk 1.6 go to the next step!_
 
 Download Java from [http://www.oracle.com/technetwork/java/javase/downloads/index.html]
 
-=== Tortoise SVN ===
+==== Tortoise SVN ====
 
 _In case you allready installed Tortoise or use another svn client, you can go to the next step!_
 
