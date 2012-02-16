@@ -5,14 +5,14 @@
   * [Setup]
      * [Preparation]
         * [Java]
-        * [Tortoise SVN]
+        * [Tortoise#SVN TortoiseSVN]
         * [Eclipse]
         * [Android]
-        * [Install Android SDKs]
-  * [Check out project]
-  * [Import projects to eclipse]
-     * [Import AndEngine extensions]
-     * [Import MultiPlayerLabyrinth]
+        * [Install#Android#SDKs Install Android SDKs]
+  * [Check#out#project Check out project]
+  * [Import#projects#to#eclipse Import projects to eclipse]
+     * [Import#AndEngine#extensions Import AndEngine extensions]
+     * [Import#MultiPlayerLabyrinth Import MultiPlayerLabyrinth]
   
 
 == Setup ==
