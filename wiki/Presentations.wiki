@@ -1,6 +1,6 @@
 #summary presentations presented at bremen gtug events
 
-= Introduction =
+= Presentations =
 
 In here you find all presentations presented at bremen gtug events
 
