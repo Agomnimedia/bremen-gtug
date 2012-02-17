@@ -1,14 +1,16 @@
 #summary Projects created on Bremen GTUG events
 
-= Projects =
+= Overview =
 
 Here you find all projects created on Bremen GTUG events.
+
+<wiki:toc max_depth="3" /> 
 
 
 = Hackathon 2011 =
 
-On our first [http://bremen.gtugs.org/events/vergangene-events/2011/ersterhackathon Hackathon] we programmed an event management app for the Bremen GTUG. It is still unfinished and needs some developers to finish it.
+On our first [http://bremen.gtugs.org/events/vergangene-events/2011/ersterhackathon Hackathon] we programmed an EventManagement app for the Bremen GTUG. It is still unfinished and needs some developers to finish it.
 
 = Global Android Dev Camp 2012 =
 
-On the [http://android-dev-camp-2012.blogspot.com/ Global Android Dev Camp 2012] we programmed a multiplayer game. Therefore we used the game idea of labyrinth and extended it.
+On the [http://android-dev-camp-2012.blogspot.com/ Global Android Dev Camp 2012] we programmed a multiplayer game. Therefore we used the game idea of labyrinth and extended it. 
