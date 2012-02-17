@@ -16,7 +16,7 @@ public class MultiPlayerLabyrinthActivity extends Activity {
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.main);
+        // setContentView(R.layout.main);
         this.startGame(GameMode.MULTI_COOP);
     }
     
@@ -24,13 +24,14 @@ public class MultiPlayerLabyrinthActivity extends Activity {
     	final Intent intent = new Intent();
     	switch(mode){
     	case SINGLE:
+    		intent.setClass(getApplicationContext(), SingleGameActivity.class);
     		// TODO not implemented yet
     		break;
     	case MULTI_CHALLENGE:
     		// TODO not implemented yet
     		break;
     	case MULTI_COOP:
-    		intent.setClass(getApplicationContext(), GameActivity.class);
+    		intent.setClass(getApplicationContext(), MultiCoopGameActivity.class);
     		// TODO set player amount
     		// TODO set creation mode
     		// TODO set ...

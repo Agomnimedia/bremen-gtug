@@ -12,7 +12,7 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 
-public class GameActivity extends SimpleBaseGameActivity{
+public class MultiCoopGameActivity extends SimpleBaseGameActivity{
 	
 	// Dialog ids
 	private static final int DIALOG_CHOOSE_SERVER_OR_CLIENT_ID = 0;
@@ -32,6 +32,7 @@ public class GameActivity extends SimpleBaseGameActivity{
 	// LIFECYCLE
 	//	launch game
 	//	1) onCreateEngine()
+	//  onCreate
 	//	2) onResume()
 	//	3) onCreateResources()
 	//	4) onCreateScene()
