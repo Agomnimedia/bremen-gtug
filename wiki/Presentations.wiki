@@ -1,8 +1,8 @@
-#summary presentations presented at bremen gtug events
+#summary Presentations presented at bremen gtug events
 
-= Presentations =
+= Overview =
 
-In here you find all presentations presented at bremen gtug events
+<wiki:toc max_depth="3" />
 
 = Regulars' table presentations =
 
