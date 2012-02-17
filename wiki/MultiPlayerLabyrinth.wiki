@@ -45,7 +45,11 @@ To install the minimum needed Android SDKs you have to call the Android SDK Mana
 
 == Check out project ==
 
-You can check out the project from the url [http://bremen-gtug.googlecode.com/svn/projects/2012_02_18_GADC]
+You can check out the project from the url [https://bremen-gtug.googlecode.com/svn/projects/2012_02_18_GADC]
+
+Use this URL with *https* and not the default without SSL encryption, otherwise you can't commit your changes later!
+
+If you use Eclipse itself as SVN client type in your username and password while checkout the project. Because, you can't add this information later in the properties and so you can't commit your changes! Remember, your password for Google code SVN is a special generated one, that you can see here: https://code.google.com/hosting/settings
 
 In case you need the rights to commit code you'll have to ask [https://plus.google.com/117981764820200252568/ +Matthias Friedrich] or [https://plus.google.com/105644643668348314832/ +Steve Liedtke]!
 
