@@ -69,3 +69,9 @@ Under projects must be at least one project. Select finished and the import is d
 In the last step you need to import the project which was created. Select *File -> Import... -> Open General -> Choose Existing Projects into Workspace -> Next* again.
 
 In the next window you have to select the subfolder *!MultiPlayerLabyrinth* of the checked out svn. Under projects you will find the project now. Select finished and the import is done.
+
+= Gameidea =
+
+Here you can find a short explanation how the game will look like after creating it! 
+
+The explanation is filled in on the 17th february in he evening!
