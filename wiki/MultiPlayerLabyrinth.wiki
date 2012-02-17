@@ -75,3 +75,16 @@ In the next window you have to select the subfolder *!MultiPlayerLabyrinth* of t
 Here you can find a short explanation how the game will look like after creating it! 
 
 The explanation is filled in on the 17th february in he evening!
+
+
+= Network connection =
+
+_Sorry, the next lines are German and will be translated soon._
+
+Für den Verbindungsaufbau zwischen Client und Server ist ein Ablauf wie folgt geplant:
+
+ * In einer voran gestellten Activity erscheint eine Abfrage ob man Client oder Server sein möchte
+    * Server: Start der GameActivity mit "Warte auf Clients"-Dialog
+    * Client: Liste mit im Netzwerk gefundenen Servern wird gezeigt
+       * Mit Auswahl eines Servers startet die GameActivity, der die IP-Adresse des Servers im intent übergeben wird und die dann ebenfalls den "Warte auf Clients"-Dialog zeigt.
+    * Sobald sich mind. X Spieler verbunden haben, hat der Server die Möglichkeit das Spiel zu starten.
