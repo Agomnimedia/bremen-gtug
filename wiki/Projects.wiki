@@ -11,8 +11,8 @@ Here you find all projects created on Bremen GTUG events.
 
 On our first [http://bremen.gtugs.org/events/vergangene-events/2011/ersterhackathon Hackathon] we programmed an EventManagement app for the Bremen GTUG. It is still unfinished and needs some developers to finish it.
 
-|| http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Einführung/images/photos/IMG528.jpg || http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Einführung/images/photos/IMG532.jpg ||
 || http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Einführung/images/photos/IMG529.jpg || http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Einführung/images/photos/IMG_20111228_110835.jpg ||
+|| http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Einführung/images/photos/IMG528.jpg || http://bremen-gtug.googlecode.com/svn/presentations/2012_01_09/Einführung/images/photos/IMG532.jpg ||
 
 = Global Android Dev Camp 2012 =
 
