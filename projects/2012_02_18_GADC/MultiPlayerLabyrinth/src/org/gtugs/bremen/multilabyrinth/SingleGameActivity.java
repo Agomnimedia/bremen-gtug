@@ -13,11 +13,6 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 
 public class SingleGameActivity extends SimpleBaseGameActivity{
-
-		// Dialog ids
-		private static final int DIALOG_CHOOSE_SERVER_OR_CLIENT_ID = 0;
-		private static final int DIALOG_ENTER_SERVER_IP_ID = DIALOG_CHOOSE_SERVER_OR_CLIENT_ID + 1;
-		private static final int DIALOG_SHOW_SERVER_IP_ID = DIALOG_ENTER_SERVER_IP_ID + 1;
 		
 		// Camera sizes
 		private static final int CAMERA_WIDTH = 720;
@@ -53,8 +48,6 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 		
 		@Override
 		public EngineOptions onCreateEngineOptions() {
-			this.showDialog(DIALOG_CHOOSE_SERVER_OR_CLIENT_ID);
-			
 			final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 
 			return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
