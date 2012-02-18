@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Window;
 
+import org.andengine.extension.physics.box2d.PhysicsWorld;
+
 /**
  * This is the start activity of the project. Show the menu here
  * 
