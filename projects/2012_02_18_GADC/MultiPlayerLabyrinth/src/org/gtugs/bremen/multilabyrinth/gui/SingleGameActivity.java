@@ -8,6 +8,9 @@ import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
+import org.andengine.extension.physics.box2d.util.Vector2Pool;
+import org.andengine.input.sensor.acceleration.AccelerationData;
+import org.andengine.input.sensor.acceleration.IAccelerationListener;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
@@ -19,7 +22,9 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultLevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
-public class SingleGameActivity extends SimpleBaseGameActivity{
+import com.badlogic.gdx.math.Vector2;
+
+public class SingleGameActivity extends SimpleBaseGameActivity implements IAccelerationListener{
 		
 		// Camera sizes
 		private static final int CAMERA_WIDTH = 720;
@@ -90,8 +95,35 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 			
 			
 			Scene scene = this.levelCreator.createScene(informations.get(0));
-			this.levelCreator.addBallToScene(scene, 30, 30);
+			this.levelCreator.addBallToScene(scene, 100, 100);
 			
 			return scene;
+		}
+		
+		@Override
+		public void onResumeGame() {
+			super.onResumeGame();
+			this.enableAccelerationSensor(this);
+		}
+		
+		@Override
+		public void onPauseGame() {
+			super.onPauseGame();
+			this.disableAccelerationSensor();
+		}
+
+		@Override
+		public void onAccelerationAccuracyChanged(
+				AccelerationData pAccelerationData) {
+			// nothing to implement yet
+		}
+
+		@Override
+		public void onAccelerationChanged(AccelerationData pAccelerationData) {
+			if(this.levelCreator != null){
+				final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX(), pAccelerationData.getY());
+				this.levelCreator.setGravity(gravity);
+				Vector2Pool.recycle(gravity);
+			}
 		}
 }

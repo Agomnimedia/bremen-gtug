@@ -44,9 +44,16 @@ public class LevelCreatorImpl implements LevelCreator{
 		for(final Element element : levelInfo.getElementList()){
 			switch(element.getElementKind()){
 			case WALL:
-				final float[] positions = element.getPositions();
-				this.createWall(scene, positions[0], positions[1], positions[2], positions[3]);
+				{
+					final float[] positions = element.getPositions();
+					this.createWall(scene, positions[0], positions[1], positions[2], positions[3]);
 				break;
+				}
+			case BALL:
+				{
+					final float[] positions = element.getPositions();
+					this.createBall(scene, positions[0], positions[1]);
+				}
 			default:
 					// TODO implement other kinds
 			}
@@ -65,7 +72,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		scene.attachChild(wall);
 	}
 	
-	private void createBall(final Scene scene) {
+	private void createBall(final Scene scene, final float pX, final float pY) {
 		
 //		final CircleShape ball = new Cir
 //		PhysicsFactory.createCircleBody(this.physicsWorld, ballTextureRegion, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
@@ -73,7 +80,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		final Sprite ball;
 		final Body body;
 		
-		ball = new Sprite(30, 40, this.ballTextureRegion, this.vertexBufferObjectManager);
+		ball = new Sprite(pX, pY, this.ballTextureRegion, this.vertexBufferObjectManager);
 		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(1, 0.5f, 0.5f));
 		
 		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
@@ -82,6 +89,13 @@ public class LevelCreatorImpl implements LevelCreator{
 
 	@Override
 	public void addBallToScene(Scene scene, float pX, float pY) {
-		createBall(scene);
+		this.createBall(scene, pX, pY);
 	}
+
+	@Override
+	public void setGravity(final Vector2 gravity) {
+		this.physicsWorld.setGravity(gravity);
+	}
+	
+	
 }

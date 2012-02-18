@@ -60,7 +60,7 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		elementList.add(new TrapElement(135, 75));
 		// portal
 		elementList.add(new PortalElement(640, 80, 640, 400));
-		this.informations.add(new LevelInformation(elementList));
+		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
 	}
 	
 	private void mode2(){
@@ -75,7 +75,7 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		elementList.add(new WallElement(5, 480 - 15, 720-5, 480-15));
 		// start point 
 		elementList.add(new StartPointElement(80, 80));
-		this.informations.add(new LevelInformation(elementList));
+		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
 		final List<Element> elementList2 = new ArrayList<Element>();
 		// left wall
 		elementList2.add(new PortalElement(15, 25, 15, 480 - 25));
@@ -87,6 +87,7 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		elementList2.add(new WallElement(5, 480 - 15, 720-5, 480-15));
 		// end point 
 		elementList2.add(new EndPointElement(720-80, 480-80));
+		this.informations.add(new LevelInformation(elementList2, new float[]{15,200}));
 	}
 	
 	@Override

@@ -8,8 +8,11 @@ public class LevelInformation {
 
 	private final List<Element> elementList;
 	
-	public LevelInformation(List<Element> elementList){
+	private float[] resetPoint;
+	
+	public LevelInformation(List<Element> elementList, final float[] resetPoint){
 		this.elementList = elementList;
+		this.setResetPoint(resetPoint);
 	}
 
 	/**
@@ -17,5 +20,19 @@ public class LevelInformation {
 	 */
 	public List<Element> getElementList() {
 		return elementList;
+	}
+
+	/**
+	 * @return the resetPoint
+	 */
+	public float[] getResetPoint() {
+		return resetPoint;
+	}
+
+	/**
+	 * @param resetPoint the resetPoint to set
+	 */
+	public void setResetPoint(float[] resetPoint) {
+		this.resetPoint = resetPoint;
 	}
 }
