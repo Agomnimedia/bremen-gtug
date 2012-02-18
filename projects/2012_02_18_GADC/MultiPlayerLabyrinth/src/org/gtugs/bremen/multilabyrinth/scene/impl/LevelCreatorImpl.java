@@ -5,10 +5,6 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
-import org.andengine.opengl.texture.TextureOptions;
-import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
-import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
@@ -67,5 +63,11 @@ public class LevelCreatorImpl implements LevelCreator{
 //		PhysicsFactory.createCircleBody(this.physicsWorld, ball, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
 //		
 //		scene.attachChild(ball);
+	}
+
+	@Override
+	public void addBallToScene(float pX, float pY) {
+		// TODO Auto-generated method stub
+		
 	}
 }
