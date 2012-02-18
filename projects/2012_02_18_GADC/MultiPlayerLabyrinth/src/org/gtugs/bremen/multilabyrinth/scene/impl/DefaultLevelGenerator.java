@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
+import org.gtugs.bremen.multilabyrinth.scene.elements.BallElement;
 import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 import org.gtugs.bremen.multilabyrinth.scene.elements.EndPointElement;
 import org.gtugs.bremen.multilabyrinth.scene.elements.PortalElement;
@@ -23,9 +24,11 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		case 1:
 			this.mode1();
 			break;
+		case 2:
+			this.mode2();
 		//11-20 multi 2players
 		case 11:
-			this.mode2();
+			this.mode11();
 			break;
 		// 21-30 multi 3players
 		case 21:
@@ -43,13 +46,13 @@ public class DefaultLevelGenerator implements LevelGenerator{
 	private void mode1(){
 		final List<Element> elementList = new ArrayList<Element>();
 		// left wall
-		elementList.add(new WallElement(15, 15, 15, 480 - 15));
+		elementList.add(new WallElement(5, 5, 20, 480 - 10));
 		// right wall
-		elementList.add(new WallElement(720 - 15, 15, 720-15, 480-15));
+		elementList.add(new WallElement(720 - 30, 5, 20, 480-10));
 		// top wall
-		elementList.add(new WallElement(5, 15, 720-5, 15));
+		elementList.add(new WallElement(5, 5, 720-25, 20));
 		// bottom wall
-		elementList.add(new WallElement(5, 480 - 15, 720-5, 480-15));
+		elementList.add(new WallElement(5, 480 - 25, 720-25, 20));
 		// start point 
 		elementList.add(new StartPointElement(80, 80));
 		// end point
@@ -63,31 +66,55 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
 	}
 	
-	private void mode2(){
+	private void mode2() {
 		final List<Element> elementList = new ArrayList<Element>();
 		// left wall
-		elementList.add(new WallElement(15, 15, 15, 480 - 15));
+		elementList.add(new WallElement(5, 5, 20, 480 - 10));
 		// right wall
-		elementList.add(new PortalElement(720 - 15, 25, 720-15, 480-25));
+		elementList.add(new WallElement(720 - 30, 5, 20, 480-10));
 		// top wall
-		elementList.add(new WallElement(5, 15, 720-5, 15));
+		elementList.add(new WallElement(5, 5, 720-25, 20));
 		// bottom wall
-		elementList.add(new WallElement(5, 480 - 15, 720-5, 480-15));
+		elementList.add(new WallElement(5, 480 - 25, 720-25, 20));
+		// start point 
+		elementList.add(new StartPointElement(80, 80));
+		// end point
+		elementList.add(new EndPointElement(720-80, 480-80));
+		// portal 1
+		elementList.add(new PortalElement(640, 80, 640, 120));
+		// portal 2
+		elementList.add(new PortalElement(230, 80, 370, 120));
+		
+		elementList.add(new BallElement(720-80, 480-80));
+		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
+	}
+	
+	private void mode11(){
+		final List<Element> elementList = new ArrayList<Element>();
+		// left wall
+		elementList.add(new WallElement(5, 5, 20, 480 - 10));
+		// portal instead right wall
+		elementList.add(new PortalElement(720 - 30, 5, 720 - 30, 480-5));
+		// top wall
+		elementList.add(new WallElement(5, 5, 720-25, 20));
+		// bottom wall
+		elementList.add(new WallElement(5, 480 - 25, 720-25, 20));
 		// start point 
 		elementList.add(new StartPointElement(80, 80));
 		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
 		final List<Element> elementList2 = new ArrayList<Element>();
-		// left wall
-		elementList2.add(new PortalElement(15, 25, 15, 480 - 25));
+		// portal instead left wall
+		elementList2.add(new PortalElement(5, 5, 5, 480 - 5));
 		// right wall
-		elementList.add(new WallElement(720 - 15, 15, 720-15, 480-15));
+		elementList2.add(new WallElement(720 - 30, 5, 20, 480-10));
 		// top wall
-		elementList2.add(new WallElement(5, 15, 720-5, 15));
+		elementList2.add(new WallElement(5, 5, 720-25, 20));
 		// bottom wall
-		elementList2.add(new WallElement(5, 480 - 15, 720-5, 480-15));
+		elementList2.add(new WallElement(5, 480 - 25, 720-25, 20));
 		// end point 
 		elementList2.add(new EndPointElement(720-80, 480-80));
 		this.informations.add(new LevelInformation(elementList2, new float[]{15,200}));
+		
 	}
 	
 	@Override
