@@ -1,4 +1,4 @@
-package org.gtugs.bremen.multilabyrinth.scene.api;
+package org.gtugs.bremen.multilabyrinth.scene.elements;
 
 public enum ElementKind {
 

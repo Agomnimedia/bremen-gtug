@@ -1,10 +1,10 @@
-package org.gtugs.bremen.multilabyrinth.scene.api;
+package org.gtugs.bremen.multilabyrinth.scene.elements;
 
-public class StartPointElement extends Element{
+public class EndPointElement extends Element{
 
 	private final float[] positions;
 	
-	public StartPointElement(final float pX, final float pY){
+	public EndPointElement(final float pX, final float pY){
 		this.positions = new float[2];
 		this.positions[0] = pX;
 		this.positions[1] = pY;
@@ -12,7 +12,7 @@ public class StartPointElement extends Element{
 	
 	@Override
 	public ElementKind getElementKind() {
-		return ElementKind.START_POINT;
+		return ElementKind.END_POINT;
 	}
 
 	@Override

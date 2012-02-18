@@ -3,10 +3,12 @@ package org.gtugs.bremen.multilabyrinth.scene.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gtugs.bremen.multilabyrinth.scene.api.Element;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
-import org.gtugs.bremen.multilabyrinth.scene.api.WallElement;
+import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
+import org.gtugs.bremen.multilabyrinth.scene.elements.EndPointElement;
+import org.gtugs.bremen.multilabyrinth.scene.elements.StartPointElement;
+import org.gtugs.bremen.multilabyrinth.scene.elements.WallElement;
 
 public class DefaultLevelGenerator implements LevelGenerator{
 
@@ -26,6 +28,10 @@ public class DefaultLevelGenerator implements LevelGenerator{
 			elementList.add(new WallElement(5, 15, 720-5, 15));
 			// bottom wall
 			elementList.add(new WallElement(5, 480 - 15, 720-5, 480-15));
+			// start point 
+			elementList.add(new StartPointElement(40, 40));
+			// end point
+			elementList.add(new EndPointElement(720-40, 480-40));
 			this.informations.add(new LevelInformation(elementList));
 			break;
 		//11-20 multi 2players

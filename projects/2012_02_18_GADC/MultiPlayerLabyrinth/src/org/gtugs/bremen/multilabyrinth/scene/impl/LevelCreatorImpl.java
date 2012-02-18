@@ -7,9 +7,9 @@ import org.andengine.extension.physics.box2d.PhysicsFactory;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
-import org.gtugs.bremen.multilabyrinth.scene.api.Element;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
+import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 
 import android.hardware.SensorManager;
 
