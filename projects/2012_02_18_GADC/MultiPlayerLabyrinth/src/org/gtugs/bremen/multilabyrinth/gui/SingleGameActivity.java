@@ -14,6 +14,7 @@ import org.andengine.input.sensor.acceleration.IAccelerationListener;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
@@ -36,7 +37,9 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		
 		private BitmapTextureAtlas bitmapTextureAtlas;
 
-		private TiledTextureRegion ballTextureRegion;
+		private ITextureRegion ballTextureRegion;
+		
+		private ITextureRegion trapTextureRegion;
 
 
 		// LIFECYCLE
@@ -76,18 +79,21 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		@Override
 		protected void onCreateResources() {
 			/* Textures. */
-			this.bitmapTextureAtlas = new BitmapTextureAtlas(this.getTextureManager(), 64, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+			this.bitmapTextureAtlas = new BitmapTextureAtlas(this.getTextureManager(), 32, 64, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 			BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
 
 			/* TextureRegions. */
-			this.ballTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 32, 1, 1);
+			this.ballTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 0);
+			this.trapTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "trap.png", 0, 32);
+			
+			// load atlas
 			this.mEngine.getTextureManager().loadTexture(this.bitmapTextureAtlas);
 		}
 
 		@Override
 		protected Scene onCreateScene() {
 			this.levelGenerator = new DefaultLevelGenerator(1);
-			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballTextureRegion);
+			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballTextureRegion, this.trapTextureRegion);
 			// get information from levelGenerator
 			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			
@@ -116,7 +122,7 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		public void onAccelerationAccuracyChanged(
 				AccelerationData pAccelerationData) {
 			// nothing to implement yet
-		}
+		} 
 
 		@Override
 		public void onAccelerationChanged(AccelerationData pAccelerationData) {

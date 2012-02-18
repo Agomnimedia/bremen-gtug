@@ -7,7 +7,7 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.extension.physics.box2d.PhysicsConnector;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
-import org.andengine.opengl.texture.region.TiledTextureRegion;
+import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
@@ -26,15 +26,15 @@ public class LevelCreatorImpl implements LevelCreator{
 	
 	private final PhysicsWorld physicsWorld;
 	
-	private final TiledTextureRegion ballTextureRegion;
+	private final ITextureRegion ballRegion;
 	
+	private final ITextureRegion trapRegion;
 	
-	
-	
-	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, TiledTextureRegion ballTextureRegion){
+	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, final ITextureRegion ballRegion, final ITextureRegion trapRegion){
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
 		this.physicsWorld = new PhysicsWorld(new Vector2(0, SensorManager.GRAVITY_EARTH), true);
-		this.ballTextureRegion = ballTextureRegion;
+		this.ballRegion = ballRegion;
+		this.trapRegion = trapRegion;
 	}
 	
 	@Override
@@ -54,6 +54,13 @@ public class LevelCreatorImpl implements LevelCreator{
 					final float[] positions = element.getPositions();
 					this.createBall(scene, positions[0], positions[1]);
 				}
+				break;
+			case TRAP:
+			{
+				final float[] positions = element.getPositions();
+				this.createTrap(scene, positions[0], positions[1]);
+			}
+				break;
 			default:
 					// TODO implement other kinds
 			}
@@ -63,6 +70,11 @@ public class LevelCreatorImpl implements LevelCreator{
 		return scene;
 	}
 	
+	private void createTrap(final Scene scene, final float pX, final float pY) {
+		final Sprite trap = new Sprite(pX, pY,this.trapRegion, this.vertexBufferObjectManager);
+		scene.attachChild(trap);
+	}
+
 	private void createWall(final Scene scene, final float pX1, final float pY1, final float pX2, final float pY2){
 		final float lineWidth = 20.0f;
 		final Line wall = new Line(pX1, pY1, pX2, pY2, lineWidth, this.vertexBufferObjectManager);
@@ -80,7 +92,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		final Sprite ball;
 		final Body body;
 		
-		ball = new Sprite(pX, pY, this.ballTextureRegion, this.vertexBufferObjectManager);
+		ball = new Sprite(pX, pY, this.ballRegion, this.vertexBufferObjectManager);
 		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(1, 0.5f, 0.5f));
 		
 		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
