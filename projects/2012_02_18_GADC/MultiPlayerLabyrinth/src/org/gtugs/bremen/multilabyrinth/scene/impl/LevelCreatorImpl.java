@@ -28,6 +28,7 @@ import android.opengl.GLES20;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
 public class LevelCreatorImpl implements LevelCreator{
@@ -178,8 +179,11 @@ public class LevelCreatorImpl implements LevelCreator{
 		final Sprite ball;
 		final Body body;
 		
+		
 		ball = new Sprite(pX, pY, this.ballRegion, this.vertexBufferObjectManager);
-		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(1, 0.5f, 0.5f));
+		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(3f, 0.5f, 3f));
+		body.setFixedRotation(true);
+		
 		
 		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
 		scene.attachChild(ball);

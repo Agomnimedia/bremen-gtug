@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SingleGameActivity"></activity>
+        <activity android:name=".MultiCoopGameActivity"></activity>
     </application>
 
 </manifest>

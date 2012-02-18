@@ -22,6 +22,8 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultLevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
+import android.os.Bundle;
+
 import com.badlogic.gdx.math.Vector2;
 
 public class SingleGameActivity extends SimpleBaseGameActivity implements IAccelerationListener{
@@ -45,6 +47,8 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		private ITextureRegion endRegion;
 		
 		private ITextureRegion particleRegion;
+		
+		private int mode = 1;
 
 
 		// LIFECYCLE
@@ -68,6 +72,14 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		//	exit game with this.finish()
 		//	1) onPause()
 		//	2) onDestroy()
+		
+		@Override
+		protected void onCreate(Bundle pSavedInstanceState) {
+			super.onCreate(pSavedInstanceState);
+			if(pSavedInstanceState != null){
+				this.mode = pSavedInstanceState.getInt("mode", 1);
+			}
+		}
 		
 		@Override
 		public EngineOptions onCreateEngineOptions() {
@@ -100,14 +112,15 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 
 		@Override
 		protected Scene onCreateScene() {
-			this.levelGenerator = new DefaultLevelGenerator(11);
+			this.levelGenerator = new DefaultLevelGenerator(this.mode);
 			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballRegion, 
 					this.trapRegion, this.startRegion, this.endRegion, this.particleRegion);
 			// get information from levelGenerator
 			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			
 			Scene scene = this.levelCreator.createScene(informations.get(0));
-			this.levelCreator.addBallToScene(scene, 100, 100);
+			final float[] resetPoint = informations.get(0).getResetPoint(); 
+			this.levelCreator.addBallToScene(scene, resetPoint[0], resetPoint[1]);
 			
 			return scene;
 		}

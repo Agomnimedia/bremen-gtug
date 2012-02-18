@@ -22,8 +22,6 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultLevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
-
-
 import com.badlogic.gdx.math.Vector2;
 
 public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAccelerationListener {
@@ -133,6 +131,8 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 		
 		
 		Scene scene = this.levelCreator.createScene(informations.get(0));
+		// TODO send other levelinformations to components
+		
 		this.levelCreator.addBallToScene(scene, 100, 100);
 		
 		return scene;
