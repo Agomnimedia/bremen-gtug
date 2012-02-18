@@ -43,9 +43,15 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 			
 	private BitmapTextureAtlas bitmapTextureAtlas;
 
-	private ITextureRegion ballTextureRegion;
-			
-	private ITextureRegion trapTextureRegion;
+	private ITextureRegion ballRegion;
+	
+	private ITextureRegion trapRegion;
+	
+	private ITextureRegion startRegion;
+	
+	private ITextureRegion endRegion;
+	
+	private ITextureRegion particleRegion;
 	
 
 
@@ -93,8 +99,11 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 		BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
 
 		/* TextureRegions. */
-		this.ballTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 0);
-		this.trapTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "trap.png", 0, 32);
+		this.ballRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 0);
+		this.trapRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "trap.png", 32, 0);
+		this.startRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "start.png", 0, 32);
+		this.endRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "end.png", 0, 64);
+		this.particleRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "particle_fire.png", 32, 64);
 		
 		// load atlas
 		this.mEngine.getTextureManager().loadTexture(this.bitmapTextureAtlas);
@@ -115,7 +124,8 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 	@Override
 	protected Scene onCreateScene() {
 		this.levelGenerator = new DefaultLevelGenerator(1);
-		this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballTextureRegion, this.trapTextureRegion);
+		this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballRegion, 
+				this.trapRegion, this.startRegion, this.endRegion, this.particleRegion);
 		// get information from levelGenerator
 		final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 		
