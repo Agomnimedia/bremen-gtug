@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo" />
+       
+    
+    <Button 
+        android:id="@+id/startBut"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="#0000ff"
+        android:text="@string/start_but_title"
+        android:onClick="onStartButClick"
+    />
+    <Button 
+        android:id="@+id/optionsBut"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="#f6ff02"
+        android:textColor="#000000"
+        android:text="@string/opt_but_title"
+        android:onClick="onOptButClick"
+    />
+    <Button 
+        android:id="@+id/aboutBut"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="#ea0e0e"
+        android:text="@string/about_but_title"
+        android:onClick="onAboutButClick"
+    />
+
+</LinearLayout>
