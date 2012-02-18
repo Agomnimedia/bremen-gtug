@@ -17,7 +17,7 @@ public class MultiPlayerLabyrinthActivity extends Activity {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // setContentView(R.layout.main);
-        this.startGame(GameMode.MULTI_COOP);
+        this.startGame(GameMode.SINGLE);
     }
     
     private void startGame(final GameMode mode){

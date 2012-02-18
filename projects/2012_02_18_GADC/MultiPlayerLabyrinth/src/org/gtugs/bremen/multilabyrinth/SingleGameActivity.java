@@ -1,16 +1,20 @@
 package org.gtugs.bremen.multilabyrinth;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.andengine.engine.Engine;
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
+import org.gtugs.bremen.multilabyrinth.scene.api.Element;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
-import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
+import org.gtugs.bremen.multilabyrinth.scene.api.WallElement;
+import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
 public class SingleGameActivity extends SimpleBaseGameActivity{
 		
@@ -18,9 +22,15 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 		private static final int CAMERA_WIDTH = 720;
 		private static final int CAMERA_HEIGHT = 480;
 		
-		private LevelGenerator levelGenerator;
+//		private LevelGenerator levelGenerator;
 		
-		private LevelCreator levelCreator;
+		private LevelCreator levelCreator = null;
+		
+		public SingleGameActivity(){
+//			this.levelGenerator = null;
+			
+			
+		}
 		
 
 
@@ -52,6 +62,11 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 
 			return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
 		}
+		
+		@Override
+		public Engine onCreateEngine(EngineOptions engineOptions) {
+			return new Engine(engineOptions);
+		}
 
 		@Override
 		protected void onCreateResources() {
@@ -62,13 +77,16 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 		@Override
 		protected Scene onCreateScene() {
 			// get information from levelGenerator
-			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
-			// set first information to own device
-			this.levelCreator.createScene(informations.get(0));
-			// TODO send other informations to other devices
+//			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			
+			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager());
 			
-			return null;
+			final List<LevelInformation> informations = new ArrayList<LevelInformation>();
+			final List<Element> elementList = new ArrayList<Element>();
+			elementList.add(new WallElement(5, 25, 5, CAMERA_HEIGHT - 25));
+			final LevelInformation levelInformation = new LevelInformation(elementList);
+			informations.add(levelInformation);
+			return this.levelCreator.createScene(informations.get(0));
 		}
 
 }

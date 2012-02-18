@@ -1,6 +1,9 @@
 package org.gtugs.bremen.multilabyrinth.scene.api;
 
-public interface LevelCreator {
+import org.andengine.entity.scene.Scene;
 
-	public void createScene(LevelInformation levelInfo);
+
+public interface LevelCreator {
+	
+	public Scene createScene(LevelInformation levelInfo);
 }
