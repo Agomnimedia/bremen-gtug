@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MultiPlayerLabyrinthActivity!</string>
-    <string name="app_name">MultiPlayerLabyrinth</string>
+    <string name="app_name">GADC Ball</string>
+    
+    <string name="start_but_title">Start game</string>
+    <string name="opt_but_title">Options</string>
+    <string name="about_but_title">About</string>
 
 </resources>
