@@ -22,36 +22,5 @@ public class MultiPlayerLabyrinthActivity extends FragmentActivity {
         setContentView(R.layout.main);
     }
     
-    private void startGame(final GameMode mode){
-    	final Intent intent = new Intent();
-    	switch(mode){
-    	case SINGLE:
-    		intent.setClass(getApplicationContext(), SingleGameActivity.class);
-    		// TODO not implemented yet
-    		break;
-    	case MULTI_CHALLENGE:
-    		// TODO not implemented yet
-    		break;
-    	case MULTI_COOP:
-    		intent.setClass(getApplicationContext(), MultiCoopGameActivity.class);
-    		// TODO set player amount
-    		// TODO set creation mode
-    		// TODO set ...
-    		break;
-    	}
-    	
-    	startActivity(intent);
-    }
     
-    public void onStartButClick(View view) {
-    	
-    }
-    
-    public void onOptButClick(View view) {
-    	
-    }
-    
-    public void onAboutButClick(View view) {
-    	
-    }
 }

@@ -6,5 +6,11 @@
     <string name="start_but_title">Start game</string>
     <string name="opt_but_title">Options</string>
     <string name="about_but_title">About</string>
+    
+    <string name="choose_type_text">Choose gametype:</string>
+    
+    <string name="single_but_title">Singleplayer</string>
+    <string name="challenge_but_title">Multiplayer challenge</string>
+    <string name="coop_but_title">Multiplayer coop</string>
 
 </resources>
