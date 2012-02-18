@@ -1,13 +1,8 @@
 package org.gtugs.bremen.multilabyrinth.gui;
 
-import org.gtugs.bremen.multilabyrinth.gui.R;
-import org.gtugs.bremen.multilabyrinth.gui.R.layout;
-import org.gtugs.bremen.multilabyrinth.menu.GameMode;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
+import android.view.Window;
 
 /**
  * This is the start activity of the project. Show the menu here
@@ -19,6 +14,8 @@ public class MultiPlayerLabyrinthActivity extends FragmentActivity {
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
     }
     

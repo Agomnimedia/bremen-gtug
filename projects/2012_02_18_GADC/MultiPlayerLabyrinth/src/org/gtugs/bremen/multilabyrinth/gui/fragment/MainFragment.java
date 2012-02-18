@@ -22,9 +22,12 @@ import android.widget.Button;
  */
 public class MainFragment extends Fragment {
 	
+	private final String START_GAME_DIALOG = "choosetypedialog";
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 		ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.main_fragment, container, false);
+		
 		
 		Button but = (Button) viewGroup.findViewById(R.id.startBut);
 		but.setOnClickListener(new OnClickListener() {
@@ -70,6 +73,6 @@ public class MainFragment extends Fragment {
 
 	    // Create and show the dialog.
 	    DialogFragment newFragment = StartGameDialog.newInstance();
-	    newFragment.show(ft, "dialog");
+	    newFragment.show(ft, START_GAME_DIALOG);
 	}
 }

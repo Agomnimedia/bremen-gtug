@@ -32,6 +32,8 @@ public class StartGameDialog extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
 		ViewGroup viewGroup = (ViewGroup) inflater.inflate(R.layout.startgame_dialog, container, false);
 		
+		this.getDialog().setTitle(R.string.choose_type_text);
+		
 		Button but = (Button) viewGroup.findViewById(R.id.singleBut);
 		but.setOnClickListener(new OnClickListener() {
 			
