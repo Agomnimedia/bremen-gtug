@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">AndEngine Presentation</string>
+	<string name="iteration1">Iteration 1</string>
+	<string name="iteration2">Iteration 2</string>
+	<string name="iteration3">Iteration 3</string>
+	<string name="iteration4">Iteration 4</string>
+</resources>
