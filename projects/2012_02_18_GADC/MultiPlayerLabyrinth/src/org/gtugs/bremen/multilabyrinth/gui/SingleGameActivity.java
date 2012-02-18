@@ -8,6 +8,10 @@ import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
@@ -25,6 +29,9 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 		
 		private LevelCreator levelCreator = null;
 		
+		private BitmapTextureAtlas bitmapTextureAtlas;
+
+		private TiledTextureRegion ballTextureRegion;
 
 
 		// LIFECYCLE
@@ -63,18 +70,28 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 
 		@Override
 		protected void onCreateResources() {
-			// TODO Auto-generated method stub
-			
+			/* Textures. */
+			this.bitmapTextureAtlas = new BitmapTextureAtlas(this.getTextureManager(), 64, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+			BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+
+			/* TextureRegions. */
+			this.ballTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 32, 1, 1);
+			this.mEngine.getTextureManager().loadTexture(this.bitmapTextureAtlas);
 		}
 
 		@Override
 		protected Scene onCreateScene() {
 			this.levelGenerator = new DefaultLevelGenerator(1);
-			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager());
+			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballTextureRegion);
 			// get information from levelGenerator
 			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			
 			informations.add(informations.get(0));
-			return this.levelCreator.createScene(informations.get(0));
+			
+			
+			Scene scene = this.levelCreator.createScene(informations.get(0));
+			this.levelCreator.addBallToScene(scene, 30, 30);
+			
+			return scene;
 		}
 }
