@@ -5,6 +5,10 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
@@ -20,6 +24,8 @@ public class LevelCreatorImpl implements LevelCreator{
 	private final VertexBufferObjectManager vertexBufferObjectManager;
 	
 	private final PhysicsWorld physicsWorld;
+	
+	
 	
 	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager){
@@ -53,5 +59,13 @@ public class LevelCreatorImpl implements LevelCreator{
 		PhysicsFactory.createLineBody(this.physicsWorld, wall, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
 		
 		scene.attachChild(wall);
+	}
+	
+	private void createBall(final Scene scene) {
+		
+//		final CircleShape ball = new Cir
+//		PhysicsFactory.createCircleBody(this.physicsWorld, ball, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
+//		
+//		scene.attachChild(ball);
 	}
 }

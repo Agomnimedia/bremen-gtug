@@ -8,6 +8,10 @@ import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
+import org.andengine.opengl.texture.TextureOptions;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
@@ -25,6 +29,9 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 		
 		private LevelCreator levelCreator = null;
 		
+		private BitmapTextureAtlas bitmapTextureAtlas;
+
+		private TiledTextureRegion ballTextureRegion;
 
 
 		// LIFECYCLE
@@ -54,6 +61,16 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 			final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 
 			return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
+		}
+		
+		public void onLoadResources() {
+			/* Textures. */
+			this.bitmapTextureAtlas = new BitmapTextureAtlas(this.getTextureManager(), 64, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+			BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
+
+			/* TextureRegions. */
+			this.ballTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 32, 1, 1);
+			this.mEngine.getTextureManager().loadTexture(this.bitmapTextureAtlas);
 		}
 		
 		@Override
