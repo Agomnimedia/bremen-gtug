@@ -3,8 +3,11 @@ package org.gtugs.bremen.multilabyrinth.scene.impl;
 import org.andengine.entity.primitive.Line;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.sprite.Sprite;
+import org.andengine.extension.physics.box2d.PhysicsConnector;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
+import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
@@ -14,6 +17,8 @@ import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 import android.hardware.SensorManager;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
 public class LevelCreatorImpl implements LevelCreator{
 
@@ -21,12 +26,15 @@ public class LevelCreatorImpl implements LevelCreator{
 	
 	private final PhysicsWorld physicsWorld;
 	
+	private final TiledTextureRegion ballTextureRegion;
 	
 	
 	
-	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager){
+	
+	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, TiledTextureRegion ballTextureRegion){
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
 		this.physicsWorld = new PhysicsWorld(new Vector2(0, SensorManager.GRAVITY_EARTH), true);
+		this.ballTextureRegion = ballTextureRegion;
 	}
 	
 	@Override
@@ -60,14 +68,20 @@ public class LevelCreatorImpl implements LevelCreator{
 	private void createBall(final Scene scene) {
 		
 //		final CircleShape ball = new Cir
-//		PhysicsFactory.createCircleBody(this.physicsWorld, ball, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
-//		
-//		scene.attachChild(ball);
+//		PhysicsFactory.createCircleBody(this.physicsWorld, ballTextureRegion, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
+		
+		final Sprite ball;
+		final Body body;
+		
+		ball = new Sprite(30, 40, this.ballTextureRegion, this.vertexBufferObjectManager);
+		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(1, 0.5f, 0.5f));
+		
+		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
+		scene.attachChild(ball);
 	}
 
 	@Override
-	public void addBallToScene(float pX, float pY) {
-		// TODO Auto-generated method stub
-		
+	public void addBallToScene(Scene scene, float pX, float pY) {
+		createBall(scene);
 	}
 }

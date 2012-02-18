@@ -63,7 +63,13 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 			return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
 		}
 		
-		public void onLoadResources() {
+		@Override
+		public Engine onCreateEngine(EngineOptions engineOptions) {
+			return new Engine(engineOptions);
+		}
+
+		@Override
+		protected void onCreateResources() {
 			/* Textures. */
 			this.bitmapTextureAtlas = new BitmapTextureAtlas(this.getTextureManager(), 64, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
 			BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
@@ -72,26 +78,20 @@ public class SingleGameActivity extends SimpleBaseGameActivity{
 			this.ballTextureRegion = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 32, 1, 1);
 			this.mEngine.getTextureManager().loadTexture(this.bitmapTextureAtlas);
 		}
-		
-		@Override
-		public Engine onCreateEngine(EngineOptions engineOptions) {
-			return new Engine(engineOptions);
-		}
-
-		@Override
-		protected void onCreateResources() {
-			// TODO Auto-generated method stub
-			
-		}
 
 		@Override
 		protected Scene onCreateScene() {
 			this.levelGenerator = new DefaultLevelGenerator(1);
-			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager());
+			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballTextureRegion);
 			// get information from levelGenerator
 			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			
 			informations.add(informations.get(0));
-			return this.levelCreator.createScene(informations.get(0));
+			
+			
+			Scene scene = this.levelCreator.createScene(informations.get(0));
+			this.levelCreator.addBallToScene(scene, 30, 30);
+			
+			return scene;
 		}
 }
