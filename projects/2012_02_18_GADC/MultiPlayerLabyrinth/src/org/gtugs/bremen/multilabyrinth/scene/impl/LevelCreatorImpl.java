@@ -1,5 +1,8 @@
 package org.gtugs.bremen.multilabyrinth.scene.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.andengine.entity.particle.SpriteParticleSystem;
 import org.andengine.entity.particle.emitter.PointParticleEmitter;
 import org.andengine.entity.particle.initializer.BlendFunctionParticleInitializer;
@@ -12,6 +15,7 @@ import org.andengine.entity.primitive.Line;
 import org.andengine.entity.primitive.Rectangle;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.shape.Shape;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.extension.physics.box2d.PhysicsConnector;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
@@ -23,6 +27,9 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 import org.gtugs.bremen.multilabyrinth.scene.api.Theme;
 import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
+import org.gtugs.bremen.multilabyrinth.scene.impl.handler.EndPointUpdateHandler;
+import org.gtugs.bremen.multilabyrinth.scene.impl.handler.PortalUpdateHandler;
+import org.gtugs.bremen.multilabyrinth.scene.impl.handler.TrapUpdateHandler;
 
 import android.hardware.SensorManager;
 import android.opengl.GLES20;
@@ -62,41 +69,42 @@ public class LevelCreatorImpl implements LevelCreator{
 	public Scene createScene(final LevelInformation levelInfo) {
 		final Scene scene = new Scene();
 		scene.setBackground(new Background(new Color(0, 200, 200)));
+		final List<SceneElement> sceneElements = new ArrayList<SceneElement>(levelInfo.getElementList().size());
 		for(final Element element : levelInfo.getElementList()){
 			switch(element.getElementKind()){
 			case WALL:
 				{
 					final float[] positions = element.getPositions();
-					this.createWall(scene, positions[0], positions[1], positions[2], positions[3]);
+					sceneElements.add(new SceneElement(this.createWall(scene, positions[0], positions[1], positions[2], positions[3]), element.getElementKind()));
 				break;
 				}
 			case BALL:
 				{
 					final float[] positions = element.getPositions();
-					this.createBall(scene, positions[0], positions[1]);
+					sceneElements.add(new SceneElement(this.createBall(scene, positions[0], positions[1]), element.getElementKind()));
 				}
 				break;
 			case TRAP:
 				{
 					final float[] positions = element.getPositions();
-					this.createTrap(scene, positions[0], positions[1]);
+					sceneElements.add(new SceneElement(this.createTrap(scene, positions[0], positions[1]), element.getElementKind()));
 				}
 				break;
 			case START_POINT:
 				{
 					final float[] positions = element.getPositions();
-					this.createStart(scene, positions[0], positions[1]);
+					sceneElements.add(new SceneElement(this.createStart(scene, positions[0], positions[1]), element.getElementKind()));
 				}
 				break;
 			case END_POINT:
 				{
 					final float[] positions = element.getPositions();
-					this.createEnd(scene, positions[0], positions[1]);
+					sceneElements.add(new SceneElement(this.createEnd(scene, positions[0], positions[1]), element.getElementKind()));
 				}
 				break;
 			case PORTAL:
 					final float[] positions = element.getPositions();
-					this.createPortal(scene, positions[0], positions[1], positions[2], positions[3]);
+					sceneElements.add(new SceneElement(this.createPortal(scene, positions[0], positions[1], positions[2], positions[3]), element.getElementKind()));
 				break;
 			default:
 					// nothing to implement
@@ -104,10 +112,49 @@ public class LevelCreatorImpl implements LevelCreator{
 		}
 		
 		scene.registerUpdateHandler(this.physicsWorld);
+		this.registerAllHandlers(scene, sceneElements);
 		return scene;
 	}
 	
-	private void createPortal(final Scene scene, final float pX1, final float pY1, final float pX2, final float pY2) {
+	private void registerAllHandlers(final Scene scene, final List<SceneElement> sceneElements) {
+		final List<Line> portals = new ArrayList<Line>();
+		final List<Sprite> traps = new ArrayList<Sprite>();
+		final List<Sprite> endPoints = new ArrayList<Sprite>();
+		final List<Sprite> balls = new ArrayList<Sprite>();
+		
+		for(final SceneElement se : sceneElements){
+			switch(se.getKind()){
+			case PORTAL:
+				portals.add((Line)se.getShape());
+				break;
+			case TRAP:
+				traps.add((Sprite) se.getShape());
+				break;
+			case END_POINT:
+				endPoints.add((Sprite) se.getShape());
+				break;
+			case BALL:
+				balls.add((Sprite) se.getShape());
+				break;
+			default:
+					// do nothin
+			}
+		}
+		
+		for(final Sprite ball : balls){
+			for(final Line portal : portals){
+				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal));
+			}
+			for(final Sprite endPoint : endPoints){
+				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint));
+			}
+			for(final Sprite trap : traps){
+				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap));
+			}
+		}
+	}
+
+	private Line createPortal(final Scene scene, final float pX1, final float pY1, final float pX2, final float pY2) {
 		final float lineWidth = 3.0f;
 		final Line portal = new Line(pX1, pY1, pX2, pY2, lineWidth, this.vertexBufferObjectManager);
 		portal.setColor(Color.BLACK);
@@ -116,7 +163,6 @@ public class LevelCreatorImpl implements LevelCreator{
 		// von pX1, pY1
 		final float expireTime = 4f;
 		{
-			
 			final SpriteParticleSystem particleSystem = new SpriteParticleSystem(new PointParticleEmitter(pX1-16, pY1-16), 
 								8, 12, 200, this.particleRegion, this.vertexBufferObjectManager);
 			particleSystem.addParticleInitializer(new BlendFunctionParticleInitializer<Sprite>(GLES20.GL_SRC_ALPHA, GLES20.GL_ONE));
@@ -144,24 +190,29 @@ public class LevelCreatorImpl implements LevelCreator{
 
 			scene.attachChild(particleSystem);
 		}
+		
+		return portal;
 	}
 
-	private void createEnd(final Scene scene, final float pX, final float pY) {
+	private Sprite createEnd(final Scene scene, final float pX, final float pY) {
 		final Sprite end = new Sprite(pX, pY,this.endRegion, this.vertexBufferObjectManager);
 		scene.attachChild(end);
+		return end;
 	}
 
-	private void createStart(final Scene scene, final float pX, final float pY) {
+	private Sprite createStart(final Scene scene, final float pX, final float pY) {
 		final Sprite start = new Sprite(pX, pY,this.startRegion, this.vertexBufferObjectManager);
 		scene.attachChild(start);
+		return start;
 	}
 
-	private void createTrap(final Scene scene, final float pX, final float pY) {
+	private Sprite createTrap(final Scene scene, final float pX, final float pY) {
 		final Sprite trap = new Sprite(pX, pY,this.trapRegion, this.vertexBufferObjectManager);
 		scene.attachChild(trap);
+		return trap;
 	}
 
-	private void createWall(final Scene scene, final float pX, final float pY, final float width, final float height){
+	private Rectangle createWall(final Scene scene, final float pX, final float pY, final float width, final float height){
 //		final float lineWidth = 20.0f;
 //		final Line wall = new Line(pX1, pY1, pX2, pY2, lineWidth, this.vertexBufferObjectManager);
 		final Rectangle wall = new Rectangle(pX, pY, width, height, this.vertexBufferObjectManager);
@@ -171,9 +222,10 @@ public class LevelCreatorImpl implements LevelCreator{
 		wall.setColor(Color.WHITE);
 		
 		scene.attachChild(wall);
+		return wall;
 	}
 	
-	private void createBall(final Scene scene, final float pX, final float pY) {
+	private Sprite createBall(final Scene scene, final float pX, final float pY) {
 		
 		final Sprite ball;
 		final Body body;
@@ -186,6 +238,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		
 		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
 		scene.attachChild(ball);
+		return ball;
 	}
 
 	@Override
