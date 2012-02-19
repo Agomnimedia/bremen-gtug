@@ -1,5 +1,10 @@
 package org.gtugs.bremen.multilabyrinth.gui;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
 import java.util.List;
 
 import org.andengine.engine.Engine;
@@ -8,8 +13,6 @@ import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
-import org.andengine.extension.multiplayer.protocol.client.connector.ServerConnector;
-import org.andengine.extension.multiplayer.protocol.shared.SocketConnection;
 import org.andengine.extension.physics.box2d.util.Vector2Pool;
 import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.input.sensor.acceleration.IAccelerationListener;
@@ -22,34 +25,64 @@ import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultLevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultTheme;
 import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.net.DhcpInfo;
+import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+
 import com.badlogic.gdx.math.Vector2;
 
-public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAccelerationListener {
-	
+public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
+		IAccelerationListener {
+
 	// Dialog ids
-	private static final int DIALOG_CHOOSE_SERVER_OR_CLIENT_ID = 0;
-	private static final int DIALOG_ENTER_SERVER_IP_ID = DIALOG_CHOOSE_SERVER_OR_CLIENT_ID + 1;
-	private static final int DIALOG_SHOW_SERVER_IP_ID = DIALOG_ENTER_SERVER_IP_ID + 1;
-	
+	private static final int DIALOG_CONNECTING_ID = 0;
+
 	// Camera sizes
 	private static final int CAMERA_WIDTH = 720;
 	private static final int CAMERA_HEIGHT = 480;
-			
+
 	private LevelGenerator levelGenerator = null;
-			
+
 	private LevelCreator levelCreator = null;
-	
+
 	private Theme theme = null;
-	
+
+	private Dialog connectingDialog;
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Dialog dialog;
+		switch (id) {
+		case DIALOG_CONNECTING_ID:
+			dialog = createConnectingDialog();
+			break;
+		default:
+			dialog = super.onCreateDialog(id);
+			break;
+		}
+		return dialog;
+	}
+
+	private Dialog createConnectingDialog() {
+		connectingDialog = new Dialog(getApplicationContext());
+		connectingDialog.setContentView(R.layout.connection_waiting);
+		connectingDialog.setTitle(R.string.waiting);
+		return connectingDialog;
+	}
 	
 	@Override
 	public EngineOptions onCreateEngineOptions() {
-		this.showDialog(DIALOG_CHOOSE_SERVER_OR_CLIENT_ID);
-		
+		this.showDialog(DIALOG_CONNECTING_ID);
+
 		final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
-		return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
+		return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED,
+				new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
 	}
-	
+
 	@Override
 	public Engine onCreateEngine(EngineOptions engineOptions) {
 		return new Engine(engineOptions);
@@ -60,13 +93,13 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 		this.theme = new DefaultTheme(this, this.getTextureManager());
 		this.theme.loadTheme(this.mEngine);
 	}
-	
+
 	@Override
 	public void onResumeGame() {
 		super.onResumeGame();
 		this.enableAccelerationSensor(this);
 	}
-	
+
 	@Override
 	public void onPauseGame() {
 		super.onPauseGame();
@@ -76,32 +109,87 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 	@Override
 	protected Scene onCreateScene() {
 		this.levelGenerator = new DefaultLevelGenerator(1);
-		this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.theme);
+		this.levelCreator = new LevelCreatorImpl(
+				this.getVertexBufferObjectManager(), this.theme);
 		// get information from levelGenerator
-		final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
-		
+		final List<LevelInformation> informations = this.levelGenerator
+				.getLevelinformation();
+
 		informations.add(informations.get(0));
-		
+
 		Scene scene = this.levelCreator.createScene(informations.get(0));
 		// TODO send other levelinformations to components
-		
+
 		this.levelCreator.addBallToScene(scene, 100, 100);
-		
+
 		return scene;
 	}
 
 	@Override
 	public void onAccelerationAccuracyChanged(AccelerationData pAccelerationData) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onAccelerationChanged(AccelerationData pAccelerationData) {
-		if(this.levelCreator != null){
-			final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX(), pAccelerationData.getY());
+		if (this.levelCreator != null) {
+			final Vector2 gravity = Vector2Pool.obtain(
+					pAccelerationData.getX(), pAccelerationData.getY());
 			this.levelCreator.setGravity(gravity);
 			Vector2Pool.recycle(gravity);
-		}		
+		}
+	}
+
+	private class UdpSending extends AsyncTask<Void, Void, Void> {
+		final static int UDP_PORT = 1234;
+		final static long SENDING_INTERVAL = 1000;
+
+		@Override
+		protected synchronized Void doInBackground(Void... params) {
+			final DatagramSocket socket;
+			final InetAddress broadcast;
+			final String msg = "I'm here!";
+			DatagramPacket paket;
+			try {
+				socket = new DatagramSocket();
+				broadcast = getBroadcastAddress();
+				Log.i("BROADCAST", broadcast.getHostAddress());
+				while (true) {
+					if (isCancelled()) {
+						break;
+					}
+					paket = new DatagramPacket(msg.getBytes(), msg.length(),
+							broadcast, UDP_PORT);
+					socket.send(paket);
+					Log.i("BROADCAST", "UDP message was sent.");
+					wait(SENDING_INTERVAL);
+				}
+				socket.close();
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return null;
+		}
+
+		private InetAddress getBroadcastAddress() throws IOException {
+			WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+			DhcpInfo dhcp = wifi.getDhcpInfo();
+			// TODO handle null somehow
+
+			int broadcast = (dhcp.ipAddress & dhcp.netmask) | ~dhcp.netmask;
+			byte[] quads = new byte[4];
+			for (int k = 0; k < 4; k++)
+				quads[k] = (byte) ((broadcast >> k * 8) & 0xFF);
+			return InetAddress.getByAddress(quads);
+		}
 	}
 }
