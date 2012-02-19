@@ -5,6 +5,7 @@ package org.gtugs.bremen.multilabyrinth.gui.dialog;
 
 import org.gtugs.bremen.multilabyrinth.gui.MultiCoopGameActivity;
 import org.gtugs.bremen.multilabyrinth.gui.MultiPlayerLabyrinthActivity;
+import org.gtugs.bremen.multilabyrinth.gui.NetworkSearchingActivity;
 import org.gtugs.bremen.multilabyrinth.gui.R;
 import org.gtugs.bremen.multilabyrinth.gui.SingleGameActivity;
 import org.gtugs.bremen.multilabyrinth.menu.GameMode;
@@ -20,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
 /**
@@ -29,6 +31,7 @@ import android.widget.Spinner;
 public class StartGameDialog extends DialogFragment {
 	
 	private Spinner levelSpinner, typeSpinner;
+	private CheckBox serverCheckBox;
 	
 	public static StartGameDialog newInstance() {
 		return new StartGameDialog();
@@ -43,7 +46,16 @@ public class StartGameDialog extends DialogFragment {
 		
 		levelSpinner = (Spinner) viewGroup.findViewById(R.id.level_spinner);
 		typeSpinner = (Spinner) viewGroup.findViewById(R.id.type_spinner);
-	    
+		serverCheckBox = (CheckBox) viewGroup.findViewById(R.id.server_check);
+		serverCheckBox.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				levelSpinner.setEnabled(serverCheckBox.isChecked());
+			}
+			
+		});
+		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 	            this.getActivity().getApplicationContext(), R.array.types, android.R.layout.simple_spinner_item);
 	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,12 +71,17 @@ public class StartGameDialog extends DialogFragment {
             		            StartGameDialog.this.getActivity().getApplicationContext(), R.array.single_levels, android.R.layout.simple_spinner_item);
             		    singleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             		    levelSpinner.setAdapter(singleAdapter);
+            		    serverCheckBox.setEnabled(false);
+            		    serverCheckBox.setChecked(false);
             			break;
-            		case 1: case 2: default:	
+            		case 1: case 2: default:
             			ArrayAdapter<CharSequence> multiAdapter = ArrayAdapter.createFromResource(
             		            StartGameDialog.this.getActivity().getApplicationContext(), R.array.multi_levels, android.R.layout.simple_spinner_item);
             		    multiAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             		    levelSpinner.setAdapter(multiAdapter);
+            		    
+            		    serverCheckBox.setEnabled(true);
+            		    levelSpinner.setEnabled(false);
             	}
             }
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -85,7 +102,7 @@ public class StartGameDialog extends DialogFragment {
 						startGame(GameMode.MULTI_CHALLENGE, levelSpinner.getSelectedItemPosition()+11);
 						break;
 					case 2:
-						startGame(GameMode.MULTI_CHALLENGE, levelSpinner.getSelectedItemPosition()+11);
+						startGame(GameMode.MULTI_COOP, levelSpinner.getSelectedItemPosition()+11);
 						break;
 					default:
 				}
@@ -106,20 +123,24 @@ public class StartGameDialog extends DialogFragment {
 	
 	private void startGame(final GameMode mode, final int level){
     	final Intent intent = new Intent();
-    	intent.putExtra(MultiPlayerLabyrinthActivity.MODE_EXTRA_NAME, level);
+    	
     	switch(mode) {
     	case SINGLE:
     		intent.setClass(this.getActivity().getApplicationContext(), SingleGameActivity.class);
+    		intent.putExtra(MultiPlayerLabyrinthActivity.MODE_EXTRA_NAME, level);
     		// TODO not implemented yet
     		break;
     	case MULTI_CHALLENGE:
     		// TODO not implemented yet
     		break;
     	case MULTI_COOP:
-    		intent.setClass(this.getActivity().getApplicationContext(), MultiCoopGameActivity.class);
-    		// TODO set player amount
-    		// TODO set creation mode
-    		// TODO set ...
+    		 
+    		if(serverCheckBox.isChecked()) {
+    			intent.setClass(this.getActivity().getApplicationContext(), MultiCoopGameActivity.class);
+    			intent.putExtra(MultiPlayerLabyrinthActivity.MODE_EXTRA_NAME, level);
+    		} else {
+    			intent.setClass(this.getActivity().getApplicationContext(), NetworkSearchingActivity.class);
+    		}
     		break;
     	}
     	

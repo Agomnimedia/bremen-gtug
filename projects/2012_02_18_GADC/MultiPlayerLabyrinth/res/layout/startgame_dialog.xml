@@ -21,6 +21,18 @@
         android:prompt="@string/choose_type_text"
 	/>
 	
+	<CheckBox
+	    android:id="@+id/server_check"
+	    android:layout_width="wrap_content"
+	    android:layout_height="48dp"
+	    android:text="@string/server_check"
+	    android:layout_marginLeft="30dp"
+	    android:layout_marginTop="10dp"
+	    android:layout_marginBottom="10dp"
+	    android:checked="false"
+	    android:enabled="false"
+	/>
+	
 	<TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
