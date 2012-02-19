@@ -40,7 +40,7 @@ public class DefaultNetworkCommunication implements NetworkCommunication{
 	
 	private final String serverIp;
 	
-	public DefaultNetworkCommunication(final String ip){
+	public DefaultNetworkCommunication(final String ip) throws Throwable{
 		// init message pool
 		this.serverIp = ip;
 		
@@ -71,32 +71,28 @@ public class DefaultNetworkCommunication implements NetworkCommunication{
 		this.mSocketServer.start();
 	}
 	
-	private void initClient() {
-		try {
-			this.mServerConnector = new SocketConnectionServerConnector(new SocketConnection(new Socket(this.serverIp, SERVER_PORT)), new DefaultServerConnectorListener());
+	private void initClient() throws Throwable{
+		this.mServerConnector = new SocketConnectionServerConnector(new SocketConnection(new Socket(this.serverIp, SERVER_PORT)), new DefaultServerConnectorListener());
 
-			this.mServerConnector.registerServerMessage(FLAG_MESSAGE_SERVER_CONNECTION_CLOSE, ConnectionCloseServerMessage.class, new IServerMessageHandler<SocketConnection>() {
-				
-				@Override
-				public void onHandleMessage(
-						ServerConnector<SocketConnection> pServerConnector,
-						IServerMessage pServerMessage) throws IOException {
-					// TODO close connection
-				}
-			});
+		this.mServerConnector.registerServerMessage(FLAG_MESSAGE_SERVER_CONNECTION_CLOSE, ConnectionCloseServerMessage.class, new IServerMessageHandler<SocketConnection>() {
+			
+			@Override
+			public void onHandleMessage(
+					ServerConnector<SocketConnection> pServerConnector,
+					IServerMessage pServerMessage) throws IOException {
+				// TODO close connection
+			}
+		});
 
-			this.mServerConnector.registerServerMessage(FLAG_LEVEL_INFORMATION, LevelinformationMessage.class, new IServerMessageHandler<SocketConnection>() {
-				@Override
-				public void onHandleMessage(final ServerConnector<SocketConnection> pServerConnector, final IServerMessage pServerMessage) throws IOException {
-					final LevelinformationMessage levelInfoMessage = (LevelinformationMessage)pServerMessage;
-					// TODO do something with message
-				}
-			});
+		this.mServerConnector.registerServerMessage(FLAG_LEVEL_INFORMATION, LevelinformationMessage.class, new IServerMessageHandler<SocketConnection>() {
+			@Override
+			public void onHandleMessage(final ServerConnector<SocketConnection> pServerConnector, final IServerMessage pServerMessage) throws IOException {
+				final LevelinformationMessage levelInfoMessage = (LevelinformationMessage)pServerMessage;
+				// TODO do something with message
+			}
+		});
 
-			this.mServerConnector.getConnection().start();
-		} catch (final Throwable t) {
-			Debug.e(t);
-		}
+		this.mServerConnector.getConnection().start();
 	}
 	
 	// ===========================================================
