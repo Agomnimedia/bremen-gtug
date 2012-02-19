@@ -24,4 +24,6 @@ public interface Theme {
 	Sound getTrapSound();
 
 	Sound getHitWallSound();
+
+	Sound getFinishBallSound();
 }

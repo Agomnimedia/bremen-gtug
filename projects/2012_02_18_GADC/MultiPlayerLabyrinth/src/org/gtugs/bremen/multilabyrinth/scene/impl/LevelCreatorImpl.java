@@ -73,6 +73,8 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 	private Sound hitWallSound;
 	
 	private Sound trapSound;
+
+	private Sound finishBallSound;
 	
 	private NetworkCommunication networkCommunication;
 	
@@ -88,6 +90,7 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 		this.particleRegion = theme.getParticleRegion();
 		this.hitWallSound = theme.getHitWallSound();
 		this.trapSound = theme.getTrapSound();
+		this.finishBallSound = theme.getFinishBallSound();
 	}
 	
 	@Override
@@ -281,7 +284,7 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 		}
 		if(endPoints != null) {
 			for(final Sprite endPoint : endPoints){
-				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint, this.networkCommunication));
+				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint, this.finishBallSound, this.networkCommunication, this));
 			}
 		}
 		if(traps != null) {
@@ -309,8 +312,6 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 		if(connector != null) {
 			this.physicsWorld.unregisterPhysicsConnector(connector);
 			connectorHashtable.remove(connectorHashtable);
-			
-			
 		}
 	}
 	

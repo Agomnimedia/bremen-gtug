@@ -35,6 +35,8 @@ public class DefaultTheme implements Theme{
 	
 	private Sound hitWallSound;
 
+	private Sound finishBallSound;
+	
 	public DefaultTheme(final Context context, final TextureManager textureManager, final SoundManager soundManager){
 		/* Textures. */
 		this.bitmapTextureAtlas = new BitmapTextureAtlas(textureManager, 64, 96, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
@@ -55,6 +57,7 @@ public class DefaultTheme implements Theme{
         try {
                 this.trapSound = SoundFactory.createSoundFromAsset(soundManager, context, "trap.ogg");
                 this.hitWallSound = SoundFactory.createSoundFromAsset(soundManager, context, "hitWall.ogg");
+                this.finishBallSound = SoundFactory.createSoundFromAsset(soundManager, context, "finishBall.ogg");
         } catch (final IOException e) {
                 Debug.e(e);
         }
@@ -98,6 +101,11 @@ public class DefaultTheme implements Theme{
 	@Override
 	public Sound getHitWallSound() {
 		return this.hitWallSound;
+	}
+
+	@Override
+	public Sound getFinishBallSound() {
+		return this.finishBallSound;
 	}
 
 	@Override

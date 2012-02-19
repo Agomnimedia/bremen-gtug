@@ -40,7 +40,6 @@ public class TrapUpdateHandler implements IUpdateHandler {
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
 		if(!wasFallen && ball.collidesWith(trap)) {
-			// TODO Sound
 			if(ball.contains(x, y)) {
 				trapSound.play();
 				ScaleModifier modifier = new ScaleModifier(2, 1, 0);
@@ -48,7 +47,6 @@ public class TrapUpdateHandler implements IUpdateHandler {
 				wasFallen = true;
 				removePhysicsHandler.removePhysics(ball);
 				ball.setPosition(trap.getX(), trap.getY());
-				// TODO: Verloren!!!!!
 			}
 		}
 	}
