@@ -62,7 +62,7 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		// trap 2
 		elementList.add(new TrapElement(135, 75));
 		// portal
-		elementList.add(new PortalElement(640, 80, 640, 400));
+		elementList.add(new PortalElement("mode1",640, 80, 640, 400));
 		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
 	}
 	
@@ -81,9 +81,9 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		// end point
 		elementList.add(new EndPointElement(720-80, 480-80));
 		// portal 1
-		elementList.add(new PortalElement(640, 80, 640, 120));
+		elementList.add(new PortalElement("mode2",640, 80, 640, 120));
 		// portal 2
-		elementList.add(new PortalElement(230, 80, 370, 120));
+		elementList.add(new PortalElement("mode2",230, 80, 370, 120));
 		
 		elementList.add(new BallElement(720-80, 480-80));
 		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
@@ -94,7 +94,7 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		// left wall
 		elementList.add(new WallElement(5, 5, 20, 480 - 10));
 		// portal instead right wall
-		elementList.add(new PortalElement(720 - 30, 5, 720 - 30, 480-5));
+		elementList.add(new PortalElement("mode11",720 - 30, 5, 720 - 30, 480-5));
 		// top wall
 		elementList.add(new WallElement(5, 5, 720-25, 20));
 		// bottom wall
@@ -104,7 +104,7 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		this.informations.add(new LevelInformation(elementList, new float[]{80, 80}));
 		final List<Element> elementList2 = new ArrayList<Element>();
 		// portal instead left wall
-		elementList2.add(new PortalElement(5, 5, 5, 480 - 5));
+		elementList2.add(new PortalElement("mode11",5, 5, 5, 480 - 5));
 		// right wall
 		elementList2.add(new WallElement(720 - 30, 5, 20, 480-10));
 		// top wall

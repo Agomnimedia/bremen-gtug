@@ -7,9 +7,11 @@ import android.util.Log;
 
 public class PortalElement extends Element{
 
-private final float[] positions;
+	private String portalId;
 	
-	public PortalElement(final float pX1, final float pY1, final float pX2, final float pY2){
+	private final float[] positions;
+	
+	public PortalElement(final String portalId, final float pX1, final float pY1, final float pX2, final float pY2){
 		this.positions = new float[4];
 		this.positions[0] = pX1;
 		this.positions[1] = pY1;
@@ -19,7 +21,9 @@ private final float[] positions;
 	
 	public PortalElement(JSONObject json) {
 		this.positions = new float[4];
+		this.portalId = null;
 		try {
+			this.portalId = json.getString("id");
 			this.positions[0] = Float.parseFloat(String.valueOf(json.get("positions0")));
 			this.positions[1] = Float.parseFloat(String.valueOf(json.get("positions1")));
 			this.positions[2] = Float.parseFloat(String.valueOf(json.get("positions2")));
@@ -43,6 +47,7 @@ private final float[] positions;
 	public JSONObject toJSON() {
 		final JSONObject json = new JSONObject();
 		try{
+			json.put("id", this.portalId);
 			json.put("positions0", String.valueOf(this.positions[0]));
 			json.put("positions1", String.valueOf(this.positions[1]));
 			json.put("positions2", String.valueOf(this.positions[2]));

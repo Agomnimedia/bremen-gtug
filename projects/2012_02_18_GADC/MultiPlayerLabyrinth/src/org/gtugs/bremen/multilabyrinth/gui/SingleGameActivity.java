@@ -74,7 +74,7 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		@Override
 		protected Scene onCreateScene() {
 			this.levelGenerator = new DefaultLevelGenerator(this.mode);
-			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.theme);
+			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.theme, null);
 			// get information from levelGenerator
 			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			

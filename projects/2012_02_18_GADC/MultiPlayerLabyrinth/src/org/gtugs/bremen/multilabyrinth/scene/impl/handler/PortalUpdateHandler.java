@@ -1,11 +1,9 @@
 package org.gtugs.bremen.multilabyrinth.scene.impl.handler;
 
 import org.andengine.engine.handler.IUpdateHandler;
-import org.andengine.engine.handler.physics.PhysicsHandler;
-import org.andengine.entity.modifier.ColorModifier;
 import org.andengine.entity.primitive.Line;
 import org.andengine.entity.sprite.Sprite;
-import org.andengine.util.color.Color;
+import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
 
 import android.util.Log;
 
@@ -15,10 +13,13 @@ public class PortalUpdateHandler implements IUpdateHandler{
 	
 	private final Line portal;
 	
-	public PortalUpdateHandler(final Sprite ball, final Line portal){
+	private final NetworkCommunication networkCommunication;
+	
+	public PortalUpdateHandler(final Sprite ball, final Line portal, final NetworkCommunication networkCommunication){
 		super();
 		this.ball = ball;
 		this.portal = portal;
+		this.networkCommunication = networkCommunication;
 	}
 	
 	@Override

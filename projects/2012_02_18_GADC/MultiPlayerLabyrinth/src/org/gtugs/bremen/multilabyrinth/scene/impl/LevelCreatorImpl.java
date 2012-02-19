@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.andengine.audio.sound.Sound;
-import org.andengine.engine.handler.physics.PhysicsHandler;
-import org.andengine.entity.modifier.ColorModifier;
 import org.andengine.entity.particle.SpriteParticleSystem;
 import org.andengine.entity.particle.emitter.PointParticleEmitter;
 import org.andengine.entity.particle.initializer.BlendFunctionParticleInitializer;
@@ -18,7 +16,6 @@ import org.andengine.entity.primitive.Line;
 import org.andengine.entity.primitive.Rectangle;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
-import org.andengine.entity.shape.Shape;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.extension.physics.box2d.PhysicsConnector;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
@@ -28,6 +25,7 @@ import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
+import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 import org.gtugs.bremen.multilabyrinth.scene.api.Theme;
@@ -37,7 +35,6 @@ import org.gtugs.bremen.multilabyrinth.scene.impl.handler.PortalUpdateHandler;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.TrapUpdateHandler;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.WallUpdateHandler;
 
-import android.hardware.SensorManager;
 import android.opengl.GLES20;
 
 import com.badlogic.gdx.math.Vector2;
@@ -70,8 +67,11 @@ public class LevelCreatorImpl implements LevelCreator{
 
 	private Sound hitWallSound;
 	
+	private NetworkCommunication networkCommunication;
+	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
-			final Theme theme){
+			final Theme theme, final NetworkCommunication networkCommunication){
+		this.networkCommunication = networkCommunication;
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
 		this.physicsWorld = new PhysicsWorld(new Vector2(0, 0), false);
 		this.ballRegion = theme.getBallRegion();
@@ -164,10 +164,10 @@ public class LevelCreatorImpl implements LevelCreator{
 		
 		for(final Sprite ball : balls){
 			for(final Line portal : portals){
-				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal));
+				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal, this.networkCommunication));
 			}
 			for(final Sprite endPoint : endPoints){
-				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint));
+				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint, this.networkCommunication));
 			}
 			for(final Sprite trap : traps){
 				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap));
@@ -269,12 +269,12 @@ public class LevelCreatorImpl implements LevelCreator{
 		
 		if(portals != null) {
 			for(final Line portal : portals){
-				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal));
+				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal, this.networkCommunication));
 			}
 		}
 		if(endPoints != null) {
 			for(final Sprite endPoint : endPoints){
-				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint));
+				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint, this.networkCommunication));
 			}
 		}
 		if(traps != null) {
