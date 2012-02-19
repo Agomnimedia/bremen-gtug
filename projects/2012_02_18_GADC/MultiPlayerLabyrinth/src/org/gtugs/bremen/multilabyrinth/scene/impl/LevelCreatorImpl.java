@@ -67,6 +67,8 @@ public class LevelCreatorImpl implements LevelCreator{
 
 	private Sound hitWallSound;
 	
+	private Sound trapSound;
+	
 	private NetworkCommunication networkCommunication;
 	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
@@ -80,6 +82,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		this.endRegion = theme.getEndRegion();
 		this.particleRegion = theme.getParticleRegion();
 		this.hitWallSound = theme.getHitWallSound();
+		this.trapSound = theme.getTrapSound();
 	}
 	
 	@Override
@@ -163,15 +166,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		}
 		
 		for(final Sprite ball : balls){
-			for(final Line portal : portals){
-				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal, this.networkCommunication));
-			}
-			for(final Sprite endPoint : endPoints){
-				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint, this.networkCommunication));
-			}
-			for(final Sprite trap : traps){
-				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap));
-			}
+			registerBallHandlers(scene, ball);
 		}
 	}
 
@@ -267,6 +262,11 @@ public class LevelCreatorImpl implements LevelCreator{
 	public void addBallToScene(Scene scene, float pX, float pY) {
 		final Sprite ball = this.createBall(scene, pX, pY);
 		
+		registerBallHandlers(scene, ball);
+	}
+	
+	private void registerBallHandlers(final Scene scene, final Sprite ball) {
+		
 		if(portals != null) {
 			for(final Line portal : portals){
 				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal, this.networkCommunication));
@@ -279,7 +279,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		}
 		if(traps != null) {
 			for(final Sprite trap : traps){
-				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap));
+				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap, this.trapSound));
 			}
 		}
 		if(walls != null) {
