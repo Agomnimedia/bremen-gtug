@@ -34,7 +34,7 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		
 		private LevelCreator levelCreator = null;
 		
-		private Theme theme;
+		private Theme theme = null;
 				
 		private int mode = 1;
 
