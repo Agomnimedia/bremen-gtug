@@ -12,5 +12,14 @@
     <string name="single_but_title">Singleplayer</string>
     <string name="challenge_but_title">Multiplayer challenge</string>
     <string name="coop_but_title">Multiplayer coop</string>
+    
+    <string name="choose_networkmode">Choose a network mode.</string>
+    <string name="start_server">start a new server</string>
+    <string name="start_client">search exiting servers&#160;&#8230;</string>
+    <string name="located_servers">Following servers are located on your network:</string>
+    <string name="waiting">waiting&#160;&#8230;</string>
+    <string name="connection_waiting">waiting for enough connected clients&#160;&#8230;</string>
+    <string name="start_game">start game</string>
+    <string name="cancel">cancel</string>
 
 </resources>
