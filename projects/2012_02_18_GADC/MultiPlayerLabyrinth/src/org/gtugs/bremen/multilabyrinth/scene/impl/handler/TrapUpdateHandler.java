@@ -16,8 +16,11 @@ public class TrapUpdateHandler implements IUpdateHandler {
 	
 	@Override
 	public void onUpdate(float pSecondsElapsed) {
-		// TODO Auto-generated method stub
-
+		if(ball.collidesWith(trap)) {
+			// TODO Sound
+		} else {
+			// TODO no sound anymore or just empty
+		}
 	}
 
 	@Override
