@@ -229,7 +229,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		final Rectangle wall = new Rectangle(pX, pY, width, height, this.vertexBufferObjectManager);
 		
 //		PhysicsFactory.createLineBody(this.physicsWorld, wall, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
-		PhysicsFactory.createBoxBody(this.physicsWorld, wall,BodyType.StaticBody, PhysicsFactory.createFixtureDef(0, 0.5f, 0.5f));
+		PhysicsFactory.createBoxBody(this.physicsWorld, wall,BodyType.StaticBody, PhysicsFactory.createFixtureDef(0, 0.1f, 0.05f));
 		wall.setColor(Color.WHITE);
 		
 		scene.attachChild(wall);
