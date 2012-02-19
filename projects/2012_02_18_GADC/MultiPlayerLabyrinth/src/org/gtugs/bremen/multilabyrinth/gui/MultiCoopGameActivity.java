@@ -17,6 +17,9 @@ import org.andengine.extension.physics.box2d.util.Vector2Pool;
 import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.input.sensor.acceleration.IAccelerationListener;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
+import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
+import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunicationFactory;
+import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
@@ -27,11 +30,15 @@ import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -52,7 +59,11 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	private Theme theme = null;
 
 	private Dialog connectingDialog;
-
+	
+	private UdpSending udpSending;
+	
+	private NetworkCommunication networkCommunication = null;
+	
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		Dialog dialog;
@@ -68,15 +79,50 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	}
 
 	private Dialog createConnectingDialog() {
-		connectingDialog = new Dialog(getApplicationContext());
+		connectingDialog = new Dialog(this);
 		connectingDialog.setContentView(R.layout.connection_waiting);
 		connectingDialog.setTitle(R.string.waiting);
+		connectingDialog.setCancelable(false);
+		Button butCancel = (Button) connectingDialog.findViewById(R.id.buttonCancel);
+		Button butStart = (Button) connectingDialog.findViewById(R.id.buttonStart);
+
+		udpSending = new UdpSending();
+		udpSending.execute();
+		
+		butCancel.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				udpSending.cancel(true);
+				connectingDialog.dismiss();
+				final Intent intent = new Intent(getApplicationContext(),
+						MultiPlayerLabyrinthActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+			}
+		});
+
+		butStart.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				udpSending.cancel(true);
+				connectingDialog.dismiss();
+				// TODO start game
+				Toast toast = Toast.makeText(getApplicationContext(), "game is starting ...",
+						Toast.LENGTH_SHORT);
+				toast.show();
+			}
+		});
+		
 		return connectingDialog;
 	}
 	
 	@Override
 	public EngineOptions onCreateEngineOptions() {
-		this.showDialog(DIALOG_CONNECTING_ID);
+		if(NetworkCommunicationFactory.get() == null) { // should be a server
+			this.networkCommunication = new DefaultNetworkCommunication();
+			this.showDialog(DIALOG_CONNECTING_ID);
+		}
+		else {
+			this.networkCommunication = NetworkCommunicationFactory.get();
+		}
 
 		final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
 		return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED,
@@ -120,7 +166,7 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 		Scene scene = this.levelCreator.createScene(informations.get(0));
 		// TODO send other levelinformations to components
 
-		this.levelCreator.addBallToScene(scene, 100, 100);
+		//this.levelCreator.addBallToScene(scene, 100, 100);
 
 		return scene;
 	}

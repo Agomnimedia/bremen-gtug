@@ -9,12 +9,14 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.gtugs.bremen.multilabyrinth.gui.R;
-import org.gtugs.bremen.multilabyrinth.gui.dialog.ServerClientDialog;
+import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
+import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunicationFactory;
+import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication;
+import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication.CommunicationEstablished;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +26,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class NetworkSearchingFragment extends Fragment {
+public class NetworkSearchingFragment extends Fragment implements
+		CommunicationEstablished {
 	final static long TIMEOUT = 3000;
 	private UdpReceiving udpReceiving;
 	private TreeMap<String, Long> serverList = new TreeMap<String, Long>();
@@ -47,19 +50,24 @@ public class NetworkSearchingFragment extends Fragment {
 			public void onItemClick(final AdapterView<?> parent,
 					final View view, final int position, final long id) {
 
-				// inform the childActivity about a itemclick
-				// onItemClicked(serverList.get(position),
-				// serverListAdapter.getItem(position));
+				initConnection(serverListAdapter.getItem(position));
 			}
 		});
 		serverListAdapter = new ArrayAdapter<String>(getActivity()
 				.getApplicationContext(), android.R.layout.simple_list_item_1);
 		listView.setAdapter(serverListAdapter);
 
-		FragmentTransaction ft = getFragmentManager().beginTransaction();
-		ServerClientDialog clientServerDecision = ServerClientDialog
-				.newInstance();
-		clientServerDecision.show(ft, "cs_decision");
+		startSearching();
+	}
+
+	private void initConnection(String ipaddress) {
+		try {
+			NetworkCommunicationFactory.set(new DefaultNetworkCommunication(
+					ipaddress, (CommunicationEstablished) this));
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -122,12 +130,13 @@ public class NetworkSearchingFragment extends Fragment {
 					try {
 						socket.setSoTimeout(5000);
 						socket.receive(paket);
-						if(!isCancelled()) {
+						if (!isCancelled()) {
 							final String text = new String(puffer, 0,
 									paket.getLength());
 							final String ipaddress = paket.getAddress()
 									.getHostAddress();
-							Log.i("RECEIVE", "received: " + text + ", " + ipaddress);
+							Log.i("RECEIVE", "received: " + text + ", "
+									+ ipaddress);
 							socket.close();
 							return ipaddress;
 						}
@@ -152,5 +161,10 @@ public class NetworkSearchingFragment extends Fragment {
 			}
 			updateServerList();
 		}
+	}
+
+	@Override
+	public void communicationEstablished() {
+		// TODO Auto-generated method stub
 	}
 }

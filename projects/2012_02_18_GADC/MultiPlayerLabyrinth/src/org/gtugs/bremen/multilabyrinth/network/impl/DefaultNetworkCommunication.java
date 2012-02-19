@@ -25,141 +25,185 @@ import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 
 import android.util.Log;
 
-public class DefaultNetworkCommunication implements NetworkCommunication{
+public class DefaultNetworkCommunication implements NetworkCommunication {
 
 	public static final short FLAG_MESSAGE_SERVER_CONNECTION_CLOSE = Short.MIN_VALUE;
-	
+
 	private static final short FLAG_LEVEL_INFORMATION = 1;
-	
+
 	private SocketServer<SocketConnectionClientConnector> mSocketServer;
 	private ServerConnector<SocketConnection> mServerConnector;
 
 	private final MessagePool<IMessage> mMessagePool = new MessagePool<IMessage>();
-	
+
 	private static final int SERVER_PORT = 3456;
-	
+
 	private final String serverIp;
-	
-	public DefaultNetworkCommunication(final String ip) throws Throwable{
-		// init message pool
+
+	private final CommunicationEstablished communicationEstablished;
+
+	public DefaultNetworkCommunication(final String ip,
+			final CommunicationEstablished communicationEstablished)
+			throws Throwable {
+		
+		this.communicationEstablished = communicationEstablished;
+
 		this.serverIp = ip;
-		
+
 		this.initMessagePool();
-		
-		if(this.serverIp == null){
-			this.initServer();
-			this.mServerConnector = null;
-		}else{
-			this.initClient();
-			this.mSocketServer = null;
-		}
+
+		this.initClient();
+		this.mSocketServer = null;
 	}
-	
+
+	public DefaultNetworkCommunication() {
+		this.communicationEstablished = null;
+		this.serverIp = null;
+		this.initServer();
+		this.mServerConnector = null;
+	}
+
 	private void initMessagePool() {
-		this.mMessagePool.registerMessage(FLAG_LEVEL_INFORMATION, LevelinformationMessage.class);
-//		this.mMessagePool.registerMessage(FLAG_MESSAGE_SERVER_MOVE_FACE, MoveFaceServerMessage.class);
+		this.mMessagePool.registerMessage(FLAG_LEVEL_INFORMATION,
+				LevelinformationMessage.class);
+		// this.mMessagePool.registerMessage(FLAG_MESSAGE_SERVER_MOVE_FACE,
+		// MoveFaceServerMessage.class);
 	}
 
 	private void initServer() {
-		this.mSocketServer = new SocketServer<SocketConnectionClientConnector>(SERVER_PORT, new DefaultClientConnectorListener(), new DefaultServerStateListener()) {
+		this.mSocketServer = new SocketServer<SocketConnectionClientConnector>(
+				SERVER_PORT, new DefaultClientConnectorListener(),
+				new DefaultServerStateListener()) {
 			@Override
-			protected SocketConnectionClientConnector newClientConnector(final SocketConnection pSocketConnection) throws IOException {
+			protected SocketConnectionClientConnector newClientConnector(
+					final SocketConnection pSocketConnection)
+					throws IOException {
 				return new SocketConnectionClientConnector(pSocketConnection);
 			}
 		};
 
 		this.mSocketServer.start();
 	}
-	
-	private void initClient() throws Throwable{
-		this.mServerConnector = new SocketConnectionServerConnector(new SocketConnection(new Socket(this.serverIp, SERVER_PORT)), new DefaultServerConnectorListener());
 
-		this.mServerConnector.registerServerMessage(FLAG_MESSAGE_SERVER_CONNECTION_CLOSE, ConnectionCloseServerMessage.class, new IServerMessageHandler<SocketConnection>() {
-			
-			@Override
-			public void onHandleMessage(
-					ServerConnector<SocketConnection> pServerConnector,
-					IServerMessage pServerMessage) throws IOException {
-				// TODO close connection
-			}
-		});
+	private void initClient() throws Throwable {
+		this.mServerConnector = new SocketConnectionServerConnector(
+				new SocketConnection(new Socket(this.serverIp, SERVER_PORT)),
+				new DefaultServerConnectorListener());
 
-		this.mServerConnector.registerServerMessage(FLAG_LEVEL_INFORMATION, LevelinformationMessage.class, new IServerMessageHandler<SocketConnection>() {
-			@Override
-			public void onHandleMessage(final ServerConnector<SocketConnection> pServerConnector, final IServerMessage pServerMessage) throws IOException {
-				final LevelinformationMessage levelInfoMessage = (LevelinformationMessage)pServerMessage;
-				// TODO do something with message
-			}
-		});
+		this.mServerConnector.registerServerMessage(
+				FLAG_MESSAGE_SERVER_CONNECTION_CLOSE,
+				ConnectionCloseServerMessage.class,
+				new IServerMessageHandler<SocketConnection>() {
+
+					@Override
+					public void onHandleMessage(
+							ServerConnector<SocketConnection> pServerConnector,
+							IServerMessage pServerMessage) throws IOException {
+						// TODO close connection
+					}
+				});
+
+		this.mServerConnector.registerServerMessage(FLAG_LEVEL_INFORMATION,
+				LevelinformationMessage.class,
+				new IServerMessageHandler<SocketConnection>() {
+					@Override
+					public void onHandleMessage(
+							final ServerConnector<SocketConnection> pServerConnector,
+							final IServerMessage pServerMessage)
+							throws IOException {
+						final LevelinformationMessage levelInfoMessage = (LevelinformationMessage) pServerMessage;
+						DefaultNetworkCommunication.this.communicationEstablished.communicationEstablished();
+						// TODO do something with message
+					}
+				});
 
 		this.mServerConnector.getConnection().start();
 	}
-	
+
 	// ===========================================================
 	// Inner and Anonymous Classes
 	// ===========================================================
-	
-	private class DefaultServerConnectorListener implements ISocketConnectionServerConnectorListener {
-		
+
+	private class DefaultServerConnectorListener implements
+			ISocketConnectionServerConnectorListener {
+
 		private static final String TAG = "DefaultServerConnectorListener";
-		
+
 		@Override
 		public void onStarted(final ServerConnector<SocketConnection> pConnector) {
-			Log.d(TAG,"CLIENT: Connected to server.");
+			Log.d(TAG, "CLIENT: Connected to server.");
 		}
 
 		@Override
-		public void onTerminated(final ServerConnector<SocketConnection> pConnector) {
-			Log.d(TAG,"CLIENT: Disconnected from Server...");
+		public void onTerminated(
+				final ServerConnector<SocketConnection> pConnector) {
+			Log.d(TAG, "CLIENT: Disconnected from Server...");
 			// finish connection
 		}
 	}
-	
-	private class DefaultClientConnectorListener implements ISocketConnectionClientConnectorListener {
-		
+
+	private class DefaultClientConnectorListener implements
+			ISocketConnectionClientConnectorListener {
+
 		private static final String TAG = "DefaultClientConnectorListener";
-		
+
 		@Override
 		public void onStarted(final ClientConnector<SocketConnection> pConnector) {
-			Log.d(TAG, "SERVER: Client connected: " + pConnector.getConnection().getSocket().getInetAddress().getHostAddress());
+			Log.d(TAG, "SERVER: Client connected: "
+					+ pConnector.getConnection().getSocket().getInetAddress()
+							.getHostAddress());
 		}
 
 		@Override
-		public void onTerminated(final ClientConnector<SocketConnection> pConnector) {
-			Log.d(TAG, "SERVER: Client disconnected: " + pConnector.getConnection().getSocket().getInetAddress().getHostAddress());
+		public void onTerminated(
+				final ClientConnector<SocketConnection> pConnector) {
+			Log.d(TAG, "SERVER: Client disconnected: "
+					+ pConnector.getConnection().getSocket().getInetAddress()
+							.getHostAddress());
 		}
 	}
-	
-	private class DefaultServerStateListener implements ISocketServerListener<SocketConnectionClientConnector> {
-		
+
+	private class DefaultServerStateListener implements
+			ISocketServerListener<SocketConnectionClientConnector> {
+
 		private static final String TAG = "DefaultServerStateListener";
-		
+
 		@Override
-		public void onStarted(final SocketServer<SocketConnectionClientConnector> pSocketServer) {
-			Log.d(TAG,"SERVER: Started.");
+		public void onStarted(
+				final SocketServer<SocketConnectionClientConnector> pSocketServer) {
+			Log.d(TAG, "SERVER: Started.");
 		}
 
 		@Override
-		public void onTerminated(final SocketServer<SocketConnectionClientConnector> pSocketServer) {
+		public void onTerminated(
+				final SocketServer<SocketConnectionClientConnector> pSocketServer) {
 			Log.d(TAG, "SERVER: Terminated.");
 		}
 
 		@Override
-		public void onException(final SocketServer<SocketConnectionClientConnector> pSocketServer, final Throwable pThrowable) {
+		public void onException(
+				final SocketServer<SocketConnectionClientConnector> pSocketServer,
+				final Throwable pThrowable) {
 			Debug.e(pThrowable);
 			Log.d(TAG, "SERVER: Exception: " + pThrowable);
 		}
 	}
 
 	@Override
-	public void sendLevelInformation(List<LevelInformation> informations) throws IOException{
-		if(this.mSocketServer != null){
-			final LevelinformationMessage levelInfoMessage = (LevelinformationMessage) this.mMessagePool.obtainMessage(FLAG_LEVEL_INFORMATION);
+	public void sendLevelInformation(List<LevelInformation> informations)
+			throws IOException {
+		if (this.mSocketServer != null) {
+			final LevelinformationMessage levelInfoMessage = (LevelinformationMessage) this.mMessagePool
+					.obtainMessage(FLAG_LEVEL_INFORMATION);
 			levelInfoMessage.set(informations);
-	
+
 			this.mSocketServer.sendBroadcastServerMessage(levelInfoMessage);
-	
+
 			this.mMessagePool.recycleMessage(levelInfoMessage);
 		}
+	}
+
+	public interface CommunicationEstablished {
+		public void communicationEstablished();
 	}
 }

@@ -6,21 +6,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 public class NetworkSearchingActivity extends FragmentActivity {
-	NetworkSearchingFragment fragment;
-	
+
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.singlefragment_activity);
-        
-        final FragmentTransaction transaction = getSupportFragmentManager()
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.singlefragment_activity);
+
+		final FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
-		fragment = new NetworkSearchingFragment();
+		NetworkSearchingFragment fragment = new NetworkSearchingFragment();
 		transaction.add(R.id.singlefragment, fragment);
 		transaction.commit();
-    }
-    
-    public void startSearching() {
-    	fragment.startSearching();
-    }
+	}
 }
