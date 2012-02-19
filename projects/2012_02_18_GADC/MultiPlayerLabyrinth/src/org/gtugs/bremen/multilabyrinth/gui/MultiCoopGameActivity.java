@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import org.andengine.engine.Engine;
@@ -128,7 +129,18 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	@Override
 	public EngineOptions onCreateEngineOptions() {
 		if (NetworkCommunicationFactory.get() == null) { // should be a server
-			this.networkCommunication = new DefaultNetworkCommunication();
+			WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+			DhcpInfo dhcp = wifi.getDhcpInfo();
+			byte[] quads = new byte[4];
+			for (int k = 0; k < 4; k++)
+				quads[k] = (byte) ((dhcp.ipAddress >> k * 8) & 0xFF);
+			String ownIp = "";
+			try{
+				ownIp= InetAddress.getByAddress(quads).getHostAddress();
+			}catch(UnknownHostException uhe){
+				Log.e("MultiCoopGameActivity", "UnknownHostException occured: " + uhe.getMessage());
+			}
+			this.networkCommunication = new DefaultNetworkCommunication(ownIp);
 			this.showDialog(DIALOG_CONNECTING_ID);
 		} else {
 			this.networkCommunication = NetworkCommunicationFactory.get();

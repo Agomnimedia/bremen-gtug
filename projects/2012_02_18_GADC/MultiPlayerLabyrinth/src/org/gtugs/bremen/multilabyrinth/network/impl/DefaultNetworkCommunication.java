@@ -1,6 +1,7 @@
 package org.gtugs.bremen.multilabyrinth.network.impl;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
 
@@ -23,6 +24,9 @@ import org.gtugs.bremen.multilabyrinth.network.impl.messages.ConnectionCloseServ
 import org.gtugs.bremen.multilabyrinth.network.impl.messages.LevelinformationMessage;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 
+import android.content.Context;
+import android.net.DhcpInfo;
+import android.net.wifi.WifiManager;
 import android.util.Log;
 
 public class DefaultNetworkCommunication implements NetworkCommunication {
@@ -41,9 +45,12 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 	private final String serverIp;
 
 	private final CommunicationEstablished communicationEstablished;
+	
+	private final List<LevelInformation> levelInformation = null;
 
 	public DefaultNetworkCommunication(final String ip,
-			final CommunicationEstablished communicationEstablished)
+			final CommunicationEstablished communicationEstablished,
+			final String ownIp)
 			throws Throwable {
 		
 		this.communicationEstablished = communicationEstablished;
@@ -56,7 +63,7 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 		this.mSocketServer = null;
 	}
 
-	public DefaultNetworkCommunication() {
+	public DefaultNetworkCommunication(final String ownIp) {
 		this.communicationEstablished = null;
 		this.serverIp = null;
 		this.initServer();
@@ -113,7 +120,10 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 							throws IOException {
 						final LevelinformationMessage levelInfoMessage = (LevelinformationMessage) pServerMessage;
 						DefaultNetworkCommunication.this.communicationEstablished.communicationEstablished();
-						// TODO do something with message
+						
+						for(final LevelInformation info : levelInfoMessage.get()){
+							
+						}
 					}
 				});
 

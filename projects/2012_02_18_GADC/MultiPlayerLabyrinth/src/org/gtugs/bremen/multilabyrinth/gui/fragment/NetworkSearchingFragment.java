@@ -3,7 +3,9 @@ package org.gtugs.bremen.multilabyrinth.gui.fragment;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -15,6 +17,9 @@ import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunicationFactory;
 import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication.CommunicationEstablished;
 
+import android.content.Context;
+import android.net.DhcpInfo;
+import android.net.wifi.WifiManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -70,8 +75,19 @@ public class NetworkSearchingFragment extends Fragment implements
 				.newInstance();
 		connectionWaitingDialog.show(ft, "cs_decision");
 		try {
+			WifiManager wifi = (WifiManager) this.getActivity().getSystemService(Context.WIFI_SERVICE);
+			DhcpInfo dhcp = wifi.getDhcpInfo();
+			byte[] quads = new byte[4];
+			for (int k = 0; k < 4; k++)
+				quads[k] = (byte) ((dhcp.ipAddress >> k * 8) & 0xFF);
+			String ownIp = "";
+			try{
+				ownIp= InetAddress.getByAddress(quads).getHostAddress();
+			}catch(UnknownHostException uhe){
+				Log.e("MultiCoopGameActivity", "UnknownHostException occured: " + uhe.getMessage());
+			}
 			NetworkCommunicationFactory.set(new DefaultNetworkCommunication(
-					ipaddress, (CommunicationEstablished) this));
+					ipaddress, (CommunicationEstablished) this, ownIp));
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
