@@ -8,6 +8,8 @@ import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
+import org.andengine.extension.multiplayer.protocol.client.connector.ServerConnector;
+import org.andengine.extension.multiplayer.protocol.shared.SocketConnection;
 import org.andengine.extension.physics.box2d.util.Vector2Pool;
 import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.input.sensor.acceleration.IAccelerationListener;
@@ -38,14 +40,13 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements IAc
 	private LevelCreator levelCreator = null;
 	
 	private Theme theme = null;
-			
+	
 	
 	@Override
 	public EngineOptions onCreateEngineOptions() {
 		this.showDialog(DIALOG_CHOOSE_SERVER_OR_CLIENT_ID);
 		
 		final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
-
 		return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
 	}
 	
