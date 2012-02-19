@@ -3,6 +3,8 @@ package org.gtugs.bremen.multilabyrinth.scene.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.andengine.engine.handler.physics.PhysicsHandler;
+import org.andengine.entity.modifier.ColorModifier;
 import org.andengine.entity.particle.SpriteParticleSystem;
 import org.andengine.entity.particle.emitter.PointParticleEmitter;
 import org.andengine.entity.particle.initializer.BlendFunctionParticleInitializer;
@@ -56,6 +58,12 @@ public class LevelCreatorImpl implements LevelCreator{
 	
 	private final ITextureRegion particleRegion;
 	
+	private List<Line> portals = null;
+	
+	private List<Sprite> traps = null;
+	
+	private List<Sprite> endPoints = null;
+	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
 			final Theme theme){
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
@@ -70,7 +78,7 @@ public class LevelCreatorImpl implements LevelCreator{
 	@Override
 	public Scene createScene(final LevelInformation levelInfo) {
 		final Scene scene = new Scene();
-		scene.setBackground(new Background(new Color(0, 200, 200)));
+		scene.setBackground(new Background(new Color(0.6f, 0.45f, 0.09f, 1f)));
 		final List<SceneElement> sceneElements = new ArrayList<SceneElement>(levelInfo.getElementList().size());
 		for(final Element element : levelInfo.getElementList()){
 			switch(element.getElementKind()){
@@ -119,9 +127,9 @@ public class LevelCreatorImpl implements LevelCreator{
 	}
 	
 	private void registerAllHandlers(final Scene scene, final List<SceneElement> sceneElements) {
-		final List<Line> portals = new ArrayList<Line>();
-		final List<Sprite> traps = new ArrayList<Sprite>();
-		final List<Sprite> endPoints = new ArrayList<Sprite>();
+		portals = new ArrayList<Line>();
+		traps = new ArrayList<Sprite>();
+		endPoints = new ArrayList<Sprite>();
 		final List<Sprite> balls = new ArrayList<Sprite>();
 		
 		for(final SceneElement se : sceneElements){
@@ -160,6 +168,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		final float lineWidth = 3.0f;
 		final Line portal = new Line(pX1, pY1, pX2, pY2, lineWidth, this.vertexBufferObjectManager);
 		portal.setColor(Color.BLACK);
+		
 		scene.attachChild(portal);
 		
 		// von pX1, pY1
@@ -232,13 +241,11 @@ public class LevelCreatorImpl implements LevelCreator{
 		final Sprite ball;
 		final Body body;
 		
-		
 		ball = new Sprite(pX, pY, this.ballRegion, this.vertexBufferObjectManager);
 		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(1f, 0.0f, 0.5f));
 		body.setLinearDamping(1f);
 
 		body.setFixedRotation(true);
-		
 		
 		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
 		scene.attachChild(ball);
@@ -247,7 +254,23 @@ public class LevelCreatorImpl implements LevelCreator{
 
 	@Override
 	public void addBallToScene(Scene scene, float pX, float pY) {
-		this.createBall(scene, pX, pY);
+		final Sprite ball = this.createBall(scene, pX, pY);
+		
+		if(portals != null) {
+			for(final Line portal : portals){
+				scene.registerUpdateHandler(new PortalUpdateHandler(ball, portal));
+			}
+		}
+		if(endPoints != null) {
+			for(final Sprite endPoint : endPoints){
+				scene.registerUpdateHandler(new EndPointUpdateHandler(ball, endPoint));
+			}
+		}
+		if(traps != null) {
+			for(final Sprite trap : traps){
+				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap));
+			}
+		}
 	}
 
 	@Override
