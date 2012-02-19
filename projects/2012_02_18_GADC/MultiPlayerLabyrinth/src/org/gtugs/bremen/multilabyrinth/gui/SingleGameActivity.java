@@ -20,7 +20,9 @@ import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultLevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultTheme;
 import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -41,9 +43,13 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		@Override
 		protected void onCreate(Bundle pSavedInstanceState) {
 			super.onCreate(pSavedInstanceState);
-			if(pSavedInstanceState != null){
-				this.mode = pSavedInstanceState.getInt("mode", 1);
+			
+			if(Build.VERSION.SDK_INT > 10) {
+				this.mRenderSurfaceView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 			}
+			
+			
+			this.mode = this.getIntent().getExtras().getInt(MultiPlayerLabyrinthActivity.MODE_EXTRA_NAME);
 		}
 		
 		@Override
