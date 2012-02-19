@@ -7,11 +7,13 @@
     <string name="opt_but_title">Options</string>
     <string name="about_but_title">About</string>
     
-    <string name="choose_type_text">Choose gametype:</string>
+    <string name="start_game_title">Start game</string>
+    <string name="choose_type_text">Choose a gametype&#8230;</string>
+    <string name="choose_level_text">Choose a level&#8230;</string>
     
     <string name="single_but_title">Singleplayer</string>
-    <string name="challenge_but_title">Multiplayer challenge</string>
-    <string name="coop_but_title">Multiplayer coop</string>
+    <string name="challenge_but_title">Challenge multiplayer</string>
+    <string name="coop_but_title">Coop multiplayer</string>
     
     <string name="choose_networkmode">Choose a network mode.</string>
     <string name="start_server">start a new server</string>
