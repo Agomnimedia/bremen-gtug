@@ -53,6 +53,10 @@ If you use Eclipse itself as SVN client type in your username and password while
 
 In case you need the rights to commit code you'll have to ask [https://plus.google.com/117981764820200252568/ +Matthias Friedrich] or [https://plus.google.com/105644643668348314832/ +Steve Liedtke]!
 
+== Set project.properties ==
+
+After you checked out the project, you need to change the project_Tortoise.properties or project_Eclipse.properties (depends on what svn client you use) to project.properties
+
 == Import projects to eclipse ==
 
 The last step will be to import the existing projects to your eclipse. 
