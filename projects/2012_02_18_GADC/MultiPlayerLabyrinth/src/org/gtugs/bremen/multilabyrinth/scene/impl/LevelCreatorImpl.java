@@ -3,6 +3,7 @@ package org.gtugs.bremen.multilabyrinth.scene.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.andengine.audio.sound.Sound;
 import org.andengine.engine.handler.physics.PhysicsHandler;
 import org.andengine.entity.modifier.ColorModifier;
 import org.andengine.entity.particle.SpriteParticleSystem;
@@ -34,6 +35,7 @@ import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.EndPointUpdateHandler;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.PortalUpdateHandler;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.TrapUpdateHandler;
+import org.gtugs.bremen.multilabyrinth.scene.impl.handler.WallUpdateHandler;
 
 import android.hardware.SensorManager;
 import android.opengl.GLES20;
@@ -63,6 +65,10 @@ public class LevelCreatorImpl implements LevelCreator{
 	private List<Sprite> traps = null;
 	
 	private List<Sprite> endPoints = null;
+
+	private List<Rectangle> walls = null;
+
+	private Sound hitWallSound;
 	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
 			final Theme theme){
@@ -73,6 +79,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		this.startRegion = theme.getStartRegion();
 		this.endRegion = theme.getEndRegion();
 		this.particleRegion = theme.getParticleRegion();
+		this.hitWallSound = theme.getHitWallSound();
 	}
 	
 	@Override
@@ -130,6 +137,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		portals = new ArrayList<Line>();
 		traps = new ArrayList<Sprite>();
 		endPoints = new ArrayList<Sprite>();
+		walls = new ArrayList<Rectangle>();
 		final List<Sprite> balls = new ArrayList<Sprite>();
 		
 		for(final SceneElement se : sceneElements){
@@ -145,6 +153,9 @@ public class LevelCreatorImpl implements LevelCreator{
 				break;
 			case BALL:
 				balls.add((Sprite) se.getShape());
+				break;
+			case WALL:
+				walls.add((Rectangle) se.getShape());
 				break;
 			default:
 					// do nothin
@@ -269,6 +280,11 @@ public class LevelCreatorImpl implements LevelCreator{
 		if(traps != null) {
 			for(final Sprite trap : traps){
 				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap));
+			}
+		}
+		if(walls != null) {
+			for(final Rectangle wall : walls){
+				scene.registerUpdateHandler(new WallUpdateHandler(ball, wall, this.hitWallSound));
 			}
 		}
 	}

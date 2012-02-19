@@ -49,8 +49,9 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		@Override
 		public EngineOptions onCreateEngineOptions() {
 			final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
-
-			return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
+			EngineOptions options = new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
+			options.getAudioOptions().setNeedsSound(true);
+			return options;
 		}
 		
 		@Override
@@ -60,7 +61,7 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 
 		@Override
 		protected void onCreateResources() {
-			this.theme = new DefaultTheme(this, this.getTextureManager());
+			this.theme = new DefaultTheme(this, this.getTextureManager(), this.getSoundManager());
 			this.theme.loadTheme(this.mEngine);
 		}
 

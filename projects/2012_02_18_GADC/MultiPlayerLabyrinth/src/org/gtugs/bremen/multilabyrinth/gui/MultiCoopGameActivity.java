@@ -136,7 +136,7 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 
 	@Override
 	protected void onCreateResources() {
-		this.theme = new DefaultTheme(this, this.getTextureManager());
+		this.theme = new DefaultTheme(this, this.getTextureManager(), this.getSoundManager());
 		this.theme.loadTheme(this.mEngine);
 	}
 
