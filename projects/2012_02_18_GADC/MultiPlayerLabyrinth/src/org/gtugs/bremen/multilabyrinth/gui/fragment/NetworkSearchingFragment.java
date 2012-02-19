@@ -18,9 +18,9 @@ import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication.CommunicationEstablished;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -71,20 +71,21 @@ public class NetworkSearchingFragment extends Fragment implements
 
 	private void initConnection(String ipaddress) {
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
-		connectionWaitingDialog = ConnectionWaitingDialog
-				.newInstance();
+		connectionWaitingDialog = ConnectionWaitingDialog.newInstance();
 		connectionWaitingDialog.show(ft, "cs_decision");
 		try {
-			WifiManager wifi = (WifiManager) this.getActivity().getSystemService(Context.WIFI_SERVICE);
+			WifiManager wifi = (WifiManager) this.getActivity()
+					.getSystemService(Context.WIFI_SERVICE);
 			DhcpInfo dhcp = wifi.getDhcpInfo();
 			byte[] quads = new byte[4];
 			for (int k = 0; k < 4; k++)
 				quads[k] = (byte) ((dhcp.ipAddress >> k * 8) & 0xFF);
 			String ownIp = "";
-			try{
-				ownIp= InetAddress.getByAddress(quads).getHostAddress();
-			}catch(UnknownHostException uhe){
-				Log.e("MultiCoopGameActivity", "UnknownHostException occured: " + uhe.getMessage());
+			try {
+				ownIp = InetAddress.getByAddress(quads).getHostAddress();
+			} catch (UnknownHostException uhe) {
+				Log.e("MultiCoopGameActivity", "UnknownHostException occured: "
+						+ uhe.getMessage());
 			}
 			NetworkCommunicationFactory.set(new DefaultNetworkCommunication(
 					ipaddress, (CommunicationEstablished) this, ownIp));
@@ -190,6 +191,8 @@ public class NetworkSearchingFragment extends Fragment implements
 	@Override
 	public void communicationEstablished() {
 		connectionWaitingDialog.dismiss();
-		Intent intent = new Intent(getActivity().getApplicationContext(), MultiCoopGameActivity.class);
+		Intent intent = new Intent(getActivity().getApplicationContext(),
+				MultiCoopGameActivity.class);
+		startActivity(intent);
 	}
 }
