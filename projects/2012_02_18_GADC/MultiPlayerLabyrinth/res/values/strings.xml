@@ -17,6 +17,7 @@
     
     <string name="located_servers">Following servers are located on your network:</string>
     <string name="waiting">waiting&#160;&#8230;</string>
+    <string name="connection_establish">establish connection&#160;&#8230;</string>
     <string name="connection_waiting">waiting for enough connected clients&#160;&#8230;</string>
     <string name="start_game">start game</string>
     <string name="cancel">cancel</string>

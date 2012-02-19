@@ -8,15 +8,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.gtugs.bremen.multilabyrinth.gui.MultiCoopGameActivity;
 import org.gtugs.bremen.multilabyrinth.gui.R;
-import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
+import org.gtugs.bremen.multilabyrinth.gui.dialog.ConnectionWaitingDialog;
 import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunicationFactory;
 import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.network.impl.DefaultNetworkCommunication.CommunicationEstablished;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +35,7 @@ public class NetworkSearchingFragment extends Fragment implements
 	private UdpReceiving udpReceiving;
 	private TreeMap<String, Long> serverList = new TreeMap<String, Long>();
 	private ArrayAdapter<String> serverListAdapter;
+	private ConnectionWaitingDialog connectionWaitingDialog;
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
@@ -61,6 +65,10 @@ public class NetworkSearchingFragment extends Fragment implements
 	}
 
 	private void initConnection(String ipaddress) {
+		FragmentTransaction ft = getFragmentManager().beginTransaction();
+		connectionWaitingDialog = ConnectionWaitingDialog
+				.newInstance();
+		connectionWaitingDialog.show(ft, "cs_decision");
 		try {
 			NetworkCommunicationFactory.set(new DefaultNetworkCommunication(
 					ipaddress, (CommunicationEstablished) this));
@@ -165,6 +173,7 @@ public class NetworkSearchingFragment extends Fragment implements
 
 	@Override
 	public void communicationEstablished() {
-		// TODO Auto-generated method stub
+		connectionWaitingDialog.dismiss();
+		Intent intent = new Intent(getActivity().getApplicationContext(), MultiCoopGameActivity.class);
 	}
 }

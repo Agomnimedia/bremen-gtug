@@ -13,7 +13,6 @@ import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.EngineOptions.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
-import org.andengine.extension.physics.box2d.util.Vector2Pool;
 import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.input.sensor.acceleration.IAccelerationListener;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
@@ -34,13 +33,13 @@ import android.content.Intent;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.badlogic.gdx.math.Vector2;
 
 public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 		IAccelerationListener {
@@ -59,11 +58,11 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	private Theme theme = null;
 
 	private Dialog connectingDialog;
-	
+
 	private UdpSending udpSending;
-	
+
 	private NetworkCommunication networkCommunication = null;
-	
+
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		Dialog dialog;
@@ -81,14 +80,17 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	private Dialog createConnectingDialog() {
 		connectingDialog = new Dialog(this);
 		connectingDialog.setContentView(R.layout.connection_waiting);
+		// TODO setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE)
 		connectingDialog.setTitle(R.string.waiting);
 		connectingDialog.setCancelable(false);
-		Button butCancel = (Button) connectingDialog.findViewById(R.id.buttonCancel);
-		Button butStart = (Button) connectingDialog.findViewById(R.id.buttonStart);
+		Button butCancel = (Button) connectingDialog
+				.findViewById(R.id.buttonCancel);
+		Button butStart = (Button) connectingDialog
+				.findViewById(R.id.buttonStart);
 
 		udpSending = new UdpSending();
 		udpSending.execute();
-		
+
 		butCancel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				udpSending.cancel(true);
@@ -105,22 +107,30 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 				udpSending.cancel(true);
 				connectingDialog.dismiss();
 				// TODO start game
-				Toast toast = Toast.makeText(getApplicationContext(), "game is starting ...",
-						Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"game is starting ...", Toast.LENGTH_SHORT);
 				toast.show();
 			}
 		});
-		
+
 		return connectingDialog;
 	}
-	
+
+	@Override
+	protected void onCreate(Bundle pSavedInstanceState) {
+		super.onCreate(pSavedInstanceState);
+		if (Build.VERSION.SDK_INT > 10) {
+			mRenderSurfaceView
+					.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+		}
+	}
+
 	@Override
 	public EngineOptions onCreateEngineOptions() {
-		if(NetworkCommunicationFactory.get() == null) { // should be a server
+		if (NetworkCommunicationFactory.get() == null) { // should be a server
 			this.networkCommunication = new DefaultNetworkCommunication();
 			this.showDialog(DIALOG_CONNECTING_ID);
-		}
-		else {
+		} else {
 			this.networkCommunication = NetworkCommunicationFactory.get();
 		}
 
@@ -136,7 +146,8 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 
 	@Override
 	protected void onCreateResources() {
-		this.theme = new DefaultTheme(this, this.getTextureManager(), this.getSoundManager());
+		this.theme = new DefaultTheme(this, this.getTextureManager(),
+				this.getSoundManager());
 		this.theme.loadTheme(this.mEngine);
 	}
 
@@ -156,7 +167,8 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	protected Scene onCreateScene() {
 		this.levelGenerator = new DefaultLevelGenerator(1);
 		this.levelCreator = new LevelCreatorImpl(
-				this.getVertexBufferObjectManager(), this.theme);
+				this.getVertexBufferObjectManager(), this.theme,
+				this.networkCommunication);
 		// get information from levelGenerator
 		final List<LevelInformation> informations = this.levelGenerator
 				.getLevelinformation();
@@ -166,7 +178,7 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 		Scene scene = this.levelCreator.createScene(informations.get(0));
 		// TODO send other levelinformations to components
 
-		//this.levelCreator.addBallToScene(scene, 100, 100);
+		// this.levelCreator.addBallToScene(scene, 100, 100);
 
 		return scene;
 	}
