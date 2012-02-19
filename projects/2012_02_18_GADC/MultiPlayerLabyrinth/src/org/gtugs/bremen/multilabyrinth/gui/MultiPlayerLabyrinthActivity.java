@@ -15,6 +15,9 @@ import org.gtugs.bremen.multilabyrinth.gui.fragment.NetworkSearchingFragment;
  * @author Bremen GTUG
  */
 public class MultiPlayerLabyrinthActivity extends FragmentActivity {
+	
+	public static final String MODE_EXTRA_NAME = "mode";
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(final Bundle savedInstanceState) {

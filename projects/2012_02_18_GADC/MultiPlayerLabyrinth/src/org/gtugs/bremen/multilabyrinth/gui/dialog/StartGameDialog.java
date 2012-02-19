@@ -4,6 +4,7 @@
 package org.gtugs.bremen.multilabyrinth.gui.dialog;
 
 import org.gtugs.bremen.multilabyrinth.gui.MultiCoopGameActivity;
+import org.gtugs.bremen.multilabyrinth.gui.MultiPlayerLabyrinthActivity;
 import org.gtugs.bremen.multilabyrinth.gui.R;
 import org.gtugs.bremen.multilabyrinth.gui.SingleGameActivity;
 import org.gtugs.bremen.multilabyrinth.menu.GameMode;
@@ -77,9 +78,15 @@ public class StartGameDialog extends DialogFragment {
 				int position = typeSpinner.getSelectedItemPosition();
 				
 				switch(position) {
-					case 0: startGame(GameMode.SINGLE); break;
-					case 1: startGame(GameMode.MULTI_CHALLENGE); break;
-					case 2: startGame(GameMode.MULTI_COOP); break;
+					case 0:
+						startGame(GameMode.SINGLE, levelSpinner.getSelectedItemPosition()+1);
+						break;
+					case 1:  
+						startGame(GameMode.MULTI_CHALLENGE, levelSpinner.getSelectedItemPosition()+11);
+						break;
+					case 2:
+						startGame(GameMode.MULTI_CHALLENGE, levelSpinner.getSelectedItemPosition()+11);
+						break;
 					default:
 				}
 			}
@@ -94,15 +101,13 @@ public class StartGameDialog extends DialogFragment {
 			}
 		});
 	    
-	    
-	    
-		
 		return viewGroup; 
 	}
 	
-	private void startGame(final GameMode mode){
+	private void startGame(final GameMode mode, final int level){
     	final Intent intent = new Intent();
-    	switch(mode){
+    	intent.putExtra(MultiPlayerLabyrinthActivity.MODE_EXTRA_NAME, level);
+    	switch(mode) {
     	case SINGLE:
     		intent.setClass(this.getActivity().getApplicationContext(), SingleGameActivity.class);
     		// TODO not implemented yet
