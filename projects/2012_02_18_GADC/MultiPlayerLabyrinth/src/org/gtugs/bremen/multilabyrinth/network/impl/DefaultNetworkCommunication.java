@@ -206,4 +206,17 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 	public interface CommunicationEstablished {
 		public void communicationEstablished();
 	}
+
+	@Override
+	public void sendPortalCollision(String id, float velocity, float entry,
+			float direction) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sendEndPointCollision() {
+		// TODO Auto-generated method stub
+		
+	}
 }
