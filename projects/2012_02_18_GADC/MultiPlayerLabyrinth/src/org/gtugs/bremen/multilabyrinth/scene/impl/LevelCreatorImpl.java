@@ -30,7 +30,7 @@ import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
-import org.gtugs.bremen.multilabyrinth.scene.api.RemovePhysicsHandler;
+import org.gtugs.bremen.multilabyrinth.scene.api.RemoveBallHandler;
 import org.gtugs.bremen.multilabyrinth.scene.api.Theme;
 import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.EndPointUpdateHandler;
@@ -39,12 +39,13 @@ import org.gtugs.bremen.multilabyrinth.scene.impl.handler.TrapUpdateHandler;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.WallUpdateHandler;
 
 import android.opengl.GLES20;
+import android.os.AsyncTask;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
-public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
+public class LevelCreatorImpl implements LevelCreator, RemoveBallHandler {
 
 	private final VertexBufferObjectManager vertexBufferObjectManager;
 	
@@ -77,6 +78,10 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 	private Sound finishBallSound;
 	
 	private NetworkCommunication networkCommunication;
+
+	private float[] resetPoints;
+	
+	private Scene scene;
 	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
 			final Theme theme, final NetworkCommunication networkCommunication){
@@ -95,7 +100,8 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 	
 	@Override
 	public Scene createScene(final LevelInformation levelInfo) {
-		final Scene scene = new Scene();
+		scene = new Scene();
+		resetPoints = levelInfo.getResetPoint();
 		scene.setBackground(new Background(new Color(0.6f, 0.45f, 0.09f, 1f)));
 		final List<SceneElement> sceneElements = new ArrayList<SceneElement>(levelInfo.getElementList().size());
 		for(final Element element : levelInfo.getElementList()){
@@ -307,11 +313,20 @@ public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 	}
 
 	@Override
-	public void removePhysics(Entity entity) {
+	public void removeBall(Entity entity, boolean addNewBall) {
 		PhysicsConnector connector = connectorHashtable.get(entity);
 		if(connector != null) {
 			this.physicsWorld.unregisterPhysicsConnector(connector);
 			connectorHashtable.remove(connectorHashtable);
+			
+			if(addNewBall) {
+				// TODO: Nach 2 Sekunden Physik wieder hinzufügen und Ball auf Reset Point setzen
+				// TODO: Keinen neuen Ball hinzufügen
+				addBallToScene(scene, resetPoints[0], resetPoints[1]);
+			}
+			if(connectorHashtable.isEmpty()) {
+				// TODO: Spiel zuende!
+			}
 		}
 	}
 	
