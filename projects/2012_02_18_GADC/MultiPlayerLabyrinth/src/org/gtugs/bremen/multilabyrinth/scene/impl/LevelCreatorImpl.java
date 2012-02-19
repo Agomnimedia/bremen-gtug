@@ -21,6 +21,7 @@ import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
+import org.gtugs.bremen.multilabyrinth.scene.api.Theme;
 import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 
 import android.hardware.SensorManager;
@@ -28,7 +29,6 @@ import android.opengl.GLES20;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.MassData;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
 public class LevelCreatorImpl implements LevelCreator{
@@ -48,15 +48,14 @@ public class LevelCreatorImpl implements LevelCreator{
 	private final ITextureRegion particleRegion;
 	
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
-			final ITextureRegion ballRegion, final ITextureRegion trapRegion, final ITextureRegion startRegion,
-			final ITextureRegion endRegion, final ITextureRegion particleRegion){
+			final Theme theme){
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
 		this.physicsWorld = new PhysicsWorld(new Vector2(0, SensorManager.GRAVITY_EARTH), false);
-		this.ballRegion = ballRegion;
-		this.trapRegion = trapRegion;
-		this.startRegion = startRegion;
-		this.endRegion = endRegion;
-		this.particleRegion = particleRegion;
+		this.ballRegion = theme.getBallRegion();
+		this.trapRegion = theme.getTrapRegion();
+		this.startRegion = theme.getStartRegion();
+		this.endRegion = theme.getEndRegion();
+		this.particleRegion = theme.getParticleRegion();
 	}
 	
 	@Override

@@ -11,15 +11,13 @@ import org.andengine.entity.scene.Scene;
 import org.andengine.extension.physics.box2d.util.Vector2Pool;
 import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.input.sensor.acceleration.IAccelerationListener;
-import org.andengine.opengl.texture.TextureOptions;
-import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
-import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
-import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelGenerator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
+import org.gtugs.bremen.multilabyrinth.scene.api.Theme;
 import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultLevelGenerator;
+import org.gtugs.bremen.multilabyrinth.scene.impl.DefaultTheme;
 import org.gtugs.bremen.multilabyrinth.scene.impl.LevelCreatorImpl;
 
 import android.os.Bundle;
@@ -36,43 +34,10 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		
 		private LevelCreator levelCreator = null;
 		
-		private BitmapTextureAtlas bitmapTextureAtlas;
-
-		private ITextureRegion ballRegion;
-		
-		private ITextureRegion trapRegion;
-		
-		private ITextureRegion startRegion;
-		
-		private ITextureRegion endRegion;
-		
-		private ITextureRegion particleRegion;
-		
+		private Theme theme;
+				
 		private int mode = 1;
 
-
-		// LIFECYCLE
-		//	launch game
-		//	1) onCreateEngine()
-		//  onCreate
-		//	2) onResume()
-		//	3) onCreateResources()
-		//	4) onCreateScene()
-		//	5) onLoadComplete() [??]
-		//	6) onGameResumed()
-		//
-		//
-		//	during game, go to homescreen
-		//	1) onPause()
-		//
-		//	return to game
-		//	1) onResume()
-		//	2) onGameResumed()
-		//
-		//	exit game with this.finish()
-		//	1) onPause()
-		//	2) onDestroy()
-		
 		@Override
 		protected void onCreate(Bundle pSavedInstanceState) {
 			super.onCreate(pSavedInstanceState);
@@ -95,26 +60,14 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 
 		@Override
 		protected void onCreateResources() {
-			/* Textures. */
-			this.bitmapTextureAtlas = new BitmapTextureAtlas(this.getTextureManager(), 64, 96, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
-			BitmapTextureAtlasTextureRegionFactory.setAssetBasePath("gfx/");
-
-			/* TextureRegions. */
-			this.ballRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "ball.png", 0, 0);
-			this.trapRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "trap.png", 32, 0);
-			this.startRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "start.png", 0, 32);
-			this.endRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "end.png", 0, 64);
-			this.particleRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.bitmapTextureAtlas, this, "particle_fire.png", 32, 64);
-			
-			// load atlas
-			this.mEngine.getTextureManager().loadTexture(this.bitmapTextureAtlas);
+			this.theme = new DefaultTheme(this, this.getTextureManager());
+			this.theme.loadTheme(this.mEngine);
 		}
 
 		@Override
 		protected Scene onCreateScene() {
 			this.levelGenerator = new DefaultLevelGenerator(this.mode);
-			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.ballRegion, 
-					this.trapRegion, this.startRegion, this.endRegion, this.particleRegion);
+			this.levelCreator = new LevelCreatorImpl(this.getVertexBufferObjectManager(), this.theme);
 			// get information from levelGenerator
 			final List<LevelInformation> informations = this.levelGenerator.getLevelinformation();
 			
