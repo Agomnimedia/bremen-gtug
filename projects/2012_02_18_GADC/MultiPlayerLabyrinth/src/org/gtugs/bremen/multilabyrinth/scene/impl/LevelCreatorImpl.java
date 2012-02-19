@@ -1,9 +1,11 @@
 package org.gtugs.bremen.multilabyrinth.scene.impl;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import org.andengine.audio.sound.Sound;
+import org.andengine.entity.Entity;
 import org.andengine.entity.particle.SpriteParticleSystem;
 import org.andengine.entity.particle.emitter.PointParticleEmitter;
 import org.andengine.entity.particle.initializer.BlendFunctionParticleInitializer;
@@ -28,6 +30,7 @@ import org.andengine.util.color.Color;
 import org.gtugs.bremen.multilabyrinth.network.api.NetworkCommunication;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelCreator;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
+import org.gtugs.bremen.multilabyrinth.scene.api.RemovePhysicsHandler;
 import org.gtugs.bremen.multilabyrinth.scene.api.Theme;
 import org.gtugs.bremen.multilabyrinth.scene.elements.Element;
 import org.gtugs.bremen.multilabyrinth.scene.impl.handler.EndPointUpdateHandler;
@@ -41,7 +44,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
-public class LevelCreatorImpl implements LevelCreator{
+public class LevelCreatorImpl implements LevelCreator, RemovePhysicsHandler {
 
 	private final VertexBufferObjectManager vertexBufferObjectManager;
 	
@@ -64,6 +67,8 @@ public class LevelCreatorImpl implements LevelCreator{
 	private List<Sprite> endPoints = null;
 
 	private List<Rectangle> walls = null;
+	
+	private Hashtable<Entity, PhysicsConnector> connectorHashtable = new Hashtable<Entity, PhysicsConnector>();
 
 	private Sound hitWallSound;
 	
@@ -253,8 +258,10 @@ public class LevelCreatorImpl implements LevelCreator{
 
 		body.setFixedRotation(true);
 		
-		this.physicsWorld.registerPhysicsConnector(new PhysicsConnector(ball, body, true, true));
+		PhysicsConnector physicsConnector = new PhysicsConnector(ball, body, true, true);
+		this.physicsWorld.registerPhysicsConnector(physicsConnector);
 		scene.attachChild(ball);
+		connectorHashtable.put(ball, physicsConnector);
 		return ball;
 	}
 
@@ -279,7 +286,7 @@ public class LevelCreatorImpl implements LevelCreator{
 		}
 		if(traps != null) {
 			for(final Sprite trap : traps){
-				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap, this.trapSound));
+				scene.registerUpdateHandler(new TrapUpdateHandler(ball, trap, this.trapSound, this));
 			}
 		}
 		if(walls != null) {
@@ -294,6 +301,17 @@ public class LevelCreatorImpl implements LevelCreator{
 		final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX()*10, pAccelerationData.getY()*10);
 		this.physicsWorld.setGravity(gravity);
 		Vector2Pool.recycle(gravity);
+	}
+
+	@Override
+	public void removePhysics(Entity entity) {
+		PhysicsConnector connector = connectorHashtable.get(entity);
+		if(connector != null) {
+			this.physicsWorld.unregisterPhysicsConnector(connector);
+			connectorHashtable.remove(connectorHashtable);
+			
+			
+		}
 	}
 	
 	

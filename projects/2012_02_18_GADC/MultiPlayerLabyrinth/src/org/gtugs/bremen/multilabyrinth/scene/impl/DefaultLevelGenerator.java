@@ -78,6 +78,8 @@ public class DefaultLevelGenerator implements LevelGenerator{
 		elementList.add(new WallElement(5, 480 - 25, 720-25, 20));
 		// start point 
 		elementList.add(new StartPointElement(80, 80));
+		// trap 2
+		elementList.add(new TrapElement(235, 245));
 		// end point
 		elementList.add(new EndPointElement(720-80, 480-80));
 		// portal 1
