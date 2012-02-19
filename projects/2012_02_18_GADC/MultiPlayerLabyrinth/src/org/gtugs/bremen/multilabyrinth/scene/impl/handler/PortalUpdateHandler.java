@@ -28,9 +28,6 @@ public class PortalUpdateHandler implements IUpdateHandler{
 		} else {
 			portal.setColor(0, 1, 0);
 		}
-		
-		System.out.println("HUHU 3");
-		Log.d("lol", "HUHU 3 - lol");
 	}
 
 	@Override
