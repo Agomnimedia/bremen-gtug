@@ -1,7 +1,6 @@
 package org.gtugs.bremen.multilabyrinth.network.impl;
 
 import java.io.IOException;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
 
@@ -24,9 +23,6 @@ import org.gtugs.bremen.multilabyrinth.network.impl.messages.ConnectionCloseServ
 import org.gtugs.bremen.multilabyrinth.network.impl.messages.LevelinformationMessage;
 import org.gtugs.bremen.multilabyrinth.scene.api.LevelInformation;
 
-import android.content.Context;
-import android.net.DhcpInfo;
-import android.net.wifi.WifiManager;
 import android.util.Log;
 
 public class DefaultNetworkCommunication implements NetworkCommunication {
@@ -36,6 +32,7 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 	private static final short FLAG_LEVEL_INFORMATION = 1;
 
 	private SocketServer<SocketConnectionClientConnector> mSocketServer;
+	
 	private ServerConnector<SocketConnection> mServerConnector;
 
 	private final MessagePool<IMessage> mMessagePool = new MessagePool<IMessage>();
@@ -46,13 +43,17 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 
 	private final CommunicationEstablished communicationEstablished;
 	
-	private final List<LevelInformation> levelInformation = null;
+	private LevelInformation levelInformation = null;
+	
+	private List<LevelInformation> levelInformationsForServer = null;
+	
+	private final String ownIp;
 
 	public DefaultNetworkCommunication(final String ip,
 			final CommunicationEstablished communicationEstablished,
 			final String ownIp)
 			throws Throwable {
-		
+		this.ownIp = ownIp;
 		this.communicationEstablished = communicationEstablished;
 
 		this.serverIp = ip;
@@ -64,10 +65,26 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 	}
 
 	public DefaultNetworkCommunication(final String ownIp) {
+		this.ownIp = ownIp;
 		this.communicationEstablished = null;
 		this.serverIp = null;
+		this.initMessagePool();
 		this.initServer();
 		this.mServerConnector = null;
+	}
+	
+	/**
+	 * @return the levelInformation
+	 */
+	public LevelInformation getLevelInformation() {
+		return levelInformation;
+	}
+
+	/**
+	 * @param levelInformation the levelInformation to set
+	 */
+	public void setLevelInformation(LevelInformation levelInformation) {
+		this.levelInformation = levelInformation;
 	}
 
 	private void initMessagePool() {
@@ -122,7 +139,10 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 						DefaultNetworkCommunication.this.communicationEstablished.communicationEstablished();
 						
 						for(final LevelInformation info : levelInfoMessage.get()){
-							
+							if(info.getIpAddress().equals(DefaultNetworkCommunication.this.ownIp)){
+								DefaultNetworkCommunication.this.setLevelInformation(info);
+								break;
+							}
 						}
 					}
 				});
@@ -162,6 +182,25 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 			Log.d(TAG, "SERVER: Client connected: "
 					+ pConnector.getConnection().getSocket().getInetAddress()
 							.getHostAddress());
+			
+			for(LevelInformation info : DefaultNetworkCommunication.this.levelInformationsForServer){
+				if(info.getIpAddress() == null || info.getIpAddress().isEmpty()){
+					info.setIpAddress(pConnector.getConnection().getSocket().getInetAddress()
+							.getHostAddress());
+				}
+			}
+			final LevelinformationMessage levelInfoMessage = (LevelinformationMessage) DefaultNetworkCommunication.this.mMessagePool
+					.obtainMessage(FLAG_LEVEL_INFORMATION);
+			
+			levelInfoMessage.set(DefaultNetworkCommunication.this.levelInformationsForServer);
+
+			try {
+				DefaultNetworkCommunication.this.mSocketServer.sendBroadcastServerMessage(levelInfoMessage);
+			} catch (IOException e) {
+				Log.e("DefaultClientConnectorListener", "IOException occured: "+e.getMessage());
+			}
+
+			DefaultNetworkCommunication.this.mMessagePool.recycleMessage(levelInfoMessage);
 		}
 
 		@Override
@@ -170,6 +209,8 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 			Log.d(TAG, "SERVER: Client disconnected: "
 					+ pConnector.getConnection().getSocket().getInetAddress()
 							.getHostAddress());
+			// TODO don't do anything when game hasn't started yet
+			// TODO stop game in case game started allready
 		}
 	}
 
@@ -203,8 +244,10 @@ public class DefaultNetworkCommunication implements NetworkCommunication {
 	public void sendLevelInformation(List<LevelInformation> informations)
 			throws IOException {
 		if (this.mSocketServer != null) {
+			this.levelInformationsForServer = informations;
 			final LevelinformationMessage levelInfoMessage = (LevelinformationMessage) this.mMessagePool
 					.obtainMessage(FLAG_LEVEL_INFORMATION);
+			
 			levelInfoMessage.set(informations);
 
 			this.mSocketServer.sendBroadcastServerMessage(levelInfoMessage);

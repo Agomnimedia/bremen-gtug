@@ -18,6 +18,8 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class LevelInformation {
+	
+	private String ipAddress = null;
 
 	private final List<Element> elementList;
 	
@@ -36,6 +38,8 @@ public class LevelInformation {
 			for(int i=0; i<array.length(); i++){
 				this.addElement(array.getJSONObject(i));
 			}
+			if(jsonObject.has("ipAddress"))
+				this.ipAddress = jsonObject.getString("ipAddress");
 			this.resetPoint[0] = Float.parseFloat((String)jsonObject.get("resetPoint0"));
 			this.resetPoint[1] = Float.parseFloat((String)jsonObject.get("resetPoint1"));
 		} catch (JSONException e) {
@@ -95,6 +99,20 @@ public class LevelInformation {
 		this.resetPoint = resetPoint;
 	}
 	
+	/**
+	 * @return the ipAddress
+	 */
+	public String getIpAddress() {
+		return ipAddress;
+	}
+
+	/**
+	 * @param ipAddress the ipAddress to set
+	 */
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
 	public JSONObject toJSON(){
 		final JSONObject json = new JSONObject();
 		final JSONArray array = new JSONArray();
@@ -103,6 +121,7 @@ public class LevelInformation {
 		}
 		try{
 		json.put("elementList", array);
+		json.put("ipAddress", this.ipAddress);
 		json.put("resetPoint0", String.valueOf(resetPoint[0]));
 		json.put("resetPoint1", String.valueOf(resetPoint[1]));
 		}catch(JSONException je){

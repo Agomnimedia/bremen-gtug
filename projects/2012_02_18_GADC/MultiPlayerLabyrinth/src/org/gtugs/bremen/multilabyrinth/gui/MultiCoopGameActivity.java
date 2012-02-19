@@ -63,6 +63,8 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	private UdpSending udpSending;
 
 	private NetworkCommunication networkCommunication = null;
+	
+	private int mode = 1;
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -120,10 +122,12 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	@Override
 	protected void onCreate(Bundle pSavedInstanceState) {
 		super.onCreate(pSavedInstanceState);
+		
 		if (Build.VERSION.SDK_INT > 10) {
 			mRenderSurfaceView
 					.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		}
+		this.mode = this.getIntent().getExtras().getInt(MultiPlayerLabyrinthActivity.MODE_EXTRA_NAME);
 	}
 
 	@Override
@@ -147,8 +151,9 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 		}
 
 		final Camera camera = new Camera(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT);
-		return new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED,
-				new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
+		EngineOptions options = new EngineOptions(true, ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(CAMERA_WIDTH, CAMERA_HEIGHT), camera);
+		options.getAudioOptions().setNeedsSound(true);
+		return options;
 	}
 
 	@Override
@@ -177,7 +182,7 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 
 	@Override
 	protected Scene onCreateScene() {
-		this.levelGenerator = new DefaultLevelGenerator(1);
+		this.levelGenerator = new DefaultLevelGenerator(this.mode);
 		this.levelCreator = new LevelCreatorImpl(
 				this.getVertexBufferObjectManager(), this.theme,
 				this.networkCommunication);
@@ -188,8 +193,12 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 		informations.add(informations.get(0));
 
 		Scene scene = this.levelCreator.createScene(informations.get(0));
-		// TODO send other levelinformations to components
-
+		// send other levelinformations to components
+		try {
+			this.networkCommunication.sendLevelInformation(informations);
+		} catch (IOException e) {
+			Log.e("MultiCoopGameActivity", e.getMessage());
+		}
 		// this.levelCreator.addBallToScene(scene, 100, 100);
 
 		return scene;
