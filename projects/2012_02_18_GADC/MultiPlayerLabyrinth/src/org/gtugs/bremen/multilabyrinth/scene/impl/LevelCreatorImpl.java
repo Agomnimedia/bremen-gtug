@@ -20,6 +20,8 @@ import org.andengine.entity.sprite.Sprite;
 import org.andengine.extension.physics.box2d.PhysicsConnector;
 import org.andengine.extension.physics.box2d.PhysicsFactory;
 import org.andengine.extension.physics.box2d.PhysicsWorld;
+import org.andengine.extension.physics.box2d.util.Vector2Pool;
+import org.andengine.input.sensor.acceleration.AccelerationData;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.vbo.VertexBufferObjectManager;
 import org.andengine.util.color.Color;
@@ -57,7 +59,7 @@ public class LevelCreatorImpl implements LevelCreator{
 	public LevelCreatorImpl(final VertexBufferObjectManager vertexBufferObjectManager, 
 			final Theme theme){
 		this.vertexBufferObjectManager = vertexBufferObjectManager;
-		this.physicsWorld = new PhysicsWorld(new Vector2(0, SensorManager.GRAVITY_EARTH), false);
+		this.physicsWorld = new PhysicsWorld(new Vector2(0, 0), false);
 		this.ballRegion = theme.getBallRegion();
 		this.trapRegion = theme.getTrapRegion();
 		this.startRegion = theme.getStartRegion();
@@ -232,7 +234,9 @@ public class LevelCreatorImpl implements LevelCreator{
 		
 		
 		ball = new Sprite(pX, pY, this.ballRegion, this.vertexBufferObjectManager);
-		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(3f, 0.5f, 3f));
+		body = PhysicsFactory.createCircleBody(this.physicsWorld, ball, BodyType.DynamicBody, PhysicsFactory.createFixtureDef(1f, 0.0f, 0.5f));
+		body.setLinearDamping(1f);
+
 		body.setFixedRotation(true);
 		
 		
@@ -247,8 +251,10 @@ public class LevelCreatorImpl implements LevelCreator{
 	}
 
 	@Override
-	public void setGravity(final Vector2 gravity) {
+	public void setAccelerationData(final AccelerationData pAccelerationData) {
+		final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX()*10, pAccelerationData.getY()*10);
 		this.physicsWorld.setGravity(gravity);
+		Vector2Pool.recycle(gravity);
 	}
 	
 	

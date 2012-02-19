@@ -1,6 +1,7 @@
 package org.gtugs.bremen.multilabyrinth.scene.api;
 
 import org.andengine.entity.scene.Scene;
+import org.andengine.input.sensor.acceleration.AccelerationData;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -10,5 +11,5 @@ public interface LevelCreator {
 	
 	public void addBallToScene(final Scene scene, final float pX, final float pY);
 	
-	public void setGravity(final Vector2 gravity);
+	public void setAccelerationData(final AccelerationData pAccelerationData);
 }

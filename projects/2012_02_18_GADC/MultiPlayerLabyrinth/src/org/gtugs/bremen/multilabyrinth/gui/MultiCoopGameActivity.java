@@ -134,10 +134,7 @@ public class MultiCoopGameActivity extends SimpleBaseGameActivity implements
 	@Override
 	public void onAccelerationChanged(AccelerationData pAccelerationData) {
 		if (this.levelCreator != null) {
-			final Vector2 gravity = Vector2Pool.obtain(
-					pAccelerationData.getX(), pAccelerationData.getY());
-			this.levelCreator.setGravity(gravity);
-			Vector2Pool.recycle(gravity);
+			levelCreator.setAccelerationData(pAccelerationData);
 		}
 	}
 

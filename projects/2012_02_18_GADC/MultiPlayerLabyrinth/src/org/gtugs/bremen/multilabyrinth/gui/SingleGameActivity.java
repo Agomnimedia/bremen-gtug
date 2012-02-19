@@ -99,8 +99,8 @@ public class SingleGameActivity extends SimpleBaseGameActivity implements IAccel
 		@Override
 		public void onAccelerationChanged(AccelerationData pAccelerationData) {
 			if(this.levelCreator != null){
-				final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX(), pAccelerationData.getY());
-				this.levelCreator.setGravity(gravity);
+				final Vector2 gravity = Vector2Pool.obtain(pAccelerationData.getX()*10, pAccelerationData.getY()*10);
+				this.levelCreator.setAccelerationData(pAccelerationData);
 				Vector2Pool.recycle(gravity);
 			}
 		}
