@@ -25,6 +25,12 @@ public class PortalUpdateHandler implements IUpdateHandler{
 	public void onUpdate(final float pSecondsElapsed) {
 		if(ball.collidesWith(portal)) {
 			portal.setColor(1, 0, 0);
+			
+//			Log.d("PortalUpdaterHandler", "ball getSkewCenterX " + ball.getSceneCenterCoordinates()[0]);
+			Log.d("PortalUpdaterHandler", "ball getSkewCenterY " + ball.getSceneCenterCoordinates()[1]);
+			
+//			int collisionPosY
+//			portal.
 		} else {
 			portal.setColor(0, 1, 0);
 		}
