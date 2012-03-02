@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>Bremen GTUG 03/12</title>
+
+	  <meta charset='utf-8'>
+	  <script src='../slides.js'></script>
+    <script src='../phoneViaWebkey.js'></script>
+	</head>
+  
+  <style>
+  /* Your individual styles here, or just use inline styles if that’s
+       what you want. */
+      
+  </style>
+
+  <body style='display: none'>
+
+  	<section class='slides layout-regular template-bremengtug'>
+      
+  	 	<!-- Your slides (<article>s) go here. Delete or comment out the
+        slides below. -->
+        
+        
+  		<!-- Slide #1 | logo -->
+    	<article class='biglogo'>
+      </article>
+
+      <!-- Slide #2 | title-->
+      <article>
+        <h1>
+          Statusreport
+        </h1>
+				<h3>
+					5. März 2012
+				</h3>
+				<img src="../images/gtug_figure.png" style="width:250px; position:absolute; top:200px; left:440px">
+      </article>
+
+      
+			<!-- Slide #3 | status -->
+      <article>
+        <h3>
+					BremenGTUG in Zahlen
+        </h3>
+
+				<ul class="build">
+          <li>
+						4 Stammtische
+          </li>
+					<li>
+						2 Hackathons
+					</li>
+					<li>
+						7 Tech-Talks
+					</li>
+					<li>
+						in Entwicklung: 2 Apps, Backend, Chrome Ext.
+					</li>
+					<li>
+            durschnittlich 14 Teilnehmer 
+          </li>
+        </ul>
+				<ul class="build" style="position: absolute; top:500px; left:70px">
+					<li>
+            nach wie vor "active status" auf <a href='http://www.gtugs.org/directory.jsp'>gtugs.org</a> 
+          </li>
+				</ul>
+				
+				<div><img src="../images/android_rocks.png" style="position: absolute; width:200px; top:420px; left:650px"></div>
+
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">status</p>
+      </article>
+
+			
+			<!-- Slide #4 | hackathon #0 -->
+      <article>
+				<h2>
+          Global Android DevCamp 2012 - 18./19.02.
+        </h2>
+				<div><img src="../images/androiddev.png" style="position: absolute;  top:510px; left:655px"></div>
+			</article>			
+
+
+			<!-- Slide #5 | hackathon #1 -->
+      <article>
+        <h3>
+        	Game-Entwicklung
+        </h3>
+        <ul class="build" >
+          <li>
+            Variante des Klassikers "Labyrith"
+          </li>
+					<li>
+            Multiplayer via WLAN
+          </li>
+					<li>
+            Nutzung der 2D Gameengine "AndEngine"
+          </li>
+					<li>
+            Sources unter <a href='http://code.google.com/p/bremen-gtug/source/browse/#svn%2Fprojects%2F2012_02_18_GADC%2FMultiPlayerLabyrinth'>bremen-gtug.googlecode.com</a> 
+          </li>
+				</ul>
+				
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">GADC 2012</p>
+      </article>
+
+      <!-- Slide #6 | hackathon #2 -->
+      <article>
+        <div id="phonediv" style="position: absolute; top: 5px; left:269px;" >
+          <img id="phone" src="../images/black.png">
+        </div>
+        <p class="mobilephonecontrol">
+          <label for="ipaddr">IP-Addr.: </label>
+          <input type="text" id="ipaddr" value="192.168.178.27"><br />
+          <input type="button" id="pconn" onclick="phoneConnect()" value="verbinden" />
+          <input type="button" id="pdisconn" disabled="disabled" onclick="phoneDisconnect()" value="trennen" />
+        </p>
+        <p class="mobilephonerotation">
+          <input type="button" id="protateleft" onclick="phoneRotate(-1)" value="horizontal" />
+          <button id="protatemiddle" disabled="disabled" onclick="phoneRotate(0)">ver-<br />ti-<br />kal</button>
+          <input type="button" id="protateright" onclick="phoneRotate(1)" value="horizontal" />
+        </p>
+        
+        <p style="font-size:20px; position: absolute; top:637px; left:50px">GADC 2012</p>
+      </article>
+
+			
+			<!-- Slide #7 | hackathon #3 -->
+      <article>
+        <h2>
+          Eindrücke
+        </h2>
+				<div><img src="../images/android-camera.png" style="position: absolute; width:230px; top:500px; left:540px"></div>
+			</article>		
+
+			<!-- Slide #8 | hackathon #4 - pic #0 -->
+			<article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_1.jpg'>
+        </p>
+      </article>
+
+			<!-- Slide #9 | hackathon #5 - pic #1 -->
+			<article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_2.jpg'>
+        </p>
+      </article>
+
+			<!-- Slide #10 | hackathon #6 - pic #2 -->
+			<article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_3.jpg'>
+        </p>
+      </article>
+
+			<!-- Slide #11 | hackathon #7 - pic #3 -->
+			<article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_4.jpg'>
+        </p>
+      </article>
+
+			<!-- Slide #12 | hackathon #8 - pic #4 -->
+			<article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_5.jpg'>
+        </p>
+      </article>
+
+      <!-- Slide #13 | hackathon #9 - pic #5 -->
+      <article class='fill'>
+        <p>
+          <img height="700px;" src='../images/photos/IMG_6.jpg'>
+        </p>
+      </article>
+      <!-- Slide #14 | hackathon #10 - pic #6 -->
+      <article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_7.jpg'>
+        </p>
+      </article>
+      <!-- Slide #15 | hackathon #11 - pic #7 -->
+      <article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_8.jpg'>
+        </p>
+      </article>
+
+      <!-- Slide #16 | hackathon #12 - pic #8 -->
+      <article style=" background:none;" >
+        <p>
+          <img height="700px" width="525px" style="position: absolute; top:0px; left:187px" src='../images/photos/IMG_9.jpg'>
+        </p>
+      </article>
+
+      <!-- Slide #17 | hackathon #13 - pic #9 -->
+      <article class='fill'>
+        <p>
+          <img width="900px;" src='../images/photos/IMG_10.jpg'>
+        </p>
+      </article>
+
+
+      <!-- Slide #17 | sponsoren -->
+      <article>
+        <h3>
+          Sponsoren
+        </h3>
+				<p style="position: absolute; top:200px; left:60px">BEST WESTERN Hotel zur Post</p>
+				<div><img src="../images/best_western.jpg" style="position: absolute; width:240px; top:115px; left:490px"></div>
+				<p style="position: absolute; top:350px; left:60px">IT-Services Jan Stalhut</p>				
+				<div><img src="../images/jan.jpg" style="position: absolute; width:300px; top:360px; left:450px"></div>
+				<p style="position: absolute; top:500px; left:60px">team Neusta</p>
+				<div><img src="../images/neusta_logo.jpg" style="position: absolute;  top:510px; left:400px"></div>
+
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">Sponsoren</p>
+			</article>
+
+      <!-- Slide #18 | hackerspace -->
+      <article>
+        <h3>
+          Hackerspace Bremen
+        </h3>
+        <ul class="build">
+          <li>
+            <b>Support-Idee</b>
+          </li>
+          <li>
+            Fertigstellung der App vom GADC
+          </li>
+          <li>
+            Schaltung von Werbung in der App
+          </li>
+          <li>
+            Veröffentlichung im Android Market
+          </li>
+          <li>
+            Monetäre Erlöse gehen direkt an den...
+          </li>
+        </ul>
+        <div class="build"><img src="../images/hackerspace.png" style="position: absolute; width:400px; top:450px; left:340px"></div>
+        <ul class="build" style="position: absolute; top:540px;">
+          <li>
+            <b>Meinungen, Ideen?</b>
+          </li>
+        </ul>
+        <p style="font-size:20px; position: absolute; top:637px; left:50px">Hackerspace</p> 
+      </article>
+
+
+			<!-- Slide #18 | events #0 -->
+      <article>
+        <h3>
+          Kommende Events
+        </h3>
+        <ul class="build">
+          <li>
+            <b>Google I/O Extended - 27.-29.6.</b>
+          </li>
+					<li>
+            Liveübertragung der Google Entwicklerkonferenz I/O
+          </li>
+					<li>
+            Details folgen...
+          </li>
+				</ul>
+				
+        <ul class="build">
+          <li>
+            <b>Stammtisch Februar - 06.02.2012</b>
+          </li>
+          <li>
+            Frank Müller, Author des Buches:<br>
+            "Systemprogrammierung in Google Go"
+          </li>
+        </ul>
+
+				<ul class="build">
+					<li>
+            nächstes Event: <b>droidcon Berlin - 13./14.03.</b>
+          </li>
+				</ul>
+
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">Events</p>
+			</article>
+
+
+
+			<!-- Slide #14 | heute -->
+      <article>
+        <h3>
+          5. Stammtisch
+        </h3>
+        <ul class="build">
+          <li>
+            <b>TechTalk - node.JS</b><br>
+            von André König, John Philip Schnake und Malte Legenhausen 
+          </li>
+				</ul>
+
+				<ul class="build">
+          <li>
+            <b>offene Diskussionsrunde</b>
+          </li>
+				</ul>
+
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">5. Stammtisch</p>
+			</article>
+
+			<!-- Slide #15 | thank you -->
+      <article>
+        <h3>
+          Thank you!
+        </h3>
+        
+        <ul>
+					<li>
+            <a href='http://bremen.gtugs.org'>bremen.gtugs.org</a>
+					</li>
+					<li>
+            <a href='http://bremen-gtug.googlecode.com'>bremen-gtug.googlecode.com</a>
+					</li>		
+        </ul>
+
+				<ul>
+					<li>
+            <a href='http://gplus.to/bremenGTUG'>+BremenGTUG</a>
+					</li>
+					<li>
+            <a href='http://twitter.com/bremenGTUG'>@BremenGTUG</a>
+					</li>
+        </ul>
+				<img src="../images/qr.png" style="position:absolute; width:160px; top:440px; left:100px">
+				<img src="../images/questions.jpg" style="position:absolute; width:350px; top:300px; left:460px">
+      </article>
+
+    </section>
+
+  </body>
+</html>
