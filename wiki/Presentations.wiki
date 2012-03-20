@@ -20,4 +20,7 @@
 
 == February 2012 ==
 [http://bremen-gtug.googlecode.com/svn/presentations/2012_02_06/Audio%20API%20Presentation/index.html#/welcome Web Audio API] ([http://www.youtube.com/watch?v=1nXXxnkt6Yk video]) by [https://plus.google.com/113062950789010266684/ +Sven Nobis]<br>
-[https://docs.google.com/presentation/d/1epf5RgniSIKNNY0TFeg9AF5azDPl9yucj1PYtGQwQIE/present#slide=id.g363e16f_9_48 AndEngine] ([http://www.youtube.com/watch?v=1nXXxnkt6Yk#t=31m55s video]) by [https://plus.google.com/107411440384202293942/ +Henrik Voß]
+[https://docs.google.com/presentation/d/1epf5RgniSIKNNY0TFeg9AF5azDPl9yucj1PYtGQwQIE/present#slide=id.g363e16f_9_48 AndEngine] ([http://www.youtube.com/watch?v=1nXXxnkt6Yk#t=31m55s video]) by [https://plus.google.com/107411440384202293942/ +Henrik Voß]<br>
+
+== march 2012 ==
+[https://docs.google.com/presentation/pub?id=1zz1Q8YpFuGkg73zq4fgfZfrpM7HSOE-Ozb9ZpFvFFqQ&start=false&loop=false&pli=1#slide=id.ga1883de_0_0 node.JS] ([http://www.youtube.com/watch?v=qcnBtB7k39I#t=16m21s video]) by [https://plus.google.com/116719489452072046606 +John Philip Schnake], [https://plus.google.com/106733191200400095142 +Malte Legenhausen] and [https://plus.google.com/105066655811382416959 +André König]<br>
