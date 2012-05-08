@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+	<head>
+		<title>ActionBarSherlock</title>
+
+	 	<meta charset='utf-8'>
+	 	<script src='../slides.js'></script>
+	</head>
+  
+		  
+  	<body style='display: none'>
+
+  		<section class='slides layout-regular template-bremengtug'>
+      
+  	 	<!-- Your slides (<article>s) go here. Delete or comment out the
+        slides below. -->
+        
+    		<article class='biglogo'>
+      		</article>
+
+	    <article>
+        	<h1>
+          		ActionBarSherlock
+        	</h1>
+			<p><b>Matthias Friedrich</b></p>
+			<p><b>07.05.2012</b></p>	
+			<img src="../images/mascot.png" style="position:absolute; top:270px; left:580px">
+      	</article>
+
+
+
+      	<article>
+			<h2>
+        		the Compat-Lib
+        	</h2>
+			<div><img src="../images/androiddev.png" style="position: absolute;  top:510px; left:655px"></div>
+		</article>
+
+			
+			<!-- Slide #5 | the app #1 -->
+      	<article>
+        	<h3>
+        		Compat-Library
+        	</h3>
+        	<ul class="build" >
+        		<li>
+          			official release from Google
+          		</li>
+        		<li>
+            		providing actual APIs for older Android devices
+            		<img src="../images/dev_ics.png" style="position: absolute;  top:405px; left:155px">
+          		</li>
+			</ul>
+			<img src="../images/gingerbread.png" style="position: absolute;  top:410px; left:455px">
+			
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">compat-lib</p>
+      	</article>
+
+
+      	<article>
+			<h2>
+          		the ActionBar
+        	</h2>
+			<div><img src="../images/actionbar_1.png" style="position: absolute;  top:488px; left:370px"></div>
+		</article>	
+
+      
+		<article>
+	        <h3>
+				ActionBar
+	        </h3>
+
+	        												
+	        <br>
+			<div class="build">
+				<ul>
+	        		<li>
+						combination of <b>title</b>-, <b>menu</b>- and <b>navigationbar</b>
+	          		</li>
+	          		<img style="position:absolute; top: 230px; left:60px;" src="../images/action_bar_basics.png" />
+				</ul>
+			</div>
+			<br><br><br><br>
+			<div class="build">				
+				<ul>
+	        		<li>
+						important actions are prominent and accessible in a predictable way
+	          		</li>
+	          		<li>
+						consistent navigation experience within apps and the os
+	          		</li>
+	          		<li>
+						action overflow for rarely used actions
+	          		</li>
+	          		<li>
+						dedicated space for giving your app an identity
+	          		</li>
+				</ul>
+			</div>
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">ActionBar</p>
+      	</article>
+
+
+		
+    	<article>
+	        <h3>
+				ActionBar
+	        </h3>
+
+	        <img style="position:absolute; top: 160px; left:340px;" src="../images/actionbar_2.png" />												
+	        <br>
+			<div class="build">
+				<ul>
+	        		<li>
+						ui-pattern<br>
+						for Android
+	          		</li>
+	          		<li>
+						standard since 3.0<br>(Honeycomb)
+	          		</li>
+				</ul>
+			</div>
+			<br><br><br><br>
+			<div class="build">				
+				<ul>
+	        		<li>
+						no default implementation/compatibility<br>
+						for Android < 3.0
+	          		</li>
+				</ul>
+			</div>
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">ActionBar</p>
+     	</article>
+
+			
+		
+      	
+
+
+      	<article>
+        	<h2>
+        		ActionBarSherlock
+        	</h2>
+        	<div><img src="../images/mascot.png" style="position: absolute;  top:490px; left:655px"></div>
+      	</article>
+
+
+	    <article>
+    		<h3>
+        		ActionBarSherlock 4.0
+        	</h3>
+        	<ul>
+        		<li>
+        			Compat-Lib + ActionBar = ActionBarSherlock
+				</li>
+				<li>
+					porting full 4.0 ActionBar-API to 2.1 and higher
+				</li>
+			</ul>
+
+			<ul>
+        		<li>
+        			"quasi"-standard in the Android devcommunity 	
+				</li>
+				<li>
+					<a href="https://plus.google.com/115995639636688350464/posts/4bC6dYUWbrf">recommended</a> by Googlers
+				</li>
+			</ul>
+			<ul>
+				<li>
+					developed by <a href="https://plus.google.com/108284392618554783657">+Jake Wharton</a>	
+				</li>
+				<li>
+					Android enthusiast, working at Square Inc., SF	
+				</li>
+			</ul>
+
+
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">ABS</p>
+     	</article>
+
+
+     	<article>
+        	<h3>
+        		ABS: get it to work
+        	</h3>
+        	<br><br>
+        	<div class="build" >
+        		<ul>
+					<li>
+	            		import the library project
+	            	</li>
+	            	<li>
+	            		extend com.actionbarsherlock.app.<b>SherlockActivity</b> or
+	            		com.actionbarsherlock.app.<b>SherlockFragmentActivity</b>
+	            	</li>
+	            </ul>
+	        </div>
+           	<ul class="build">
+            	<li>
+            		further Sherlock-classes...
+            		<ul>
+            			<li>com.actionbarsherlock.app.<b>ActionBar</b></li>
+            			<li>com.actionbarsherlock.view.<b>Menu</b></li>
+            			<li>com.actionbarsherlock.app.<b>SherlockFragment</b></li>
+            			...
+            		</ul>
+            	</li>
+            	
+			</ul>	
+				
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">ABS</p>
+     	</article>
+
+
+
+     	<article>
+        	<h3>
+        		ABS: get it to work
+        	</h3>
+        	<ul class="build" >
+            	<li>
+					<p>
+						adapt theme in AndroidManifest.xml:
+					</p>
+					<pre style="position:absolute; top: 205px;">&lt;!-- Theme festlegen --&gt;
+&lt;application android:theme="@style/Theme.Sherlock"... &gt;
+...
+   &lt;!-- ActionBar für eine bestimmte Activity nicht verwenden --&gt;
+   &lt;activity android:theme="@android:style/Theme.NoTitleBar"... &gt;
+</pre>
+				</li>
+				<li style="position:absolute; top: 425px;">
+					<p>
+						further Sherlock-themes...
+					</p>
+					<pre style="position:absolute; top: 15px;">
+&lt;application android:theme="@style/Theme.Sherlock.Light"... &gt;
+...
+&lt;application android:theme=
+	"@style/Theme.Sherlock.Light.DarkActionBar"...&gt;
+</pre>
+				</li>
+			</ul>	
+				
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">ABS</p>
+     	</article>
+
+
+      	<article>
+				<div id="phonediv" style="position: absolute; top: 5px; left:269px;" >
+					<img id="phone" src="../images/black.png">
+				</div>
+				<p class="mobilephonecontrol">
+					<label for="ipaddr">IP-Addr.: </label>
+					<input type="text" id="ipaddr" value="192.168.178.27"><br />
+					<input type="button" id="pconn" onclick="phoneConnect()" value="verbinden" />
+					<input type="button" id="pdisconn" disabled="disabled" onclick="phoneDisconnect()" value="trennen" />
+				</p>
+				<p class="mobilephonerotation">
+					<input type="button" id="protateleft" onclick="phoneRotate(-1)" value="horizontal" />
+					<button id="protatemiddle" disabled="disabled" onclick="phoneRotate(0)">ver-<br />ti-<br />kal</button>
+					<input type="button" id="protateright" onclick="phoneRotate(1)" value="horizontal" />
+				</p>
+				<p style="font-size:20px; position: absolute; top:637px; left:50px">the app</p>
+		</article>
+
+
+
+		<article>
+			<h3>
+				HINT: ActionBar Style Generator
+			</h3>
+			<ul>
+				<li>
+					choose colors
+				</li>
+				<li>
+					download style and drawables
+				</li>
+			</ul>
+			<ul>
+				<li>
+					created by Jeff Gilfeld,
+					<a href="http://jeffgilfelt.com/">http://jeffgilfelt.com</a>	
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<a href="http://jgilfelt.github.com/android-actionbarstylegenerator">http://jgilfelt.github.com/android-actionbarstylegenerator/</a>
+				</li>
+			</ul>
+
+
+			<p style="font-size:20px; position: absolute; top:637px; left:50px">AB style generator</p>
+		</article>
+
+
+      	<article>
+        	<h3>
+          		resources
+        	</h3>
+
+			<ul>
+				<li>
+            		<a href='http://actionbarsherlock.com'>http://actionbarsherlock.com</a>
+				</li>					
+				<li>
+            		<a href='https://github.com/JakeWharton/ActionBarSherlock'>http://github.com/JakeWharton/ActionBarSherlock</a>
+				</li>					
+        	</ul>
+
+        	<ul>
+				<li>
+            		"ActionBarSherlock demos" <a href='https://play.google.com/store/apps/details?id=com.actionbarsherlock.sample.demos&hl=de'>in Google Play</a>
+				</li>
+        	</ul>
+
+        	<ul>
+				<li>
+            		<a href='http://twitter.com/JakeWharton'>@JakeWharton</a>
+				</li>					
+				<li>
+            		<a href='http://profiles.google.com/jakewharton'>+Jake Wharton</a>
+				</li>					
+        	</ul>
+			<div><img src="../images/mascot.png" style="position: absolute;  top:490px; left:655px"></div>
+      	</article>			
+			
+		
+      	<article>
+        	<h3>
+          		Thank you!
+        	</h3>
+        	<ul>
+				<li>
+            		slides at <a href='http://bremen-gtug.googlecode.com'>bremen-gtug.googlecode.com</a>
+				</li>
+        	</ul>
+
+			<ul>
+				<li>
+            		<a href='http://gplus.to/mtthsfrdrch'>+Matthias 	Friedrich</a>
+				</li>
+				<li>
+            		<a href='http://twitter.com/peacei'>@peacei</a>
+				</li>
+        	</ul>
+        	<ul>
+				<li>
+            		<a href='http://bremen.gtugs.org'>bremen.gtugs.org</a>
+				</li>
+			</ul>
+			<img src="../images/questions.jpg" style="position:absolute; width:350px; top:300px; left:460px">
+      </article>
+			
+    </section>
+
+  </body>
+</html>
