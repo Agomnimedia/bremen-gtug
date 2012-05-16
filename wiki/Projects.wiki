@@ -2,7 +2,7 @@
 
 = Overview =
 
-Here you find all projects created on Bremen GTUG events.
+Here you find all projects created on Bremen GTUG/GDG Bremen events.
 
 <wiki:toc max_depth="3" /> 
 
