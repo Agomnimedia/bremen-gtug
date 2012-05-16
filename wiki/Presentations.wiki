@@ -1,4 +1,4 @@
-#summary Presentations presented at bremen gtug events
+#summary Presentations presented at gdg bremen events
 
 = Overview =
 
