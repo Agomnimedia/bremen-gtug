@@ -2,6 +2,6 @@
 
 = Welcome =
 
-Welcome to the Bremen GTUG code repository. In here we will make presentations and code of projects available for you! Check out the sidebar to go through our wiki ;-)
+Welcome to the GDG Bremen code repository. In here we will make presentations and code of projects available for you! Check out the sidebar to go through our wiki ;-)
 
 Visit our [http://bremen.gtugs.org homepage] to check out further details!
