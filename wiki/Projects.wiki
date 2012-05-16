@@ -1,4 +1,4 @@
-#summary Projects created on Bremen GTUG events
+#summary Projects created on GDG Bremen events
 
 = Overview =
 
