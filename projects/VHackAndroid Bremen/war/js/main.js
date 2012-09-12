@@ -6,7 +6,8 @@
 (function () {
 
 	var privates = {}
-	  , phase = new Phase(0)
+	  , phase = null
+	  , phaseNumber = 0
 	  , privates = {};
 	
 	$(window).resize(function() {
@@ -14,20 +15,10 @@
 	});
 	
 	privates.resize = function () {
-		if($(window).width()<1280 || $(window).height()<780){
-			if($("#neusta").attr("src").indexOf("small") === -1){
-				$("#neusta").attr("src","./images/neusta_logo_small.jpg");
-				$("#enough").attr("src","./images/ES_logo_black_small.jpg");
-			}
-		}else{
-			if($("#neusta").attr("src").indexOf("small") !== -1){
-				$("#neusta").attr("src","./images/neusta_logo.jpg");
-				$("#enough").attr("src","./images/ES_logo_black.jpg");
-			}
+		if(phase != null){
+			phase.resize();
 		}
 	};
-	
-	privates.resize();
 	
 	$.ajax({
 		url: "/token",
@@ -51,7 +42,11 @@
 	
     privates.onOpened = function () {
     	console.log("onOpened");
-    	// TODO
+    	phase = new Phase(phaseNumber);
+    	phase.refreshContent();
+    	// TODO get data and give it instead of null
+    	phase.start(null);
+    	privates.resize();
 	};
 	
 	privates.onMessage = function (message) {
@@ -59,6 +54,7 @@
 		console.log(message);
 		// TODO get phase
 		// check new phase with old phase
+		phase.refreshContent(jsonData);
 	};
 	
 	privates.onError = function (error) {
