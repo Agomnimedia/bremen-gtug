@@ -1,18 +1,19 @@
 body {
 	background-image: url(../images/bg.jpg);
 	background-size: cover;
+	overflow: hidden
 }
 
 #logo_div {
 	position: relative;
-	width: 480px;
+	width: 430px;
 	height: 100%;
 }
 
 #logo {
 	position: absolute; left : 50px;
 	top: 50px;
-	left: 50px;
+	left: -20px;
 }
 
 #contentWrapper {

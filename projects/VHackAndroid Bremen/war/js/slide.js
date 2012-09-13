@@ -74,9 +74,9 @@ var SlideDefault = function() {
 	"use strict";
 
 	this.showSlide = function(jsonData){
-		$("#contentWrapper").html('<div class="content roboto flexbox-vertical" id="content_welcome"><h3><b>'
-				+'V Hack Android<br><br>in Bremen</b></h3><div class="flexbox box-centered"><img id="gdg_logo" '
-				+'src="./images/GDG_Bremen_vonJan5g_mitRand.png"></div></div>');
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical box-centered" id="content_welcome"><h3>'
+			+'<b> V Hack Android<br> <br>in Bremen</b></h3><div class="flexbox box-centered"><img id="gdg_logo" '
+			+'src="./images/GDG_Bremen_vonJan5g_mitRand.png"></div></div>');
 	}
 	
 	this.refreshContent = function(jsonData) {
