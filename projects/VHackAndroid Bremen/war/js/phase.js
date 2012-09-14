@@ -15,12 +15,17 @@ var Phase = function(number) {
 			slideArray.push(new SlideGlobalSponsor());
 			slideArray.push(new SlideLocalSponsor());
 			slideArray.push(new SlidePartners());
+			slideArray.push(new SlideTweetAndroidV());
 		}
 	};
 	
 	privates.phase1 = function (jsonData) {
 		if(slideArray.length===0){
 			slideArray.push(new SlideWelcome());
+			slideArray.push(new SlideSchedule());
+			slideArray.push(new SlideTweetAndroidV());
+			slideArray.push(new SlideSchedule());
+			slideArray.push(new SlideTweetAndroidVBremen());
 			slideArray.push(new SlideGlobalSponsor());
 			slideArray.push(new SlideLocalSponsor());
 			slideArray.push(new SlidePartners());
@@ -28,18 +33,45 @@ var Phase = function(number) {
 	};
 	
 	privates.phase2 = function (jsonData) {
-		// add slide ???
-		// add slide sponsor
+		if(slideArray.length===0){
+			slideArray.push(new SlideDefault());
+			slideArray.push(new SlideSchedule());
+			slideArray.push(new SlideTweetAndroidV());
+			slideArray.push(new SlideRules());
+			slideArray.push(new SlideThemes());
+			slideArray.push(new SlideTweetAndroidVBremen());
+			slideArray.push(new SlidePrizes());
+			slideArray.push(new SlideSchedule());
+			slideArray.push(new SlideGlobalSponsor());
+			slideArray.push(new SlideLocalSponsor());
+			slideArray.push(new SlidePartners());
+		}
 	};
 	
 	privates.phase3 = function (jsonData) {
-		// add slide ???
-		// add slide sponsor
+		if(slideArray.length===0){
+			slideArray.push(new SlideDefault());
+			slideArray.push(new SlideSchedule());
+			slideArray.push(new SlideJurors());
+			slideArray.push(new SlidePrizes());
+			slideArray.push(new SlideTweetAndroidV());
+			slideArray.push(new SlideJurors());
+			slideArray.push(new SlidePrizes());
+			slideArray.push(new SlideTweetAndroidVBremen());
+			slideArray.push(new SlideGlobalSponsor());
+			slideArray.push(new SlideLocalSponsor());
+			slideArray.push(new SlidePartners());
+		}
 	};
 	
 	privates.phase4 = function (jsonData) {
-		// add slide ???
-		// add slide sponsor
+		if(slideArray.length===0){
+			slideArray.push(new SlideGoodNight());
+			slideArray.push(new SlideTweetAndroidVBremen());
+			slideArray.push(new SlideGlobalSponsor());
+			slideArray.push(new SlideLocalSponsor());
+			slideArray.push(new SlidePartners());
+		}
 	};
 	
 	this.resize = function(){
@@ -80,7 +112,7 @@ var Phase = function(number) {
 			}else{
 				counter++;
 			}
-		}, 30000);
+		}, 45000);
 	}
 	
 	this.stop = function(){

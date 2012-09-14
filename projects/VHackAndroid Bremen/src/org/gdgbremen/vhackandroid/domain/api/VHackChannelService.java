@@ -1,5 +1,7 @@
 package org.gdgbremen.vhackandroid.domain.api;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,5 +11,5 @@ public interface VHackChannelService extends BasicService{
 
 	String channelToken();
 	
-	void sendMessage(int phaseNumber, JSONObject json) throws JSONException;
+	void sendMessage(int phaseNumber, JSONObject json, HttpServletRequest req) throws JSONException;
 }

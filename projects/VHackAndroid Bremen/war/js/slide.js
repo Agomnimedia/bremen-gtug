@@ -111,16 +111,173 @@ var SlidePartners = function() {
 	}
 }
 
-// SlideSchedule (Phase 1, 2, 3)
+//SlideSchedule (Phase 1, 2, 3)
+var SlideSchedule = function() {
+	"use strict";
 
-// SlideRules
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical" id="content_local_sponsor"><h3><b>Hackathon-Ablauf</b>'
+				+'</h3><div class="flexbox roboto box-centered"><table border="0"><tr><td><p><b>10.00-10.20</b></p></td><td>'
+				+'<p>&nbsp;&nbsp;&nbsp;Ankunft und Teambildung</p></td></tr><tr><tr><td><p><b>10.20-10.30</b></p></td><td>'
+				+'<p>&nbsp;&nbsp;&nbsp;Vorstellung der Plattform daten.bremen.de</p></td></tr><tr><tr><td><p><b>10.30-12.30</b>'
+				+'</p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p></td></tr><tr><tr><td><p><b>12.30</b></p></td><td>'
+				+'<p>&nbsp;&nbsp;&nbsp;Mittagessen</p></td></tr><tr><tr><td><p><b>12.30-17.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p>'
+				+'</td></tr><tr><tr><td><p><b>17.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Abendessen</p></td></tr><tr><tr><td><p>'
+				+'<b>17.30-19.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p></td></tr><tr><tr><td><p><b>19.30-21.00</b>'
+				+'</p></td><td><p>&nbsp;&nbsp;&nbsp;Demos and Voting</p></td></tr></table></div></div>');
+	}
+	
+	this.refreshContent = function(jsonData) {
 
-// SlidePrizes
+	}
+	
+	this.resize = function() {
+		
+	}
+}
 
-// SlideGoodNight
+// SlideRules (Phase 2, 3)
+var SlideRules = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical box-centered" id="content_welcome"><h3>'
+			+'<b> Regeln </b></h3><ul><li>Die Teilnahme am V Hack Android Wettbewerb ist nur in Kleingruppen (2-3 Personen) erlaubt.</li>'
+			+'<li>Es muss eine Android App programmiert werden. Nur diese wird bewertet.</li><li>Die Android App darf nicht vor dem '
+			+'Event entwickelt worden sein. Wenn doch dann muss das neue Feature/der Umbau den Juroren genau erklärt werden.</li>'
+			+'<li>Die Entwicklung eines Backends ohne Android App ist vor dem Event erlaubt.</li></ul></div>');
+	}
+	
+	this.refreshContent = function(jsonData) {
 
-// SlideJurors
+	}
+	
+	this.resize = function() {
+		
+	}
+}
 
-// (SlideTeams)
+//SlideThemes (Phase 2, 3)
+var SlideThemes = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical box-centered" id="content_welcome"><h3>'
+			+'<b> Gern gesehene Themen sind: </b></h3><ul><li><b>Birthday: </b>It&lsquo;s Android&lsquo;s 5th birthday ! Time to '
+			+'give your Android device a fitting present!!</li><li><b>NFC: </b>It&lsquo;s no secret Androids like NFC. They&lsquo;re '
+			+'still learning how to use it but the choices are unlimited!</li><li><b>Health: </b>Too much cake isn&lsquo;t good for an'
+			+'Android. Let&lsquo;s shake a leg.</li><li><b>European Culture: </b>Whether it&lsquo;s art, clothes, cuisine, '
+			+'philosophy or sport, culture defines us and we are Europeans. Android needs a passport app that proudly sounds the Ode to Joy.'
+			+'But avoid Eurosong..</li></ul></div>');
+	}
+	
+	this.refreshContent = function(jsonData) {
 
-// (SlideResults)
+	}
+	
+	this.resize = function() {
+		
+	}
+}
+
+//SlidePrizes (Phase 1, 2, 3)
+var SlidePrizes = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical box-centered" id="content_welcome"><h3><b>Preise</b>'
+			+'</h3><ul><li><b>1. Platz:</b><ul><li>Reise zum finalen V Hack Android Hackathon (26-28 Oktober 2012; mit Unterkunft und Flug)</li>'
+			+'<li>Kostenlose Tickets zur Konferenz droidcon in London (25-26 Oktober 2012)</li><li>1 Gerät pro Teammitglied (darunter 1x Nexus 7)</li>'
+			+'</ul></li><li><b>Weitere Plätze:</b><ul><li>Pro Teammitglied ein Gerät nach Wunsch (Geräte von Alcatel One Touch)</li>'
+			+'<li>... solange der Vorrat reicht</li></ul></li></ul></div>');
+	}
+	
+	this.refreshContent = function(jsonData) {
+
+	}
+	
+	this.resize = function() {
+		
+	}
+}
+
+// SlideJurors (Phase 3)
+var SlideJurors = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical" id="content_jurors"><h3>'
+			+'<b>Juroren</b></h3><div class="flexbox roboto box-centered"><table border="0"><tr><td><p>'
+			+'<b>Michael Albrecht</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Mitarbeiter von team neusta</p>'
+			+'</td></tr><tr><tr><td><p><b>Dirk Wenig</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Mitarbeiter der Uni Bremen</p>'
+			+'</td></tr><tr><tr><td><p><b>Iaroslav Sheptykin</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Mitarbeiter der Hochschule '
+			+'Bremen</p></td></tr><tr><tr><td><p><b>Steve Liedtke</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Mitgründer der GDG Bremen</p>'
+			+'</td></tr></table></div></div>');
+	}
+	
+	this.refreshContent = function(jsonData) {
+
+	}
+	
+	this.resize = function() {
+		
+	}
+}
+
+// SlideGoodNight (Phase 4)
+var SlideGoodNight = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<div class="content roboto flexbox-vertical" id="content_welcome">'
+			+'<h3>Wir hoffen ihr hattet Spaß!<br>Kommt heil nach Hause<br>und<br>gute Nacht!</h3><div class="flexbox box-centered">'
+			+'<img id="gdg_logo" src="./images/GDG_Bremen_vonJan5g_mitRand.png"></div></div>');
+	}
+	
+	this.refreshContent = function(jsonData) {
+
+	}
+	
+	this.resize = function() {
+		
+	}
+}
+
+var SlideTweetAndroidV = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<iframe  src="http://visibletweets.com/#query=%23androidV&animation=1" width="100%" '
+			+'height="80%" name="SELFHTML_in_a_box"><p>Ihr Browser kann leider keine eingebetteten Frames anzeigen:' 
+			+'Sie k&ouml;nnen die eingebettete Seite &uuml;ber den folgenden Verweis aufrufen:' 
+			+'<a href="http://visibletweets.com/#query=%23androidV&animation=1">SELFHTML</a></p></iframe>');
+	}
+	
+	this.refreshContent = function(jsonData) {
+
+	}
+	
+	this.resize = function() {
+		
+	}
+}
+
+
+var SlideTweetAndroidVBremen = function(){
+	"use strict";
+	
+	this.showSlide = function(jsonData){
+		$("#contentWrapper").html('<iframe  src="http://visibletweets.com/#query=%23androidV%20%23Bremen&animation=3" width="100%" '
+			+'height="80%" name="SELFHTML_in_a_box"><p>Ihr Browser kann leider keine eingebetteten Frames anzeigen: Sie '+
+			+'k&ouml;nnen die eingebettete Seite &uuml;ber den folgenden Verweis aufrufen: '
+			+'<a href="http://visibletweets.com/#query=%23androidV%20%23Bremen&animation=3">SELFHTML</a></p></iframe>');
+	}
+	
+	this.refreshContent = function(jsonData) {
+
+	}
+	
+	this.resize = function() {
+		
+	}
+}

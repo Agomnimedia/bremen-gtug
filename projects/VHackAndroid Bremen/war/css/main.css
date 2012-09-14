@@ -82,6 +82,10 @@ body {
 	font-family: Roboto, Arial, sans-serif;
 }
 
+td{
+	font-size: 25px;
+}
+
 .box-centered{
 	-webkit-box-pack: center;
   	-webkit-box-align: center;

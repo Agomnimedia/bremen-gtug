@@ -1,73 +1,60 @@
-// 
-
 "use strict";
 
-// channel aufbauen und phase 0 initialisieren
-(function () {
+(function() {
+	var privates = {}, phase = null, privates = {}, phaseNumber = 0;
 
-	var privates = {}
-	  , phase = null
-	  , phaseNumber = 0
-	  , privates = {};
-	
 	$(window).resize(function() {
 		privates.resize();
 	});
-	
-	privates.resize = function () {
-		if(phase != null){
+
+	privates.resize = function() {
+		if (phase != null) {
 			phase.resize();
 		}
 	};
-	
-	$.ajax({
-		url: "/token",
-		dataType: 'json',
-		type: 'POST',
-		success: function(data, textStatus, jqXHR){
-			var json = JSON.parse(jqXHR.responseText);
-			var channel = new goog.appengine.Channel(json.RESULT.token);
-		    var socket = channel.open();
-		    socket.onopen = privates.onOpened;
-		    socket.onmessage = privates.onMessage;
-		    socket.onerror = privates.onError;
-		    socket.onclose = privates.onClose;
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert("Ein Fehler ist bei der Erstellung des Channels aufgetreten! Bitte aktualisieren (F5) sie das Fenster.")
+
+	phase = new Phase(0);
+	phase.refreshContent();
+	phase.start(null);
+	privates.resize();
+
+	$('#logo').bind('click', function() {
+		if (phase != null) {
+			phase.stop();
 		}
+		if (phaseNumber >= 4) {
+			phaseNumber = 0;
+		} else {
+			phaseNumber++;
+		}
+		privates.logAndAlert(phaseNumber);
+		phase = new Phase(phaseNumber);
+		phase.refreshContent();
+		phase.start(null);
+		privates.resize();
 	});
 	
-	
-	
-    privates.onOpened = function () {
-    	console.log("onOpened");
-    	phase = new Phase(phaseNumber);
-    	phase.refreshContent();
-    	// TODO get data and give it instead of null
-    	phase.start(null);
-    	privates.resize();
-	};
-	
-	privates.onMessage = function (message) {
-		console.log("onMessage");
-		console.log(message);
-		// TODO get phase
-		// check new phase with old phase
-		phase.refreshContent(jsonData);
-	};
-	
-	privates.onError = function (error) {
-		console.log("onError");
-		console.log(error);
-		// TODO
-	};
-	
-	privates.onClose = function () {
-		console.log("onClose");
-		// Set this property to a function that called when
-		// the socket is closed. When the socket is closed,
-		// it cannot be reopened. Use the open() method on a
-		// goog.appengine.Channel object to create a new socket.
-	};
+	privates.logAndAlert = function(number){
+		console.log("phase: " + number);
+		switch(number){
+		case 0: 
+			alert("Phase: Vor und nach dem Event");
+			break;
+		case 1: 
+			alert("Phase: Zur Begrüßung");
+			break;
+		case 2: 
+			alert("Phase: Nach Begrüßung");
+			break;
+		case 3: 
+			alert("Phase: Zu der Beurteilung");
+			break;
+		case 4: 
+			alert("Phase: Zum Abschluß");
+			break;
+			default:
+				console.log("Unknown phase");
+		}
+	}
+
 }());

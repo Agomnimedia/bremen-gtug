@@ -1,6 +1,7 @@
 package org.gdgbremen.vhackandroid.commands;
 
 import static org.gdgbremen.vhackandroid.common.Constants.CHANNEL_KEY;
+import static org.gdgbremen.vhackandroid.common.Constants.PHASE;
 
 import java.io.IOException;
 
@@ -23,13 +24,17 @@ public final class PhaseCommand extends WebCommand{
 			channelService.channelToken();
 		}
 		
-		// TODO collect data for the phase
-		
 		try {
-			channelService.sendMessage(1, json);
+			final int phase = Integer.parseInt(this.req.getParameter("phase"));
+			PHASE = phase;
+			channelService.sendMessage(PHASE, json, req);
 			this.handleSuccess("The phase was successfully changed!", null);
 		} catch (JSONException e) {
 			this.handleError(88);
+		} catch(NumberFormatException nfe){
+			this.handleError(1);
+		} catch(NullPointerException ne){
+			this.handleError(2);
 		}
 		
 		super.process();
