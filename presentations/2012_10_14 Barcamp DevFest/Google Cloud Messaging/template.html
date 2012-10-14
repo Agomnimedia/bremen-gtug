@@ -9,7 +9,7 @@ URL: https://code.google.com/p/io-2012-slides
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Developing with Google Technologies</title>
+  <title>Google Cloud Messaging</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
@@ -44,14 +44,44 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
   </slide>
 
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>What is GCM?</h2>
+    </hgroup>
+  </slide>
+
   <slide>
     <hgroup>
-      <h2>Agenda</h2>
+      <h2>Short Overview</h2>
     </hgroup>
     <article>
 		<ul>
-			<li class="marginbottom30">How can I find informations for Google technologies?</li>
-			<li class="marginbottom30">Which Google-Products can help me with developing?</li>
+			<li class="marginbottom30">GCM - Google Cloud Messaging for Android</li>
+			<li class="marginbottom30">Free service</li>
+			<li class="marginbottom30">Send data from 3rd-party application to android devices
+				<ul>
+					<li class="marginbottom15">lightweight message</li>
+					<li class="marginbottom15">4kb of payload data</li>
+				</ul>
+			</li>
+			<li class="marginbottom30">Previously known as Cloud to Device Messaging (C2DM)</li>
+			<li class="marginbottom30">Documentation on <a href="http://developer.android.com/guide/google/gcm/index.html">http://developer.android.com/guide/google/gcm/index.html</a></li>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>More Details</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">No guarantees about delivery or the order of messages</li>
+			<li class="marginbottom30">Android app or device doesn't need to be running</li>
+			<li class="marginbottom30">System will wake up the App via Intent broadcast</li>
+			<li class="marginbottom30">Android 2.2 and Google Play Store is required</li>
+			<li class="marginbottom30">Google account is needed for Android 2.3.x and lower</li>
 		</ul>
     </article>
   </slide>
@@ -59,165 +89,106 @@ URL: https://code.google.com/p/io-2012-slides
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>How can I find informations for Google technologies?</h2>
+      <h2>Own experience</h2>
     </hgroup>
-  </slide>
-
-  <slide>
-	<aside class="note">
-      <section>
-        <input type="text" id="input_brainstorming" onkeypress="handleBrainstormKeyPress(event,this.form)">
-		<input type="button" id="button_brainstorming" value="Send" onclick="sendBrainstormingValue();">
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Brainstorming</h2>
-    </hgroup>
-    <article>
-		<table>
-			<tr>
-				<td class="white_background" id="td_0"></td>
-				<td class="white_background" id="td_1"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td_2"></td>
-				<td class="white_background" id="td_3"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td_4"></td>
-				<td class="white_background" id="td_5"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td_6"></td>
-				<td class="white_background" id="td_7"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td_8"></td>
-				<td class="white_background" id="td_9"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td_10"></td>
-				<td class="white_background" id="td_11"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td_12"></td>
-				<td class="white_background" id="td_13"></td>
-			</tr>
-			<tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Developers Site</h2>
-    </hgroup>
-    <article>
-		<iframe data-src="https://developers.google.com/"></iframe>
-    </article>
   </slide>
   
   <slide>
     <hgroup>
-      <h2>Google Developer Groups</h2>
+      <h2>Hackerspace Bremen - Open Space Notifier</h2>
     </hgroup>
     <article>
-		<iframe data-src="https://developers.google.com/groups/"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Developers Live</h2>
-    </hgroup>
-    <article>
-		<iframe data-src="https://developers.google.com/live/"></iframe>
-    </article>
-  </slide>
-  
-  <slide>
-    <hgroup>
-      <h2>Developers Academy</h2>
-    </hgroup>
-    <article>
-		<iframe data-src="https://developers.google.com/academy/"></iframe>
-    </article>
-  </slide>
-  
-  <slide>
-    <hgroup>
-      <h2>Developers Experts</h2>
-    </hgroup>
-    <article>
-		<iframe data-src="https://developers.google.com/experts/"></iframe>
+		<ul>
+			<li class="marginbottom30">Android app and Chrome extension</li>
+			<li class="marginbottom30">Usage: Shows the status (open/closed) of the space</li>
+			<li class="marginbottom30">Backend: Appengine with Java</li>
+			<li class="marginbottom30">Message with status is send to all registered devices</li>
+			<li class="marginbottom30">Device receives message and throws notification</li>
+			<li class="marginbottom30">Disadvantage: Chrome extension cannot use it
+				<ul>
+					<li class="marginbottom15">Could use Channel API of Appengine -> too expensive</li>
+					<li class="marginbottom15">Requesting space status in intervall</li>
+				</ul>
+			</li>
+		</ul>
     </article>
   </slide>
   
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Which Google-Products can help me with developing?</h2>
+      <h2>How can I use it?</h2>
     </hgroup>
   </slide>
   
   <slide>
-	<aside class="note">
-      <section>
-        <input type="text" id="input_brainstorming_2" onkeypress="handleBrainstormKeyPress2(event,this.form)">
-		<input type="button" id="button_brainstorming_2" value="Send" onclick="sendBrainstormingValue2();">
-      </section>
-    </aside>
     <hgroup>
-      <h2>Brainstorming</h2>
+      <h2>Workflow (1/2)</h2>
     </hgroup>
     <article>
-		<table>
-			<tr>
-				<td class="white_background" id="td2_0"></td>
-				<td class="white_background" id="td2_1"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td2_2"></td>
-				<td class="white_background" id="td2_3"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td2_4"></td>
-				<td class="white_background" id="td2_5"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td2_6"></td>
-				<td class="white_background" id="td2_7"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td2_8"></td>
-				<td class="white_background" id="td2_9"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td2_10"></td>
-				<td class="white_background" id="td2_11"></td>
-			</tr>
-			<tr>
-				<td class="white_background" id="td2_12"></td>
-				<td class="white_background" id="td2_13"></td>
-			</tr>
-			<tr>
-      </table>
+		<ul>
+			<li class="marginbottom30">Enabling GCM
+				<ul>
+					<li class="marginbottom15">Android app registers on GCM server</li>
+					<li class="marginbottom15">RegistrationId is returned if successful</li>
+					<li class="marginbottom15">Android app sends registrationId to the third party application</li>
+					<li class="marginbottom15">Third party application stores the registrationId</li>
+				</ul>
+			</li>
+			<li class="marginbottom30">Sending a message
+				<ul>
+					<li class="marginbottom15">Third party application sends data with registrationId and own API key to GCM server</li>
+					<li class="marginbottom15">Google stores data in case device is offline</li>
+					<li class="marginbottom15">When device is online, data can be send</li>
+					<li class="marginbottom15">On the device: System broadcasts the message to the specified Android app</li>
+				</ul>
+			</li>
+			
+		</ul>
     </article>
   </slide>
   
   <slide>
     <hgroup>
-      <h2>Google Code</h2>
+      <h2>Workflow (2/2)</h2>
     </hgroup>
     <article>
-		<ul class="build">
-			<li class="marginbottom30">"Predecessor" of the Developers Site</li>
-			<li class="marginbottom30">Shelters Googles Open Source Projects</li>
-			<li class="marginbottom30">Publish own Open Source Projects on it
+		<ul>
+			<li class="marginbottom30">Receiving a message
+				<ul class="marginbottom15">
+					<li class="marginbottom15">System receives the incoming message and extracts the raw key/value pairs</li>
+					<li class="marginbottom15">System passes key/value pairs to targeted Android Application in a com.google.android.c2dm.intent.RECEIVE Intent as a set of extras</li>
+					<li class="marginbottom15">Android application extracts the raw data from the Intent by key and processes the data</li>
+				</ul>
+			</li>
+			
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation on Third party application (1/2)</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Java
 				<ul>
-					<li class="marginbottom15">Subversion</li>
-					<li class="marginbottom15">Mercurial</li>
-					<li class="marginbottom15">Git</li>
+					<li class="marginbottom15">Use jar from &lt;Your_Android_SDK&gt;\extras\google\gcm\gcm-server\dist\gcm-server.jar</li>
+					<pre class="prettyprint" data-lang="java">
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
+
+[..]					
+
+public Result sendMessage(final String device, final String message) throws IOException{
+	Sender sender = new Sender(getApiKey());
+	Message gcmMessage = new Message.Builder().addData("payload", message)
+		.collapseKey("0").build();
+	return sender.send(gcmMessage, device, 5);
+}
+					</pre>
 				</ul>
 			</li>
 		</ul>
@@ -226,26 +197,96 @@ URL: https://code.google.com/p/io-2012-slides
   
   <slide>
     <hgroup>
-      <h2>More information search</h2>
+      <h2>Implementation on Third party application (2/2)</h2>
     </hgroup>
     <article>
-		<ul class="build">
-			<li class="marginbottom30">Google+</li>
-			<li class="marginbottom30">Blogger</li>
+		<ul>
+			<li class="marginbottom30">Others
+				<ul>
+					<li class="marginbottom15">Request format can be found on <a href="http://developer.android.com/guide/google/gcm/gcm.html#send-msg">http://developer.android.com/guide/google/gcm/index.html</a></li>
+				</ul>
+			</li>
 		</ul>
     </article>
   </slide>
   
   <slide>
     <hgroup>
-      <h2>Collaboration</h2>
+      <h2>Implementation in Android application (1/3)</h2>
+    </hgroup>
+    <article class="smaller">
+		<ul>
+			<li class="marginbottom30">AndroidManifest.xml must at least look like this:</li>
+			<pre class="prettyprint" data-lang="xml">
+&lt;manifest package="com.example.gcm" ...&gt;
+    &lt;uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16"/&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
+    &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+    &lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;
+	&lt;permission android:name="com.example.gcm.permission.C2D_MESSAGE" 
+        android:protectionLevel="signature" /&gt;
+    &lt;uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" /&gt;
+	&lt;application ...&gt;
+        &lt;receiver
+            android:name=".MyBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;
+                &lt;action android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt;
+                &lt;category android:name="com.example.gcm" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+        &lt;service android:name=".MyIntentService" /&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+			</pre>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation in Android application (2/3)</h2>
+    </hgroup>
+    <article class="smaller">
+		<ul>
+			<li class="marginbottom30">GCMIntentService.java:</li>
+			<pre class="prettyprint" data-lang="java">
+public class GCMIntentService extends GCMBaseIntentService {
+	protected GCMIntentService(final String senderId) {
+		super(senderId);
+	}
+	@Override
+	protected void onRegistered(final Context context, final String regId) {
+		//Your code
+	}
+	@Override
+	protected void onError(final Context context, final String errorId) {
+		// Your code
+	}
+	@Override
+	protected void onMessage(final Context context, final Intent intent) {
+		// Your code
+	}
+	@Override
+	protected void onUnregistered(final Context context, final String regId) {
+		// Your code
+	}
+}
+			</pre>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation in Android application (3/3)</h2>
     </hgroup>
     <article>
-		<ul class="build">
-			<li class="marginbottom30">Google Drive</li>
-			<li class="marginbottom30">Google Docs</li>
-			<li class="marginbottom30">Google Mail</li>
-			<li class="marginbottom30">Hangout</li>
+		<ul>
+			<li class="marginbottom30">Jar gcm.jar can be found in &lt;Your_Android_SDK&gt;\extras\google\gcm\gcm-client\dist</li>
+			<li class="marginbottom30">Further information on <a href="http://developer.android.com/guide/google/gcm/gcm.html">http://developer.android.com/guide/google/gcm/gcm.html</a>
 		</ul>
     </article>
   </slide>
