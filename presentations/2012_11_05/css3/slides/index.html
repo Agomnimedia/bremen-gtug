@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--
+Based on Google HTML5 slide template
+URL: http://code.google.com/p/html5slides/
+-->
+<html lang="de">
+    <head>
+        <title>GDG Bremen: CSS3 oder &quot;Was schon geht und was noch kommt&quot;</title>
+        <meta name="author" content="Jan Stalhut" />
+		<meta name="description" content="Einführung in den Einsatz von neuen CSS3-Funktionen für moderne Webseiten." />
+        <meta charset="utf-8">
+		<link rel="shortcut icon" type="image/png" href="../images/gdg-logo-tiny.png">
+		<!-- The Open Graph Protocol, http://ogp.me/ -->
+		<meta property="og:title" content="CSS3 oder 'Was schon geht und was noch kommt'" />
+		<meta property="og:site_name" content="GDG Bremen: CSS3" />
+		<meta property="og:image" content="https://bremen-gtug.googlecode.com/svn/presentations/2012_11_05/css3/images/gdg-logo.png" />
+		<meta property="og:url" content="https://bremen-gtug.googlecode.com/svn/presentations/2012_11_05/css3/slides/index.html" />
+		<meta property="og:description" content="Einführung in den Einsatz von neuen CSS3-Funktionen für moderne Webseiten." />
+		<meta property="og:locale" content="de_DE" />
+		<!-- presentation script -->
+		<script src="../slides.js">
+        </script>
+    </head>
+    <body style="display: none" class="css3-bg">
+        <section class="slides layout-regular template-css3">
+            <!-- layout-widescreen or layout-regular -->
+            
+			<article class="biglogo">
+            </article>
+
+            <article>
+                <h1>CSS3:<br><i>Eine Einführung</i><br><span class="smaller">oder <i>'Was schon geht und was noch kommt'</i></span></h1>
+                <p>von Jan Stalhut
+				<br>5. November 2012
+                </p>
+            </article>
+
+			<article id="slideOverview">
+                <h3>Inhalt</h3>
+                <ul>
+					<li onclick="gotoSlide('slideHistory');" style="cursor:pointer;">Geschichte</li>
+					<li onclick="gotoSlide('slideToday');" style="cursor:pointer;">Was schon geht, ...</li>
+					<li onclick="gotoSlide('slideExample');" style="cursor:pointer;">... wie man es praktisch anwendet ...</li>
+					<li onclick="gotoSlide('slideTomorrow');" style="cursor:pointer;">... und was noch kommt.</li>
+					<li onclick="gotoSlide('slideConclusion');" style="cursor:pointer;">Schluss</li>
+                </ul>
+            </article>
+			
+			<article id="slideHistory">
+                <h2>Geschichte</h2>
+            </article>
+			
+			<article>
+                <h3>Entstehung</h3>
+				<ul class="build">
+					<li>1993 - Erster Vorschlag für Stylesheets</li>
+					<li>1994 - Vorschlag für CSS von Håkon Wium Lie</li>
+					<li>1996 - Publizierung von <i>Level 1</i> durch W3C</li>
+					<li>1998 - Veröffentlichung von <i>Level 2 (CSS 2)</i></li>
+					<li>2000 - Start der Entwicklung von <i>Level 3 (CSS 3)</i></li>
+					<li>2002 - Start der Arbeit an <i>Level 2 Revsion 1 (CSS 2.1)</i>
+					<li>2011 - Veröffentlichung von <i>CSS 2.1</i></li>
+				</ul>
+            </article>
+			
+			<article id="slideToday">
+                <h2>Was schon geht, ...</h2>
+            </article>
+			
+			<article>
+                <h3>Überblick</h3>
+				<ul class="build">
+					<li>Selektoren</li>
+					<li>Kombinatoren</li>
+					<li>Pseudoklassen</li>
+					<li>Strukturelle Pseudoklassen</li>
+					<li>Pseudoelemente</li>
+					<li>Eigenschaften</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Selektoren (bisher)</h3>
+				<ul class="build">
+					<li>CSS1:<ul>
+						<li>HTML-Tag:<code> p {}</code></li>
+						<li>Klasse mehrerer Elemente:<code> div.cl {}</code></li>
+						<li>ID eines Elements:<code> #first {}</code></li>
+					</ul></li>
+					<li>CSS2: (Attribut-Abhängigkeit)<ul>
+						<li>Attribut vorhanden:<code> input[disabled] {}</code></li>
+						<li>Bestimmter Wert:<code> input[type=email] {}</code></li>
+						<li>Bestimmtes Wort im Wert:<code> div[class~=cl] {}</code></li>
+						<li>Bestimmter Wert-Präfix:<code> span[lang|=de] {}</code></li>
+					</ul></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Selektoren (neu mit CSS3)</h3>
+				<ul class="build">
+					<li>Erweiterte Attribut-Abhängigkeiten<ul>
+						<li>Wert beginnt mit:<code> div[id^=first_] {}</code></li>
+						<li>Wert endet mit:<code> div[id$=_last] {}</code></li>
+						<li>Wert enthält:<code> div[id*=_middle_] {}</code></li>
+					</ul></li>
+					<li class="sep">Wird alles ab IE 7, FF 3, Safari 3, ... unterstützt!</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Kombinatoren</h3>
+				<ul class="build">
+					<li>CSS1:<ul>
+						<li>Nachfahren eines Elements:<code> #block a {}</code></li>
+					</ul></li>
+					<li>CSS2:<ul>
+						<li>Kind eines Elements:<code> #block > p {}</code></li>
+						<li>Direkter Nachfolger eines Elements:<code> #block + div {}</code></li>
+					</ul></li>
+					<li>CSS3:<ul>
+						<li>Nachfolger eines Elements:<code> #block ~ div {}</code></li>
+					</ul></li>
+					<li class="sep">Wird alles ab IE 7, FF 3, Safari 3, ... unterstützt!</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Pseudoklassen (bisher)</h3>
+				<ul class="build">
+					<li>CSS1: (für Link-Status)<ul>
+						<li>Noch unbesucht:<code> a:link {}</code></li>
+						<li>Schon besucht:<code> a:visited {}</code></li>
+						<li>Gerade angeklickt:<code> a:active {}</code></li>
+					</ul></li>
+					<li>CSS2: (Dynamik)<ul>
+						<li>Maus über Element:<code> tr:hover {}</code></li>
+						<li>Tastatur-Fokus:<code> input:focus {}</code></li>
+					</ul></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Pseudoklassen (neu mit CSS3)</h3>
+				<ul class="build">
+					<li>Link-Dynamik:<ul>
+						<li>Aktuelles Link-Ziel:<code> :target {}</code></li>
+					</ul></li>
+					<li>Für Formular-Elemente<ul>
+						<li>Aktiviertes Element:<code> input:enabled {}</code></li>
+						<li>Deaktiviertes Element:<code> input:disabled {}</code></li>
+						<li>Ausgewähltes Element:<code> input:checked {}</code></li>
+					</ul></li>
+					<li>Allgemein<ul>
+						<li>Negierung:<code> a:not([href^="http://"]) {}</code></li>
+					</ul></li>
+					<li class="sep">Wird alles ab IE 9, FF 3, Safari 3, ... unterstützt!</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Strukturelle Pseudoklassen</h3>
+				<ul class="build">
+					<li>Erstes Kind eines Elements (CSS2):<code> li:first-child {}</code><ul>
+						<li>Lestes Kind eines Elements:<code> li:last-child {}</code></li>
+					</ul></li>
+					<li>X. Kind eines Elements:<code> li:nth-child(4) {}</code><ul>
+						<li>X. Kind, von hinten:<code> li:nth-last-child(6) {}</code></li>
+					</ul></li>
+					<li>Einzel-Kind eines Elements:<code> li:only-child {}</code></li>
+					<li>Erste Element eines Types:<code> p:first-of-type {}</code><ul>
+						<li>Prinzip wie oben:<code> :last-of-type &nbsp;:nth-of-type(2) </code>...</li>
+					</ul></li>
+					<li>Leere Elemente:<code> td:empty {}</code></li>
+					<li class="sep">Wird alles ab IE 9, FF 3.6, Safari 3, ... unterstützt!</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Pseudoelemente</h3>
+				<ul class="build">
+					<li>CSS1:<ul>
+						<li>Erste Zeile:<code> p:first-line {}</code></li>
+						<li>Erster Buchstabe:<code> p:first-letter {}</code></li>
+					</ul></li>
+					<li>CSS2:<ul>
+						<li>Inhalt vor dem Element:<code> abbr:befor {}</code></li>
+						<li>Inhalt nach dem Element:<code> abbr:after {}</code></li>
+					</ul></li>
+					<li>CSS3:<ul>
+						<li>Obige Pseudoelemente jetzt mit <b>zwei</b> vorangestellten Doppelpunkten.</li>
+					</ul></li>
+					<li class="sep">Wird alles ab IE 8, FF 3, Safari 3, ... unterstützt!</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Eigenschaften (Basis, CSS 1)</h3>
+				<ul class="build">
+					<li>Hintergrundfarbe/-bild/-position</li>
+					<li>Schriftfarbe/-art/-größe/-stil</li>
+					<li>Zeilen-/Buchstaben-/Wortabstend</li>
+					<li>Textausrichtung/Absatz-Einrückung</li>
+					<li>Listenformatierungen</li>
+					<li>Anzeige, Breite, Höhe, Innen-/Außenabstand</li>
+					<li>Rahmenbreite/-farbe/stil</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Eigenschaften (Erweitert, CSS 2/2.1)</h3>
+				<ul class="build">
+					<li>Tabellen: Rahmenabstand, Überschrift-Position, lHandhabung leerer Zellen</li>
+					<li>Absolute/Relative Positionierung, Unsichtbarkeit, Ebenen, maximale Breite/Höhe</li>
+					<li>Umrandungen (nicht, wie Rahmen, Teil des Box-Modells)</li>
+					<li>Maus-Cursor Darstellung anpassen</li>
+					<li>Handhabung zu großer Inhalte (z. B. ggf. Scrollbalken)</li>
+					<li>Sprachausgabe beeinflussen (nicht Firefox und IE)</li>
+					<li>Druckausgabe Beeinflussen (nicht Firefox)</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Eigenschaften (Neues in CSS 3)</h3>
+				<ul class="build">
+					<li>Hintergrundbilder (IE 9, Chrome 17, FF 8):<ul>
+						<li><code>background</code> (Mehrere kommaseparierten Werte)</li>
+						<li><code>background-origin</code> (Box-Modell)</li>
+						<li><code>background-size</code> (Größe einzelner Bilder)</li>
+					</ul></li>
+					<li>Transparenz (IE 9, Chrome 17, FF 3.6):<ul>
+						<li><code>opacity</code> (Prozentuale Angabe)</li>
+					</ul></li>
+					<li>Rahmen und Layout (IE 9, Chrome 10, FF 4):<ul>
+						<li><code>border-radius</code> (Runde Ecken)</li>
+						<li><code>box-sizing</code> (Bezug der Größe: Außen oder Innen)</li>
+					</ul></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Eigenschaften (Mehr neues in CSS 3)</h3>
+				<ul class="build">
+					<li>Schatten (IE 9, Chrome 10, FF 4):<ul>
+						<li><code>box-shadow</code> (Rechteckiger Schatten)</li>
+						<li><code>text-shadow</code> (Schrift-Schatten)</li>
+					</ul></li>
+					<li>Farbverläufe als Hintergrund (IE 10, andere mit Präfix):<ul>
+						<li>Linear Gradient (waagerecht, senkrecht, diagonal)</li>
+						<li>Radial Gradient (kreisförmig)</li>
+					</ul></li>
+					<li>Animationen (IE 10, andere mit Präfix):<ul>
+						<li><code>transition</code> (Eigenschaft, Dauer, Verzögerung)</li>
+					</ul></li>
+				</ul>
+            </article>
+			
+			<article id="slideTomorrow">
+                <h2>... wie man es praktisch anwendet ...</h2>
+            </article>
+
+			<article>
+                <h3>Beispiel</h3>
+<!--
+border:2px dashed red;
+text-align:center;
+height:200px;
+border-radius:50%;
+box-shadow:5px;
+background-image: url('css3.png'), url('html5.png');
+background-repeat:no-repeat;
+background-position:30% 30%, 70% 70%;
+box-shadow: #aaa 30px -10px 30px;
+
+-webkit-transform: rotate(-25deg);
+margin-top:80px;
+text-shadow: #aaa 15px 15px 5px;
+-->
+				<section class="left">
+					<pre>
+<b>.example_block1</b> {
+<textarea class="livecoding" id="example_block1_css" onkeyup="updateDemoCss(this);">
+</textarea>
+}
+<b>.example_block1 > p</b> {
+<textarea class="livecoding" id="example_block1b_css" onkeyup="updateDemoCss(this);">
+</textarea>
+}</pre>
+				</section>
+				<section class="right">
+					<div id="example_block1">
+						<div id="example_block1b">Hallo Welt!</div>
+					</div>
+				</section>
+				<script>
+				function updateDemoCss(textArea) {
+					var elementId = textArea.id.substr(0,textArea.id.length-4);
+					var formatElement = document.getElementById(elementId);
+					formatElement.setAttribute("style", textArea.value);
+				}
+				</script>
+            </article>
+			
+			<article>
+                <h3>Kompatiblität</h3>
+				<ul class="build">
+					<li>Browserspezifische Präfixe:<ul>
+						<li><code>-webkit-</code> Chrome und Safari</li>
+						<li><code>-moz-</code> Mozilla Firefox</li>
+						<li><code>-o-</code> Opera</li>
+						<li><code>-ms-</code> Internet Explorer</li>
+					</ul></li>
+					<li>Untertützung für ältere Versionen des IE: <i>PIE</i><ul>
+						<li>Bibliothek für IE 6-9</li>
+						<li>Kombination aus IE-spezifischer htc-Datei und JavaScript</li>
+						<li><a href="http://css3pie.com/" target="_blank">http://css3pie.com/</a></li>
+					</ul></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Weiterer IE-Workaround</h3>
+				<ul class="build">
+					<li>HTML-Block für bestimmte IE-Versionen.</li>
+					<li>Einbindung einer alternativen IE-kompatiblen CSS-Datei</li>
+					<li>Beispielsweise für alle IE-Versionen &lt; 9:
+					<pre>
+&lt;!--[if lt IE 9]&gt;
+&lt;link rel="stylesheet" type="text/css" href="/ie.css"&gt;
+&lt;![endif]--&gt;</pre></li>
+					<li>Für jeden anderen Browser nur ein Kommentar.</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Beispiel für eine Webseite mit CSS 3</h3>
+				<ul class="build">
+					<li>Eigenes Projekt: Webseite für ein Immobilien-Büro</li>
+					<li><img src="images/page_screenshot.png" /></li>
+					<li><a href="http://www.ihre-immobilie.info" target="_blank">www.ihre-immobilie.info</a></li>
+				</ul>
+            </article>
+			
+			<article id="slideTomorrow">
+                <h2>... und was noch kommt.</h2>
+            </article>
+			
+			<article>
+                <h3>Ausblick in CSS 3</h3>
+				<ul class="build">
+					<li>Bilder als Rahmen:<code> border-image</code></li>
+					<li>Mehrspaltiges Layout (IE 10):<code> column-count</code> etc.</li>
+					<li>Schriftgrößen-Anpassung bei alternativer Schriftart (IE 9):<code> font-size-adjust</code></li>
+				</ul>
+            </article>
+			
+			<article id="slideConclusion">
+                <h2>Schluss</h2>
+            </article>
+			
+			<article>
+                <h3>Fazit</h3>
+				<ul class="build">
+					<li>Einige neue Praxistaugliche Elemente</li>
+					<li>Häufig noch browserspezifische Präfixe nötig</li>
+					<li>Gute Unterstützung im neuen IE 10</li>
+				</ul>
+			</article>
+			
+            <article>
+                <h3>Vielen Dank für Eure Aufmerksamkeit!</h3>
+                <ul>
+					<li>html5slides von Google
+						<br><a href="http://code.google.com/p/html5slides/" target="_blank">http://code.google.com/p/html5slides/</a></li>
+					<li>CSS Referenz bei CSS creator
+						<br><a href="http://csscreator.com/properties" target="_blank">http://csscreator.com/properties</a></li>
+					<li>CSS Referenz bei w3schools
+						<br><a href="http://www.w3schools.com/cssref/" target="_blank">http://www.w3schools.com/cssref/</a></li>
+					<li>CSS Referenz im SelfHTML-Wiki (deutsch)
+						<br><a href="http://wiki.selfhtml.org/wiki/Referenz:CSS" target="_blank">http://wiki.selfhtml.org/wiki/Referenz:CSS</a></li>
+                </ul>
+            </article>
+			
+            <div id="footerLeft" class="footer-left" onclick="gotoSlide('slideOverview');" style="cursor:pointer;">CSS3{if_h2} | {/if_h2}{h2}</div>
+            <div id="footerRight" class="footer-right">Folie {#}</div>
+			<div id="copyright" class="copyright">© 2012 &nbsp; Jan Stalhut</div>
+        </section>
+    </body>
+</html>
