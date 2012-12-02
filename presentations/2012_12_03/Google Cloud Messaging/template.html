@@ -1,0 +1,372 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Cloud Messaging</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+  <script src="js/gdgbremen.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img id="front_logo" src="images/GDG_Bremen_vonJan5g_mitRand_HQ.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <div><img class="sponsors" id="gcm_logo" src="images/gcm-logo.png"></div>
+	<hgroup class="auto-fadein">
+	  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+	  <!--<p data-config-contact ></p>-->
+    </hgroup>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>What is GCM?</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Short Overview</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">GCM - Google Cloud Messaging for Android</li>
+			<li class="marginbottom15">Free service
+				<ul>
+					<li class="marginbottom30">No quotas</li>
+				</ul>
+			</li>
+			<li class="marginbottom30">Send data from 3rd-party application to android devices
+				<ul>
+					<li class="marginbottom15">lightweight message</li>
+					<li class="marginbottom15">4kb of payload data</li>
+				</ul>
+			</li>
+			<li class="marginbottom30">Previously known as Cloud to Device Messaging (C2DM)</li>
+			<li class="marginbottom30">Documentation on <a href="http://developer.android.com/guide/google/gcm/index.html">http://developer.android.com/guide/google/gcm/index.html</a></li>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+	<aside class="note">
+      <section>
+        <p></p>
+      </section>
+    </aside>
+    <hgroup>
+      <h2>More Details</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">No guarantees about delivery or the order of messages</li>
+			<li class="marginbottom30">Android app or device doesn't need to be running</li>
+			<li class="marginbottom30">System will wake up the App via Intent broadcast</li>
+			<li class="marginbottom30">Android 2.2 and Google Play Store is required</li>
+			<li class="marginbottom30">Google account is needed for Android 2.3.x and lower</li>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Own experience</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Hackerspace Bremen - Open Space Notifier</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Android app and Chrome extension</li>
+			<li class="marginbottom30">Usage: Shows the status (open/closed) of the space</li>
+			<li class="marginbottom30">Backend: Appengine with Java</li>
+			<li class="marginbottom30">Message with status is send to all registered devices</li>
+			<li class="marginbottom30">Device receives message and throws notification</li>
+			<li class="marginbottom30">Disadvantage: Chrome extension cannot use it
+				<ul>
+					<li class="marginbottom15">Could use Channel API of Appengine -> too expensive</li>
+					<li class="marginbottom15">Requesting space status in intervall</li>
+				</ul>
+			</li>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>How can I use it?</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Workflow (1/2)</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Enabling GCM
+				<ul>
+					<li class="marginbottom15">Android app registers on GCM server</li>
+					<li class="marginbottom15">RegistrationId is returned if successful</li>
+					<li class="marginbottom15">Android app sends registrationId to the third party application</li>
+					<li class="marginbottom15">Third party application stores the registrationId</li>
+				</ul>
+			</li>
+			<li class="marginbottom30">Sending a message
+				<ul>
+					<li class="marginbottom15">Third party application sends data with registrationId and own API key to GCM server</li>
+					<li class="marginbottom15">Google stores data in case device is offline</li>
+					<li class="marginbottom15">When device is online, data can be send</li>
+					<li class="marginbottom15">On the device: System broadcasts the message to the specified Android app</li>
+				</ul>
+			</li>
+			
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Workflow (2/2)</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Receiving a message
+				<ul class="marginbottom15">
+					<li class="marginbottom15">System receives the incoming message and extracts the raw key/value pairs</li>
+					<li class="marginbottom15">System passes key/value pairs to targeted Android Application in a com.google.android.c2dm.intent.RECEIVE Intent as a set of extras</li>
+					<li class="marginbottom15">Android application extracts the raw data from the Intent by key and processes the data</li>
+				</ul>
+			</li>
+			
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation on Third party application (1/2)</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Java
+				<ul>
+					<li class="marginbottom15">Use jar from &lt;Your_Android_SDK&gt;\extras\google\gcm\gcm-server\dist\gcm-server.jar</li>
+					<pre class="prettyprint" data-lang="java">
+import com.google.android.gcm.server.Message;
+import com.google.android.gcm.server.Result;
+import com.google.android.gcm.server.Sender;
+
+[..]					
+
+public Result sendMessage(final String device, final String message) throws IOException{
+	Sender sender = new Sender(getApiKey());
+	Message gcmMessage = new Message.Builder().addData("payload", message)
+		.collapseKey("0").build();
+	return sender.send(gcmMessage, device, 5);
+}
+					</pre>
+				</ul>
+			</li>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation on Third party application (2/2)</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Others
+				<ul>
+					<li class="marginbottom15">Request format can be found on <a href="http://developer.android.com/guide/google/gcm/gcm.html#send-msg">http://developer.android.com/guide/google/gcm/index.html</a></li>
+				</ul>
+			</li>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation in Android application (1/4)</h2>
+    </hgroup>
+    <article class="smaller">
+		<ul>
+			<li class="marginbottom30">AndroidManifest.xml must at least look like this:</li>
+			<pre class="prettyprint" data-lang="xml">
+&lt;manifest package="com.example.gcm" ...&gt;
+    &lt;uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16"/&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;
+    &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+    &lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;
+	&lt;permission android:name="com.example.gcm.permission.C2D_MESSAGE" 
+        android:protectionLevel="signature" /&gt;
+    &lt;uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" /&gt;
+	&lt;application ...&gt;
+        &lt;receiver
+            android:name=".MyBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;
+                &lt;action android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt;
+                &lt;category android:name="com.example.gcm" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+        &lt;service android:name=".GCMIntentService" /&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+			</pre>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation in Android application (2/4)</h2>
+    </hgroup>
+    <article class="smaller">
+		<ul>
+			<li class="marginbottom30">GCMIntentService.java:</li>
+			<pre class="prettyprint" data-lang="java">
+public class GCMIntentService extends GCMBaseIntentService {
+	protected GCMIntentService(final String senderId) {
+		super(senderId);
+	}
+	@Override
+	protected void onRegistered(final Context context, final String regId) {
+		//Your code
+	}
+	@Override
+	protected void onError(final Context context, final String errorId) {
+		// Your code
+	}
+	@Override
+	protected void onMessage(final Context context, final Intent intent) {
+		// Your code
+	}
+	@Override
+	protected void onUnregistered(final Context context, final String regId) {
+		// Your code
+	}
+}
+			</pre>
+		</ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Implementation in Android application (3/4)</h2>
+    </hgroup>
+    <article class="smaller">
+		<ul>
+			<li class="marginbottom30">MyActivity.java:</li>
+			<pre class="prettyprint" data-lang="java">
+import com.google.android.gcm.GCMRegistrar;
+			
+public class MyActivity extends Activity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main); 
+		
+		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkManifest(this);
+		final String regId = GCMRegistrar.getRegistrationId(this);
+		if (regId.equals("")) {
+		  GCMRegistrar.register(this, SENDER_ID);
+		} else {
+		  Log.v(TAG, "Already registered");
+		}
+	}
+}
+			</pre>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Implementation in Android application (4/4)</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li class="marginbottom30">Jar gcm.jar can be found in &lt;Your_Android_SDK&gt;\extras\google\gcm\gcm-client\dist</li>
+			<li class="marginbottom30">Further information on <a href="http://developer.android.com/guide/google/gcm/gcm.html">http://developer.android.com/guide/google/gcm/gcm.html</a>
+		</ul>
+    </article>
+  </slide>
+  
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thanks for your attention!</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+  
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/GDG_Bremen_vonJan5g_mitRand_HQ.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
