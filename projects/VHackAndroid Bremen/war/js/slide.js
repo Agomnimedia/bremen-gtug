@@ -118,12 +118,12 @@ var SlideSchedule = function() {
 	this.showSlide = function(jsonData){
 		$("#contentWrapper").html('<div class="content roboto flexbox-vertical" id="content_local_sponsor"><h3><b>Hackathon-Ablauf</b>'
 				+'</h3><div class="flexbox roboto box-centered"><table border="0"><tr><td><p><b>10.00-10.20</b></p></td><td>'
-				+'<p>&nbsp;&nbsp;&nbsp;Ankunft und Teambildung</p></td></tr><tr><tr><td><p><b>10.20-10.30</b></p></td><td>'
-				+'<p>&nbsp;&nbsp;&nbsp;Vorstellung der Plattform daten.bremen.de</p></td></tr><tr><tr><td><p><b>10.30-12.30</b>'
-				+'</p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p></td></tr><tr><tr><td><p><b>12.30</b></p></td><td>'
-				+'<p>&nbsp;&nbsp;&nbsp;Mittagessen</p></td></tr><tr><tr><td><p><b>12.30-17.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p>'
-				+'</td></tr><tr><tr><td><p><b>17.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Abendessen</p></td></tr><tr><tr><td><p>'
-				+'<b>17.30-19.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p></td></tr><tr><tr><td><p><b>19.30-21.00</b>'
+				+'<p>&nbsp;&nbsp;&nbsp;Ankunft, Begrüßung und Teambildung</p></td></tr><tr><tr><td><p><b>10.20-10.30</b></p></td><td>'
+				+'<p>&nbsp;&nbsp;&nbsp;Vorstellung der Plattform daten.bremen.de</p></td></tr><tr><tr><td><p><b>10.30-12.45</b>'
+				+'</p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p></td></tr><tr><tr><td><p><b>12.45</b></p></td><td>'
+				+'<p>&nbsp;&nbsp;&nbsp;Mittagessen</p></td></tr><tr><tr><td><p><b>12.45-18.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p>'
+				+'</td></tr><tr><tr><td><p><b>18.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Abendessen</p></td></tr><tr><tr><td><p>'
+				+'<b>18.30-19.30</b></p></td><td><p>&nbsp;&nbsp;&nbsp;Hack-Session</p></td></tr><tr><tr><td><p><b>19.30-21.00</b>'
 				+'</p></td><td><p>&nbsp;&nbsp;&nbsp;Demos and Voting</p></td></tr></table></div></div>');
 	}
 	
