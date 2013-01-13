@@ -25,19 +25,23 @@
 == March 2012 ==
 [https://docs.google.com/presentation/pub?id=1zz1Q8YpFuGkg73zq4fgfZfrpM7HSOE-Ozb9ZpFvFFqQ&start=false&loop=false&pli=1#slide=id.ga1883de_0_0 node.JS] ([http://www.youtube.com/watch?v=qcnBtB7k39I#t=16m21s video]) by [https://plus.google.com/116719489452072046606 +John Philip Schnake], [https://plus.google.com/106733191200400095142 +Malte Legenhausen] and [https://plus.google.com/105066655811382416959 +André König]<br>
 
-== June 2012 == ([http://www.youtube.com/watch?v=XxVRmpb5DvY video])
+== June 2012 ==
+[http://www.youtube.com/watch?v=XxVRmpb5DvY Video]
 [https://docs.google.com/presentation/d/1BwAf5GNk4ypRaVkzyzUJr5AK_VaqrntM_bLpQTcL2Hc/present#slide=id.p OAuth 2.0] by [https://plus.google.com/105644643668348314832/ +Steve Liedtke]<br>
 
-== July 2012 == ([http://www.youtube.com/watch?v=gZZt6bgD4KQ video])
+== July 2012 ==
+[http://www.youtube.com/watch?v=gZZt6bgD4KQ Video]
 [http://bremen-gtug.googlecode.com/svn/presentations/2012_07_02/breminale/gdg_breminale_bjoern_ahlfeld.pdf Briminale App 2012] by [https://plus.google.com/103037284103944587172/ +Björn Ahlfeld]<br>
 [http://bremen-gtug.googlecode.com/svn/presentations/2012_07_02/Android%20Dev%20Tips%20-%20Error%20Reporting.pptx AndEngine] by [https://plus.google.com/113699977573984179010/ +Stefan Anca]<br>
 
-== August 2012 == ([http://www.youtube.com/watch?v=6s3CX74C84s video])
+== August 2012 ==
+[http://www.youtube.com/watch?v=6s3CX74C84s Video]
 [http://bremen-gtug.googlecode.com/svn/presentations/2012_08_06/Developing%20with%20Google%20Technologies/template.html Developing with Google technologies] by [https://plus.google.com/105644643668348314832/ +Steve Liedtke]<br>
 [http://docs.google.com/viewer?a=v&pid=sites&srcid=Z3R1Z3Mub3JnfGJyZW1lbmd0dWd8Z3g6NTg2ZmFiZjU2ODZlM2FlMw AndroidRCCar & Physical Computing mit
 Android] by [https://plus.google.com/113062950789010266684/ +Sven Nobis]<br>
 
-== September 2012 == ([http://www.youtube.com/watch?v=fjXltvGfgEs video])
+== September 2012 ==
+[http://www.youtube.com/watch?v=fjXltvGfgEs Video]
 [http://docs.google.com/viewer?a=v&pid=sites&srcid=Z3R1Z3Mub3JnfGJyZW1lbmd0dWd8Z3g6N2QwYzBhMzg5NTUzNWExYw] by [https://plus.google.com/106778451837488066010/ +Timo Heinrich]<br>
 
 == October 2012 ==
