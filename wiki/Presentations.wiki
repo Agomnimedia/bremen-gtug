@@ -49,7 +49,7 @@ Android] by [https://plus.google.com/113062950789010266684/ +Sven Nobis]<br>
 [Kostengünstige Hausautomation mit einem Smartphone] by [https://plus.google.com/107411440384202293942/ +Henrik Voß]<br>
 
 == November 2012 ==
-[CSS3 - Ein Einführung] by [https://plus.google.com/100559221027275658717/ +Jan Stalhut]<br>
+[https://bremen-gtug.googlecode.com/svn/presentations/2012_11_05/css3/slides/index.html CSS3 - Ein Einführung] by [https://plus.google.com/100559221027275658717/ +Jan Stalhut]<br>
 [http://devfest12-berlin-playn.appspot.com/ PlayN] by [https://plus.google.com/100622744885172202210/ +Johannes Barop]
 <br>
 
