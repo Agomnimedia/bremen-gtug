@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sixcms_data>
+<sixcms_info>Open Data - IT-System Bremen, Sehenswürdigkeiten</sixcms_info>
+<sixcms_article>
+<id>12149007</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Marktplatz</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">0</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149008</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Rathaus</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">20</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149009</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Ratskeller</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">1</field>
+<field name="rel_poi_einr" type="relation" key="id">3989927</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149010</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Bremer Stadtmusikanten</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">19</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149011</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Roland</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">19</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149012</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>St. Petri Dom</title>
+<field name="strasse" type="text">Sandstraße</field>
+<field name="hausnummer" type="text">10</field>
+<field name="rel_poi_einr" type="relation" key="id">335525</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149013</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Haus der Bürgerschaft</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">20</field>
+<field name="rel_poi_einr" type="relation" key="id">334993</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149014</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Schütting</title>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">5</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149016</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Unser Lieben Frauen Kirche</title>
+<field name="strasse" type="text">Unser Lieben Frauen Kirchhof</field>
+<field name="hausnummer" type="text">27</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149017</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Stadtwaage</title>
+<field name="strasse" type="text">Langenstraße</field>
+<field name="hausnummer" type="text">13</field>
+<field name="rel_poi_einr" type="relation" key="id">341365</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149018</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Böttcherstraße</title>
+<field name="strasse" type="text">Böttcherstraße</field>
+<field name="hausnummer" type="text">0</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149019</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Glockenspiel</title>
+<field name="strasse" type="text">Böttcherstraße</field>
+<field name="hausnummer" type="text">4</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149020</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>St. Martini Kirche</title>
+<field name="strasse" type="text">Martinikirchhof</field>
+<field name="hausnummer" type="text">3</field>
+<field name="rel_poi_einr" type="relation" key="id">336542</field>
+</sixcms_article>
+<sixcms_article>
+<id>12148877</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Schnoor</title>
+<field name="strasse" type="text">Schnoor</field>
+<field name="hausnummer" type="text">1</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149023</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Mühle am Wall</title>
+<field name="strasse" type="text">Am Wall</field>
+<field name="hausnummer" type="text">212 </field>
+</sixcms_article>
+<sixcms_article>
+<id>12149024</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Gewerbehaus</title>
+<field name="strasse" type="text">Ansgari­tor­straße</field>
+<field name="hausnummer" type="text">0</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149025</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>"Schulschiff Deutschland"</title>
+<field name="strasse" type="text">Zum Alten Speicher</field>
+<field name="hausnummer" type="text">15</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149026</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Universum® Science Center Bremen</title>
+<field name="strasse" type="text">Wiener Straße</field>
+<field name="hausnummer" type="text">1A</field>
+<field name="rel_poi_einr" type="relation" key="id">338398</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149027</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Olbers-Planetarium</title>
+<field name="strasse" type="text">Werderstraße</field>
+<field name="hausnummer" type="text">73</field>
+<field name="rel_poi_einr" type="relation" key="id">336131</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149028</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Schlachte-Weser-Promenade</title>
+<field name="strasse" type="text">Schlachte</field>
+<field name="hausnummer" type="text">10</field>
+<field name="rel_poi_einr" type="relation" key="id">341696</field>
+</sixcms_article>
+<sixcms_article>
+<id>12149029</id>
+<container>01_bremen.de: 01_stadtplan: 01_poi</container>
+<title>Brigittenkloster</title>
+<field name="strasse" type="text">Kolpingstraße</field>
+<field name="hausnummer" type="text">1C</field>
+</sixcms_article>
+<sixcms_article>
+<id>334993</id>
+<container>01_bremen.de: 01_einrichtungen: 01_einrichtungen</container>
+<title>Bremische Bürgerschaft</title>
+<field name="abkuerzung" type="text"/>
+<field name="sixcms_parent" type="links" key="id"/>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text">20</field>
+<field name="lage" type="text">Haus der Bürgerschaft</field>
+<field name="adresszusatz" type="text"/>
+<field name="postfach" type="text"/>
+<field name="ortsteil" type="text"/>
+<field name="plz_postfach" type="text"/>
+<field name="plz" type="text">28195</field>
+<field name="ort" type="text">Bremen</field>
+<field name="email" type="text">pressestelle@buergerschaft.bremen.de</field>
+<field name="telefon" type="text">(0421) 361 12470</field>
+<field name="fax" type="text">(0421) 496 12470</field>
+<field name="homepage" type="text">http://www.bremische-buergerschaft.de</field>
+<field name="oeffnungszeiten" type="text">Fr  08:00 - 14:30  
+ Mo-Do  08:00 - 17:30  
+</field>
+<field name="latitude" type="text"/>
+<field name="longitude" type="text"/>
+<field name="beschreibung" type="text">Die Bremische Bürgerschaft ist die Volksvertretung des Landes Bremen. Von den 83 Abgeordneten werden 68 in der Stadt Bremen und 15 in Bremerhaven gewählt. Die 68 Bremer Abgeordneten bilden zugleich die Stadtbürgerschaft, das Gemeindeparlament der Stadt Bremen.</field>
+</sixcms_article>
+<sixcms_article>
+<id>335525</id>
+<container>01_bremen.de: 01_einrichtungen: 01_einrichtungen</container>
+<title>Ev. St. Petri Dom (Gemeindebüro)</title>
+<field name="abkuerzung" type="text"/>
+<field name="sixcms_parent" type="links" key="id"/>
+<field name="strasse" type="text">Sandstraße</field>
+<field name="hausnummer" type="text">10 - 12</field>
+<field name="lage" type="text"/>
+<field name="adresszusatz" type="text"/>
+<field name="postfach" type="text"/>
+<field name="ortsteil" type="text"/>
+<field name="plz_postfach" type="text"/>
+<field name="plz" type="text">28195</field>
+<field name="ort" type="text">Bremen</field>
+<field name="email" type="text">m.lange@stpetridom.de</field>
+<field name="telefon" type="text">(0421) 365040</field>
+<field name="fax" type="text">(0421) 3650425</field>
+<field name="homepage" type="text"/>
+<field name="oeffnungszeiten" type="text">&lt;ul&gt;&lt;li&gt;&lt;b&gt;Gemeindebüro:&lt;/b&gt; Mo - Mi + Fr 9-14 Uhr, Do 9-16 Uhr
+&lt;li&gt;&lt;b&gt;Gottesdienst:&lt;/b&gt;
+So 10.00 Uhr,
+Mo-Sa 12.00 Mittagsgebet,
+letzter So 18.00 Uhr &lt;a href="http://www.thomasmesse-bremen.de/" target="_blank"&gt;Thomasmesse&lt;/a&gt;,
+1., 3., 4. So 10.00 
+&lt;li&gt;&lt;b&gt;Bleikeller&lt;/b&gt;:
+von Ostersonntag bis Ende Oktober:
+Mo - Fr 10:00 -17:00 Uhr 
+Sa 10:00 -12:00 Uhr 
+So + Feiertags 14:00 - 17:00 Uhr 
+&lt;li&gt;&lt;b&gt;Turmbesteigung&lt;/b&gt;:
+Ostersonnabend bis 1. November
+&lt;li&gt;&lt;b&gt;Dom-Museum&lt;/b&gt;:
+Mo - Fr: 10:00 - 17:00 Uhr
+(Nov bis April:11-16 Uhr)
+Sa: 10:00 - 13:30 Uhr
+So: 14:00 - 17:00 Uhr&lt;/li&gt;&lt;/ul&gt;</field>
+<field name="latitude" type="text"/>
+<field name="longitude" type="text"/>
+<field name="beschreibung" type="text">Der &lt;em&gt;St. Petri-Dom&lt;/em&gt; hat eine über 1200jährige Geschichte. Sein frühgotische typisches Gepräge erhielt der Dom in der ersten Hälfte des 13. Jahrhunderts.
+Besonders bemerkenswert sind seine ältesten Teile, die West- und Ostkrypta, sowie seine bedeutsamen Orgeln. 
+(siehe auch: &lt;a href='337923'&gt;Stiftung Bremer Dom&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;/li&gt;, &lt;a href='337923'&gt;Freundekreis Musik am Bremer Dom&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;/li&gt;, &lt;a href='344455'&gt;Dom-Museum&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;/li&gt;
+&lt;em&gt;Angebote:&lt;/em&gt;&lt;ul&gt;&lt;li&gt;Domladen 
+&lt;li&gt;&lt;a href='343814&amp;amp;local_template=01_vika_fce_d'&gt;Bleikeller&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;/li&gt;
+Im sog. &lt;em&gt;Bleikeller&lt;/em&gt;, in dem ursprünglich die Bleiplatten für die Dachdeckung aufbewahrt wurden, sind mehrere mumifizierte Leichen zu sehen. Daß dieser Raum Körper vor dem Zerfall bewahrt, entdeckte man zufällig, als nämlich ein im Jahre 1450 tödlich verunglückter Dachdecker dort vergessen und  Jahre später gut erhalten wiedergefunden wurde. 
+Im 17. und 18. Jh. setzte man weitere Leichname von Verunglückten, Nichtidentifizierten oder auf der Durchreise verstorbenen darin bei. Die Ursache für deren Mumifizierung, die bis heute anhält, ist noch nicht geklärt. Es existieren dazu verschiedene naturwissenschaftliche Theorien.
+&lt;/li&gt;&lt;li&gt;Altenpflege 
+&lt;/li&gt;&lt;li&gt;Altenwohnungen 
+&lt;/li&gt;&lt;li&gt;Besuchsdienstkreise 
+&lt;/li&gt;&lt;li&gt;Bibelgarten 
+&lt;/li&gt;&lt;li&gt;Domchor 
+&lt;li&gt;&lt;a href='344455&amp;amp;local_template=01_vika_fce_d'&gt;Dommuseum&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;/li&gt;
+&lt;/li&gt;&lt;li&gt;Domsingschule 
+&lt;/li&gt;&lt;li&gt;Eltern-Kind-Gruppen 
+&lt;/li&gt;&lt;li&gt;Erwachsenenbildung 
+&lt;/li&gt;&lt;li&gt;Frauenkreise 
+&lt;/li&gt;&lt;li&gt;Gemeindebrief 
+&lt;/li&gt;&lt;li&gt;Gemeindeschwestern 
+&lt;/li&gt;&lt;li&gt;Orgelkonzerte 
+&lt;/li&gt;&lt;li&gt;Gospel-Workshop 
+&lt;/li&gt;&lt;li&gt;Handarbeitskreise 
+&lt;/li&gt;&lt;li&gt;Jugendcafé 
+&lt;/li&gt;&lt;li&gt;Jugendfreizeiten 
+&lt;/li&gt;&lt;li&gt;Jugendgruppen 
+&lt;/li&gt;&lt;li&gt;Jugendfreizeitheim 
+&lt;/li&gt;&lt;li&gt;Jugendtreff 
+&lt;/li&gt;&lt;li&gt;Jugendpflege 
+&lt;/li&gt;&lt;li&gt;Kindergruppen 
+&lt;/li&gt;&lt;li&gt;Kindergottesdienst 
+&lt;/li&gt;&lt;li&gt;Kinderheim 
+&lt;/li&gt;&lt;li&gt;Krankenpflege 
+&lt;/li&gt;&lt;li&gt;Kinderspielkreise 
+&lt;/li&gt;&lt;li&gt;Kindergärten 
+&lt;/li&gt;&lt;li&gt;Kinderhäuser 
+&lt;/li&gt;&lt;li&gt;Kinderhorte 
+&lt;/li&gt;&lt;li&gt;Kindertagesheime 
+&lt;/li&gt;&lt;li&gt;Kirchenführungen 
+&lt;li&gt;&lt;a href='342667&amp;amp;local_template=01_vika_fce_d'&gt;Konzerte&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;/li&gt;
+&lt;/li&gt;&lt;li&gt;Konfirmandenkurse 
+&lt;/li&gt;&lt;li&gt;Mädchengruppen 
+&lt;/li&gt;&lt;li&gt;Meditativer Tanz 
+&lt;/li&gt;&lt;li&gt;Motetten 
+&lt;/li&gt;&lt;li&gt;Musikalische Früherziehung 
+&lt;/li&gt;&lt;li&gt;Mutter-Kind-Gruppen 
+&lt;/li&gt;&lt;li&gt;Opferberatung 
+&lt;/li&gt;&lt;li&gt;Schulführungen
+&lt;/li&gt;&lt;li&gt;Schwesternstation 
+&lt;/li&gt;&lt;li&gt;Seniorengruppen 
+&lt;/li&gt;&lt;li&gt;Seniorengymnastik 
+&lt;/li&gt;&lt;li&gt;Seniorenfahrten 
+&lt;/li&gt;&lt;li&gt;Sing-Workshops 
+&lt;/li&gt;&lt;li&gt;Spanisch-Deutsche Kindergruppe 
+&lt;/li&gt;&lt;li&gt;Täter-Opfer-Ausgleich 
+&lt;/li&gt;&lt;li&gt;Taufeltern-Seminare 
+&lt;/li&gt;&lt;li&gt;Taizé-Fahrten
+&lt;/li&gt;&lt;li&gt;Turmbesteigung
+Ostersonnabend bis 1. November 
+Dom und Turm sind während kirchlicher Amtshandlungenund großer Konzertproben, am Karfreitag, 1.Mai, 3. Oktober, 24., 25. und 31. Dezember geschlossen.&lt;/li&gt;&lt;/ul&gt;
+&lt;em&gt;Pastor/innen:&lt;/em&gt;
+Karl-Heinz Daugelat 
+Babett Flügger 
+Henner Flügger 
+Dr. Peter Ulrich 
+Ingrid Witte </field>
+</sixcms_article>
+<sixcms_article>
+<id>336131</id>
+<container>01_bremen.de: 01_einrichtungen: 01_einrichtungen</container>
+<title>Olbers-Planetarium</title>
+<field name="abkuerzung" type="text"/>
+<field name="sixcms_parent" type="links" key="id"/>
+<field name="strasse" type="text">Werderstraße</field>
+<field name="hausnummer" type="text">73</field>
+<field name="lage" type="text">Hochschule Bremen, FB Nautik</field>
+<field name="adresszusatz" type="text"/>
+<field name="postfach" type="text"/>
+<field name="ortsteil" type="text"/>
+<field name="plz_postfach" type="text"/>
+<field name="plz" type="text">28199</field>
+<field name="ort" type="text">Bremen</field>
+<field name="email" type="text">mail@planetarium-bremen.de</field>
+<field name="telefon" type="text">0421 / 5905-4678</field>
+<field name="fax" type="text">(0421) 794 2842</field>
+<field name="homepage" type="text">http://www.planetarium-bremen.de</field>
+<field name="oeffnungszeiten" type="text">siehe unten</field>
+<field name="latitude" type="text"/>
+<field name="longitude" type="text"/>
+<field name="beschreibung" type="text">&lt;em&gt;Öffnungszeiten:&lt;/em&gt;
+&lt;ul&gt;&lt;li&gt;Kinder: Mi 16:00 Uhr - Sa/So 11:30 und 14:00 Uhr 
+sowie in den Schulferien Mo-Fr 11:30, 14:00 und 16:00 Uhr&lt;/li&gt;&lt;li&gt;Familien: Sa/So 16:00 Uhr&lt;/li&gt;&lt;li&gt;Shows: Fr/Sa 21:00 Uhr&lt;/li&gt;&lt;li&gt;Vorträge: Fr/Sa 19:30/im Winterhalbjahr auch Mi 19.30 Uhr&lt;/li&gt;&lt;li&gt;Anmeldung für Schulklassen: (0421) 5905-4678 und 5905-2212&lt;/li&gt;&lt;li&gt;Anmeldungen für Sonderveranstaltungen: (0421) 5905-4678
+Erleben Sie die Nacht ganz neu.
+Das Olbers-Planetarium der Hochschule Bremen ist mit über 23000 Besucherinnen und Besuchern das meistbesuchte Kleinplanetarium Deutschlands. Es verfügt über 35 Plätze und ist rollstuhlgeeignet. Die 12-Kanal-Lichttechnik und die computergesteuerte Multimediaanlage ermöglicht neben klassischen Vorträgen attraktive und unterhaltsame Shows unter dem künstlichen Sternenhimmel. 
+
+Entspannen Sie sich in komfortablen Kinosesseln und erleben Sie Familienveranstaltungen, Kinderprogramme, Märchen und Geschichten unter dem Sternenhimmel, Shows und Konzerte. Lassen Sie sich den aktuellen Sternenhimmel zeigen oder genießen Sie Vorträge zu speziellen Themen. 
+
+Auch Sonderveranstaltungen, wie Geburtstage, Betriebsausflüge, Events ... können Sie bei uns anmelden. Bei größeren Gruppen ermöglichen wir in Zusammenarbeit mit der Olbers-Gesellschaft gleichzeitig einen Besuch der Sternwarte und weitere Angebote.
+Für Schulklassen bieten wir während der Schulzeit vormittags nach Voranmeldung Führungen an.</field>
+</sixcms_article>
+<sixcms_article>
+<id>338398</id>
+<container>01_bremen.de: 01_einrichtungen: 01_einrichtungen</container>
+<title>Universum Bremen</title>
+<field name="abkuerzung" type="text"/>
+<field name="sixcms_parent" type="links" key="id"/>
+<field name="strasse" type="text">Wiener Straße</field>
+<field name="hausnummer" type="text">1a</field>
+<field name="lage" type="text">(Bei der Universität)</field>
+<field name="adresszusatz" type="text"/>
+<field name="postfach" type="text"/>
+<field name="ortsteil" type="text"/>
+<field name="plz_postfach" type="text"/>
+<field name="plz" type="text">28359</field>
+<field name="ort" type="text">Bremen</field>
+<field name="email" type="text">info@universum-bremen.de</field>
+<field name="telefon" type="text">(0421) 33 46 0</field>
+<field name="fax" type="text">(0421) 33 46 10 9</field>
+<field name="homepage" type="text">http://www.universum-bremen.de</field>
+<field name="oeffnungszeiten" type="text">Mo. - Fr. von 9.00 - 18.00 Uhr&lt;br /&gt;&lt;br /&gt;
+Sa., So. und an Feiertagen 10.00 - 18.00 Uhr&lt;br /&gt;&lt;br /&gt;
+</field>
+<field name="latitude" type="text"/>
+<field name="longitude" type="text"/>
+<field name="beschreibung" type="text">&lt;em&gt;Ein Universum® voller Erkenntnisse&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Im Universum® Bremen wird Wissenschaft zum Abenteuer&lt;/em&gt;&lt;br&gt;&lt;br /&gt;
+&lt;br /&gt;
+Wie leben Schlammspringer? Was ist eine Camera Obscura? Wie entsteht ein Regenbogen? Im Universum® Bremen wird Wissenschaft zum wahren Abenteuer. Die Besucher können künstlerisch inszenierte Räume erleben und an zahlreichen Stationen selbst experimentieren, staunen und begreifen. Seit 2007 finden die spannenden Lernerlebnisse nicht nur drinnen, sondern auch draußen statt, denn das im Jahr 2000 eröffnete Science Center wurde um einen Außenbereich namens EntdeckerPark und das Sonderausstellungsgebäude SchauBox erweitert.&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Im Science Center werden Mensch, Erde und Kosmos erlebbar&lt;/em&gt;&lt;br&gt;&lt;br /&gt;
+Auf ihrem Rundgang durch das walförmige Science Center tauchen die Besucher auf 4000 Quadratmetern Erlebnisfläche und an rund 250 Stationen in die drei Themenbereiche Mensch, Erde und Kosmos ein. Besonders beliebt ist das Ruderskelett Freddy, an dem die Besucher genau erkennen können, was beim Sport mit dem eigenen Knochengerüst geschieht. Ebenso aufregend geht es im Raum der gefrorenen Schatten zu, in dem die Besucher ihren eigenen Umriss an eine weiße Wand bannen können. Doch was hat das Rumpeln aus der zweiten Etage zu bedeuten? Wer auf die Suche geht, wird die Antwort schnell finden: In einem Erdbebenraum lassen die Mutigsten unter den Science Center-Besuchern auf Knopfdruck gewaltig die Wände erzittern. Die ganz jungen Besucher zwischen drei und acht Jahren kommen im Kinderbereich Milchstraße auf ihre Kosten. Hier können sie an über 25 Stationen Türme bauen, Träume leben und Trickfilme erfinden.&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;EntdeckerPark lockt unter den freien Himmel&lt;/em&gt;&lt;br&gt;&lt;br /&gt;
+Im Juli 2007 ist das Science Center um ein 5000 Quadratmeter großes Außengelände erweitert worden. Der EntdeckerPark bietet verschiedene Landschaftselemente und rund 25 Mitmachstationen zum Thema Bewegung. Die Besucher können dabei ihre Koordinationsfähigkeit testen, eine Steilwand erklettern oder eine enge Schlucht durchqueren. An der Station Mondspringer hüpfen die Gäste an zwei Griffen hängend bis zu vier Meter hoch und fühlen sich dabei wie bei einem Spaziergang auf dem Erdtrabanten. Die Riesensprünge können von anderen mit einer Camera Obscura beobachtet werden, die sich in einer begehbaren Stahlbox befindet. Auf dem 27 Meter hohen Turm der Lüfte haben die Besucher die Möglichkeit, mit Wind zu experimentieren. Der Turm ist in sich gedreht, die oberste Plattform ist dadurch um 30 Grad versetzt zum Fundament. Ob man von hier oben das Weserstadion sehen kann?&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;SchauBox zeigt faszinierende Sonderausstellungen&lt;/em&gt;&lt;br&gt;&lt;br /&gt;
+Weiterhin eröffnete im Oktober 2007 ein Erweiterungsbau namens SchauBox. In dem rostroten, würfelförmigen Gebäude werden auf 700 Quadratmetern wechselnde Sonderausstellungen zu Themen wie Schokolade, Farben und Formen der Natur, erneuerbare Energien oder menschlicher Körper präsentiert. Zusätzlich erleben die Besucher in dem Veranstaltungssaal DenkArena unterhaltsame und zugleich lehrreiche Science Shows, in denen das Universum®-Team durch zahlreiche Experimente erstaunliche Phänomene für jedermann begreifbar macht.&lt;br /&gt;
+&lt;br /&gt;
+Das Universum® Bremen bietet zu jeder Jahreszeit viel Wissenschaft und Spaß für die ganze Familie. Es eignet sich somit für einen spannenden Ganztages-Ausflug mit rund sechs Stunden Aufenthaltsdauer.&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Weitere Informationen unter &lt;a href='http://www.universum-bremen.de' target='_blank' title='Öffnet im neuen Fenster'&gt;www.universum-bremen.de&lt;/a&gt; &lt;img src="/fastmedia/10/link_extern.gif" alt="Externes Angebot" /&gt;&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;
+Ergänzt wird das Universum® Bremen durch ein &lt;a href='341924'&gt;&lt;em&gt;Conference Center mit dem angeschlossenen Hotel Atlantic Universum&lt;/em&gt;&lt;/a&gt; &lt;img src="/fastmedia/10/scrap_vkarte.gif" alt="Zur Visitenkarte" /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Eintrittspreise:&lt;/em&gt;&lt;br&gt;&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;Erwachsene	16,00 EUR&lt;br /&gt;
+&lt;/li&gt;&lt;li&gt;Ermäßigte	11,00 EUR&lt;br /&gt;
+&lt;/li&gt;&lt;li&gt;Familienkarte	40,00 EUR&lt;br /&gt;
+&lt;br /&gt;
+&lt;/li&gt;&lt;li&gt;Guten-Abend-Ticket 5,00 &lt;br /&gt;
+Gültig für 1,5 Stunden vor Schließung des Hauses.&lt;br /&gt;
+Täglich ab 16.30 Uhr&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+Kinder unter 6 Jahren erhalten freien Eintritt. Für Gruppen ab 15 Personen gibt es Sondertarife. Außerdem sind Jahreskarten für Einzelpersonen und Familien erhältlich.&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Schülergruppen werden mit einer kleinen Einführung begrüßt. Eine Voranmeldung ist erforderlich unter der Telefonnummer (0421) 3346-333, Fax (0421) 3346-109  oder per E-Mail:info@universum-bremen.de&lt;/em&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;em&gt;Anreise mit öffentlichen Verkehrsmitteln:&lt;/em&gt;&lt;br&gt;&lt;br /&gt;
+IC- und ICE-Direktverbindungen gibt es mit allen deutschen Großstädten. Ab dem Bremer Hauptbahnhof bringt die Straßenbahnlinie 6 (Richtung Endstation: Universität) den Besucher in 15 Minuten zum Universum Bremen (Haltestelle: Universität/NW1). Alternativ die Straßenbahnlinie 8 (Richtung Endstation: Kulenkampffallee) bis Endstation und Umstieg in die Buslinien 22 oder 28 bis zur Haltestelle Wiener Straße.</field>
+</sixcms_article>
+<sixcms_article>
+<id>341696</id>
+<container>01_bremen.de: 01_einrichtungen: 01_einrichtungen</container>
+<title>Schlachte Marketing und Service Verband e.V.</title>
+<field name="abkuerzung" type="text"/>
+<field name="sixcms_parent" type="links" key="id"/>
+<field name="strasse" type="text">Hutfilterstraße</field>
+<field name="hausnummer" type="text">16-18</field>
+<field name="lage" type="text"/>
+<field name="adresszusatz" type="text"/>
+<field name="postfach" type="text"/>
+<field name="ortsteil" type="text">Altstadt</field>
+<field name="plz_postfach" type="text"/>
+<field name="plz" type="text">28195</field>
+<field name="ort" type="text">Bremen</field>
+<field name="email" type="text">info@schlachte.de</field>
+<field name="telefon" type="text">Mobil: + 49 (0) 173  641 79 68, Büro: + 49 (0) 421 244 2244</field>
+<field name="fax" type="text">FAX: +49 (0) 421 244 2245</field>
+<field name="homepage" type="text">http://www.schlachte.de</field>
+<field name="oeffnungszeiten" type="text">Bürozeiten: Di-Do 9 bis 13 Uhr. Büroadresse: Zweite Schlachtpforte 3, 28195 Bremen, Zi. 092. Termine nach Vereinbarung auch außerhalb der Bürozeiten möglich.</field>
+<field name="latitude" type="text"/>
+<field name="longitude" type="text"/>
+<field name="beschreibung" type="text">&lt;p&gt;&lt;em&gt;Bremens Weserpromenade Schlachte&lt;/em&gt;&lt;br /&gt;&lt;br /&gt; Die citynahe Weserpromenade Schlachte ist ein urbaner Mittelpunkt der Stadt.&lt;br /&gt;&lt;br /&gt; Eine breite Uferpromenade direkt am Fluss, Bier- und Sommergärten mit über 2000 Sitzplätzen, eine große Auswahl internationaler und heimischer Spezialitäten, Brücken, Pontons und viele Schiffe laden zum Genießen, Flanieren und Erleben ein.&lt;br /&gt;&lt;br /&gt; Ein buntes Veranstaltungsprogramm und touristische Events unterhalten Jung und Alt. Es lohnt sich ein Blick auf den Veranstaltungskalender!&lt;br /&gt;&lt;br /&gt; Täglich werden Schifffahrten mit verschiedenen Themen und zu verschiedenen Zielen entlang der Weser angeboten. &lt;br /&gt;&lt;br /&gt; &lt;em&gt;Zur Geschichte der Schlachte&lt;/em&gt;&lt;br /&gt;&lt;br /&gt; Hier an der Weser befand sich vor 750 Jahren der wichtigste Hafen der  aufstrebenden Hansestadt. Der Name 'Schlachte' erinnert an diese Zeit. 'Slait'  heißt im Niederdeutschen 'Schlagen'. Am Weserufer mußten viele Holzpfähle eingeschlagen werden, damit die Handelsschiffe mit ihrer wertvollen Fracht anlegen konnten. Bis ins 16. Jahrhundert war die Schlachte bremischer Haupthafen.&lt;br /&gt;&lt;br /&gt; Weitere Informationen und aktuelle Veranstaltungshinweise entnehmen Sie bitte unserer Homepage: &lt;a href='http://www.schlachte.de' target='_blank' title='Öffnet im neuen Fenster'&gt;www.schlachte.de&lt;/a&gt; &lt;img src="/fastmedia/10/link_extern.gif" alt="Externes Angebot" /&gt;&lt;br /&gt;&lt;br /&gt; Copyright: Schlachte Marketing und Service Verband e. V., Bremen&lt;/p&gt;</field>
+</sixcms_article>
+<sixcms_article>
+<id>3989927</id>
+<container>01_bremen.de: 01_einrichtungen: 01_einrichtungen</container>
+<title>Bremer Ratskeller</title>
+<field name="abkuerzung" type="text"/>
+<field name="sixcms_parent" type="links" key="id"/>
+<field name="strasse" type="text">Am Markt</field>
+<field name="hausnummer" type="text"/>
+<field name="lage" type="text"/>
+<field name="adresszusatz" type="text"/>
+<field name="postfach" type="text"/>
+<field name="ortsteil" type="text">Altstadt</field>
+<field name="plz_postfach" type="text"/>
+<field name="plz" type="text">28195</field>
+<field name="ort" type="text">Bremen</field>
+<field name="email" type="text">info@ratskeller-bremen.de</field>
+<field name="telefon" type="text">0421 - 32 16 76</field>
+<field name="fax" type="text"/>
+<field name="homepage" type="text">www.ratskeller-bremen.de</field>
+<field name="oeffnungszeiten" type="text">Mo-So 11:00 bis 24:00 Uhr, warme Küche 11:00-14:30 und ab 18:00-22:00 Uhr</field>
+<field name="latitude" type="text">53.0756956</field>
+<field name="longitude" type="text">8.8076139</field>
+<field name="beschreibung" type="text">&lt;p&gt;Unser Mittagstisch für  7,90 oder mit Bonus-Pass für  6,90&lt;br /&gt; _______________________________________________&lt;br /&gt; Montag bis Sonntag von 11:00 bis 24:00 Uhr. &lt;br /&gt; Küche bis 14:30 Uhr. Abends von 18:00 Uhr bis 22:00 Uhr.&lt;br /&gt; _______________________________________________&lt;br /&gt; Zwischen 14:30 Uhr und 18:00 Uhr sowie ab 22:00 bis 23:30 Uhr bieten wir Ihnen selbstverständlich eine kleine Speisenkarte an. Einziger Ruhetag: Neujahr&lt;/p&gt;</field>
+</sixcms_article>
+</sixcms_data>

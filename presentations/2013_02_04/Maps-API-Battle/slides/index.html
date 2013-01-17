@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+Based on Google HTML5 slide template
+URL: http://code.google.com/p/html5slides/
+-->
+<html lang="de">
+    <head>
+        <title>Maps API Battle on Android - Web vs. App</title>
+        <meta name="author" content="Jan Stalhut, Steve Liedtke" />
+		<meta name="description" content="Vorstellung der JavaScript und Android Maps-API und dessen Einsatz in Android-Apps" />
+        <meta charset="utf-8">
+		<link rel="shortcut icon" type="image/png" href="../images/gdg-logo-tiny.png">
+		<!-- The Open Graph Protocol, http://ogp.me/ -->
+		<meta property="og:title" content="Maps API Battle on Android - Web vs. App" />
+		<meta property="og:site_name" content="GDG Bremen" />
+		<meta property="og:image" content="https://bremen-gtug.googlecode.com/svn/presentations/2013_02_04/Maps-API-Battle/images/gdg-logo.png" />
+		<meta property="og:url" content="https://bremen-gtug.googlecode.com/svn/presentations/2013_02_04/Maps-API-Battle/slides/index.html" />
+		<meta property="og:description" content="Vorstellung der JavaScript und Android Maps-API und dessen Einsatz in Android-Apps" />
+		<meta property="og:locale" content="de_DE" />
+		<!-- presentation script -->
+		<script src="../slides.js">
+        </script>
+    </head>
+    <body style="display: none" class="maps-bg">
+        <section class="slides layout-regular template-maps">
+            <!-- layout-widescreen or layout-regular -->
+            
+			<article class="biglogo">
+            </article>
+
+            <article>
+                <h1>Maps API Battle on Android:
+				<br><i>Web vs. App</i>
+                </h1>
+                <p>Jan Stalhut, Steve Liedtke
+				<br>04. Februar 2013
+                </p>
+            </article>
+
+			<article id="slideOverview">
+                <h3>Übersicht</h3>
+                <ul>
+					<li onclick="gotoSlide('slideIntroduction');" style="cursor:pointer;">Einführung</li>
+					<li onclick="gotoSlide('slideDemo');" style="cursor:pointer;">Demo</li>
+					<li onclick="gotoSlide('slideMore');" style="cursor:pointer;">...</li>
+                </ul>
+            </article>
+			
+			<article id="slideIntroduction">
+                <h2>Einführung</h2>
+            </article>
+			
+			<article>
+                <h3>...</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideDemo">
+                <h2>Demo</h2>
+            </article>
+			
+			<article class="onlyphone">
+                <h3>Phone1</h3>
+            </article>
+			
+			<article class="onlyphone secondphone">
+                <h3>Phone2</h3>
+            </article>
+			
+			<article class="phonessidebyside">
+            </article>
+			
+			<article class="phonebyside">
+                <h3>Phone1 - by side</h3>
+				<ul>
+					<li>Item 1</li>
+					<li>Item 2</li>
+					<li>Item 3</li>
+				</ul>
+            </article>
+			
+			<article class="phonebyside secondphone">
+                <h3>Phone2 - by side</h3>
+				<ul>
+					<li>Item 1</li>
+					<li>Item 2</li>
+					<li>Item 3</li>
+				</ul>
+            </article>
+			
+            <article>
+                <h3>Vielen Dank für Eure Aufmerksamkeit!</h3>
+                <ul>
+                    <li>html5slides von Google
+						<br /><a href="http://code.google.com/p/html5slides/" target="_blank">http://code.google.com/p/html5slides/</a></li>
+                    <li>Android-App WebKey
+						<br /><a href="https://play.google.com/store/apps/details?id=com.webkey" target="_blank">https://play.google.com/store/apps/details?id=com.webkey</a></li>
+					<li>...</li>
+                </ul>
+            </article>
+			
+			<div id="phonediv">
+				<img id="phone" src="images/black.png"> <!-- ../images/screenshot-nexus4.png -->
+				<img id="phoneborder" src="../images/deviceborder-nexus4.png">
+				<img id="phoneoverlay" src="">
+				<button id="phonescreennext">&nbsp;</button>
+			</div>
+			
+			<div id="phonediv2">
+				<img id="phone2" src="images/black.png"> <!-- ../images/screenshot-nexus4.png -->
+				<img id="phoneborder2" src="../images/deviceborder-nexus4.png">
+				<img id="phoneoverlay2" src="">
+				<button id="phonescreennext2">&nbsp;</button>
+			</div>
+			
+            <div id="footerLeft" class="footer-left" onclick="gotoSlide('slideOverview');" style="cursor:pointer;">Maps-API-Battle{if_h2} | {/if_h2}{h2}</div>
+            <div id="footerRight" class="footer-right">Folie {#}</div>
+        </section>
+    </body>
+</html>

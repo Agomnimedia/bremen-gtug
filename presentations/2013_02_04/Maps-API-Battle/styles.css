@@ -32,25 +32,17 @@ body {
   background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
   background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
   background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+  background: -ms-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
 
   -webkit-font-smoothing: antialiased;
 }
 
-body.android-bg {
+body.maps-bg {
   background: rgb(162, 198, 57);
   background: -o-radial-gradient(rgb(187, 223, 82), rgb(137, 173, 32));
   background: -moz-radial-gradient(rgb(187, 223, 82), rgb(137, 173, 32));
   background: -webkit-radial-gradient(rgb(187, 223, 82), rgb(137, 173, 32));
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(187, 223, 82)), to(rgb(137, 173, 32)));
-}
-
-body.html5-bg {
-  background: rgb(228, 77, 38); /* rgb(241, 101, 41) */
-  background: -o-radial-gradient(rgb(218, 67, 28), rgb(251, 111, 51));
-  background: -moz-radial-gradient(rgb(218, 67, 28), rgb(251, 111, 51));
-  background: -webkit-radial-gradient(rgb(218, 67, 28), rgb(251, 111, 51));
-  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(218, 67, 28)), to(rgb(251, 111, 51)));
+  background: -ms-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(187, 223, 82)), to(rgb(137, 173, 32)));
 }
 
 #footerLeft, #footerRight {
@@ -119,32 +111,28 @@ body.html5-bg {
 .slides.template-default > article:not(.nobackground):not(.biglogo) {
   background: url(images/google-logo-small.png) 710px 625px no-repeat;  
   background-color: white;  
-}
+} 
 
-.slides.template-html5 > article:not(.nobackground):not(.biglogo) {
-  background: url(images/html5-logo-small.png), url(images/gtug-logo-small.png);
-  background-position: 810px 635px, 20px 635px;
+.slides.template-maps > article:not(.nobackground):not(.biglogo) {
+  background: url(images/android-logo-small.png), url(images/gdg-logo-small.png);
+  background-position: 830px 630px, 20px 635px;
   background-repeat: no-repeat;
   background-color: white;  
 }
-.slides.template-html5.layout-widescreen > article:not(.nobackground):not(.biglogo) {
-	background-position: 1010px 635px, 20px 635px;
+.slides.template-maps.layout-widescreen > article:not(.nobackground):not(.biglogo) {
+	background-position: 1030px 630px, 20px 635px;
 }
-.slides.template-html5 > article > .footer-right {
+.slides.template-maps > article > .footer-right {
 	position:absolute;
 	right: 120px;
 	bottom: 8px;
 	font-size: 20px;
-	color: rgb(162, 162, 162);
-	text-shadow: -1px -1px 0px rgb(202, 202, 202), 1px 1px 0px #fff;
 }
-.slides.template-html5 > article > .footer-left {
+.slides.template-maps > article > .footer-left {
 	position:absolute;
-	left: 170px;
+	left: 120px;
 	bottom: 8px;
 	font-size: 20px;
-	color: rgb(162, 162, 162);
-	text-shadow: -1px -1px 0px rgb(202, 202, 202), 1px 1px 0px #fff;
 } 
 
 .slides.template-io2011 > article:not(.nobackground):not(.biglogo) {
@@ -203,9 +191,9 @@ body.html5-bg {
   background: white url(images/google-logo.png) 50% 50% no-repeat;
 }
 
-.slides.template-html5 article.biglogo {
-  background: url(images/html5-logo.png), url(images/gtug-logo.png);
-  background-position: 50% 50%, 30px 30px;
+.slides.template-maps article.biglogo {
+  background: url(images/android-logo.png), url(images/gdg-logo.png);
+  background-position: 50% 250px, 50% 40px;
   background-repeat: no-repeat;
   background-color: white;
 }
@@ -404,53 +392,10 @@ h3 {
   color: rgb(51, 51, 51);
 }
 
-.slides.template-cdb h1, .slides.template-cdb h2, .slides.template-cdb h3 {
+.slides.template-maps h1, .slides.template-maps h2, .slides.template-maps h3 {
 	color: rgb(162, 198, 57);
 }
 
-.slides.template-html5 h1, .slides.template-html5 h2, .slides.template-html5 h3 {
-	color: rgb(228, 77, 38);
-	/*-webkit-box-reflect:below 1px -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(.66, transparent), to(#FFF));*/
-	text-shadow: 0px 0px 10px rgb(248, 57, 18), 0px 0px #222;
-}
-.slides.template-html5 article.current h2 {
-	-webkit-transition: all 5s ease-in-out;
-	-moz-transition: all 5s ease-in-out;
-	-o-transition: all 5s ease-in-out;
-	-ms-transition: all 5s ease-in-out;
-	transition: all 5s ease-in-out;
-	-moz-transform:scale(2) translate(100px,0);
-	-webkit-transform:scale(2) translate(100px,0);
-	-o-transform:scale(2) translate(100px,0);
-	-ms-transform:scale(2) translate(100px,0);
-	transform:scale(2) translate(100px,0);
-}
-.slides.template-html5 h3 {
-	-moz-transform:translate(0, -80px);
-	-webkit-transform:translate(0, -80px);
-	-o-transform:translate(0, -80px);
-	-ms-transform:translate(0, -80px);
-	transform:translate(0, -80px);
-}
-.slides.template-html5 article.current h3 {
-	-webkit-transition: all 2s ease-in-out;
-	-moz-transition: all 2s ease-in-out;
-	-o-transition: all 2s ease-in-out;
-	-ms-transition: all 2s ease-in-out;
-	transition: all 2s ease-in-out;
-	-moz-transform:translate(0, 0);
-	-webkit-transform:translate(0, 0);
-	-o-transform:translate(0, 0);
-	-ms-transform:translate(0, 0);
-	transform:translate(0, 0);
-}
-.slides.template-html5 article.past h3 {
-	-moz-transform:translate(0, 0);
-	-webkit-transform:translate(0, 0);
-	-o-transform:translate(0, 0);
-	-ms-transform:translate(0, 0);
-	transform:translate(0, 0);
-}
 
 article.fill h3 {
   background: rgba(255, 255, 255, .75);
@@ -575,9 +520,13 @@ article.fill img {
 
   z-index: -1;
 }
-img.centered {
-  margin: 0 auto;
+.centered {
+  margin-left: auto;
+  margin-right: auto;
   display: block;
+}
+img.rightside {
+  float:right;
 }
 
 table {
@@ -606,7 +555,8 @@ th {
   letter-spacing: 0;  
   line-height: 18px;
 }
-.slides.template-cdb .source {
+
+.slides.template-maps .source {
 	font-style: italic;
 	left: 600px;
 	top: 630px;
@@ -700,6 +650,15 @@ div.author::before {
   -moz-transition: opacity 0.5s ease-in-out 0.2s;
   -webkit-transition: opacity 0.5s ease-in-out 0.2s;
 }
+.build.stack {
+  position:relative;
+}
+.build.stack > * {
+  position:absolute;
+  left:0;
+  top:0;
+  background-color:white;
+}
 
 .to-build {
   opacity: 0;
@@ -732,7 +691,98 @@ div.author::before {
 .prettyprint .dec, 
 .prettyprint .var { /* a declaration; a variable name */
   color: rgb(127, 0, 127);
-}  
+}
+
+/* styles for phone screenshots/liveview */
+#phonediv, #phonediv2 {
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-242px;
+	margin-top:-1438px;
+	display: block;
+	width: 484px;
+	height: 880px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	-webkit-transform:scale(0.3) translate(0,0);
+	-o-transform:scale(0.3) translate(0,0);
+	-ms-transform:scale(0.3) translate(0,0);
+	transform:scale(0.3) translate(0,0);
+}
+#phonediv.visible, #phonediv2.visible {
+	-webkit-transform:scale(0.83) translate(0,1205px);
+	-o-transform:scale(0.83) translate(0,1205px);
+	-ms-transform:scale(0.83) translate(0,1205px);
+	transform:scale(0.83) translate(0,1205px);
+}
+#phonediv.visible_biglogo {
+	-webkit-transform:scale(0.2) translate(-2000px,6300px);
+	-o-transform:scale(0.2) translate(-2000px,6300px);
+	-ms-transform:scale(0.2) translate(-2000px,6300px);
+	transform:scale(0.2) translate(-2000px,6300px);
+}
+#phonediv2.visible_biglogo {
+	-webkit-transform:scale(0.2) translate(2000px,6300px);
+	-o-transform:scale(0.2) translate(2000px,6300px);
+	-ms-transform:scale(0.2) translate(2000px,6300px);
+	transform:scale(0.2) translate(2000px,6300px);
+}
+#phonediv.visible_byside, #phonediv2.visible_byside {
+	-webkit-transform:scale(0.7) translate(-400px,1380px);
+	-o-transform:scale(0.7) translate(-400px,1380px);
+	-ms-transform:scale(0.7) translate(-400px,1380px);
+	transform:scale(0.7) translate(-400px,1380px);
+}
+#phonediv.visible_sidebyside {
+	-webkit-transform:scale(0.75) translate(-300px,1300px);
+	-o-transform:scale(0.75) translate(-300px,1300px);
+	-ms-transform:scale(0.75) translate(-300px,1300px);
+	transform:scale(0.75) translate(-300px,1300px);
+}
+#phonediv2.visible_sidebyside {
+	-webkit-transform:scale(0.75) translate(300px,1300px);
+	-o-transform:scale(0.75) translate(300px,1300px);
+	-ms-transform:scale(0.75) translate(300px,1300px);
+	transform:scale(0.75) translate(300px,1300px);
+}
+.slides > article.phonebyside {
+	padding-left:350px;
+}
+.slides > article.phonebyside > p {
+	margin-top:10px;
+}
+#phone, #phoneoverlay, #phone2, #phoneoverlay2 {
+	width: 384px;
+	height: 640px;
+	position:absolute;
+}
+#phone, #phone2 {
+	background-color: black;
+	border:1px solid black;
+	top:114px;
+	left:49px;
+}
+#phoneoverlay, #phoneoverlay2 {
+	top:115px;
+	left:50px;
+}
+#phoneborder, #phoneborder2 {
+	position:absolute;
+	top:0;
+	left:0;
+}
+#phonescreennext, #phonescreennext2 {
+	position:absolute;
+	bottom:50px;
+	left:50px;
+	right:50px;
+	height:60px;
+	border-width:0;
+	background-color:transparent;
+}
 
 /* styles for popup with examples */
 aside {
@@ -770,7 +820,6 @@ aside.opened {
 	-ms-transform:scale(1) rotate(360deg);
 	transform:scale(1) rotate(360deg);
 }
-
 aside > section {
 	width: 50%;
 	overflow: hidden;
@@ -781,3 +830,4 @@ aside > section.left {
 aside > section > pre, aside > section > p, aside > section > form, aside > section > details {
 	margin: 5px;
 }
+
