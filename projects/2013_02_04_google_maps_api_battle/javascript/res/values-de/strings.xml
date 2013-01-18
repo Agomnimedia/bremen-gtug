@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MapsAPI-Battle - JavaScript-Version</string>
+    <string name="title_activity_main">MapsAPI - JavaScript</string>
+    
+    <string name="dummy">Hallo JavaScript Maps-API v3!</string>
+
+</resources>

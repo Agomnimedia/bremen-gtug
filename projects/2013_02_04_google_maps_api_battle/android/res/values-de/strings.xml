@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MapsAPI-Battle - Android-Version</string>
+    <string name="title_activity_main">MapsAPI - Android</string>
+    
+    <string name="dummy">Hallo Android Maps-API v2!</string>
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="menu_marker">Marker einblenden</string>
+    <string name="menu_overlays">Overlays einblenden</string>
+    <string name="menu_position">Position einblenden</string>
+    <string name="menu_route">Route einblenden</string>
+    <string name="menu_about">Über</string>
+
+</resources>
