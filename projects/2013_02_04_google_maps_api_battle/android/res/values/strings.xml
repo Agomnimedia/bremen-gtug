@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">MapsAPI-Battle - Android-Version</string>
-    <string name="title_activity_main">MapsAPI - Android</string>
+    <string name="title_activity_main">Maps@Android</string>
     
     <string name="dummy">Hello Android Maps-API v2!</string>
 
