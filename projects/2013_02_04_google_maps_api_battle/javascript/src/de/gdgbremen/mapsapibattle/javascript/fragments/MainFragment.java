@@ -1,4 +1,4 @@
-package de.gdgbremen.mapsapibattle.javascript;
+package de.gdgbremen.mapsapibattle.javascript.fragments;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import de.gdgbremen.mapsapibattle.javascript.R;
 import de.gdgbremen.mapsapibattle.library.MapType;
 
 public class MainFragment extends Fragment {
@@ -28,10 +30,33 @@ public class MainFragment extends Fragment {
 				.inflate(R.layout.fragment_main, container, false);
 		this.webview = (WebView) view.findViewById(R.id.webview);
 		this.webview.getSettings().setJavaScriptEnabled(true);
-		this.webview.setWebViewClient(new WebViewClient() {
-			public void onReceivedError(WebView view, int errorCode,
-					String description, String failingUrl) {
-				Log.i("WebView", "(" + errorCode + ")" + description);
+		webview.setWebChromeClient(new WebChromeClient() {
+			public boolean onConsoleMessage(ConsoleMessage cm) {
+				switch(cm.messageLevel()) {
+					case DEBUG:
+						Log.d("MapsWebView-DEBUG", cm.message() + " -- " + cm.lineNumber()
+								+ "@" + cm.sourceId().substring(26));
+						break;
+					case ERROR:
+						Log.e("MapsWebView-ERROR", cm.message() + " -- " + cm.lineNumber()
+								+ "@" + cm.sourceId().substring(26));
+						break;
+					case LOG:
+						Log.i("MapsWebView-LOG", cm.message() + " -- " + cm.lineNumber()
+								+ "@" + cm.sourceId().substring(26));
+						break;
+					case TIP:
+						Log.i("MapsWebView-TIP", cm.message() + " -- " + cm.lineNumber()
+								+ "@" + cm.sourceId().substring(26));
+						break;
+					case WARNING:
+						Log.w("MapsWebView-WARN", cm.message() + " -- " + cm.lineNumber()
+								+ "@" + cm.sourceId().substring(26));
+						break;
+					default:
+						break;
+				}
+				return true;
 			}
 		});
 		webview.loadUrl("file:///android_asset/map/googlemap.html");
@@ -42,43 +67,35 @@ public class MainFragment extends Fragment {
 	}
 
 	public void showMarker() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:showMarker()");
 	}
 
 	public void hideMarker() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:hideMarker()");
 	}
 
 	public void showOverlays() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:showOverlays()");
 	}
 
 	public void hideOverlays() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:hideOverlays()");
 	}
 
 	public void showPosition() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:showPosition()");
 	}
 
 	public void hidePosition() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:hidePosition()");
 	}
 
 	public void showRoute() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:showRoute()");
 	}
 
 	public void hideRoute() {
-		// TODO Auto-generated method stub
-
+		webview.loadUrl("javascript:hideRoute()");
 	}
 
 	public void setMapType(MapType mapType) {

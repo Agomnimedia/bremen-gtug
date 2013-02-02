@@ -22,8 +22,16 @@ body {
 	
 </script>
 <script type="text/javascript">
+	/**
+	 * Reference to the GoogleMaps element.
+	 */
 	var map;
-	
+
+	/**
+	 * stores the marker for the current geolocation of the user.
+	 */
+	var currentPositionMarker;
+
 	function initialize() {
 		var mapOptions = {
 			center : new google.maps.LatLng(53.075858, 8.80772),
@@ -36,17 +44,103 @@ body {
 			streetViewControl : false,
 			overviewMapControl : false
 		};
-		map = new google.maps.Map(document.getElementById("map_canvas"),
-				mapOptions);
+		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	}
+	
+	function showMarker() {
+		console.warn("showMarker()");
+		// TODO
+	}
+	
+	function hideMarker() {
+		console.debug("hideMarker()");
+		// TODO
+	}
+	
+	function showOverlays() {
+		console.log("showOverlays()");
+		// TODO
+	}
+	
+	function hideOverlays() {
+		console.log("hideOverlays()");
+		// TODO
+	}
+	
+	function showPosition() {
+		console.log("showPosition()");
+		// TODO
+	}
+	
+	function hidePosition() {
+		console.log("hidePosition()");
+		// TODO
+	}
+	
+	function showRoute() {
+		console.log("showRoute()");
+		// TODO
+	}
+	
+	function hideRoute() {
+		console.log("hideRoute()");
+		// TODO
 	}
 
 	function setMapType(mapType) {
-		console.log("switch map type to " + mapType);
-		if(mapType == "NONE") {
+		console.log("setMapType(" + mapType + ")");
+		if (mapType == "NONE") {
 			map.setMapTypeId();
 		} else {
 			map.setMapTypeId(google.maps.MapTypeId[mapType]);
 		}
+	}
+
+	/**
+	 * show a circle on the current users geo location.
+	 * 
+	 * @param {Number}
+	 *          latitude the latitude of the geo location.
+	 * @param {Number}
+	 *          longitude the longitude of the geo location.
+	 * @param {Number}
+	 *          accuracy of the geo location.
+	 */
+	var markGeoPosition = function(latitude, longitude, accuracy) {
+		if (currentPositionMarker) {
+			currentPositionMarker.setMap(null);
+		}
+		var markerLatlng = new google.maps.LatLng(latitude, longitude);
+		currentPositionMarker = new google.maps.Circle({
+			clickable : false,
+			center : markerLatlng,
+			map : map,
+			radius : accuracy / 2,
+			fillColor : '#0000ff',
+			fillOpacity : '0.08',
+			strokeColor : '#0000ff',
+			strokeOpacity : '0.5'
+		});
+	};
+
+	/**
+	 * update the circle position and size on the current users geo location.
+	 * 
+	 * @param {Number}
+	 *          latitude the latitude of the geo location.
+	 * @param {Number}
+	 *          longitude the longitude of the geo location.
+	 * @param {Number}
+	 *          accuracy of the geo location.
+	 */
+	var updateGeoPosition = function(latitude, longitude, accuracy) {
+		if (!currentPositionMarker) {
+			markGeoPosition(latitude, longitude, accuracy);
+			return;
+		}
+		var markerLatlng = new google.maps.LatLng(latitude, longitude);
+		currentPositionMarker.setCenter(markerLatlng);
+		currentPositionMarker.setRadius(accuracy);
 	}
 </script>
 </head>

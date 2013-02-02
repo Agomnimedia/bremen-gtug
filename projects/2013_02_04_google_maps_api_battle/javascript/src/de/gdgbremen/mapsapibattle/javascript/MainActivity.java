@@ -2,7 +2,7 @@ package de.gdgbremen.mapsapibattle.javascript;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import de.gdgbremen.mapsapibattle.javascript.fragments.MainFragment;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
 import de.gdgbremen.mapsapibattle.library.MapType;
 
@@ -61,7 +61,7 @@ public class MainActivity extends AbstractMainActivity {
 
 	@Override
 	protected void showRoute() {
-		fragment.showPosition();
+		fragment.showRoute();
 	}
 
 	@Override
