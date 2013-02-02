@@ -6,13 +6,16 @@ import android.support.v4.app.FragmentTransaction;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.GoogleMap;
 
+import de.gdgbremen.mapsapibattle.android.fragments.ControlsFragment;
 import de.gdgbremen.mapsapibattle.android.fragments.MyMapFragment;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
 import de.gdgbremen.mapsapibattle.library.MapType;
 
-public class MainActivity extends AbstractMainActivity {
+public class MainActivity extends AbstractMainActivity implements ControlActions{
 
 	private MyMapFragment fragment;
+	
+	private ControlsFragment additionalControls;
 
 
 	@Override
@@ -33,11 +36,13 @@ public class MainActivity extends AbstractMainActivity {
 			fragment = (MyMapFragment) getSupportFragmentManager()
 					.findFragmentByTag("mapFragment");
 		}
-		transaction.commit();
-
-		if (savedInstanceState == null) {
-			// TODO ?!
+		
+		if (getSupportFragmentManager().findFragmentByTag("controlFragment") != null) {
+			additionalControls = (ControlsFragment) getSupportFragmentManager()
+					.findFragmentByTag("controlFragment");
 		}
+		
+		transaction.commit();
 	}
 
 	@Override
@@ -101,7 +106,71 @@ public class MainActivity extends AbstractMainActivity {
 		case TERRAIN:
 			fragment.changeMapType(GoogleMap.MAP_TYPE_TERRAIN);
 			break;
+		case NONE:
+			fragment.changeMapType(GoogleMap.MAP_TYPE_NONE);
+			break;
 		}
 		
 	}
+	
+	// ####### ADDITIONAL CONTROLS
+
+	@Override
+	public void show() {
+		final FragmentTransaction transaction = getSupportFragmentManager()
+				.beginTransaction();
+		
+		if (getSupportFragmentManager().findFragmentByTag("controlFragment") == null) {
+			additionalControls = new ControlsFragment();
+			transaction.add(R.id.singlefragment, additionalControls, "controlFragment");
+		}
+		
+		transaction.commit();
+	}
+
+	@Override
+	public void hide() {
+		final FragmentTransaction transaction = getSupportFragmentManager()
+				.beginTransaction();
+		if (getSupportFragmentManager().findFragmentByTag("controlFragment") != null) {
+			transaction.remove(additionalControls);
+		}
+		transaction.commit();
+	}
+
+	@Override
+	public void tiltUp() {
+		fragment.tiltUp();
+	}
+
+	@Override
+	public void tiltDown() {
+		fragment.tiltDown();
+	}
+
+	@Override
+	public void animateToMountainView() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void animateToBremen() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void traffic(boolean show) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void indoor(boolean show) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }

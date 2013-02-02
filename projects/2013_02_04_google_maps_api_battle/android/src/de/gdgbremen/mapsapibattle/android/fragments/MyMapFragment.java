@@ -8,7 +8,12 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,9 +32,10 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import de.gdgbremen.mapsapibattle.android.ControlActions;
 import de.gdgbremen.mapsapibattle.android.R;
 
-public class MyMapFragment extends SupportMapFragment implements MenuActions,
+public class MyMapFragment extends SupportMapFragment implements MenuActions, 
 		LocationSource, LocationListener {
 
 	private GoogleMap map;
@@ -42,7 +48,6 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		final GoogleMapOptions options = new GoogleMapOptions();
 
 		options.mapType(GoogleMap.MAP_TYPE_HYBRID);
-
 		// TODO uisettings ausprobieren
 
 		Bundle args = new Bundle();
@@ -51,6 +56,16 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		fragment.setArguments(args);
 
 		return fragment;
+	}
+	
+	@Override
+	public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {
+		final View view = super.onCreateView(arg0, arg1, arg2);
+		LayoutParams param = new LinearLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT, 1.0f);
+		view.setLayoutParams(param);
+		return view;
 	}
 	
 	@Override
@@ -85,16 +100,19 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 				.target(bremenCity).build();
 		map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
 		map.setInfoWindowAdapter(null);
+//		map.setIndoorEnabled(arg0)
+//		map.setTrafficEnabled(arg0)
 
+		map.getUiSettings().setTiltGesturesEnabled(true);
 		map.getUiSettings().setMyLocationButtonEnabled(true);
 
 		map.setOnMapLongClickListener(new OnMapLongClickListener() {
 
 			@Override
 			public void onMapLongClick(final LatLng latlng) {
-				// TODO show dialogfragment
-				// 1. remove map type
-				// 2. show camera moving
+				final FragmentManager fm = MyMapFragment.this.getActivity().getSupportFragmentManager();
+		        final SecretDialogFragment dialog = new SecretDialogFragment();
+		        dialog.show(fm, "fragment_secret_dialog");
 			}
 		});
 	}
@@ -104,6 +122,36 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 	@Override
 	public void changeMapType(int mapType) {
 		map.setMapType(mapType);
+	}
+	
+	// ####### TILTING
+	
+	public void tiltUp() {
+		final CameraPosition oldPosition = map.getCameraPosition();
+		if(oldPosition.tilt<90){
+			float dif = 15;
+			if((90-oldPosition.tilt) < 15){
+				dif = 90-oldPosition.tilt;
+			}
+			final CameraPosition position = new CameraPosition.Builder(oldPosition)
+					.tilt(oldPosition.tilt+dif).build();
+			map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
+		}
+		
+	}
+
+	public void tiltDown() {
+		final CameraPosition oldPosition = map.getCameraPosition();
+		if(oldPosition.tilt>1){
+			float dif = 15;
+			if(oldPosition.tilt < 15){
+				dif = oldPosition.tilt;
+			}
+			final CameraPosition position = new CameraPosition.Builder(oldPosition)
+					.tilt(oldPosition.tilt-dif).build();
+			
+			map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
+		}
 	}
 
 	// ####### MARKER
