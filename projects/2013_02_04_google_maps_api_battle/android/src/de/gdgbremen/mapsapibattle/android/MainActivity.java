@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.GoogleMap;
 
 import de.gdgbremen.mapsapibattle.android.fragments.MyMapFragment;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
@@ -87,7 +88,20 @@ public class MainActivity extends AbstractMainActivity {
 
 	@Override
 	protected void setMapType(MapType mapType) {
-		// TODO Auto-generated method stub
+		switch(mapType){
+		case HYBRID:
+			fragment.changeMapType(GoogleMap.MAP_TYPE_HYBRID);
+			break;
+		case ROADMAP:
+			fragment.changeMapType(GoogleMap.MAP_TYPE_NORMAL);
+			break;
+		case SATELLITE:
+			fragment.changeMapType(GoogleMap.MAP_TYPE_SATELLITE);
+			break;
+		case TERRAIN:
+			fragment.changeMapType(GoogleMap.MAP_TYPE_TERRAIN);
+			break;
+		}
 		
 	}
 }

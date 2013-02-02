@@ -9,4 +9,6 @@ public interface MenuActions {
 	void position(boolean show);
 	
 	void route(boolean show);
+	
+	void changeMapType(int mapType);
 }
