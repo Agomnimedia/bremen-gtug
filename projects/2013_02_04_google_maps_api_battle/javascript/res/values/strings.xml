@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">MapsAPI-Battle - JavaScript-Version</string>
-    <string name="title_activity_main">Maps@JavaScript</string>
+    <string name="title_activity_main">Maps@Web</string>
     
     <string name="dummy">Hello JavaScript Maps-API v3!</string>
 

@@ -7,6 +7,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import de.gdgbremen.mapsapibattle.android.fragments.MyMapFragment;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
+import de.gdgbremen.mapsapibattle.library.MapType;
 
 public class MainActivity extends AbstractMainActivity {
 
@@ -82,5 +83,11 @@ public class MainActivity extends AbstractMainActivity {
 	@Override
 	protected void hideRoute() {
 		fragment.route(false);
+	}
+
+	@Override
+	protected void setMapType(MapType mapType) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -37,6 +37,11 @@ body {
 		var map = new google.maps.Map(document.getElementById("map_canvas"),
 				mapOptions);
 	}
+
+	function setMapType(mapType) {
+		alert("switch map type to " + mapType);
+		map.setMapTypeId(google.maps.MapTypeId[mapType]);
+	}
 </script>
 </head>
 <body onload="initialize()">

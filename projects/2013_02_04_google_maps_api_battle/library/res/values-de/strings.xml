@@ -5,6 +5,11 @@
     <string name="menu_overlays">Overlays einblenden</string>
     <string name="menu_position">Position einblenden</string>
     <string name="menu_route">Route einblenden</string>
+    <string name="menu_maptype">Kartentyp wählen &#8230;</string>
+    <string name="menu_maptype_roadmap">Straßenkarte</string>
+    <string name="menu_maptype_terrain">Geländekarte</string>
+    <string name="menu_maptype_satellite">Luftaufnahmen</string>
+    <string name="menu_maptype_hybrid">Luftbilder mit Straßen</string>
     <string name="menu_about">Über</string>
 
 </resources>

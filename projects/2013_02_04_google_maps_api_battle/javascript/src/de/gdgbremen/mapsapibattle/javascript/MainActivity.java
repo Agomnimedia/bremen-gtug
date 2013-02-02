@@ -2,7 +2,9 @@ package de.gdgbremen.mapsapibattle.javascript;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
+import de.gdgbremen.mapsapibattle.library.MapType;
 
 public class MainActivity extends AbstractMainActivity {
 	private MainFragment fragment;
@@ -66,4 +68,11 @@ public class MainActivity extends AbstractMainActivity {
 	protected void hideRoute() {
 		fragment.hideRoute();
 	}
+
+	@Override
+	protected void setMapType(MapType mapType) {
+		Log.i("MainActivity", "set Maptype to " + mapType);
+		fragment.setMapType(mapType);
+	}
+
 }

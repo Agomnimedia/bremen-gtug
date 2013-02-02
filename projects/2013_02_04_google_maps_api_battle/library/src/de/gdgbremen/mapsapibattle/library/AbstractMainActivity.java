@@ -25,6 +25,8 @@ public abstract class AbstractMainActivity extends FragmentActivity {
 
 	protected abstract void hideRoute();
 
+	protected abstract void setMapType(MapType mapType);
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,6 +81,21 @@ public abstract class AbstractMainActivity extends FragmentActivity {
 				item.setChecked(true);
 				this.showRoute();
 			}
+			return true;
+		} else if (itemId == R.id.menu_maptype) {
+			// nothing to do, opens only the submenu
+			return true;
+		} else if (itemId == R.id.menu_maptype_roadmap) {
+			setMapType(MapType.ROADMAP);
+			return true;
+		} else if (itemId == R.id.menu_maptype_terrain) {
+			setMapType(MapType.TERRAIN);
+			return true;
+		} else if (itemId == R.id.menu_maptype_satellite) {
+			setMapType(MapType.SATELLITE);
+			return true;
+		} else if (itemId == R.id.menu_maptype_hybrid) {
+			setMapType(MapType.HYBRID);
 			return true;
 		} else {
 			return super.onOptionsItemSelected(item);
