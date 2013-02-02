@@ -97,6 +97,9 @@ public abstract class AbstractMainActivity extends FragmentActivity {
 		} else if (itemId == R.id.menu_maptype_hybrid) {
 			setMapType(MapType.HYBRID);
 			return true;
+		} else if (itemId == R.id.menu_maptype_none) {
+			setMapType(MapType.NONE);
+			return true;
 		} else {
 			return super.onOptionsItemSelected(item);
 		}

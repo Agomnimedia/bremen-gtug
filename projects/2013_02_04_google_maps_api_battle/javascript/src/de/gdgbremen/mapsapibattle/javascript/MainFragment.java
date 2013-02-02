@@ -82,7 +82,6 @@ public class MainFragment extends Fragment {
 	}
 
 	public void setMapType(MapType mapType) {
-		Log.i("MainFragment", "set maptype to " + mapType);
 		webview.loadUrl("javascript:setMapType('" + mapType + "')");
 	}
 }

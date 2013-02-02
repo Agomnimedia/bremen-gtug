@@ -38,6 +38,9 @@
             <item
                 android:id="@+id/menu_maptype_hybrid"
                 android:title="@string/menu_maptype_hybrid"/>
+            <item
+                android:id="@+id/menu_maptype_none"
+                android:title="@string/menu_maptype_none"/>
         </menu>
     </item>
     <item

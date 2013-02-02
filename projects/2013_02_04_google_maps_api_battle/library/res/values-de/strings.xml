@@ -9,7 +9,8 @@
     <string name="menu_maptype_roadmap">Straßenkarte</string>
     <string name="menu_maptype_terrain">Geländekarte</string>
     <string name="menu_maptype_satellite">Luftaufnahmen</string>
-    <string name="menu_maptype_hybrid">Luftbilder mit Straßen</string>
+    <string name="menu_maptype_hybrid">Luftaufnahmen mit Straßen</string>
+    <string name="menu_maptype_none">Karte ausblenden</string>
     <string name="menu_about">Über</string>
 
 </resources>

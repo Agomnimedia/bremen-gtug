@@ -10,6 +10,7 @@
     <string name="menu_maptype_terrain">Terrain</string>
     <string name="menu_maptype_satellite">Aerial photos</string>
     <string name="menu_maptype_hybrid">Aerial photos with roads</string>
+    <string name="menu_maptype_none">Hide map</string>
     <string name="menu_about">About</string>
 
 </resources>

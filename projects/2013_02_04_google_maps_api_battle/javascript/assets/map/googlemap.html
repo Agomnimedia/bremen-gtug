@@ -22,6 +22,8 @@ body {
 	
 </script>
 <script type="text/javascript">
+	var map;
+	
 	function initialize() {
 		var mapOptions = {
 			center : new google.maps.LatLng(53.075858, 8.80772),
@@ -34,13 +36,17 @@ body {
 			streetViewControl : false,
 			overviewMapControl : false
 		};
-		var map = new google.maps.Map(document.getElementById("map_canvas"),
+		map = new google.maps.Map(document.getElementById("map_canvas"),
 				mapOptions);
 	}
 
 	function setMapType(mapType) {
-		alert("switch map type to " + mapType);
-		map.setMapTypeId(google.maps.MapTypeId[mapType]);
+		console.log("switch map type to " + mapType);
+		if(mapType == "NONE") {
+			map.setMapTypeId();
+		} else {
+			map.setMapTypeId(google.maps.MapTypeId[mapType]);
+		}
 	}
 </script>
 </head>

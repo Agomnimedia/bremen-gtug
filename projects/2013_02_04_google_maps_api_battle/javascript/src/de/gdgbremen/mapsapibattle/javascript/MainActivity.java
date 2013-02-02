@@ -71,7 +71,6 @@ public class MainActivity extends AbstractMainActivity {
 
 	@Override
 	protected void setMapType(MapType mapType) {
-		Log.i("MainActivity", "set Maptype to " + mapType);
 		fragment.setMapType(mapType);
 	}
 
