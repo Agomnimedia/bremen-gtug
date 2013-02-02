@@ -32,6 +32,11 @@ body {
 	 */
 	var currentPositionMarker;
 
+	/**
+	 * id of the geolocation watching process, for aborting on page unload.
+	 */
+	var watchGeolocationId;
+
 	function initialize() {
 		var mapOptions = {
 			center : new google.maps.LatLng(53.075858, 8.80772),
@@ -46,49 +51,63 @@ body {
 		};
 		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 	}
-	
+
 	function showMarker() {
-		console.warn("showMarker()");
+		console.debug("showMarker()");
 		// TODO
 	}
-	
+
 	function hideMarker() {
 		console.debug("hideMarker()");
 		// TODO
 	}
-	
+
 	function showOverlays() {
-		console.log("showOverlays()");
+		console.debug("showOverlays()");
 		// TODO
 	}
-	
+
 	function hideOverlays() {
-		console.log("hideOverlays()");
+		console.debug("hideOverlays()");
 		// TODO
 	}
-	
+
 	function showPosition() {
-		console.log("showPosition()");
-		// TODO
+		console.debug("showPosition()");
+		watchGeolocationId = navigator.geolocation.watchPosition(
+				function(position) {
+					console.debug("geolocation details: " + JSON.stringify(position.coords));
+					updateGeoPosition(position.coords.latitude,
+							position.coords.longitude, position.coords.accuracy);
+				}, function(error) {
+					console.error("Thera are no current geoposition, because '"
+							+ error.message + "', Code " + error.code);
+				}, {
+					maximumAge : 3000,
+					timeout : 5000,
+					enableHighAccuracy : true
+				});
 	}
-	
+
 	function hidePosition() {
-		console.log("hidePosition()");
-		// TODO
+		console.debug("hidePosition()");
+		if (watchGeolocationId) {
+			navigator.geolocation.clearWatch(watchGeolocationId);
+		}
 	}
-	
+
 	function showRoute() {
-		console.log("showRoute()");
+		console.debug("showRoute()");
 		// TODO
 	}
-	
+
 	function hideRoute() {
-		console.log("hideRoute()");
+		console.debug("hideRoute()");
 		// TODO
 	}
 
 	function setMapType(mapType) {
-		console.log("setMapType(" + mapType + ")");
+		console.debug("setMapType(" + mapType + ")");
 		if (mapType == "NONE") {
 			map.setMapTypeId();
 		} else {
@@ -115,7 +134,7 @@ body {
 			clickable : false,
 			center : markerLatlng,
 			map : map,
-			radius : accuracy / 2,
+			radius : accuracy,
 			fillColor : '#0000ff',
 			fillOpacity : '0.08',
 			strokeColor : '#0000ff',
