@@ -1,5 +1,8 @@
 package de.gdgbremen.mapsapibattle.library;
 
+import java.util.List;
+
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -31,6 +34,12 @@ public abstract class AbstractMainActivity extends FragmentActivity {
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+	}
+	
+	protected List<Landmark> bremenLandmarks(){
+		final AssetManager assetManager = getAssets();
+		final XMLLandmarkParser parser = new XMLLandmarkParser(assetManager,"data.xml");
+		return parser.parseLandmarks();
 	}
 
 	@Override

@@ -1,8 +1,12 @@
 package de.gdgbremen.mapsapibattle.android.fragments;
 
-public interface MenuActions {
+import java.util.List;
 
-	void marker(boolean show);
+import de.gdgbremen.mapsapibattle.library.Landmark;
+
+public interface MenuActions {
+	
+	void marker(List<Landmark> landmarks);
 	
 	void overlays(boolean show);
 	

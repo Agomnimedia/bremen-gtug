@@ -1,14 +1,22 @@
 package de.gdgbremen.mapsapibattle.android.fragments;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,10 +40,10 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import de.gdgbremen.mapsapibattle.android.ControlActions;
 import de.gdgbremen.mapsapibattle.android.R;
+import de.gdgbremen.mapsapibattle.library.Landmark;
 
-public class MyMapFragment extends SupportMapFragment implements MenuActions, 
+public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		LocationSource, LocationListener {
 
 	private GoogleMap map;
@@ -57,17 +65,16 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 
 		return fragment;
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {
 		final View view = super.onCreateView(arg0, arg1, arg2);
 		LayoutParams param = new LinearLayout.LayoutParams(
-				LayoutParams.MATCH_PARENT,
-				LayoutParams.MATCH_PARENT, 1.0f);
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1.0f);
 		view.setLayoutParams(param);
 		return view;
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,11 +87,11 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		map = super.getMap();
 		showStartPosition();
 	}
-	
+
 	@Override
 	public void onPause() {
 		super.onPause();
-		this.marker(false);
+		this.marker(null);
 		this.overlays(false);
 		this.position(false);
 	}
@@ -100,8 +107,8 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 				.target(bremenCity).build();
 		map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
 		map.setInfoWindowAdapter(null);
-//		map.setIndoorEnabled(arg0)
-//		map.setTrafficEnabled(arg0)
+		// map.setIndoorEnabled(arg0)
+		// map.setTrafficEnabled(arg0)
 
 		map.getUiSettings().setTiltGesturesEnabled(true);
 		map.getUiSettings().setMyLocationButtonEnabled(true);
@@ -110,46 +117,47 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 
 			@Override
 			public void onMapLongClick(final LatLng latlng) {
-				final FragmentManager fm = MyMapFragment.this.getActivity().getSupportFragmentManager();
-		        final SecretDialogFragment dialog = new SecretDialogFragment();
-		        dialog.show(fm, "fragment_secret_dialog");
+				final FragmentManager fm = MyMapFragment.this.getActivity()
+						.getSupportFragmentManager();
+				final SecretDialogFragment dialog = new SecretDialogFragment();
+				dialog.show(fm, "fragment_secret_dialog");
 			}
 		});
 	}
-	
+
 	// ####### MAPTYPE
-	
+
 	@Override
 	public void changeMapType(int mapType) {
 		map.setMapType(mapType);
 	}
-	
+
 	// ####### TILTING
-	
+
 	public void tiltUp() {
 		final CameraPosition oldPosition = map.getCameraPosition();
-		if(oldPosition.tilt<90){
+		if (oldPosition.tilt < 90) {
 			float dif = 15;
-			if((90-oldPosition.tilt) < 15){
-				dif = 90-oldPosition.tilt;
+			if ((90 - oldPosition.tilt) < 15) {
+				dif = 90 - oldPosition.tilt;
 			}
-			final CameraPosition position = new CameraPosition.Builder(oldPosition)
-					.tilt(oldPosition.tilt+dif).build();
+			final CameraPosition position = new CameraPosition.Builder(
+					oldPosition).tilt(oldPosition.tilt + dif).build();
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
 		}
-		
+
 	}
 
 	public void tiltDown() {
 		final CameraPosition oldPosition = map.getCameraPosition();
-		if(oldPosition.tilt>1){
+		if (oldPosition.tilt > 1) {
 			float dif = 15;
-			if(oldPosition.tilt < 15){
+			if (oldPosition.tilt < 15) {
 				dif = oldPosition.tilt;
 			}
-			final CameraPosition position = new CameraPosition.Builder(oldPosition)
-					.tilt(oldPosition.tilt-dif).build();
-			
+			final CameraPosition position = new CameraPosition.Builder(
+					oldPosition).tilt(oldPosition.tilt - dif).build();
+
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
 		}
 	}
@@ -159,36 +167,9 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 	private List<Marker> markerList;
 
 	@Override
-	public void marker(boolean show) {
-		if (show) {
-			markerList = new ArrayList<Marker>();
-
-			final Marker domMarker = map.addMarker(new MarkerOptions()
-					.position(new LatLng(53.075439, 8.808761))
-					.title("Das ist unser wunderschöner Dom :-)")
-					.snippet("Übrigens wunderschön bei Nacht"));
-
-			markerList.add(domMarker);
-
-			final Marker rolandMarker = map
-					.addMarker(new MarkerOptions()
-							.position(new LatLng(53.075853, 8.807237))
-							.title("Roland")
-							.icon(BitmapDescriptorFactory
-									.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-
-			markerList.add(rolandMarker);
-
-			final Marker rathausMarker = map.addMarker(new MarkerOptions()
-					.position(new LatLng(53.07596, 8.807556))
-					.icon(BitmapDescriptorFactory
-							.fromResource(R.drawable.bremer_wappen_smaller)));
-
-			markerList.add(rathausMarker);
-
-			map.setInfoWindowAdapter(new TestInfoWindowAdapter());
-		} else {
-			if(markerList != null){
+	public void marker(List<Landmark> landmarks) {
+		if(landmarks==null){
+			if (markerList != null) {
 				for (final Marker marker : markerList) {
 					marker.remove();
 				}
@@ -196,35 +177,97 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			}
 
 			map.setInfoWindowAdapter(null);
+		}else{
+			markerList = new ArrayList<Marker>();
+			final Geocoder coder = new Geocoder(this.getActivity());
+			for(final Landmark landmark : landmarks){
+				final LoadLocationTask task = new LoadLocationTask(coder);
+				task.execute(landmark);
+			}
+			map.setInfoWindowAdapter(new AdditionalInfoWindowAdapter());
 		}
 	}
 
-	private class TestInfoWindowAdapter implements InfoWindowAdapter {
+	private class LoadLocationTask extends AsyncTask<Landmark, Integer, List<MarkerOptions>> {
+
+		private Geocoder coder;
+
+		public LoadLocationTask(Geocoder coder) {
+			this.coder = coder;
+		}
+
+		@Override
+		protected List<MarkerOptions> doInBackground(Landmark... landmarks) {
+			final List<MarkerOptions> resultList = new ArrayList<MarkerOptions>();
+			try {
+				for (final Landmark landmark : landmarks) {
+					final String addressString = landmark.address
+							+ ", Bremen, Germany";
+					final List<Address> addresses = coder.getFromLocationName(
+							addressString, 1);
+					if (addresses != null && addresses.size() > 0) {
+						final Address address = addresses.get(0);
+						final MarkerOptions options = new MarkerOptions()
+										.position(new LatLng(address.getLatitude(), address.getLongitude()))
+										.title(landmark.name);
+						if(landmark.additionalInformation != null){
+							options.icon(BitmapDescriptorFactory
+							.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+							options.snippet(landmark.additionalInformation.toString());
+						}else{
+							options.snippet(landmark.address);
+						}
+						resultList.add(options);
+					} else {
+						Log.w(LoadLocationTask.class.getSimpleName(), "No location found for landmark with title: " + addressString);
+					}
+				}
+			} catch (IOException e) {
+				Log.e(LoadLocationTask.class.getSimpleName(),
+						"IOException occured: " + e.getMessage());
+			}
+			return resultList;
+		}
+		
+		@Override
+		protected void onPostExecute(List<MarkerOptions> result) {
+			for(final MarkerOptions options:result){
+				final Marker marker = map.addMarker(options);
+				markerList.add(marker);
+			}
+		}
+
+	}
+
+	private class AdditionalInfoWindowAdapter implements InfoWindowAdapter {
 
 		private final View mContent;
 
-		private final View mWindow;
+//		private final View mWindow;
 
-		public TestInfoWindowAdapter() {
+		public AdditionalInfoWindowAdapter() {
 			mContent = getActivity().getLayoutInflater().inflate(
 					R.layout.info_content_layout, null);
-			mWindow = getActivity().getLayoutInflater().inflate(
-					R.layout.info_window_layout, null);
+//			mWindow = getActivity().getLayoutInflater().inflate(
+//					R.layout.info_window_layout, null);
 		}
 
+		// will be called second, after getInfoWindow returns null
 		@Override
 		public View getInfoContents(final Marker marker) {
-			if (marker.getTitle() != null && marker.getSnippet() == null) {
+			try {
+				final JSONObject json = new JSONObject(marker.getSnippet());
+				// TODO show data in view
+				
 				return mContent;
+			} catch (JSONException e) {
+				return null;
 			}
-			return null;
 		}
 
+		// will be called first
 		@Override
 		public View getInfoWindow(final Marker marker) {
-			if (marker.getTitle() == null && marker.getSnippet() == null) {
-				return mWindow;
-			}
 			return null;
 		}
 
@@ -257,12 +300,12 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 					.position(northeast));
 			markerList.add(neMarker);
 		} else {
-			if(groundOverlay != null){
+			if (groundOverlay != null) {
 				if (groundOverlay != null) {
 					groundOverlay.remove();
 				}
 			}
-			if(markerList != null){
+			if (markerList != null) {
 				for (final Marker marker : markerList) {
 					marker.remove();
 				}
@@ -275,18 +318,18 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 
 	@Override
 	public void position(boolean show) {
-		if(show){
+		if (show) {
 			if (locationManager != null) {
 				map.setMyLocationEnabled(true);
 			}
-		}else{
+		} else {
 			if (locationManager != null) {
 				map.setMyLocationEnabled(false);
 				locationManager.removeUpdates(this);
 			}
 		}
 	}
-	
+
 	private void initLocationManager() {
 		locationManager = (LocationManager) getActivity().getSystemService(
 				FragmentActivity.LOCATION_SERVICE);
@@ -303,31 +346,37 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			} else if (networkIsEnabled) {
 				locationManager.requestLocationUpdates(
 						LocationManager.NETWORK_PROVIDER, 5000L, 10F, this);
-			} 
+			}
 		}
 	}
 
 	// Interface methods LocationSource
-	
-	@Override
-	public void activate(OnLocationChangedListener listener) {}
 
 	@Override
-	public void deactivate() {}
-	
+	public void activate(OnLocationChangedListener listener) {
+	}
+
+	@Override
+	public void deactivate() {
+	}
+
 	// Interface methods LocationListener
 
 	@Override
-	public void onLocationChanged(Location location) {}
+	public void onLocationChanged(Location location) {
+	}
 
 	@Override
-	public void onProviderDisabled(String provider) {}
+	public void onProviderDisabled(String provider) {
+	}
 
 	@Override
-	public void onProviderEnabled(String provider) {}
+	public void onProviderEnabled(String provider) {
+	}
 
 	@Override
-	public void onStatusChanged(String provider, int status, Bundle extras) {}
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+	}
 
 	// ####### ROUTE
 
@@ -336,4 +385,5 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		// TODO Auto-generated method stub
 
 	}
+
 }

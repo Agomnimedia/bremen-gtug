@@ -53,12 +53,12 @@ public class MainActivity extends AbstractMainActivity implements ControlActions
 
 	@Override
 	protected void showMarker() {
-		fragment.marker(true);
+		fragment.marker(this.bremenLandmarks());
 	}
 
 	@Override
 	protected void hideMarker() {
-		fragment.marker(false);
+		fragment.marker(null);
 	}
 
 	@Override
