@@ -487,11 +487,53 @@ private void removeOverlay(){
 				</ul>
             </article>
 			
-			<article>
+			<article class="phonebyside secondphone">
                 <h3>Android</h3>
 				<ul class="build stack">
 					<pre class="prettyprint absolute_medium_tall" data-lang="java">
-					
+public class MyMapFragment extends MapFragment 
+    implements LocationSource, LocationListener{
+		
+    private LocationManager locationManager;
+    
+    [..]
+	
+    private void connectMapWithLocation{
+        
+        map.setMyLocationEnabled(true);
+
+    }
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private void initLocationManager() {
+    locationManager = 
+        (LocationManager) getActivity()
+            .getSystemService(
+            FragmentActivity.LOCATION_SERVICE);
+
+    if (locationManager != null) {
+        boolean gps = locationManager
+            .isProviderEnabled(
+              LocationManager.GPS_PROVIDER);
+        boolean network = locationManager
+            .isProviderEnabled(
+              LocationManager.NETWORK_PROVIDER);
+
+
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+    if (gps) {
+        locationManager.requestLocationUpdates(
+          LocationManager.GPS_PROVIDER, 
+            5000L, 10F, this);
+    } else if (network) {
+        locationManager.requestLocationUpdates(
+          LocationManager.NETWORK_PROVIDER, 
+            5000L, 10F, this);
+        }
+    }
+}					
 					</pre>
 					<!-- show indoor maps -->
 				</ul>
