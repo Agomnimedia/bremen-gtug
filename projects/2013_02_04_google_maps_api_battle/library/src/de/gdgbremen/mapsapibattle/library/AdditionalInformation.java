@@ -8,7 +8,7 @@ import android.util.Log;
 public final class AdditionalInformation {
 
 	public String id;
-	
+
 	public String abkuerzung;
 	public String strasse;
 	public String hausnummer;
@@ -27,28 +27,40 @@ public final class AdditionalInformation {
 	public String latitude;
 	public String longitude;
 	public String beschreibung;
-	
-	public AdditionalInformation(){
+
+	public AdditionalInformation() {
 		// nothing to implement here
 	}
-	
-	public AdditionalInformation(final String id){
+
+	public AdditionalInformation(final String id) {
 		this.id = id;
 	}
-	
-	@Override
-	public String toString(){
+
+	/**
+	 * Generates an JSON object with all additional information.
+	 * 
+	 * @return an JSON object.
+	 */
+	public JSONObject toJSON() {
 		final JSONObject json = new JSONObject();
 		try {
-			if(homepage!=null)
-				json.put("homepage", homepage);
-			if(oeffnungszeiten!=null)
-				json.put("oeffnungszeiten", oeffnungszeiten);
-			if(beschreibung!=null)
-				json.put("beschreibung", beschreibung);
+			if (homepage != null) json.put("homepage", homepage);
+			if (oeffnungszeiten != null) json.put("oeffnungszeiten", oeffnungszeiten);
+			if (beschreibung != null) json.put("beschreibung", beschreibung);
 		} catch (JSONException e) {
-			Log.e(AdditionalInformation.class.getSimpleName(), "JSONException occured: " + e.getMessage());
+			Log.e(AdditionalInformation.class.getSimpleName(),
+					"JSONException occured: " + e.getMessage());
 		}
-		return json.toString();
+		return json;
+	}
+
+	/**
+	 * Creates an JSON formatted string with all additional information.
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return this.toJSON().toString();
 	}
 }
