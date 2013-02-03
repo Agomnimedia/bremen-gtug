@@ -277,10 +277,70 @@ URL: http://code.google.com/p/html5slides/
 			
 			<article class="phonebyside secondphone">
                 <h3>Android</h3>
-				<ul>
-					<!-- Zeigen wie man ein MapFragment einbindet -->
-					<!-- Zeigen wie man die Controller einstellen kann -->
-					<!-- Zeigen wie man den MapType ändert -->
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+FragmentTransaction transaction = 
+    getFragmentManager().beginTransaction();
+	
+fragment = MyMapFragment.newInstance();
+
+// alternativ
+// fragment = MapFragment.newInstance();
+
+transaction.add(R.id.singlefragment, 
+    fragment, "mapFragment");
+	
+transaction.commit();
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+public class MyMapFragment extends MapFragment{
+    
+    private GoogleMap map;
+	
+    @Override
+    public void onStart() {
+        super.onStart();
+        
+        map = super.getMap();
+        [..]
+    }
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private void showStartPosition() {
+    CameraPosition.Builder positionBuilder = 
+            new CameraPosition.Builder();
+
+    LatLng bremen = 
+        new LatLng(53.075858, 8.80772);
+	
+    positionBuilder.zoom(17.0f).target(bremen);
+	
+    CameraUpdate update = 
+        CameraUpdateFactory.newCameraPosition(
+                positionBuilder.build());
+							
+    map.animateCamera(update);
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+public void chooseControls(){
+
+    UiSettings settings = map.getUiSettings();
+    
+    settings.setTiltGesturesEnabled(true);
+    settings.setCompassEnabled(true);
+    settings.setZoomControlsEnabled(true);
+    // etc
+
+}
+					
+public void chooseMapType() {
+
+    map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+	
+}
+					</pre>
 				</ul>
             </article>
 			
