@@ -184,9 +184,33 @@
 			map : map,
 			title : landmarks[landmarksIndex].name
 		});
+		var addInfo = '';
+		if (landmarks[landmarksIndex].additionalInformation) {
+			if (landmarks[landmarksIndex].additionalInformation.beschreibung) {
+				addInfo += '<p>'
+						+ landmarks[landmarksIndex].additionalInformation.beschreibung
+						+ '</p>';
+			}
+			if (landmarks[landmarksIndex].additionalInformation.homepage) {
+				if (landmarks[landmarksIndex].additionalInformation.homepage.substr(0,
+						4) != 'http') {
+					landmarks[landmarksIndex].additionalInformation.homepage = 'http://'
+							+ landmarks[landmarksIndex].additionalInformation.homepage
+				}
+				addInfo += '<h2>Webseite:</h2><p><a href="'
+						+ landmarks[landmarksIndex].additionalInformation.homepage + '">'
+						+ landmarks[landmarksIndex].additionalInformation.homepage
+						+ '</a></p>';
+			}
+			if (landmarks[landmarksIndex].additionalInformation.oeffnungszeiten) {
+				addInfo += '<h2>&Ouml;ffnungszeiten:</h2><p>'
+						+ landmarks[landmarksIndex].additionalInformation.oeffnungszeiten
+						+ '</p>';
+			}
+		}
 		landmarks[landmarksIndex].infowindow = new google.maps.InfoWindow({
 			content : '<h1>' + landmarks[landmarksIndex].name + '</h1><p>'
-					+ landmarks[landmarksIndex].address + '</p>'
+					+ landmarks[landmarksIndex].address + '</p>' + addInfo
 		});
 		google.maps.event.addListener(landmarks[landmarksIndex].marker, 'click',
 				function() {

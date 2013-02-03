@@ -6,6 +6,8 @@ import org.json.JSONArray;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +22,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import de.gdgbremen.mapsapibattle.javascript.MainActivity;
 import de.gdgbremen.mapsapibattle.javascript.R;
 import de.gdgbremen.mapsapibattle.library.Landmark;
@@ -44,6 +47,15 @@ public class MainFragment extends Fragment {
 		final WebSettings webviewSettings = this.webview.getSettings();
 		webviewSettings.setJavaScriptEnabled(true);
 		webviewSettings.setGeolocationEnabled(true);
+		webview.setWebViewClient(new WebViewClient() {
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url) {
+				Uri uri = Uri.parse(url);
+				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(intent);
+				return true;
+			}
+		});
 		webview.setWebChromeClient(new WebChromeClient() {
 
 			@Override
@@ -126,7 +138,7 @@ public class MainFragment extends Fragment {
 
 				@Override
 				public void run() {
-					final MainActivity activity = (MainActivity)getActivity();
+					final MainActivity activity = (MainActivity) getActivity();
 					activity.showGeocodingProgress(geocoderProgressSumCount);
 				}
 			});
@@ -139,7 +151,7 @@ public class MainFragment extends Fragment {
 
 				@Override
 				public void run() {
-					final MainActivity activity = (MainActivity)getActivity();
+					final MainActivity activity = (MainActivity) getActivity();
 					activity.setGeocodingProgressState(geocoderProgressCurrentState);
 				}
 			});
