@@ -83,16 +83,6 @@ public class MainActivity extends AbstractMainActivity implements ControlActions
 	}
 
 	@Override
-	protected void showRoute() {
-		fragment.route(true);
-	}
-
-	@Override
-	protected void hideRoute() {
-		fragment.route(false);
-	}
-
-	@Override
 	protected void setMapType(MapType mapType) {
 		switch(mapType){
 		case HYBRID:

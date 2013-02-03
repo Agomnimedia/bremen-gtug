@@ -404,12 +404,4 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 	}
 
-	// ####### ROUTE
-
-	@Override
-	public void route(boolean show) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

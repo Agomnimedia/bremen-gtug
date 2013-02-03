@@ -4,7 +4,6 @@
     <string name="menu_marker">Show markers</string>
     <string name="menu_overlays">Show overlays</string>
     <string name="menu_position">Show position</string>
-    <string name="menu_route">Show route</string>
     <string name="menu_maptype">Change maptype &#8230;</string>
     <string name="menu_maptype_roadmap">Roadmap</string>
     <string name="menu_maptype_terrain">Terrain</string>

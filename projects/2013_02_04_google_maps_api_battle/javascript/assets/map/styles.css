@@ -47,3 +47,16 @@ body {
 		background-image: url('img/ic_menu_mylocation_xhdpi.png');
 	}
 }
+
+/* formatting for the info windows */
+h1 {
+	font-size: 18px;
+}
+
+h2 {
+	font-size: 16px;
+}
+
+p {
+	font-size: 14px;
+}

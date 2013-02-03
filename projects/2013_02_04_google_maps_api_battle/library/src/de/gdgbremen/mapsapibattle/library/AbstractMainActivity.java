@@ -24,10 +24,6 @@ public abstract class AbstractMainActivity extends FragmentActivity {
 
 	protected abstract void hidePosition();
 
-	protected abstract void showRoute();
-
-	protected abstract void hideRoute();
-
 	protected abstract void setMapType(MapType mapType);
 
 	@Override
@@ -80,15 +76,6 @@ public abstract class AbstractMainActivity extends FragmentActivity {
 			} else {
 				item.setChecked(true);
 				this.showPosition();
-			}
-			return true;
-		} else if (itemId == R.id.menu_route) {
-			if (item.isChecked()) {
-				item.setChecked(false);
-				this.hideRoute();
-			} else {
-				item.setChecked(true);
-				this.showRoute();
 			}
 			return true;
 		} else if (itemId == R.id.menu_maptype) {

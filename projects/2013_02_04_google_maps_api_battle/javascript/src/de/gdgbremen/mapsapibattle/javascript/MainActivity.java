@@ -1,13 +1,19 @@
 package de.gdgbremen.mapsapibattle.javascript;
 
+import java.util.List;
+
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import de.gdgbremen.mapsapibattle.javascript.fragments.MainFragment;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
+import de.gdgbremen.mapsapibattle.library.Landmark;
 import de.gdgbremen.mapsapibattle.library.MapType;
 
 public class MainActivity extends AbstractMainActivity {
 	private MainFragment fragment;
+	
+	private ProgressDialog geocoderProgressDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +28,29 @@ public class MainActivity extends AbstractMainActivity {
 			fragment = (MainFragment) getSupportFragmentManager().findFragmentById(
 					R.id.singlefragment);
 		}
+	}
+	
+	public void showGeocodingProgress(int maxCount) {
+		geocoderProgressDialog = new ProgressDialog(this);
+		geocoderProgressDialog.setTitle(getText(R.string.geocodingLoading));
+		geocoderProgressDialog.setMessage(getText(R.string.geocodingLoadingMsg));
+		geocoderProgressDialog
+				.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		geocoderProgressDialog.setCancelable(false);
+		geocoderProgressDialog.setProgress(0);
+		geocoderProgressDialog.setMax(maxCount);
+		geocoderProgressDialog.show();
+	}
+	
+	public void setGeocodingProgressState(int state) {
+		geocoderProgressDialog.setProgress(state);
+		if(geocoderProgressDialog.getMax() == state) {
+			geocoderProgressDialog.dismiss();
+		}
+	}
+	
+	public List<Landmark> getLandmarks() {
+		return bremenLandmarks();
 	}
 
 	@Override
@@ -57,16 +86,6 @@ public class MainActivity extends AbstractMainActivity {
 	@Override
 	protected void hidePosition() {
 		fragment.hidePosition();
-	}
-
-	@Override
-	protected void showRoute() {
-		fragment.showRoute();
-	}
-
-	@Override
-	protected void hideRoute() {
-		fragment.hideRoute();
 	}
 
 	@Override

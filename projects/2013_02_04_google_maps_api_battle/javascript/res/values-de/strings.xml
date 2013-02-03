@@ -4,6 +4,7 @@
     <string name="app_name">MapsAPI-Battle - JavaScript-Version</string>
     <string name="title_activity_main">Maps@Web</string>
     
-    <string name="dummy">Hallo JavaScript Maps-API v3!</string>
+    <string name="geocodingLoading">Ladevorgang &#8230;</string>
+    <string name="geocodingLoadingMsg">Die Geokoordinaten werden geladen, bitte habe einen Augenblick Geduld.</string>
 
 </resources>

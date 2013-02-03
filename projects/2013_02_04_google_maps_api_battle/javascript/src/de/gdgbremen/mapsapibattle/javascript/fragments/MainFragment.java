@@ -1,20 +1,28 @@
 package de.gdgbremen.mapsapibattle.javascript.fragments;
 
+import java.util.List;
+
+import org.json.JSONArray;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
+import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.GeolocationPermissions.Callback;
+import de.gdgbremen.mapsapibattle.javascript.MainActivity;
 import de.gdgbremen.mapsapibattle.javascript.R;
+import de.gdgbremen.mapsapibattle.library.Landmark;
 import de.gdgbremen.mapsapibattle.library.MapType;
 
 public class MainFragment extends Fragment {
@@ -22,6 +30,8 @@ public class MainFragment extends Fragment {
 	private WebView webview;
 
 	private static final int ANDROID_SDK_HONEYCOMB = 11;
+
+	private Handler handler = new Handler();
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressLint("SetJavaScriptEnabled")
@@ -72,11 +82,70 @@ public class MainFragment extends Fragment {
 				return true;
 			}
 		});
-		webview.loadUrl("file:///android_asset/map/googlemap.html");
 		if (Build.VERSION.SDK_INT >= ANDROID_SDK_HONEYCOMB) {
 			this.webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		}
+		webview.addJavascriptInterface(new JSInterface(), "androidapp");
+		webview.loadUrl("file:///android_asset/map/googlemap.html");
 		return view;
+	}
+
+	/**
+	 * One object of this class will be injected on the WebView as an object of
+	 * JavaScript. So JavaScript can communicate with the native Android App
+	 * through this object.
+	 */
+	private class JSInterface {
+
+		private int geocoderProgressSumCount = 0;
+		private int geocoderProgressCurrentState = 0;
+
+		/**
+		 * return an JSON formatted strign with all landmarks and its additional
+		 * informations.
+		 * 
+		 * @return the JSON array.
+		 */
+		@JavascriptInterface
+		public String getLandmarks() {
+			final MainActivity activity = (MainActivity) getActivity();
+			final List<Landmark> landmarks = activity.getLandmarks();
+			final JSONArray json = new JSONArray();
+			for (Landmark landmark : landmarks) {
+				json.put(landmark.toJSON());
+			}
+			return json.toString();
+		}
+
+		@JavascriptInterface
+		public void startGeocoderSearching(int sumCount) {
+			geocoderProgressSumCount = sumCount;
+			Log.i("startGeocoderSearching", "sumCount: " + sumCount);
+			// dialogHandler.sendEmptyMessage(sumCount);
+			handler.post(new Runnable() {
+
+				@Override
+				public void run() {
+					final MainActivity activity = (MainActivity)getActivity();
+					activity.showGeocodingProgress(geocoderProgressSumCount);
+				}
+			});
+		}
+
+		@JavascriptInterface
+		public void setGeocoderSearchingState(int plusCount) {
+			geocoderProgressCurrentState += plusCount;
+			handler.post(new Runnable() {
+
+				@Override
+				public void run() {
+					final MainActivity activity = (MainActivity)getActivity();
+					activity.setGeocodingProgressState(geocoderProgressCurrentState);
+				}
+			});
+			if (geocoderProgressCurrentState == geocoderProgressSumCount) {
+			}
+		}
 	}
 
 	public void showMarker() {
@@ -101,14 +170,6 @@ public class MainFragment extends Fragment {
 
 	public void hidePosition() {
 		webview.loadUrl("javascript:hidePosition()");
-	}
-
-	public void showRoute() {
-		webview.loadUrl("javascript:showRoute()");
-	}
-
-	public void hideRoute() {
-		webview.loadUrl("javascript:hideRoute()");
 	}
 
 	public void setMapType(MapType mapType) {
