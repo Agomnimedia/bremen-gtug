@@ -425,8 +425,6 @@ private class MyInfoWindowAdapter
     }		
 }
 					</pre>
-					<!-- 2. custom marker -->
-					<!-- 3. wie habe ich longitude und latitude der adressen rausgesucht? -->
 				</ul>
 			</article>
 			
@@ -438,10 +436,36 @@ private class MyInfoWindowAdapter
                 <h2>Overlays</h2>
             </article>
 			
-			<article>
+			<article class="phonebyside secondphone">
                 <h3>Android</h3>
-				<ul>
-					<li>...</li>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private GroundOverlay groundOverlay;
+
+private void showOverlay(){
+    BitmapDescriptor image = 
+        BitmapDescriptorFactory
+            .fromResource(R.drawable.historisch);
+    LatLng southwest = 
+        new LatLng(53.073409, 8.807302);
+    LatLng northeast = 
+        new LatLng(53.076516, 8.812848);
+    LatLngBounds bounds = 
+        new LatLngBounds(southwest, northeast);
+    GroundOverlayOptions options =
+        new GroundOverlayOptions().image(image)
+            .positionFromBounds(bounds)
+            .bearing(39.0f).transparency(0.3f)
+    groundOverlay = 
+        map.addGroundOverlay(options);
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private void removeOverlay(){
+    groundOverlay.remove();
+}					
+					</pre>
+					<!-- show 3d buildings -->
 				</ul>
             </article>
 			
@@ -465,8 +489,11 @@ private class MyInfoWindowAdapter
 			
 			<article>
                 <h3>Android</h3>
-				<ul>
-					<li>...</li>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+					
+					</pre>
+					<!-- show indoor maps -->
 				</ul>
             </article>
 			
