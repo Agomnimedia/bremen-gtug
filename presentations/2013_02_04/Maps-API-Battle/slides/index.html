@@ -324,7 +324,7 @@ private void showStartPosition() {
 }
 					</pre>
 					<pre class="prettyprint absolute_medium_tall" data-lang="java">
-public void chooseControls(){
+private void chooseControls(){
 
     UiSettings settings = map.getUiSettings();
     
@@ -335,7 +335,7 @@ public void chooseControls(){
 
 }
 					
-public void chooseMapType() {
+private void chooseMapType() {
 
     map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	
@@ -362,12 +362,73 @@ public void chooseMapType() {
 				</ul>
             </article>
 			
-			<article>
+			<article class="phonebyside secondphone">
                 <h3>Android</h3>
-				<ul>
-					<li>...</li>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private Marker marker;
+					
+private void createStandardMarker(){
+    final MarkerOptions options = 
+                    new MarkerOptions();
+    LatLng markerCood = 
+        new LatLng(latitude, longitude)
+	
+    options.position(markerCood)
+        .title("Normaler Marker")
+        .snippet("Das ist ein "+
+                +"normaler Marker");
+
+    marker = map.addMarker(options);		   
+}
+
+private void removeMarker(){
+    marker.remove();
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private Marker marker;
+					
+private void createGreenMarker(){
+    final MarkerOptions options = 
+                    new MarkerOptions();
+    LatLng markerCood = 
+        new LatLng(latitude, longitude)
+    
+    options.position(markerCood)
+        .title("Grüner Marker")
+        .snippet("Das ist ein "+
+		        +"grüner Marker")
+        .defaultMarker(
+        BitmapDescriptorFactory.HUE_GREEN));
+
+    marker = map.addMarker(options);		   
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="java">
+private class MyInfoWindowAdapter 
+            implements InfoWindowAdapter {
+			
+    // will be called first
+    @Override
+    public View getInfoWindow(Marker marker) {
+        return null;
+    }			
+
+    // will be called second, 
+    // after getInfoWindow returns null
+    @Override
+    public View getInfoContents(Marker marker) {
+        return getActivity().getLayoutInflater()
+		    .inflate(
+            R.layout.info_content_layout, null);
+    }		
+}
+					</pre>
+					<!-- 2. custom marker -->
+					<!-- 3. wie habe ich longitude und latitude der adressen rausgesucht? -->
 				</ul>
-            </article>
+			</article>
 			
 			<article id="slidePause">
                 <h2><b>Pause</b></h2>
