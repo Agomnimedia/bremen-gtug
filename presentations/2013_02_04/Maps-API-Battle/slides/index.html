@@ -41,8 +41,13 @@ URL: http://code.google.com/p/html5slides/
                 <h3>Übersicht</h3>
                 <ul>
 					<li onclick="gotoSlide('slideIntroduction');" style="cursor:pointer;">Einführung</li>
-					<li onclick="gotoSlide('slideDemo');" style="cursor:pointer;">Demo</li>
-					<li onclick="gotoSlide('slideMore');" style="cursor:pointer;">...</li>
+					<li onclick="gotoSlide('slideGettingStarted');" style="cursor:pointer;">Aufsetzen eines Projektes</li>
+					<li onclick="gotoSlide('slideMapType');" style="cursor:pointer;">Grundlegende Funktionen</li>
+					<li onclick="gotoSlide('slideMarker');" style="cursor:pointer;">Markierungen</li>
+					<li onclick="gotoSlide('slideOverlays');" style="cursor:pointer;">Overlays</li>
+					<li onclick="gotoSlide('slidePosition');" style="cursor:pointer;">Positionsanzeige</li>
+					<li onclick="gotoSlide('slideRoute');" style="cursor:pointer;">Einbinden von Routen</li>
+					<li onclick="gotoSlide('slideConclusion');" style="cursor:pointer;">Fazit</li>
                 </ul>
             </article>
 			
@@ -51,14 +56,313 @@ URL: http://code.google.com/p/html5slides/
             </article>
 			
 			<article>
-                <h3>...</h3>
+                <h3>Überblick (1/2)</h3>
+				<ul>
+					<li>Erschienen am 8. Februar 2005 unter dem Namen Google Local</li>
+					<li>Benutzt die Mercator-Projektion</li>
+					<li>Verschiedene Ansichten:
+						<ul>
+							<li>Straßenkarte</li>
+							<li>Luftaufnahmen</li>
+							<li>Luftaufnahmen mit Straßen</li>
+							<li>Geländekarte</li>
+						</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Überblick (2/2)</h3>
+				<ul>
+					<li>Bekannt für:
+						<ul> 
+							<li>Street View</li>
+							<li>Indoor Maps</li>
+							<li>Navigation (Auto, Bahn, Fahrrad, zu Fuß)</li>
+							<li><a href="http://www.google.com/mapmaker">Google Map Maker</a></li>
+						</ul>
+					</li>
+					<li>Dienste von Google mit Verwandtschaft:
+						<ul> 
+							<li>Latitude</li>
+							<li>Google Earth</li>
+						</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>APIs</h3>
+				<ul>
+					<li>JavaScript API v3</li>
+					<li>Android API v2</li>
+					<li>SDK for iOS</li>
+				</ul>
+				<ul>
+					<li>Google Places API</li>
+					<li>Autocomplete API</li>
+					<li>Distance Matrix API</li>
+					<li>Latitude API</li>
+					<li>Directions API</li>
+				</ul>
+			</article>
+			<article>
+                <h3>APIs (2/2)</h3>
+				<ul>
+					<li>Static Maps API</li>
+					<li>Street View Image API</li>
+					<li>Google Maps Engine</li>
+					<li>Earth API</li>
+					<li>Elevation API</li>
+					<li>Custom Street View API</li> 
+					<li>API für Unternehmen</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Bedingungen und Preise</h3>
+				<ul>
+					<li><i>"Ihr Google-Dienst muss für Endnutzer kostenlos und öffentlich zugänglich sein."</i></li>
+					<li>Google Maps Quotas
+						<ul>
+							<li><b>Routenplaner-Webdienst:</b> 2500 Anfragen pro Tag mit 10 Wegpunkte pro Anfrage</li>
+							<li><b>Höhendaten-Webdienst:</b> 2500 Anfragen pro Tag mit 25.000 Stichproben pro Tag</li>
+							<li><b>Static Maps API – maximale Auflösung:</b> 640 x 640</li>
+							<li>Keine Kontrolle über Werbeanzeigen</li>
+							<li>etc.</li>
+						</ul>
+					</li>
+					<li><a href="https://developers.google.com/maps/licensing">Google Maps API-Lizenzierung</a></li>
+				</ul>
+            </article>
+			
+			<article>
+				<h3>Android API</h3>
+				<ul>
+					<li>Version 2 wurde am 3. Dezember 2012 veröffentlicht</li>
+					<li>Bringt etliche Verbesserungen
+						<ul>
+							<li>MapFragment !!!!!</li>
+							<li>Einfachere Handhabung</li>
+							<li>Indoor Maps</li>
+							<li>Traffic</li>
+							<li>etc.</li>
+						</ul>
+					</li>
+					<li>Es können keine API Keys für Version 1 mehr erstellt werden!</li>
+					<li><a href="https://developers.google.com/maps/documentation/android/">Google Maps Android API v2 - Dokumentation</a></li>
+				</ul>
+			</article>
+			
+			<article>
+				<h3>Javascript API</h3>
+				<ul>
+					<li>???</li>
+				</ul>
+			</article>
+			
+			
+			<article id="slideGettingStarted">
+                <h2>Aufsetzen eines Projektes</h2>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
 				<ul>
 					<li>...</li>
 				</ul>
             </article>
 			
-			<article id="slideDemo">
-                <h2>Demo</h2>
+			<article>
+                <h3>Android API - Projekt erstellen</h3>
+				<ul>
+					<li>Einrichten einer Android-Entwicklungsumgebung</li>
+					<li>Google Play Services muss im Android SDK Manager hinzugefügt werden</li>
+					<li>Einbinden des Google Play Services SDK in die Entwicklungsumgebung
+						<ul>
+							<li><b>Eclipse:</b> File &gt; Import &gt; Android &gt; Existing Android Code Into Workspace
+							<li>&lt;android-sdk-folder&gt;/extras/google/google_play_services/libproject/google-play-services_lib</li>
+						</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Android API - Google Maps API Key</h3>
+				<ul>
+					<li>Benötigt wird eine digitales Zertifikat (SHA-1 fingerprint)
+					<ul>
+						<li>DEBUG-Fingerprint für Entwicklung</li>
+						<li>RELEASE-Fingerprint für Veröffentlichung</li>
+						<li><a href="https://developers.google.com/maps/documentation/android/start#displaying_certificate_information">Erstellen des Zertifikats</a></li>
+					</ul>
+					</li>
+					<li>Erstellen eines API-Projektes
+					<ul>
+						<li>Öffnen der <a href="https://code.google.com/apis/console/">Google APIs Console</a>
+						<li>Erstellen eines neuen Projektes</li>
+						<li>Aktivieren der 'Google Maps Android API v2' in <i>Services</i></li>
+						<li>Erstellen eines neuen Android Keys in <i>API Access</i>
+					</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Android API - Konfiguration (1/2)</h3>
+				<ul>
+					<li>Änderungen im Android Manifest
+					<ul class="build stack">
+						<div>
+							<li>Min-SDK muss Froyo sein</li>
+							<pre class="prettyprint" data-lang="xml">
+								&lt;uses-sdk android:minSdkVersion="8"/&gt;
+							</pre>
+						</div>
+						<div>
+							<li>API Key muss hinterlegt sein</li>
+							<pre class="prettyprint" data-lang="xml">
+								&lt;meta-data android:name="com.google.android.maps.v2.API_KEY"
+										android:value="&lt;your_api_key&gt;"/&gt;
+							</pre>
+						</div>
+						
+					</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Android API - Konfiguration (2/2)</h3>
+				<ul>
+					<li>Google Play Services SDK als Bibliothek einbinden 
+					<ul>
+						<li><b>In Eclipse:</b> Properties des Projektes &gt; Android &gt; Library &gt; Add...</li>
+						<li>Auswählen des vorher importierten google-play-services_lib</li>
+					</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article id="slideMapType">
+                <h2>???</h2>
+            </article>
+			
+			<!--  -->
+			
+			<article>
+                <h3>Android</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideMapType">
+                <h2>???</h2>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Android</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideMarker">
+                <h2>???</h2>
+            </article>
+			
+			<article>
+                <h3>Android</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideOverlays">
+                <h2>???</h2>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Android</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slidePosition">
+                <h2>???</h2>
+            </article>
+			
+			<article>
+                <h3>Android</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideRoute">
+                <h2>???</h2>
+            </article>
+			
+			<article>
+                <h3>JavaScript</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Android</h3>
+				<ul>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideConclusion">
+                <h2>Fazit</h2>
+            </article>
+			
+			<article>
+                <h3>Beide</h3>
+				<ul>
+					<li>...</li>
+				</ul>
             </article>
 			
 			<article class="onlyphone">
