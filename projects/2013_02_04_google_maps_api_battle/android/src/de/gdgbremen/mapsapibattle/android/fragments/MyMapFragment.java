@@ -116,25 +116,26 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			}
 		});
 	}
-	
-	public void traffic(boolean show){
+
+	public void traffic(boolean show) {
 		map.setTrafficEnabled(show);
 	}
-	
-	public void navigate(final City city){
-		final CameraPosition.Builder positionBuilder = new CameraPosition.Builder(map.getCameraPosition());
+
+	public void navigate(final City city) {
+		final CameraPosition.Builder positionBuilder = new CameraPosition.Builder(
+				map.getCameraPosition());
 		switch (city) {
 		case BREMEN:
 			float zoom = 17.0f;
 			if (zoom > map.getMaxZoomLevel()) {
 				zoom = map.getMaxZoomLevel();
 			}
-			positionBuilder.zoom(zoom).target(new LatLng(53.075858, 8.80772)).build();
+			positionBuilder.zoom(zoom).target(new LatLng(53.075858, 8.80772));
 			map.setIndoorEnabled(false);
 			break;
 		case MUNICH:
 			// show indoor maps
-			positionBuilder.target(new LatLng(48.129933,11.58345)).build();
+			positionBuilder.target(new LatLng(48.129933, 11.58345));
 			map.setIndoorEnabled(true);
 			break;
 		case NEW_YORK:
@@ -142,13 +143,14 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			this.changeMapType(GoogleMap.MAP_TYPE_NORMAL);
 			// TODO create tilt with specific order
 			// TODO position und bearing anpassen
-			positionBuilder.target(new LatLng(40.704664,-74.008235)).build();
+			positionBuilder.target(new LatLng(40.704664, -74.008235));
 			map.setIndoorEnabled(false);
 			break;
 		default:
 			break;
 		}
-		map.animateCamera(CameraUpdateFactory.newCameraPosition(positionBuilder.build()));
+		map.animateCamera(CameraUpdateFactory.newCameraPosition(positionBuilder
+				.build()));
 	}
 
 	// ####### MAPTYPE
@@ -194,7 +196,7 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 
 	@Override
 	public void marker(List<Landmark> landmarks) {
-		if(landmarks==null){
+		if (landmarks == null) {
 			if (markerList != null) {
 				for (final Marker marker : markerList) {
 					marker.remove();
@@ -203,10 +205,10 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			}
 
 			map.setInfoWindowAdapter(null);
-		}else{
+		} else {
 			markerList = new ArrayList<Marker>();
 			final Geocoder coder = new Geocoder(this.getActivity());
-			for(final Landmark landmark : landmarks){
+			for (final Landmark landmark : landmarks) {
 				final LoadLocationTask task = new LoadLocationTask(coder);
 				task.execute(landmark);
 			}
@@ -214,7 +216,8 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		}
 	}
 
-	private class LoadLocationTask extends AsyncTask<Landmark, Integer, List<MarkerOptions>> {
+	private class LoadLocationTask extends
+			AsyncTask<Landmark, Integer, List<MarkerOptions>> {
 
 		private Geocoder coder;
 
@@ -234,18 +237,23 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 					if (addresses != null && addresses.size() > 0) {
 						final Address address = addresses.get(0);
 						final MarkerOptions options = new MarkerOptions()
-										.position(new LatLng(address.getLatitude(), address.getLongitude()))
-										.title(landmark.name);
-						if(landmark.additionalInformation != null){
+								.position(
+										new LatLng(address.getLatitude(),
+												address.getLongitude())).title(
+										landmark.name);
+						if (landmark.additionalInformation != null) {
 							options.icon(BitmapDescriptorFactory
-							.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-							options.snippet(landmark.additionalInformation.toString());
-						}else{
+									.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+							options.snippet(landmark.additionalInformation
+									.toString());
+						} else {
 							options.snippet(landmark.address);
 						}
 						resultList.add(options);
 					} else {
-						Log.w(LoadLocationTask.class.getSimpleName(), "No location found for landmark with title: " + addressString);
+						Log.w(LoadLocationTask.class.getSimpleName(),
+								"No location found for landmark with title: "
+										+ addressString);
 					}
 				}
 			} catch (IOException e) {
@@ -254,10 +262,10 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			}
 			return resultList;
 		}
-		
+
 		@Override
 		protected void onPostExecute(List<MarkerOptions> result) {
-			for(final MarkerOptions options:result){
+			for (final MarkerOptions options : result) {
 				final Marker marker = map.addMarker(options);
 				markerList.add(marker);
 			}
@@ -267,15 +275,15 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 
 	private class AdditionalInfoWindowAdapter implements InfoWindowAdapter {
 
-		private final View mContent;
+		private final View content;
 
-//		private final View mWindow;
+		// private final View mWindow;
 
 		public AdditionalInfoWindowAdapter() {
-			mContent = getActivity().getLayoutInflater().inflate(
+			content = getActivity().getLayoutInflater().inflate(
 					R.layout.info_content_layout, null);
-//			mWindow = getActivity().getLayoutInflater().inflate(
-//					R.layout.info_window_layout, null);
+			// mWindow = getActivity().getLayoutInflater().inflate(
+			// R.layout.info_window_layout, null);
 		}
 
 		// will be called second, after getInfoWindow returns null
@@ -284,8 +292,8 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			try {
 				final JSONObject json = new JSONObject(marker.getSnippet());
 				// TODO show data in view
-				
-				return mContent;
+
+				return content;
 			} catch (JSONException e) {
 				return null;
 			}
@@ -313,29 +321,13 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 			LatLngBounds bounds = new LatLngBounds(southwest, northeast);
 			groundOverlay = map.addGroundOverlay(new GroundOverlayOptions()
 					.image(image).positionFromBounds(bounds).bearing(39.0f)
-					.transparency(0.4f));
+					.transparency(0.3f));
 
-			markerList = new ArrayList<Marker>();
-
-			// TODO remove this for presentation
-			final Marker swMarker = map.addMarker(new MarkerOptions()
-					.position(southwest));
-			markerList.add(swMarker);
-
-			final Marker neMarker = map.addMarker(new MarkerOptions()
-					.position(northeast));
-			markerList.add(neMarker);
 		} else {
 			if (groundOverlay != null) {
 				if (groundOverlay != null) {
 					groundOverlay.remove();
 				}
-			}
-			if (markerList != null) {
-				for (final Marker marker : markerList) {
-					marker.remove();
-				}
-				markerList.clear();
 			}
 		}
 	}
