@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.GeolocationPermissions.Callback;
 import de.gdgbremen.mapsapibattle.javascript.R;
 import de.gdgbremen.mapsapibattle.library.MapType;
 
@@ -29,10 +31,21 @@ public class MainFragment extends Fragment {
 		final View view = inflater
 				.inflate(R.layout.fragment_main, container, false);
 		this.webview = (WebView) view.findViewById(R.id.webview);
-		this.webview.getSettings().setJavaScriptEnabled(true);
+		final WebSettings webviewSettings = this.webview.getSettings();
+		webviewSettings.setJavaScriptEnabled(true);
+		webviewSettings.setGeolocationEnabled(true);
 		webview.setWebChromeClient(new WebChromeClient() {
+
+			@Override
+			public void onGeolocationPermissionsShowPrompt(String origin,
+					Callback callback) {
+				// Allow always geolocation permissions for the webview.
+				callback.invoke(origin, true, false);
+			}
+
+			@Override
 			public boolean onConsoleMessage(ConsoleMessage cm) {
-				switch(cm.messageLevel()) {
+				switch (cm.messageLevel()) {
 					case DEBUG:
 						Log.d("MapsWebView-DEBUG", cm.message() + " -- " + cm.lineNumber()
 								+ "@" + cm.sourceId().substring(26));

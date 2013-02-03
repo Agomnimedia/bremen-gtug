@@ -2,21 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<style type="text/css">
-html {
-	height: 100%
-}
-
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0
-}
-
-#map_canvas {
-	height: 100%
-}
-</style>
+<link rel="stylesheet" href="styles.css" />
 <script type="text/javascript"
 	src="http://maps.google.com/maps/api/js?sensor=true">
 	
@@ -30,7 +16,30 @@ body {
 	/**
 	 * stores the marker for the current geolocation of the user.
 	 */
-	var currentPositionMarker;
+	var currentPositionMarker = new google.maps.Circle({
+		clickable : false,
+		radius : 0.2,
+		strokeColor : '#0066FF',
+		strokeOpacity : 1,
+		strokeWeight : 10
+	});
+
+	/**
+	 * stores the circle around the marker for the current geolocation of the user.
+	 */
+	var currentPositionMarkerCircle = new google.maps.Circle({
+		clickable : false,
+		fillColor : '#0099FF',
+		fillOpacity : 0.15,
+		strokeColor : '#0099FF',
+		strokeOpacity : 0.5,
+		strokeWeight : 1
+	});
+
+	/**
+	 * Control button to jump to the current geo location.
+	 */
+	var controlUI;
 
 	/**
 	 * id of the geolocation watching process, for aborting on page unload.
@@ -50,6 +59,24 @@ body {
 			overviewMapControl : false
 		};
 		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+		// Setup the click event listener on the control UI.
+		controlUI = document.getElementById("controlUI");
+		google.maps.event.addDomListener(controlUI, 'click', function() {
+			map.setCenter(currentPositionMarker.getCenter());
+		});
+
+		// We don't really need to set an index value here, but
+		// this would be how you do it. Note that we set this
+		// value as a property of the DIV itself.
+		document.getElementById("controlDiv").index = 1;
+
+		//Add the control to the map at a designated control position
+		//by pushing it on the position's array. This code will
+		//implicitly add the control to the DOM, through the Map
+		//object. You should not attach the control manually.
+		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(document
+				.getElementById("controlDiv"));
 	}
 
 	function showMarker() {
@@ -76,11 +103,12 @@ body {
 		console.debug("showPosition()");
 		watchGeolocationId = navigator.geolocation.watchPosition(
 				function(position) {
-					console.debug("geolocation details: " + JSON.stringify(position.coords));
+					console.debug("geolocation details: "
+							+ JSON.stringify(position.coords));
 					updateGeoPosition(position.coords.latitude,
 							position.coords.longitude, position.coords.accuracy);
 				}, function(error) {
-					console.error("Thera are no current geoposition, because '"
+					console.error("There are no current geoposition, because '"
 							+ error.message + "', Code " + error.code);
 				}, {
 					maximumAge : 3000,
@@ -94,6 +122,9 @@ body {
 		if (watchGeolocationId) {
 			navigator.geolocation.clearWatch(watchGeolocationId);
 		}
+		controlUI.style.display = 'none';
+		currentPositionMarker.setMap(null);
+		currentPositionMarkerCircle.setMap(null);
 	}
 
 	function showRoute() {
@@ -116,33 +147,6 @@ body {
 	}
 
 	/**
-	 * show a circle on the current users geo location.
-	 * 
-	 * @param {Number}
-	 *          latitude the latitude of the geo location.
-	 * @param {Number}
-	 *          longitude the longitude of the geo location.
-	 * @param {Number}
-	 *          accuracy of the geo location.
-	 */
-	var markGeoPosition = function(latitude, longitude, accuracy) {
-		if (currentPositionMarker) {
-			currentPositionMarker.setMap(null);
-		}
-		var markerLatlng = new google.maps.LatLng(latitude, longitude);
-		currentPositionMarker = new google.maps.Circle({
-			clickable : false,
-			center : markerLatlng,
-			map : map,
-			radius : accuracy,
-			fillColor : '#0000ff',
-			fillOpacity : '0.08',
-			strokeColor : '#0000ff',
-			strokeOpacity : '0.5'
-		});
-	};
-
-	/**
 	 * update the circle position and size on the current users geo location.
 	 * 
 	 * @param {Number}
@@ -153,17 +157,30 @@ body {
 	 *          accuracy of the geo location.
 	 */
 	var updateGeoPosition = function(latitude, longitude, accuracy) {
-		if (!currentPositionMarker) {
-			markGeoPosition(latitude, longitude, accuracy);
-			return;
-		}
+		currentPositionMarker.setMap(null);
+		currentPositionMarkerCircle.setMap(null);
 		var markerLatlng = new google.maps.LatLng(latitude, longitude);
 		currentPositionMarker.setCenter(markerLatlng);
-		currentPositionMarker.setRadius(accuracy);
+		currentPositionMarkerCircle.setCenter(markerLatlng);
+		currentPositionMarkerCircle.setRadius(accuracy);
+		currentPositionMarker.setMap(map);
+		currentPositionMarkerCircle.setMap(map);
+		controlUI.style.display = 'block';
 	}
 </script>
 </head>
 <body onload="initialize()">
-	<div id="map_canvas" style="width: 100%; height: 100%"></div>
+	<div id="map_canvas"></div>
+
+	<div style="display: none;">
+		<!-- HTML elements for using during JavaScript execution, to reduce the costs of creating elements programmatically. -->
+
+		<div id="controlDiv">
+			<div id="controlUI">
+				<div class="mylocation">&nbsp;</div>
+			</div>
+		</div>
+
+	</div>
 </body>
 </html>
