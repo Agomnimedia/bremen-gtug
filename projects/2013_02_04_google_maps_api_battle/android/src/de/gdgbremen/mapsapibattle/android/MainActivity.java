@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.GoogleMap;
 
+import de.gdgbremen.mapsapibattle.android.fragments.City;
 import de.gdgbremen.mapsapibattle.android.fragments.ControlsFragment;
 import de.gdgbremen.mapsapibattle.android.fragments.MyMapFragment;
 import de.gdgbremen.mapsapibattle.library.AbstractMainActivity;
@@ -149,28 +150,22 @@ public class MainActivity extends AbstractMainActivity implements ControlActions
 	}
 
 	@Override
-	public void animateToMountainView() {
-		// TODO Auto-generated method stub
-		
+	public void animateToNewYork() {
+		fragment.navigate(City.NEW_YORK);
 	}
 	
 	@Override
 	public void animateToBremen() {
-		// TODO Auto-generated method stub
-		
+		fragment.navigate(City.BREMEN);
+	}
+	
+	@Override
+	public void animateToMunich() {
+		fragment.navigate(City.MUNICH);
 	}
 
 	@Override
 	public void traffic(boolean show) {
-		// TODO Auto-generated method stub
-		
+		fragment.traffic(show);
 	}
-
-	@Override
-	public void indoor(boolean show) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

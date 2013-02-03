@@ -97,15 +97,7 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 	}
 
 	private void showStartPosition() {
-		float zoom = 17.0f;
-		if (zoom > map.getMaxZoomLevel()) {
-			zoom = map.getMaxZoomLevel();
-		}
-
-		final LatLng bremenCity = new LatLng(53.075858, 8.80772);
-		final CameraPosition position = new CameraPosition.Builder().zoom(zoom)
-				.target(bremenCity).build();
-		map.animateCamera(CameraUpdateFactory.newCameraPosition(position));
+		this.navigate(City.BREMEN);
 		map.setInfoWindowAdapter(null);
 		// map.setIndoorEnabled(arg0)
 		// map.setTrafficEnabled(arg0)
@@ -123,6 +115,40 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 				dialog.show(fm, "fragment_secret_dialog");
 			}
 		});
+	}
+	
+	public void traffic(boolean show){
+		map.setTrafficEnabled(show);
+	}
+	
+	public void navigate(final City city){
+		final CameraPosition.Builder positionBuilder = new CameraPosition.Builder(map.getCameraPosition());
+		switch (city) {
+		case BREMEN:
+			float zoom = 17.0f;
+			if (zoom > map.getMaxZoomLevel()) {
+				zoom = map.getMaxZoomLevel();
+			}
+			positionBuilder.zoom(zoom).target(new LatLng(53.075858, 8.80772)).build();
+			map.setIndoorEnabled(false);
+			break;
+		case MUNICH:
+			// show indoor maps
+			positionBuilder.target(new LatLng(48.129933,11.58345)).build();
+			map.setIndoorEnabled(true);
+			break;
+		case NEW_YORK:
+			// TODO show 3d buildings
+			this.changeMapType(GoogleMap.MAP_TYPE_NORMAL);
+			// TODO create tilt with specific order
+			// TODO position und bearing anpassen
+			positionBuilder.target(new LatLng(40.704664,-74.008235)).build();
+			map.setIndoorEnabled(false);
+			break;
+		default:
+			break;
+		}
+		map.animateCamera(CameraUpdateFactory.newCameraPosition(positionBuilder.build()));
 	}
 
 	// ####### MAPTYPE

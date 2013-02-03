@@ -10,11 +10,11 @@ public interface ControlActions {
 	
 	void tiltDown();
 	
-	void animateToMountainView();
+	void animateToNewYork();
 	
 	void animateToBremen();
 	
-	void traffic(boolean show);
+	void animateToMunich();
 	
-	void indoor(boolean show);
+	void traffic(boolean show);
 }
