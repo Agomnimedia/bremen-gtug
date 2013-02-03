@@ -831,3 +831,10 @@ aside > section > pre, aside > section > p, aside > section > form, aside > sect
 	margin: 5px;
 }
 
+.absolute_tall{
+	margin-left: -20px;
+	width: 750px;
+	height: 325px;
+	position: absolute;
+}
+

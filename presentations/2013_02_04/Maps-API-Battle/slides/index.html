@@ -39,11 +39,13 @@ URL: http://code.google.com/p/html5slides/
 
 			<article id="slideOverview">
                 <h3>Übersicht</h3>
+				<!-- Wollen wir die Agenda noch umgestalten??? Also eine Karte mit Markierungen, als Ablauf?-->
                 <ul>
 					<li onclick="gotoSlide('slideIntroduction');" style="cursor:pointer;">Einführung</li>
 					<li onclick="gotoSlide('slideGettingStarted');" style="cursor:pointer;">Aufsetzen eines Projektes</li>
 					<li onclick="gotoSlide('slideMapType');" style="cursor:pointer;">Grundlegende Funktionen</li>
 					<li onclick="gotoSlide('slideMarker');" style="cursor:pointer;">Markierungen</li>
+					<li onclick="gotoSlide('slidePause');" style="cursor:pointer;"><b>PAUSE</b></li>
 					<li onclick="gotoSlide('slideOverlays');" style="cursor:pointer;">Overlays</li>
 					<li onclick="gotoSlide('slidePosition');" style="cursor:pointer;">Positionsanzeige</li>
 					<li onclick="gotoSlide('slideRoute');" style="cursor:pointer;">Einbinden von Routen</li>
@@ -213,20 +215,40 @@ URL: http://code.google.com/p/html5slides/
 				<ul>
 					<li>Änderungen im Android Manifest
 					<ul class="build stack">
-						<div>
-							<li>Min-SDK muss Froyo sein</li>
-							<pre class="prettyprint" data-lang="xml">
-								&lt;uses-sdk android:minSdkVersion="8"/&gt;
+						<li>Min-SDK muss Froyo sein
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;uses-sdk android:minSdkVersion="8"/&gt;
 							</pre>
-						</div>
-						<div>
-							<li>API Key muss hinterlegt sein</li>
-							<pre class="prettyprint" data-lang="xml">
-								&lt;meta-data android:name="com.google.android.maps.v2.API_KEY"
-										android:value="&lt;your_api_key&gt;"/&gt;
+						</li>
+						<li>API Key muss hinterlegt sein
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;meta-data android:name="com.google.android.maps.v2.API_KEY"
+	android:value="_your_api_key_"/&gt;
 							</pre>
-						</div>
-						
+						</li>
+						<li>Berechtigungen müssen gesetzt sein
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;permission
+    android:name="my.package.permission.MAPS_RECEIVE"
+    android:protectionLevel="signature"/&gt;
+&lt;uses-permission android:name="my.package.permission.MAPS_RECEIVE"/&gt;
+    
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+&lt;uses-permission 
+	android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;
+&lt;uses-permission 
+	android:name="com.google.android.providers.gsf.
+					permission.READ_GSERVICES"/&gt;
+							</pre>
+						</li>
+						<li>Optionale Berechtigungen für Ortsbestimmung
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;uses-permission 
+	android:name="android.permission.ACCESS_COARSE_LOCATION"/&gt;
+&lt;uses-permission 
+	android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;
+							</pre>
+						</li>
 					</ul>
 					</li>
 				</ul>
@@ -245,15 +267,20 @@ URL: http://code.google.com/p/html5slides/
             </article>
 			
 			<article id="slideMapType">
-                <h2>???</h2>
+                <h2>Grundlegende Funktionen</h2>
             </article>
 			
-			<!--  -->
+			<article class="onlyphone secondphone">
+                <h3>Android</h3>
+				<!-- Vorstellung der App -->
+            </article>
 			
-			<article>
+			<article class="phonebyside secondphone">
                 <h3>Android</h3>
 				<ul>
-					<li>...</li>
+					<!-- Zeigen wie man ein MapFragment einbindet -->
+					<!-- Zeigen wie man die Controller einstellen kann -->
+					<!-- Zeigen wie man den MapType ändert -->
 				</ul>
             </article>
 			
@@ -265,7 +292,7 @@ URL: http://code.google.com/p/html5slides/
             </article>
 			
 			<article id="slideMapType">
-                <h2>???</h2>
+                <h2>Markierungen</h2>
             </article>
 			
 			<article>
@@ -282,73 +309,59 @@ URL: http://code.google.com/p/html5slides/
 				</ul>
             </article>
 			
-			<article id="slideMarker">
-                <h2>???</h2>
-            </article>
-			
-			<article>
-                <h3>Android</h3>
-				<ul>
-					<li>...</li>
-				</ul>
-            </article>
-			
-			<article>
-                <h3>JavaScript</h3>
-				<ul>
-					<li>...</li>
-				</ul>
+			<article id="slidePause">
+                <h2><b>Pause</b></h2>
             </article>
 			
 			<article id="slideOverlays">
-                <h2>???</h2>
+                <h2>Overlays</h2>
             </article>
 			
 			<article>
-                <h3>JavaScript</h3>
+                <h3>Android</h3>
 				<ul>
 					<li>...</li>
 				</ul>
             </article>
 			
 			<article>
-                <h3>Android</h3>
+                <h3>JavaScript</h3>
 				<ul>
 					<li>...</li>
 				</ul>
             </article>
 			
 			<article id="slidePosition">
-                <h2>???</h2>
+                <h2>Positionsanzeige</h2>
             </article>
 			
 			<article>
-                <h3>Android</h3>
+                <h3>JavaScript</h3>
 				<ul>
 					<li>...</li>
 				</ul>
             </article>
 			
 			<article>
-                <h3>JavaScript</h3>
+                <h3>Android</h3>
 				<ul>
 					<li>...</li>
 				</ul>
             </article>
 			
 			<article id="slideRoute">
-                <h2>???</h2>
+                <h2>Einbinden von Routen</h2>
             </article>
 			
 			<article>
-                <h3>JavaScript</h3>
+                <h3>Android</h3>
 				<ul>
 					<li>...</li>
 				</ul>
             </article>
 			
 			<article>
-                <h3>Android</h3>
+                <h3>JavaScript</h3>
 				<ul>
 					<li>...</li>
 				</ul>
@@ -359,13 +372,28 @@ URL: http://code.google.com/p/html5slides/
             </article>
 			
 			<article>
-                <h3>Beide</h3>
+                <h3>Vergleich</h3>
 				<ul>
+					<!-- Vorteil Android: Ich kann nur mit Java entwickeln -->
+					<!-- Vorteil Android: Anpassen der Neigung -->
+					<!-- Nachteil Android: Nur die Android Plattform -->
 					<li>...</li>
 				</ul>
             </article>
 			
-			<article class="onlyphone">
+			<article>
+                <h3>Lust auf mehr?</h3>
+				<ul>
+					<li>Google Maps SDK für iOS</li>
+					<li>Open Street Maps für Android</li>
+					<li>Weitere Kartendienste für Android</li>
+				</ul>
+				
+				<p><b>Du kennst einer dieser APIs? Dann bist du herzlichst eingeladen, sie bei einer der nächsten Stammtische vorzustellen</b></p>
+            </article>
+			
+			<!-- Phone Articles -->
+			<!--<article class="onlyphone">
                 <h3>Phone1</h3>
             </article>
 			
@@ -392,7 +420,7 @@ URL: http://code.google.com/p/html5slides/
 					<li>Item 2</li>
 					<li>Item 3</li>
 				</ul>
-            </article>
+            </article>-->
 			
             <article>
                 <h3>Vielen Dank für Eure Aufmerksamkeit!</h3>
