@@ -14,7 +14,7 @@
 	var map;
 
 	/**
-	 * stores the marker for the current geolocation of the user.
+	 * Stores the marker for the current geolocation of the user.
 	 */
 	var currentPositionMarker = new google.maps.Circle({
 		clickable : false,
@@ -25,7 +25,7 @@
 	});
 
 	/**
-	 * stores the circle around the marker for the current geolocation of the user.
+	 * Stores the circle around the marker for the current geolocation of the user.
 	 */
 	var currentPositionMarkerCircle = new google.maps.Circle({
 		clickable : false,
@@ -35,6 +35,16 @@
 		strokeOpacity : 0.5,
 		strokeWeight : 1
 	});
+
+	/**
+	 * Stores the ground overlay with an historical map.
+	 */
+	var historicalGroundOverlay = new google.maps.GroundOverlay(
+			"img/historisch.png", new google.maps.LatLngBounds(
+					new google.maps.LatLng(53.072559, 8.806052), // southwest
+					new google.maps.LatLng(53.077416, 8.813648) // northeast
+			));
+	historicalGroundOverlay.setOpacity(0.7);
 
 	/**
 	 * Control button to jump to the current geo location.
@@ -91,12 +101,12 @@
 
 	function showOverlays() {
 		console.debug("showOverlays()");
-		// TODO
+		historicalGroundOverlay.setMap(map);
 	}
 
 	function hideOverlays() {
 		console.debug("hideOverlays()");
-		// TODO
+		historicalGroundOverlay.setMap(null);
 	}
 
 	function showPosition() {
