@@ -114,7 +114,7 @@ body.maps-bg {
 } 
 
 .slides.template-maps > article:not(.nobackground):not(.biglogo) {
-  background: url(images/android-logo-small.png), url(images/gdg-logo-small.png);
+  background: url(images/mapsapp-logo-small.png), url(images/gdg-logo-small.png);
   background-position: 830px 630px, 20px 635px;
   background-repeat: no-repeat;
   background-color: white;  
@@ -192,8 +192,8 @@ body.maps-bg {
 }
 
 .slides.template-maps article.biglogo {
-  background: url(images/android-logo.png), url(images/gdg-logo.png);
-  background-position: 50% 250px, 50% 40px;
+  background: url(images/mapsapp-logo.png), url(images/gdg-logo.png);
+  background-position: 50% 190px, 50% 40px;
   background-repeat: no-repeat;
   background-color: white;
 }
