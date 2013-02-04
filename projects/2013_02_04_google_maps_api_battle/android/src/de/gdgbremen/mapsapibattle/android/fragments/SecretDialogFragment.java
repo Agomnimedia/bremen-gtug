@@ -1,8 +1,7 @@
 package de.gdgbremen.mapsapibattle.android.fragments;
 
-import de.gdgbremen.mapsapibattle.android.ControlActions;
-import de.gdgbremen.mapsapibattle.android.R;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
@@ -10,13 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageButton;
+import de.gdgbremen.mapsapibattle.android.ControlActions;
+import de.gdgbremen.mapsapibattle.android.R;
 
 public class SecretDialogFragment extends DialogFragment{
 
+	
+	
 	public SecretDialogFragment() {
 		// Empty constructor required for DialogFragment
 	}
@@ -28,11 +31,6 @@ public class SecretDialogFragment extends DialogFragment{
         
         getDialog().setTitle("Geheimer Dialog");
         
-        final SharedPreferences pref = PreferenceManager
-				.getDefaultSharedPreferences(getActivity());
-		// TODO load additional controls
-        
-        
         return view;
     }
 	
@@ -40,12 +38,17 @@ public class SecretDialogFragment extends DialogFragment{
 	public void onStart() {
 		super.onStart();
 		
-		addCheckboxListener();
+		final SharedPreferences pref = PreferenceManager
+				.getDefaultSharedPreferences(getActivity());
+        final boolean additionalControls = pref.getBoolean("additionalControls", false);
+		final boolean traffic = pref.getBoolean("traffic", false);
+		
+		addCheckboxListener(additionalControls, traffic);
 		addButtonListener();
 	}
 
 	private void addButtonListener() {
-		final Button navBremen = (Button) this.getView().findViewById(R.id.navigateBremen);
+		final ImageButton navBremen = (ImageButton) this.getView().findViewById(R.id.navigateBremen);
 		navBremen.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -55,7 +58,7 @@ public class SecretDialogFragment extends DialogFragment{
 			}
 		});
 		
-		final Button navMunich = (Button) this.getView().findViewById(R.id.navigateMunich);
+		final ImageButton navMunich = (ImageButton) this.getView().findViewById(R.id.navigateMunich);
 		navMunich.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -65,7 +68,7 @@ public class SecretDialogFragment extends DialogFragment{
 			}
 		});
 		
-		final Button navNewYork = (Button) this.getView().findViewById(R.id.navigateNewYork);
+		final ImageButton navNewYork = (ImageButton) this.getView().findViewById(R.id.navigateNewYork);
 		navNewYork.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -76,12 +79,11 @@ public class SecretDialogFragment extends DialogFragment{
 		});
 	}
 
-	private void addCheckboxListener() {
+	private void addCheckboxListener(boolean additionalControlsShown, boolean traffic) {
 		final CheckBox additionalControls = (CheckBox) this.getView().findViewById(
 				R.id.additionalControls);
 		
-		// TODO change this
-		additionalControls.setChecked(false);
+		additionalControls.setChecked(additionalControlsShown);
 		
 		additionalControls.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView,
@@ -91,20 +93,26 @@ public class SecretDialogFragment extends DialogFragment{
 				} else {
 					((ControlActions) getActivity()).hide();
 				}
+				final Editor editor = PreferenceManager
+						.getDefaultSharedPreferences(getActivity()).edit();
+				editor.putBoolean("additionalControls", isChecked);
+				editor.commit();
 
 			}
 		});
 		
 		final CheckBox showTraffic = (CheckBox) this.getView().findViewById(R.id.showTraffic);
-		// TODO change this
-		showTraffic.setChecked(false);
+		showTraffic.setChecked(traffic);
 		
 		showTraffic.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				((ControlActions) getActivity()).traffic(isChecked);
-				
+				final Editor editor = PreferenceManager
+						.getDefaultSharedPreferences(getActivity()).edit();
+				editor.putBoolean("traffic", isChecked);
+				editor.commit();
 			}
 		});
 	}

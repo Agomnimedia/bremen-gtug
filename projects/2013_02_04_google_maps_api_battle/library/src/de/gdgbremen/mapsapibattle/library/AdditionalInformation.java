@@ -44,6 +44,7 @@ public final class AdditionalInformation {
 	public JSONObject toJSON() {
 		final JSONObject json = new JSONObject();
 		try {
+			if(strasse != null && hausnummer != null) json.put("adresse", strasse + " " + hausnummer);
 			if (homepage != null) json.put("homepage", homepage);
 			if (oeffnungszeiten != null) json.put("oeffnungszeiten", oeffnungszeiten);
 			if (beschreibung != null) json.put("beschreibung", beschreibung);

@@ -1,13 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+   	>
+<LinearLayout 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <TextView 
+        android:id="@+id/content_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Content halt"
+        android:textStyle="bold"
+        />
+    
+    <TextView 
+        android:id="@+id/content_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        />
+    
+    
+    <TextView 
+        android:id="@+id/content_description"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        />
+    
+	    
+    <TextView 
+        android:id="@+id/content_website_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Website:"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+    
+    <TextView 
+        android:id="@+id/content_website"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:autoLink="web"
+        android:layout_marginTop="5dp"
+        />
+    
+    <TextView 
+        android:id="@+id/content_oeffnungszeiten_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="Öffnungszeiten:"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        />
+    
+    <TextView 
+        android:id="@+id/content_oeffnungszeiten"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        
+        android:layout_marginTop="5dp"
         />
 
 </LinearLayout>
+</ScrollView>

@@ -1,6 +1,8 @@
 package de.gdgbremen.mapsapibattle.android;
 
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -25,17 +27,23 @@ public class MainActivity extends AbstractMainActivity implements ControlActions
 
 		GooglePlayServicesUtil
 				.isGooglePlayServicesAvailable(getApplicationContext());
-
+		
 		final FragmentTransaction transaction = getSupportFragmentManager()
 				.beginTransaction();
 		
+		final Editor editor = PreferenceManager
+				.getDefaultSharedPreferences(this).edit();
+		
+		editor.putBoolean("traffic", false);
 
 		if (getSupportFragmentManager().findFragmentByTag("mapFragment") == null) {
 			fragment = MyMapFragment.newInstance();
 			transaction.add(R.id.singlefragment, fragment, "mapFragment");
+			editor.putBoolean("additionalControls", false);
 		} else {
 			fragment = (MyMapFragment) getSupportFragmentManager()
 					.findFragmentByTag("mapFragment");
+			editor.putBoolean("additionalControls", true);
 		}
 		
 		if (getSupportFragmentManager().findFragmentByTag("controlFragment") != null) {
@@ -43,6 +51,7 @@ public class MainActivity extends AbstractMainActivity implements ControlActions
 					.findFragmentByTag("controlFragment");
 		}
 		
+		editor.commit();
 		transaction.commit();
 	}
 

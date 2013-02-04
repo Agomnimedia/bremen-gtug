@@ -16,12 +16,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -56,7 +58,6 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		final GoogleMapOptions options = new GoogleMapOptions();
 
 		options.mapType(GoogleMap.MAP_TYPE_HYBRID);
-		// TODO uisettings ausprobieren
 
 		Bundle args = new Bundle();
 		args.putParcelable("MapOptions", options); // obtained by decompiling
@@ -99,8 +100,6 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 	private void showStartPosition() {
 		this.navigate(City.BREMEN);
 		map.setInfoWindowAdapter(null);
-		// map.setIndoorEnabled(arg0)
-		// map.setTrafficEnabled(arg0)
 
 		map.getUiSettings().setTiltGesturesEnabled(true);
 		map.getUiSettings().setMyLocationButtonEnabled(true);
@@ -275,7 +274,7 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 
 	private class AdditionalInfoWindowAdapter implements InfoWindowAdapter {
 
-		private final View content;
+		private View content;
 
 		// private final View mWindow;
 
@@ -289,10 +288,37 @@ public class MyMapFragment extends SupportMapFragment implements MenuActions,
 		// will be called second, after getInfoWindow returns null
 		@Override
 		public View getInfoContents(final Marker marker) {
+			content = getActivity().getLayoutInflater().inflate(
+					R.layout.info_content_layout, null);
+			final TextView title = (TextView) content.findViewById(R.id.content_title);
+			title.setText(marker.getTitle());
 			try {
 				final JSONObject json = new JSONObject(marker.getSnippet());
-				// TODO show data in view
-
+				if(json.has("adresse")){
+					final TextView address = (TextView) content.findViewById(R.id.content_address);
+					address.setText(Html.fromHtml(json.getString("adresse")));
+					address.setVisibility(TextView.VISIBLE);
+				}
+				if(json.has("beschreibung")){
+					final TextView description = (TextView) content.findViewById(R.id.content_description);
+					description.setText(Html.fromHtml(json.getString("beschreibung"))/*.replaceAll("<br />", "\n").replaceAll("<p>", "").replaceAll("</p>", "")*/);
+					description.setVisibility(TextView.VISIBLE);
+				}
+				if(json.has("homepage")){
+					final TextView websiteTitle = (TextView) content.findViewById(R.id.content_website_title);
+					final TextView website = (TextView) content.findViewById(R.id.content_website);
+					website.setText(Html.fromHtml(json.getString("homepage")));
+					websiteTitle.setVisibility(TextView.VISIBLE);
+					website.setVisibility(TextView.VISIBLE);
+				}
+				if(json.has("oeffnungszeiten")){
+					final TextView oeffnungszeitenTitle = (TextView) content.findViewById(R.id.content_oeffnungszeiten_title);
+					final TextView oeffnungszeiten = (TextView) content.findViewById(R.id.content_oeffnungszeiten);
+					oeffnungszeiten.setText(Html.fromHtml(json.getString("oeffnungszeiten")));
+					oeffnungszeitenTitle.setVisibility(TextView.VISIBLE);
+					oeffnungszeiten.setVisibility(TextView.VISIBLE);
+				}
+				
 				return content;
 			} catch (JSONException e) {
 				return null;
