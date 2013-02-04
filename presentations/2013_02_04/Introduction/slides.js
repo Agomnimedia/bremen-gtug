@@ -645,13 +645,6 @@ function addGeneralStyle() {
   el.href = PERMANENT_URL_PREFIX + 'styles.css';
   document.body.appendChild(el);
   
-  el = document.createElement('link');
-  el.rel = 'stylesheet';
-  el.type = 'text/css';
-  el.media = 'print';
-  el.href = PERMANENT_URL_PREFIX + 'print.css';
-  document.body.appendChild(el);
-  
   var el = document.createElement('meta');
   el.name = 'viewport';
   el.content = 'width=1100,height=750';
