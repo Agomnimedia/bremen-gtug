@@ -851,7 +851,7 @@ aside > section > pre, aside > section > p, aside > section > form, aside > sect
 
 #android-apk{
 	position:absolute;
-	top: 150px;
+	top: 200px;
 	left: 70px;
 	width: 300px;
 }
@@ -859,12 +859,12 @@ aside > section > pre, aside > section > p, aside > section > form, aside > sect
 #android_url{
 	position:absolute;
 	left:90px;
-	top: 50px;
+	top: 150px;
 }
 
 #javascript-apk{
 	position:absolute;
-	top: 150px;
+	top: 200px;
 	right: 70px;
 	width: 300px;
 }
@@ -872,5 +872,5 @@ aside > section > pre, aside > section > p, aside > section > form, aside > sect
 #javascript_url{
 	position:absolute;
 	right:90px;
-	top: 50px;
+	top: 150px;
 }
