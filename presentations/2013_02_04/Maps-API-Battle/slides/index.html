@@ -157,7 +157,7 @@ URL: http://code.google.com/p/html5slides/
 			</article>
 			
 			<article>
-				<h3>Javascript API</h3>
+				<h3>JavaScript API</h3>
 				<ul>
 					<li>Version 3.9 <i>frozen</i> letzte Änderung am 20.11.2012</li>
 					<li>Version 3.10 <i>release</i> wurde am 18.11.2012 veröffentlicht</li>
@@ -368,10 +368,10 @@ private class JSInterface {
 			
 			<article id="slideMapType">
                 <h2>Grundlegende Funktionen</h2>
-				<a id="android_url" href='http://www.qrcode-generator.de' border='0' style='cursor:default'>Android Demo App</a>
-				<img id="android-apk" src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fbremen-gtug.googlecode.com%2Fsvn%2Fprojects%2F2013_02_04_google_maps_api_battle%2Fandroid%2FMapsApiBattle-Android.apk&chs=180x180&choe=UTF-8&chld=L|2' rel='nofollow' alt='qr code'>
-				<a id="javascript_url" href='http://www.qrcode-generator.de' border='0' style='cursor:default'>Javascript Demo App</a>
-				<img id="javascript-apk" src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fbremen-gtug.googlecode.com%2Fsvn%2Fprojects%2F2013_02_04_google_maps_api_battle%2Fjavascript%2FMapsApiBattle-JavaScript.apk&chs=180x180&choe=UTF-8&chld=L|2' rel='nofollow' alt='qr code'>
+				<a id="android_url" href="https://bremen-gtug.googlecode.com/svn/projects/2013_02_04_google_maps_api_battle/android/MapsApiBattle-Android.apk" border="0" style="cursor:default">Android Demo App</a>
+				<img id="android-apk" src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fbremen-gtug.googlecode.com%2Fsvn%2Fprojects%2F2013_02_04_google_maps_api_battle%2Fandroid%2FMapsApiBattle-Android.apk&chs=300x300&choe=UTF-8&chld=L|2" rel="nofollow" alt="qr code">
+				<a id="javascript_url" href="https://bremen-gtug.googlecode.com/svn/projects/2013_02_04_google_maps_api_battle/javascript/MapsApiBattle-JavaScript.apk" border="0" style="cursor:default">JavaScript Demo App</a>
+				<img id="javascript-apk" src="https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fbremen-gtug.googlecode.com%2Fsvn%2Fprojects%2F2013_02_04_google_maps_api_battle%2Fjavascript%2FMapsApiBattle-JavaScript.apk&chs=300x300&choe=UTF-8&chld=L|2" rel="nofollow" alt="qr code">
             </article>
 			
 			<article class="onlyphone secondphone">
@@ -650,12 +650,9 @@ historicalGroundOverlay.setOpacity(0.7);
 function showOverlay() {
   historicalGroundOverlay.setMap(map);
 }
-function hideOverlay() {
+function removeOverlay() {
   historicalGroundOverlay.setMap(null);
 }
-					</pre>
-					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
-
 					</pre>
 				</ul>
             </article>
@@ -664,10 +661,78 @@ function hideOverlay() {
                 <h2>Positionsanzeige</h2>
             </article>
 			
-			<article>
+			<article class="phonebyside">
                 <h3>JavaScript</h3>
-				<ul>
-					<li>...</li>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+/* A Small filled circle for users position */
+var currentPositionMarker =
+    new google.maps.Circle({
+      clickable : false,
+      radius : 0.2,
+      strokeColor : '#0066FF',
+      strokeOpacity : 1,
+      strokeWeight : 10
+});
+/* Circle to represent position accuracy */
+var currentPositionMarkerCircle =
+    new google.maps.Circle({
+      clickable : false,
+      fillColor : '#0099FF',
+      fillOpacity : 0.15,
+      strokeColor : '#0099FF',
+      strokeOpacity : 0.5,
+      strokeWeight : 1
+});
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+function updateGeoPosition(latitude,
+    longitude, accuracy) {
+	
+  currentPositionMarker.setMap(null);
+  currentPositionMarkerCircle.setMap(null);
+  var markerLatlng = new google.maps.LatLng(
+      latitude, longitude);
+  currentPositionMarker.setCenter(markerLatlng);
+  
+  currentPositionMarkerCircle.setCenter(
+      markerLatlng);
+  currentPositionMarkerCircle.setRadius(
+      accuracy);
+  
+  currentPositionMarker.setMap(map);
+  currentPositionMarkerCircle.setMap(map);
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+var watchGeolocationId;
+function showPosition() {
+  watchGeolocationId =
+    navigator.geolocation.watchPosition(
+      function(position) {
+        updateGeoPosition(
+            position.coords.latitude,
+            position.coords.longitude,
+            position.coords.accuracy);
+      }, function(error) {
+        console.error("no geoposition: '"
+            + error.message + "', Code "
+            + error.code);
+      }, {
+        maximumAge : 3000,
+        timeout : 5000,
+        enableHighAccuracy : true
+      });
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+function removePosition() {
+  navigator.geolocation.clearWatch(
+      watchGeolocationId);
+  currentPositionMarker.setMap(null);
+  currentPositionMarkerCircle.setMap(null);
+}
+					</pre>
 				</ul>
             </article>
 			
