@@ -849,3 +849,24 @@ aside > section > pre, aside > section > p, aside > section > form, aside > sect
 	margin-top: -30px;
 }
 
+#android-apk{
+	position:absolute;
+	margin-left: -245px;
+	margin-top: 150px;
+	width: 225px;
+}
+
+#android_url{
+	margin-left:20px;
+}
+
+#javascript-apk{
+	position:absolute;
+	margin-left:-245px;
+	margin-top: 150px;
+	width: 225px;
+}
+
+#javascript_url{
+	margin-left:175px;
+}
