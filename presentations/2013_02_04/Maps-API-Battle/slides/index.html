@@ -159,7 +159,17 @@ URL: http://code.google.com/p/html5slides/
 			<article>
 				<h3>Javascript API</h3>
 				<ul>
-					<li>???</li>
+					<li>Version 3.9 <i>frozen</i> letzte Änderung am 20.11.2012</li>
+					<li>Version 3.10 <i>release</i> wurde am 18.11.2012 veröffentlicht</li>
+					<li>Laufend Updates mit Verbesserungen und Korrekturen, ca. wöchentlich, z. B.:<ul>
+						<li>Zusätzliche Sprach-Unterstützungen</li>
+						<li>Indoor Street View</li>
+					</ul></li>
+					<li>Version 3.11 experimental, u.a. mit:<ul>
+						<li>Unterstützung für Geräte mit höherer DPI</li>
+						<li>Poligone, Kreise, Rechtecke: dragable-option</li>
+					</ul></li>
+					<li><a href="https://developers.google.com/maps/documentation/javascript/tutorial?hl=de">Dokumentation und deutschsprachiges Tuturial</a></li>
 				</ul>
 			</article>
 			
@@ -171,7 +181,97 @@ URL: http://code.google.com/p/html5slides/
 			<article>
                 <h3>JavaScript</h3>
 				<ul>
-					<li>...</li>
+					<li>Einrichten einer Android-Entwicklungsumgebung</li>
+					<li>Kein API Key (mehr) erforderlich<br>(wird jedoch von Google empfohlen zur Überwachung der Nutzung und Erreichen der Nutzungsbegrenzung)</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>JavaScript - Konfiguration</h3>
+				<ul>
+					<li>Anderungen im Android Manifest<ul class="build stack">
+						<li>Min-SDK sollte Froyo sein
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;uses-sdk android:minSdkVersion="8"/&gt;
+							</pre>
+						</li>
+						<li>Berechtigungen müssen gesetzt sein
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+							</pre>
+						</li>
+						<li>Optionale Berechtigungen für Ortsbestimmung
+							<pre class="prettyprint absolute_tall" data-lang="xml">
+&lt;uses-permission 
+	android:name="android.permission.ACCESS_COARSE_LOCATION"/&gt;
+&lt;uses-permission 
+	android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;
+							</pre>
+						</li>
+					</ul>
+					</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>JavaScript - WebView</h3>
+				<ul>
+					<li>WebView-Konfiguration<ul class="build stack">
+						<li>Grundlegende Parameter
+							<pre class="prettyprint absolute_tall" data-lang="java">
+this.webview = (WebView) view.findViewById(R.id.webview);
+final WebSettings webviewSettings = this.webview.getSettings();
+webviewSettings.setJavaScriptEnabled(true);
+webviewSettings.setGeolocationEnabled(true);
+if (Build.VERSION.SDK_INT >= 11) {
+  this.webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+}
+this.webview.loadUrl("file:///android_asset/map/googlemap.html");
+							</pre>
+						</li>
+						<li>Error-Handling / Debug-Meldungen
+							<pre class="prettyprint absolute_tall" data-lang="java">
+this.webview.setWebChromeClient(new WebChromeClient() {
+  @Override
+  public boolean onConsoleMessage(ConsoleMessage cm) {
+    switch (cm.messageLevel()) {
+      case DEBUG:
+        Log.d("MapsWebView-DEBUG", cm.message() + " -- "
+            + cm.lineNumber() + "@" + cm.sourceId());
+        break;
+      // ...
+    }
+    return true;
+  }
+});
+							</pre>
+						</li>
+						<li>Abfragen zur Geoposition erlauben
+							<pre class="prettyprint absolute_tall" data-lang="java">
+this.webview.setWebChromeClient(new WebChromeClient() {
+  @Override
+  public void onGeolocationPermissionsShowPrompt(String origin,
+      Callback callback) {
+    // Allow always geolocation permissions for the webview.
+    callback.invoke(origin, true, false);
+  }
+});
+							</pre>
+						</li>
+						<li>Java-Objekt für Call-Backs in JavaScript injezieren
+							<pre class="prettyprint absolute_tall" data-lang="java">
+this.webview.addJavascriptInterface(new JSInterface(), "androidapp");
+// ...
+private class JSInterface {
+  @JavascriptInterface
+  public String getSomeString() {
+    return "Hello World!";
+  }
+}
+							</pre>
+						</li>
+					</ul>
+					</li>
 				</ul>
             </article>
 			
@@ -344,10 +444,35 @@ private void chooseMapType() {
 				</ul>
             </article>
 			
-			<article>
+			<article class="onlyphone">
                 <h3>JavaScript</h3>
-				<ul>
-					<li>...</li>
+				<!-- Vorstellung der App -->
+            </article>
+			
+			<article class="phonebyside">
+                <h3>JavaScript</h3>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+var map;
+function initialize() {
+  var mapOptions = {
+    center : new google.maps.LatLng(
+        53.075858, 8.80772),
+    zoom : 17,
+    mapTypeId : google.maps.MapTypeId.HYBRID,
+        //TERRAIN, HYBRID, ROADMAP, SATELLITE
+    panControl : false,
+    zoomControl : true,
+    mapTypeControl : false,
+    scaleControl : false,
+    streetViewControl : true,
+    overviewMapControl : false
+  };
+  map = new google.maps.Map(
+      document.getElementById("map_canvas"),
+      mapOptions);
+}
+					</pre>
 				</ul>
             </article>
 			
@@ -355,10 +480,42 @@ private void chooseMapType() {
                 <h2>Markierungen</h2>
             </article>
 			
-			<article>
+			<<article class="phonebyside">
                 <h3>JavaScript</h3>
-				<ul>
-					<li>...</li>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+var marker;
+
+function createMarker() {
+  marker = new google.maps.Marker({
+    position : landmarks[landmarksIndex].latlng,
+    map : map,
+    title : landmarks[landmarksIndex].name
+  });
+}
+
+function removeMarker() {
+  marker.setMap(null);
+  //or
+  marker.setVisible(false);
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+var infoWindow
+function createInfoWindow() {
+  infoWindow = new google.maps.InfoWindow({
+    content : '&lt;h1&gt;Hier&lt;/h1&gt;'
+        + '&lt;p&gt;Weitere Informationen&lt;/p&gt;'
+  });
+  google.maps.event.addListener(marker, 'click',
+    function() {
+      if (lastInfoWindow != null) {
+        lastInfoWindow.close();
+      }
+      infowindow.open(map, marker);
+    });
+}
+					</pre>
 				</ul>
             </article>
 			
@@ -469,10 +626,33 @@ private void removeOverlay(){
 				</ul>
             </article>
 			
-			<article>
+			<article class="phonebyside">
                 <h3>JavaScript</h3>
-				<ul>
-					<li>...</li>
+				<ul class="build stack">
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+var historicalGroundOverlay =
+    new google.maps.GroundOverlay(
+        "img/historisch.png",
+        new google.maps.LatLngBounds(
+            // southwest:
+            new google.maps.LatLng(
+                53.072559, 8.806052),
+            // northeast:
+            new google.maps.LatLng(
+                53.077416, 8.813648)
+));
+historicalGroundOverlay.setOpacity(0.7);
+
+function showOverlay() {
+  historicalGroundOverlay.setMap(map);
+}
+function hideOverlay() {
+  historicalGroundOverlay.setMap(null);
+}
+					</pre>
+					<pre class="prettyprint absolute_medium_tall" data-lang="javascript">
+
+					</pre>
 				</ul>
             </article>
 			
