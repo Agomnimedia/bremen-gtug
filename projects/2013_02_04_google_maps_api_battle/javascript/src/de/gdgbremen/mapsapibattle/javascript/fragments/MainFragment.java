@@ -184,6 +184,38 @@ public class MainFragment extends Fragment {
 		webview.loadUrl("javascript:hidePosition()");
 	}
 
+	public void showTraffic() {
+		webview.loadUrl("javascript:showTraffic()");
+	}
+
+	public void hideTraffic() {
+		webview.loadUrl("javascript:hideTraffic()");
+	}
+
+	public void showTransit() {
+		webview.loadUrl("javascript:showTransit()");
+	}
+
+	public void hideTransit() {
+		webview.loadUrl("javascript:hideTransit()");
+	}
+
+	public void showBicycling() {
+		webview.loadUrl("javascript:showBicycling()");
+	}
+
+	public void hideBicycling() {
+		webview.loadUrl("javascript:hideBicycling()");
+	}
+
+	public void showWeather() {
+		webview.loadUrl("javascript:showWeather()");
+	}
+
+	public void hideWeather() {
+		webview.loadUrl("javascript:hideWeather()");
+	}
+
 	public void setMapType(MapType mapType) {
 		webview.loadUrl("javascript:setMapType('" + mapType + "')");
 	}

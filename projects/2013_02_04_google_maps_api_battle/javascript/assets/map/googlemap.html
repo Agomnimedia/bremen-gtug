@@ -4,7 +4,7 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link rel="stylesheet" href="styles.css" />
 <script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?sensor=true">
+	src="http://maps.googleapis.com/maps/api/js?libraries=weather&sensor=true">
 	
 </script>
 <script type="text/javascript">
@@ -71,16 +71,41 @@
 	 */
 	var watchGeolocationId;
 
+	/**
+	 * Stores the map layer for transit.
+	 */
+	var transitLayer;
+
+	/**
+	 * Stores the map layer for traffic.
+	 */
+	var trafficLayer;
+
+	/**
+	 * Stores the map layer for bicycling.
+	 */
+	var bicyclingLayer;
+
+	/**
+	 * Stores the map layer for weather.
+	 */
+	var weatherLayer;
+
+	/**
+	 * Stores the map layer for clouds.
+	 */
+	var cloudLayer;
+
 	function initialize() {
 		var mapOptions = {
 			center : new google.maps.LatLng(53.075858, 8.80772),
 			zoom : 17,
 			mapTypeId : google.maps.MapTypeId.HYBRID, //TERRAIN, HYBRID, ROADMAP, SATELLITE
 			panControl : false,
-			zoomControl : false,
+			zoomControl : true,
 			mapTypeControl : false,
 			scaleControl : false,
-			streetViewControl : false,
+			streetViewControl : true,
 			overviewMapControl : false
 		};
 		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
@@ -167,6 +192,56 @@
 		controlUI.style.display = 'none';
 		currentPositionMarker.setMap(null);
 		currentPositionMarkerCircle.setMap(null);
+	}
+
+	function showTraffic() {
+		console.debug("showTraffic()");
+		trafficLayer = new google.maps.TrafficLayer();
+		trafficLayer.setMap(map);
+	}
+
+	function hideTraffic() {
+		console.debug("hideTraffic()");
+		trafficLayer.setMap(null);
+	}
+
+	function showTransit() {
+		console.debug("showTransit()");
+		transitLayer = new google.maps.TransitLayer();
+		transitLayer.setMap(map);
+	}
+
+	function hideTransit() {
+		console.debug("hideTransit()");
+		transitLayer.setMap(null);
+	}
+
+	function showBicycling() {
+		console.debug("showBicycling()");
+		bicyclingLayer = new google.maps.BicyclingLayer();
+		bicyclingLayer.setMap(map);
+	}
+
+	function hideBicycling() {
+		console.debug("hideBicycling()");
+		bicyclingLayer.setMap(null);
+	}
+
+	function showWeather() {
+		console.debug("showWeather()");
+		weatherLayer = new google.maps.weather.WeatherLayer({
+			temperatureUnits : google.maps.weather.TemperatureUnit.CELSIUS,
+			windSpeedUnits : google.maps.weather.WindSpeedUnit.KILOMETERS_PER_HOUR
+		});
+		weatherLayer.setMap(map);
+		cloudLayer = new google.maps.weather.CloudLayer();
+		cloudLayer.setMap(map);
+	}
+
+	function hideWeather() {
+		console.debug("hideWeather()");
+		weatherLayer.setMap(null);
+		cloudLayer.setMap(null);
 	}
 
 	function setMapType(mapType) {

@@ -6,5 +6,11 @@
     
     <string name="geocodingLoading">Ladevorgang &#8230;</string>
     <string name="geocodingLoadingMsg">Die Geokoordinaten werden geladen, bitte habe einen Augenblick Geduld.</string>
+    
+    <string name="menu_infolayer">Info-Ebenen</string>
+    <string name="menu_infolayer_traffic">Verkehrslage</string>
+    <string name="menu_infolayer_transit">Öffentliche Verkehrsmittel</string>
+    <string name="menu_infolayer_bicycling">Radwege</string>
+    <string name="menu_infolayer_weather">Wetterlage</string>
 
 </resources>

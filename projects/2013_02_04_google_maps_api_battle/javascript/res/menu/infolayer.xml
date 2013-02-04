@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_infolayer"
+        android:icon="@drawable/ic_menu_info_details"
+        android:showAsAction="always"
+        android:title="@string/menu_infolayer">
+        <menu>
+            <item
+                android:id="@+id/menu_infolayer_traffic"
+                android:checkable="true"
+                android:title="@string/menu_infolayer_traffic"/>
+            <item
+                android:id="@+id/menu_infolayer_transit"
+                android:checkable="true"
+                android:title="@string/menu_infolayer_transit"/>
+            <item
+                android:id="@+id/menu_infolayer_bicycling"
+                android:checkable="true"
+                android:title="@string/menu_infolayer_bicycling"/>
+            <item
+                android:id="@+id/menu_infolayer_weather"
+                android:checkable="true"
+                android:title="@string/menu_infolayer_weather"/>
+        </menu>
+    </item>
+
+</menu>

@@ -7,4 +7,10 @@
     <string name="geocodingLoading">Loading &#8230;</string>
     <string name="geocodingLoadingMsg">The geographical coordinates are loading, please wait a moment.</string>
 
+    <string name="menu_infolayer">Info layers</string>
+    <string name="menu_infolayer_traffic">Traffic</string>
+    <string name="menu_infolayer_transit">Public transports</string>
+    <string name="menu_infolayer_bicycling">Bicycle routes</string>
+    <string name="menu_infolayer_weather">Weather</string>
+
 </resources>
