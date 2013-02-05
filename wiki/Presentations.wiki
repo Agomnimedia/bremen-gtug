@@ -44,20 +44,27 @@
 [http://docs.google.com/viewer?a=v&pid=sites&srcid=Z3R1Z3Mub3JnfGJyZW1lbmd0dWd8Z3g6N2QwYzBhMzg5NTUzNWExYw Websites auf Speed] by [https://plus.google.com/106778451837488066010/ +Timo Heinrich]<br><br>
 
 == October 2012 ==
+[https://www.youtube.com/watch?v=34tLuYp4ywQ Video]<br>
 [http://www.slideshare.net/greenrobot/eventbus-for-android-15314813 EventBus] by [https://plus.google.com/102504474918098933753/ +Markus Junginger]<br>
 [Kostengünstige Hausautomation mit einem Smartphone] by [https://plus.google.com/107411440384202293942/ +Henrik Voß]<br><br>
 
 == November 2012 ==
+[https://www.youtube.com/watch?v=ZcTII3LPN7k Video]<br>
 [https://bremen-gtug.googlecode.com/svn/presentations/2012_11_05/css3/slides/index.html CSS3 - Ein Einführung] by [https://plus.google.com/100559221027275658717/ +Jan Stalhut]<br>
 [http://devfest12-berlin-playn.appspot.com/ PlayN] by [https://plus.google.com/100622744885172202210/ +Johannes Barop]
 <br><br>
 
 == December 2012 ==
+[https://www.youtube.com/watch?v=j8HIs1JIOpw Video]<br>
 [https://bremen-gtug.googlecode.com/svn/presentations/2012_12_03/Google%20Cloud%20Messaging/template.html Google Cloud Messaging] by [https://plus.google.com/105644643668348314832/ +Steve Liedtke]<br>
 [Google TV am Beispiel Prime Guide] by [https://plus.google.com/117981764820200252568/ +Matthias Friedrich]
 <br><br>
 
 == January 2013 ==
+[https://www.youtube.com/watch?v=uT0ilPkV03o Video]<br>
 [https://docs.google.com/presentation/d/1X6kJK7DBkAs15G1okzitrUzHpOEGH1uLH1gbgMgw-z8/edit Ingress] by [https://plus.google.com/111333123856542807695/ +Stefan Hoth]<br>
 Dart CodeLab: [https://docs.google.com/file/d/0BzP0HrbVsp3KaVF2WGFpUlN4cm8/edit PDF] + [https://github.com/dart-lang/io-2012-dart-code-lab Code] by [https://plus.google.com/111783114889748547827/ +Filip Hráček]
 <br><br>
+
+== February 2013 ==
+[https://www.youtube.com/watch?v=eMilAQOo084 Video]<br>
