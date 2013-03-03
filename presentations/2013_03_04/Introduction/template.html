@@ -1,0 +1,262 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GDG Bremen March 2013</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img id="front_logo" src="images/GDG_Bremen_vonJan5g_mitRand_HQ.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+	  <p data-config-contact-dark></p>
+    </hgroup>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Sponsors and things we like to mention</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Sponsors</h2>
+    </hgroup>
+    <article>
+		<p class="sponsors" id="best_western_text">Best Western Hotel zur Post</p>
+		<div><img class="sponsors" id="best_western_logo" src="images/best_western.jpg"></div>
+		<p class="sponsors" id="stalhut_text">IT-Services Jan Stalhut</p>				
+		<div><img class="sponsors" id="stalhut_logo" src="images/jan.jpg"></div>
+		<p class="sponsors" id="neusta_text">team neusta</p>
+		<div><img class="sponsors" id="neusta_logo" src="images/neusta_logo.jpg"></div>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Things we like to mention</h2>
+    </hgroup>
+    <article>
+		<p class="sponsors" id="bremen_js_regulars_table">Bremen.js - Regulars table - <br/>Next Monday (11th March 2013)</p>
+		<div><img class="sponsors" id="bremen_js_logo" src="images/bremen_js.png"></div>
+		<p class="sponsors" id="hackerspace_bremen_text">Hackerspace Bremen</p>				
+		<div><img class="sponsors" id="hackerspace_bremen_logo" src="images/hackerspace_bremen.jpg"></div>
+	</article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Future events</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Next regulars' table</h2>
+    </hgroup>
+    <article>
+      <ul style="top:50px" class="build">
+        <li style="margin-bottom:30px;">1st April - no joke ;-)</li>
+		<li style="margin-bottom:30px;">Topics are still open</li>
+	  </ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Next Droidcon in Germany</h2>
+    </hgroup>
+    <article>
+      <ul style="top:50px" class="build">
+		<li style="margin-bottom:15px;"><a href="http://droidcon.com/">Droidcon</a> is a android conference in several cities
+			<ul>
+				<li style="margin-bottom:30px;">7 cities in 2012 (i.a Berlin, London, Amsterdam)</li>
+			</ul>
+		</li>
+        <li style="margin-bottom:15px;">7th - 10th April in Berlin
+			<ul>
+				<li style="margin-bottom:15px;">Sunday - Hackathon</li>
+				<li style="margin-bottom:15px;">Monday - Barcamp</li>
+				<li style="margin-bottom:15px;">Tuesday - Conference</li>
+				<li style="margin-bottom:30px;">Wednesday - Conference</li>
+			</ul>
+		</li>
+		<li style="margin-bottom:15px;"><a href="http://de.droidcon.com/2013/tickets">Tickets are still available</a></li>
+		<li style="margin-bottom:15px;"><a href="https://groups.google.com/forum/#!topic/google-technology-user-group-bremen/Xw5svbxs24U">Promotion code in our Google Group still works -> 99 €</a></li>
+	  </ul>
+	</article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Today</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><a href="https://plus.google.com/s/%23techroundup">#techroundup</a></h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li style="margin-bottom:15px;"><a href="https://plus.google.com/104693551891691428892/posts/GLt6ZHggAqY">PageSpeed as a service</a>  
+			<ul>
+				<li style="margin-bottom:30px;">
+					???
+				</li>
+			</ul>
+		</li>
+		<li style="margin-bottom:15px;"><a href="https://plus.google.com/102966480402763603887/posts/YLa7oYjW3rm">Google+ Sign-In </a>
+			<ul>
+				<li style="margin-bottom:30px;">
+					???
+				</li>
+			</ul>
+		</li>
+		<li style="margin-bottom:15px;"><a href="http://googleappengine.blogspot.de/2013/02/app-engine-175-released.html">AppEngine 1.7.5</a>
+			<ul>
+				<li style="margin-bottom:30px;">
+					???
+				</li>
+			</ul>
+		</li>
+		<li style="margin-bottom:15px;"><a href="https://developers.google.com/appengine/docs/java/endpoints/">Google Cloud Endpoints now Experimental </a>
+			<ul>
+				<li style="margin-bottom:30px;">
+					???
+				</li>
+			</ul>
+		</li>
+		<li style="margin-bottom:15px;"><a href="http://chrome.blogspot.de/2013/02/bringing-voice-recognition-to-web.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed:+blogspot/Egta+(Google+Chrome+Blog)&utm_content=Google+Reader">
+			Web Speech API now available in stable Chrome </a>
+			<ul>
+				<li style="margin-bottom:30px;">
+					???
+				</li>
+			</ul>
+		</li>
+		<li style="margin-bottom:15px;"><a href="http://chrome.blogspot.de/2013/02/the-chromebook-pixel-for-whats-next.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed:+blogspot/Egta+(Google+Chrome+Blog)">
+			Chromebook Pixel</a>
+			<ul>
+				<li style="margin-bottom:30px;">
+					???
+				</li>
+			</ul>
+		</li>
+      </ul>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>17th regulars' table</h2>
+    </hgroup>
+    <article>
+      <ul style="top:30px">
+		<li style="margin-bottom:15px;">Lightning Talks
+			<ul>
+		
+				<li style="margin-bottom:15px;">'Identity in Android apps' by <a href="http://gplus.to/mtthsfrdrch">+Matthias Friedrich</a></li>
+				<li style="margin-bottom:15px;">'AngularJS Foodwatcher App' by <a href="https://plus.google.com/106733191200400095142">+Malte Legenhausen</a></li>
+				<li style="margin-bottom:15px;">'Chrome Extension anhand eines Beispiels' by <a href="https://plus.google.com/105644643668348314832">+Steve Liedtke</a></li>
+				<li style="margin-bottom:15px;">'Schreiben von DashClockWidget-Extensions' by <a href="http://gplus.to/mtthsfrdrch">+Matthias Friedrich</a></li>
+				<li style="margin-bottom:15px;">'Mocking bei Android' by <a href="https://plus.google.com/113062950789010266684">+Sven Nobis</a></li>
+				<li style="margin-bottom:15px;">'Ubuntu Touch' by <a href="https://plus.google.com/100559221027275658717">+Jan Stalhut</a></li>
+				<li style="margin-bottom:30px;">'IFTTT - Lass das Web für dich Arbeiten - Beispiel anhand von Google Diensten' by <a href="https://plus.google.com/103798972218360558945">+Florian Niefünd</a></li>
+				<li style="margin-bottom:15px;"><b>And maybe more</b></a></li>
+			
+			<ul>
+		</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Have fun and enjoy the evening!</h2>
+    </hgroup>
+    <article>
+		<ul style="top:100px;">
+			<li style="margin-bottom:30px;">
+				<a href='http://bremen.gtugs.org'>bremen.gtugs.org</a>
+			</li>
+			<li style="margin-bottom:30px;">
+				<a href='http://bremen-gtug.googlecode.com'>bremen-gtug.googlecode.com</a>
+			</li>
+			<li style="margin-bottom:30px;">
+				<a href='http://gplus.to/bremenGTUG'>+GDG Bremen</a>
+			</li>
+			<li style="margin-bottom:30px;">
+				<a href='http://twitter.com/bremenGTUG'>@GDGBremen</a>
+			</li>
+			<li style="margin-bottom:30px;">
+				<a href='https://www.facebook.com/bremengtug'>GDG Bremen at Facebook</a>
+			</li>
+        </ul>
+			
+		<img src="images/questions.jpg" style="position:absolute; width:350px; top:300px; left:460px">
+    </article>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/GDG_Bremen_vonJan5g_mitRand_HQ.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
