@@ -45,6 +45,14 @@ body.gdg-bg {
   background: -webkit-radial-gradient(rgb(120, 202, 255), rgb(0, 0, 255));
 }
 
+body.ubuntu-bg {
+  background: rgb(184, 58, 16); /* rgb(241, 101, 41) */
+  background: -o-radial-gradient(rgb(255, 107, 55), rgb(184, 58, 16));
+  background: -ms-radial-gradient(rgb(255, 107, 55), rgb(184, 58, 16));
+  background: -moz-radial-gradient(rgb(255, 107, 55), rgb(184, 58, 16));
+  background: -webkit-radial-gradient(rgb(255, 107, 55), rgb(184, 58, 16));
+}
+
 #footerLeft, #footerRight, #copyright {
 	display: none;
 }
@@ -119,10 +127,28 @@ body.gdg-bg {
   background-repeat: no-repeat;
   background-color: white;  
 }
+.slides.template-ubuntu > article:not(.nobackground):not(.biglogo) {
+  background: url(images/ubuntu-logo-small.png);
+  background-position: 20px 635px;
+  background-repeat: no-repeat;
+  background-color: white;  
+}
 .slides.template-gdg.layout-widescreen > article:not(.nobackground):not(.biglogo) {
 	background-position: 1010px 635px, 20px 635px;
 }
+.slides.template-ubuntu.layout-widescreen > article:not(.nobackground):not(.biglogo) {
+	background-position: 1010px 635px, 20px 635px;
+}
 .slides.template-gdg > article > .footer-right {
+	position:absolute;
+	right: 140px;
+	bottom: 8px;
+	font-size: 20px;
+	color: rgb(162, 162, 162);
+	display:block;
+	text-shadow: -1px -1px 0px rgb(202, 202, 202), 1px 1px 0px #fff;
+}
+.slides.template-ubuntu > article > .footer-right {
 	position:absolute;
 	right: 140px;
 	bottom: 8px;
@@ -140,8 +166,17 @@ body.gdg-bg {
 	display:block;
 	text-shadow: -1px -1px 0px rgb(202, 202, 202), 1px 1px 0px #fff;
 }
+.slides.template-ubuntu > article > .footer-left {
+	position:absolute;
+	left: 120px;
+	bottom: 8px;
+	font-size: 20px;
+	color: rgb(162, 162, 162);
+	display:block;
+	text-shadow: -1px -1px 0px rgb(202, 202, 202), 1px 1px 0px #fff;
+}
 
-.slides.template-gdg > article > .copyright {
+.slides.template-gdg > article > .copyright, .slides.template-ubuntu > article > .copyright {
 	position:absolute;
 	right:-239px; /* tatsächlicher Abstand - 244 */
 	bottom:344px; /* 244 + tatsächlicher Abstand */
@@ -212,6 +247,13 @@ body.gdg-bg {
 
 .slides.template-gdg article.biglogo {
   background: url(images/gdg-logo.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+.slides.template-ubuntu article.biglogo {
+  background: url(images/ubuntu-logo.png);
   background-position: 50%;
   background-repeat: no-repeat;
   background-color: white;
