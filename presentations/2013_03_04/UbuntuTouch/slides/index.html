@@ -7,7 +7,7 @@ URL: http://code.google.com/p/html5slides/
     <head>
         <title>Ubuntu Touch - Eine kurze Vorstellung</title>
         <meta name="author" content="Jan Stalhut" />
-		<meta name="description" content="Kurze Vorstellung des kommenden Smartphone- und Tablet-Betriebssystems 'Ubuntu Touch'" />
+		<meta name="description" content="Kurze Vorstellung des kommenden Smartphone- und Tablet-Betriebssystems 'Ubuntu Touch' anhand der Entwickler-Preview" />
         <meta charset="utf-8">
 		<link rel="shortcut icon" type="image/png" href="../images/ubuntu-logo-tiny.png">
 		<!-- The Open Graph Protocol, http://ogp.me/ -->
@@ -15,7 +15,7 @@ URL: http://code.google.com/p/html5slides/
 		<meta property="og:site_name" content="GDG Bremen" />
 		<meta property="og:image" content="https://bremen-gtug.googlecode.com/svn/presentations/2013_03_04/UbuntuTouch/images/ubuntu-logo.png" />
 		<meta property="og:url" content="https://bremen-gtug.googlecode.com/svn/presentations/2013_03_04/UbuntuTouch/slides/index.html" />
-		<meta property="og:description" content="Kurze Vorstellung des kommenden Smartphone- und Tablet-Betriebssystems 'Ubuntu Touch'" />
+		<meta property="og:description" content="Kurze Vorstellung des kommenden Smartphone- und Tablet-Betriebssystems 'Ubuntu Touch' anhand der Entwickler-Preview" />
 		<meta property="og:locale" content="de_DE" />
 		<!-- presentation script -->
 		<script src="../slides.js">
@@ -35,46 +35,143 @@ URL: http://code.google.com/p/html5slides/
             </article>
 
 			<article id="slideOverview">
-                <h3>Overview</h3>
+                <h3>Übersicht</h3>
                 <ul>
-					<li onclick="gotoSlide('slideSponsors');" style="cursor:pointer;">Sponsors</li>
-					<li onclick="gotoSlide('slidePastEvents');" style="cursor:pointer;">Past events</li>
-					<li onclick="gotoSlide('slideFutureEvents');" style="cursor:pointer;">Future events</li>
-					<li onclick="gotoSlide('slideToday');" style="cursor:pointer;">Today</li>
+					<li onclick="gotoSlide('slideIntroduction');" style="cursor:pointer;">Einführung</li>
+					<li onclick="gotoSlide('slideCurrent');" style="cursor:pointer;">Aktueller Stand</li>
+					<li onclick="gotoSlide('slideDevelopment');" style="cursor:pointer;">App-Entwicklung</li>
+					<li onclick="gotoSlide('slideDemo');" style="cursor:pointer;">Demo</li>
                 </ul>
             </article>
 			
-			<article id="slideSponsors">
-                <h2>Sponsors</h2>
+			<article id="slideIntroduction">
+                <h2>Einführung</h2>
             </article>
 			
 			<article>
-                <h3>...</h3>
-				<ul>
+                <h3>Ubuntu <i>Touch</i>?</h3>
+				<ul class="build">
+					<li>Ubuntu-Oberfläche für Smartphones und Tablets</li>
+					<li>Anlehnung an den Unity Desktop</li>
+					<li>Bei angeschlossenem Bildschirm als PC nutzbar</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Geschichte</h3>
+				<ul class="build">
+					<li>Bekanntgabe eines Smartphone OS:<br/>2. Januar 2013</li>
+					<li>Bekanntgabe eines Tablet OS:<br/>19. Februar 2013</li>
+					<li>Veröffentlichung der Preview:<br/>21. Februar 2013</li>
+					<li>Tägliche Updates (Daily Builds) seit<br/>27. Februar 2013</li>
+					<li>Erste mobile Geräte mit Ubuntu<br/>Frühjahr 2014</li>
+				</ul>
+            </article>
+			
+			<article id="slideCurrent">
+                <h2>Aktueller Stand</h2>
+            </article>
+			
+			<article>
+                <h3>Unterstützte Geräte</h3>
+				<ul class="build">
+					<li>Aktuelle Nexus-Geräte:<ul>
+						<li>Galaxy Nexus</li>
+						<li>Nexus 4</li>
+						<li>Nexus 7</li>
+						<li>Nexus 10</li>
+					</ul></li>
+					<li>Zahlreiche weitere Portierungen:<ul>
+						<li>siehe <a href="https://wiki.ubuntu.com/Touch/Devices">wiki.ubuntu.com/Touch/Devices</a></li></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Funktionale Anwendungen</h3>
+				<ul class="build">
+					<li>Telefon (inkl. SMS und Adressbuch)</li>
+					<li>Kammera</li>
+					<li>Web-Browser</li>
+					<li>Galerie</li>
+					<li>Notizen</li>
+					<li>Media-Player</li>
+				</ul>
+				<ul class="build">
+					<li>Aktueller Stand: <a href="https://wiki.ubuntu.com/Touch/ReleaseNotes">wiki.ubuntu.com/Touch/ReleaseNotes</a></li></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Einschränkungen</h3>
+				<ul class="build">
+					<li>Internet nur via WLAN</li>
+					<li>Kein Flugzeugmodus etc.</li>
+					<li>Kein Unterstützung von Bluetooth</li>
+					<li>SIM mit PIN-Sperre werden nicht unterstützt</li>
+					<li>Kein Zugriff auf SIM-Speicher</li>
+					<li>keine Einstellungen für manuelle IP, versteckte SSID, VPN, etc.</li>
+				</ul>
+				<ul class="build">
+					<li>Aktueller Stand:<br><a href="https://wiki.ubuntu.com/Touch/ReleaseNotes#Known_Issues">wiki.ubuntu.com/Touch/ReleaseNotes#Known_Issues</a></li></li>
+				</ul>
+            </article>
+			
+			<article id="slideDevelopment">
+                <h2>App-Entwicklung</h2>
+            </article>
+			
+			<article>
+                <h3>Entwicklung</h3>
+				<ul class="build">
+					<li>Wahlweise HTML 5 oder native</li>
+					<li>IDE <i>QT Creator</i></li>
+				</ul>
+				<ul class="build">
+					<li>siehe auch:<br><a href="http://developer.ubuntu.com/get-started/gomobile">developer.ubuntu.com/get-started/gomobile</a></li></li>
+				</ul>				
+            </article>
+			
+			<article>
+                <h3>Ubuntu SDK Alpha</h3>
+				<ul class="build">
+					<li>Debugging über USB (ADB)</li>
+					<li>WLAN-Verbindung für SSH-Key-Pairing</li>
+					<li>Neuer Reiter <i>Devices</i> im QT Creator</li>
+				</ul>
+				<ul class="build">
+					<li>siehe auch:<br><a href="https://wiki.ubuntu.com/Touch/ReleaseNotes#Ubuntu_SDK_Alpha">wiki.ubuntu.com/Touch/ReleaseNotes#Ubuntu_SDK_Alpha</a></li></li>
+				</ul>				
+            </article>
+			
+			<article>
+                <h3>Nutzung der ADB</h3>
+				<ul class="build">
+					<li>logcat</li>
+					<li>pull/push</li>
+					<li>shell</li>
 					<li>...</li>
 				</ul>
             </article>
 			
-			<article id="slideFutureEvents">
-                <h2>Future events</h2>
-            </article>
-			
 			<article>
-                <h3>...</h3>
-				<ul>
-					<li>...</li>
+                <h3>Ubuntu-Konsole</h3>
+				<ul class="build">
+					<li>via SSH</li>
+					<li>via ADB shell</li>
+				</ul>
+				<ul class="build">
+					<li>siehe auch:<br><a href="https://wiki.ubuntu.com/Touch/ReleaseNotes#SshAccess">wiki.ubuntu.com/Touch/ReleaseNotes#SshAccess</a></li></li>
 				</ul>
             </article>
 			
-			<article id="slideToday">
-                <h2>Today</h2>
+			<article id="slideDemo">
+                <h2>Demo</h2>
             </article>
 			
 			<article>
-                <h3>...</h3>
-				<ul>
-					<li>...</li>
-				</ul>
+				<p style="text-align:center;">
+					<img style="margin-top:170px;" src="images/devices.png" />
+				</p>
             </article>
 			
             <div id="footerLeft" class="footer-left" onclick="gotoSlide('slideOverview');" style="cursor:pointer;">Ubuntu Touch{if_h2} | {/if_h2}{h2}</div>

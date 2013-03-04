@@ -266,17 +266,17 @@ body.ubuntu-bg {
 }
 .slides > article.far-past {
   display: block;
-  transform: translate(0, 1460px);
-  -o-transform: translate(0, 1460px);
-  -moz-transform: translate(0, 1460px);
-  -webkit-transform: translate3d(0, 1460px, 0);
+  transform: translate(0, -1460px);
+  -o-transform: translate(0, -1460px);
+  -moz-transform: translate(0, -1460px);
+  -webkit-transform: translate3d(0, -1460px, 0);
 }
 .slides > article.past {
   display: block;
-  transform: translate(0, 730px);
-  -o-transform: translate(0, 730px);
-  -moz-transform: translate(0, 730px);
-  -webkit-transform: translate3d(0, 730px, 0);
+  transform: translate(0, -730px);
+  -o-transform: translate(0, -730px);
+  -moz-transform: translate(0, -730px);
+  -webkit-transform: translate3d(0, -730px, 0);
 }
 .slides > article.current {
   display: block;
@@ -287,34 +287,34 @@ body.ubuntu-bg {
 }
 .slides > article.next {
   display: block;
-  transform: translate(0, -730px);
-  -o-transform: translate(0, -730px);
-  -moz-transform: translate(0, -730px);
-  -webkit-transform: translate3d(0, -730px, 0);
+  transform: translate(0, 730px);
+  -o-transform: translate(0, 730px);
+  -moz-transform: translate(0, 730px);
+  -webkit-transform: translate3d(0, 730px, 0);
 }
 .slides > article.far-next {
   display: block;
-  transform: translate(0, -1460px);
-  -o-transform: translate(0, -1460px);
-  -moz-transform: translate(0, -1460px);
-  -webkit-transform: translate3d(0, -1460px, 0);
+  transform: translate(0, 1460px);
+  -o-transform: translate(0, 1460px);
+  -moz-transform: translate(0, 1460px);
+  -webkit-transform: translate3d(0, 1460px, 0);
 }
 
 .slides.layout-widescreen > article.far-past,
 .slides.layout-faux-widescreen > article.far-past {
   display: block;
-  transform: translate(-2260px);
-  -o-transform: translate(-2260px);
-  -moz-transform: translate(-2260px);
-  -webkit-transform: translate3d(-2260px, 0, 0);
+  transform: translate(2260px);
+  -o-transform: translate(2260px);
+  -moz-transform: translate(2260px);
+  -webkit-transform: translate3d(2260px, 0, 0);
 }
 .slides.layout-widescreen > article.past,
 .slides.layout-faux-widescreen > article.past {
   display: block;
-  transform: translate(-1130px);
-  -o-transform: translate(-1130px);
-  -moz-transform: translate(-1130px);
-  -webkit-transform: translate3d(-1130px, 0, 0);
+  transform: translate(1130px);
+  -o-transform: translate(1130px);
+  -moz-transform: translate(1130px);
+  -webkit-transform: translate3d(1130px, 0, 0);
 }
 .slides.layout-widescreen > article.current,
 .slides.layout-faux-widescreen > article.current {
@@ -327,18 +327,18 @@ body.ubuntu-bg {
 .slides.layout-widescreen > article.next,
 .slides.layout-faux-widescreen > article.next {
   display: block;
-  transform: translate(1130px);
-  -o-transform: translate(1130px);
-  -moz-transform: translate(1130px);
-  -webkit-transform: translate3d(1130px, 0, 0);
+  transform: translate(-1130px);
+  -o-transform: translate(-1130px);
+  -moz-transform: translate(-1130px);
+  -webkit-transform: translate3d(-1130px, 0, 0);
 }
 .slides.layout-widescreen > article.far-next,
 .slides.layout-faux-widescreen > article.far-next {
   display: block;
-  transform: translate(2260px);
-  -o-transform: translate(2260px);
-  -moz-transform: translate(2260px);
-  -webkit-transform: translate3d(2260px, 0, 0);
+  transform: translate(-2260px);
+  -o-transform: translate(-2260px);
+  -moz-transform: translate(-2260px);
+  -webkit-transform: translate3d(-2260px, 0, 0);
 }
 
 /* Styles for slides */
