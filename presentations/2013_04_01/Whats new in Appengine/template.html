@@ -1,0 +1,343 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>What's new in Google App Engine?</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img id="front_logo" src="images/GDG_Bremen_vonJan5g_mitRand_HQ.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+	  <p data-config-contact-dark></p>
+    </hgroup>
+	<!-- Google App Engine logo -->
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Agenda</h2>
+    </hgroup>
+    <article>
+		<ul class="build">
+		<!-- TODO: Größer -->
+			<li>Introduction</li>
+			<li>New stuff in GAE
+				<ul>
+					<li>Expanded EU support</li>
+					<li>Console expansions</li>
+					<li>New APIs</li>
+					<li>Google Cloud Messaging</li>
+					<li>Java 7 and Maven</li>
+				</ul>
+			</li>
+			<li>Conclusion</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Introduction</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Definition</h2>
+    </hgroup>
+    <article>
+		<!-- TODO: Größer -->
+		<p>
+			'Google App Engine is a platform for developing 
+			and hosting web applications on Google's servers.' - <i>From Wikipedia</i>
+		</p>
+		<p>
+			<b>Released on 7th April 2008</b>
+		</p>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Google Cloud Platforms</h2>
+    </hgroup>
+    <article>
+		<!-- TODO: Größer -->
+		<ul>
+			<li>Google App Engine</li>
+			<li>Google Compute Engine</li>
+			<li>Google Cloud Storage</li>
+			<li>Google BigQuery</li>
+			<li>Google Cloud SQL</li>
+			<li>Google Prediction API</li>
+			<li>Google Translate API</li>
+		</ul>
+		<!-- TODO: Logo auf die rechte Seite -->
+		<img src="images/cloud_platform.png"/>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Categorization</h2>
+    </hgroup>
+    <article>
+		<!-- TODO: Größer -->
+		<ul>
+			<li>GAE is a cloud service
+				<ul>
+					<li>Platform-as-a-Service (PaaS)</li>
+				</ul>
+			</li>
+			<!-- TODO: Ähnlicher Dienst?!-->
+		</ul>
+		<!-- TODO: Logo auf die rechte Seite -->
+		<img src="images/cloud_computing.png"/>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Development</h2>
+	  <h3>Programming languages</h3>
+    </hgroup>
+    <article>
+		
+		<ul>
+			<li>Python 2.7 (or 2.5 - deprecated)</li>
+			<li>Java VM - all languages using JVM-based interpreter or compiler
+				<ul>
+					<li>GWT can be used</li>
+				</ul>
+			</li>
+			<li>Google Go (experimental)</li>
+		</ul>
+		<!-- TODO: Logos fehlen -->
+			
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Development</h2>
+	  <h3>Databases</h3>
+    </hgroup>
+    <article>
+		<ul>
+			<li>Datastore</li>
+			<li>Google Cloud SQL</li>
+			<li>Google Cloud Storage</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Development</h2>
+	  <h3>IDEs</h3>
+    </hgroup>
+    <article>
+		<ul>
+			<!-- TODO: Logos -->
+			<li>Google Plugin for Eclipse (for Java)</li>
+			<li>DevTable (Cloud IDE for Python)</li>
+			<li>exo IDE (Cloud IDE for Java and Python)</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Advantages</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li>Quickly to deploy runtime environment for web applications</li>
+			<li>Small administrative work</li>
+			<li>No costs for needed hard- and software</li>
+			<li>No costs for small applications</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Disadvantages</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li>Small amount of choosable databases</li>
+			<li>Only limited free</li>
+		</ul>
+	</article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>New stuff in GAE</h2>
+    </hgroup>
+  </slide>
+  
+  <!--
+	TODO:
+	## Agenda:
+	-- Expanded EU support
+	-- Console expansions
+	-- New APIs
+	-- Google Cloud Messaging
+	--- Verweis auf eigenen Vortrag
+	-- Java 7 and Maven
+	--- Verweis auf Vortrag von Cornelius Ende April
+	
+	## Console expansions:
+	- Memcache Viewer
+	- Datastore Statistics
+	
+	## New features
+	- App Identity 
+	- Capabilities API
+	- Google Cloud Endpoints
+	- Prospective Search
+	- Google Cloud Storage
+  -->
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Conclusion</h2>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Learn to write GAE applications</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li>Documentation on Google Developers
+				<ul>
+					<li><a href="https://developers.google.com/appengine/">developers.google.com/appengine/</a></li>
+				</ul>
+			</li>
+			<li>Tutorials on Google Developers Academy
+				<ul>
+					<li><a href="https://developers.google.com/appengine/training/">developers.google.com/appengine/training/</a></li>
+				</ul>
+			</li>
+			<li>Videos on Google Developers
+				<ul>
+					<li><a href="https://developers.google.com/appengine/docs/videoresources">developers.google.com/appengine/docs/videoresources</a></li>
+				</ul>
+			</li>
+			<li>Sample code on Github
+				<ul>
+					<li><a href="https://github.com/googlecloudplatform" target="_blank">github.com/googlecloudplatform</a></li>
+				</ul>
+			</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>My personal conclusion</h2>
+    </hgroup>
+    <article>
+		<ul>
+			<li><b>I</b> really like it</li>
+			<li><b>I</b> use it often for small applications and prototypes</li>
+			<li><b>I</b> think it is perfect for freelancer, startups and small companies</li>
+		</ul>
+		<p><b>Sites which use GAE:</b></p>
+		<!-- TODO: Logos von Udacity, etc. -->
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Do you want more?</h2>
+    </hgroup>
+    <article>
+		<p><b>Are you interested in more Google cloud products?</b></p>
+		
+		<p><b>Are you interested in an GAE Java Workshop?</b></p>
+		
+		<p>	
+			If you are interested in GAE and need help, please contact me. <br/>
+			I'll love to help!!!!
+		</p>
+	</article>
+  </slide>
+  
+  
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/GDG_Bremen_Q4.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>Thanks for your attention</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/GDG_Bremen_vonJan5g_mitRand_HQ.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
