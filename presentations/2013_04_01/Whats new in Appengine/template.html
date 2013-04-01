@@ -41,7 +41,7 @@ URL: https://code.google.com/p/io-2012-slides
       <p data-config-presenter><!-- populated from slide_config.json --></p>
 	  <p data-config-contact-dark></p>
     </hgroup>
-	<!-- Google App Engine logo -->
+	<img src="images/appengine_logo.png" style="width:300px;position:absolute;top:200px;right:200px;"/>
   </slide>
   
   <slide>
@@ -49,10 +49,9 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Agenda</h2>
     </hgroup>
     <article>
-		<ul class="build">
-		<!-- TODO: Größer -->
-			<li>Introduction</li>
-			<li>New stuff in GAE
+		<ul class="build agenda darker_font">
+			<li><!--<a href="template.html#4" target="_self">-->Introduction<!--</a>--></li>
+			<li><!--<a href="template.html#13" target="_self">-->New stuff in GAE<!--</a>-->
 				<ul>
 					<li>Expanded EU support</li>
 					<li>Console expansions</li>
@@ -61,7 +60,7 @@ URL: https://code.google.com/p/io-2012-slides
 					<li>Java 7 and Maven</li>
 				</ul>
 			</li>
-			<li>Conclusion</li>
+			<li><!--<a href="template.html#25" target="_self">-->Conclusion<!--</a>--></li>
 		</ul>
 	</article>
   </slide>
@@ -69,7 +68,7 @@ URL: https://code.google.com/p/io-2012-slides
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Introduction</h2>
+      <h2 class="text_border_huge">Introduction</h2>
     </hgroup>
   </slide>
   
@@ -77,15 +76,19 @@ URL: https://code.google.com/p/io-2012-slides
     <hgroup>
       <h2>Definition</h2>
     </hgroup>
-    <article>
-		<!-- TODO: Größer -->
-		<p>
-			'Google App Engine is a platform for developing 
-			and hosting web applications on Google's servers.' - <i>From Wikipedia</i>
-		</p>
-		<p>
-			<b>Released on 7th April 2008</b>
-		</p>
+    <article class="darker_font">
+		<div class="half">
+			<img src="images/appengine_definition.png"/>
+		</div>
+		<div class="half">
+			<p>
+				"Google App Engine is a platform for developing 
+				and hosting web applications on Google's servers." - <i>From Wikipedia</i>
+			</p>
+			<p>
+				<b>Released on 7th April 2008</b>
+			</p>
+		</div>
 	</article>
   </slide>
   
@@ -94,18 +97,20 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Google Cloud Platforms</h2>
     </hgroup>
     <article>
-		<!-- TODO: Größer -->
-		<ul>
-			<li>Google App Engine</li>
-			<li>Google Compute Engine</li>
-			<li>Google Cloud Storage</li>
-			<li>Google BigQuery</li>
-			<li>Google Cloud SQL</li>
-			<li>Google Prediction API</li>
-			<li>Google Translate API</li>
-		</ul>
-		<!-- TODO: Logo auf die rechte Seite -->
-		<img src="images/cloud_platform.png"/>
+		<div class="half">
+			<ul class="darker_font">
+				<li>Google App Engine</li>
+				<li>Google Compute Engine</li>
+				<li>Google Cloud Storage</li>
+				<li>Google BigQuery</li>
+				<li>Google Cloud SQL</li>
+				<li>Google Prediction API</li>
+				<li>Google Translate API</li>
+			</ul>
+		</div>
+		<div class="half">
+			<img src="images/cloud_platform.png"/>
+		</div>
 	</article>
   </slide>
   
@@ -114,17 +119,24 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Categorization</h2>
     </hgroup>
     <article>
-		<!-- TODO: Größer -->
-		<ul>
-			<li>GAE is a cloud service
-				<ul>
-					<li>Platform-as-a-Service (PaaS)</li>
-				</ul>
-			</li>
-			<!-- TODO: Ähnlicher Dienst?!-->
-		</ul>
-		<!-- TODO: Logo auf die rechte Seite -->
-		<img src="images/cloud_computing.png"/>
+		<div class="half">
+			<ul class="darker_font">
+				<li>GAE is a cloud service
+					<ul>
+						<li>Platform-as-a-Service (PaaS)</li>
+					</ul>
+				</li>
+				<li>Similar services
+					<ul>
+						<li>Amazon Web Services</li>
+						<li>Windows Azure</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="half">
+			<img src="images/cloud_computing.png"/>
+		</div>
 	</article>
   </slide>
   
@@ -135,17 +147,20 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
 		
-		<ul>
-			<li>Python 2.7 (or 2.5 - deprecated)</li>
-			<li>Java VM - all languages using JVM-based interpreter or compiler
-				<ul>
-					<li>GWT can be used</li>
-				</ul>
-			</li>
-			<li>Google Go (experimental)</li>
-		</ul>
-		<!-- TODO: Logos fehlen -->
-			
+		<div class="half">
+			<ul class="darker_font">
+				<li>Python 2.7 (or 2.5 - deprecated)</li>
+				<li>Java VM - all languages using JVM-based interpreter or compiler
+					<ul>
+						<li>GWT can be used</li>
+					</ul>
+				</li>
+				<li>Google Go (experimental)</li>
+			</ul>
+		</div>
+		<div class="half">
+			<img src="images/python_java_gwt_go.png"/>
+		</div>
 	</article>
   </slide>
   
@@ -155,7 +170,7 @@ URL: https://code.google.com/p/io-2012-slides
 	  <h3>Databases</h3>
     </hgroup>
     <article>
-		<ul>
+		<ul class="darker_font">
 			<li>Datastore</li>
 			<li>Google Cloud SQL</li>
 			<li>Google Cloud Storage</li>
@@ -169,12 +184,16 @@ URL: https://code.google.com/p/io-2012-slides
 	  <h3>IDEs</h3>
     </hgroup>
     <article>
-		<ul>
-			<!-- TODO: Logos -->
-			<li>Google Plugin for Eclipse (for Java)</li>
-			<li>DevTable (Cloud IDE for Python)</li>
-			<li>exo IDE (Cloud IDE for Java and Python)</li>
-		</ul>
+		<div class="half">
+			<ul class="darker_font">
+				<li>Google Plugin for Eclipse (for Java)</li>
+				<li>DevTable (Cloud IDE for Python)</li>
+				<li>exo IDE (Cloud IDE for Java and Python)</li>
+			</ul>
+		</div>
+		<div class="half">
+			<img src="images/plugin_devtable_exoIDE.png"/>
+		</div>
 	</article>
   </slide>
   
@@ -183,7 +202,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Advantages</h2>
     </hgroup>
     <article>
-		<ul>
+		<ul class="darker_font">
 			<li>Quickly to deploy runtime environment for web applications</li>
 			<li>Small administrative work</li>
 			<li>No costs for needed hard- and software</li>
@@ -197,7 +216,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Disadvantages</h2>
     </hgroup>
     <article>
-		<ul>
+		<ul class="darker_font">
 			<li>Small amount of choosable databases</li>
 			<li>Only limited free</li>
 		</ul>
@@ -207,37 +226,246 @@ URL: https://code.google.com/p/io-2012-slides
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>New stuff in GAE</h2>
+      <h2 class="text_border_huge">New stuff in GAE</h2>
     </hgroup>
   </slide>
   
-  <!--
-	TODO:
-	## Agenda:
-	-- Expanded EU support
-	-- Console expansions
-	-- New APIs
-	-- Google Cloud Messaging
-	--- Verweis auf eigenen Vortrag
-	-- Java 7 and Maven
-	--- Verweis auf Vortrag von Cornelius Ende April
-	
-	## Console expansions:
-	- Memcache Viewer
-	- Datastore Statistics
-	
-	## New features
-	- App Identity 
-	- Capabilities API
-	- Google Cloud Endpoints
-	- Prospective Search
-	- Google Cloud Storage
-  -->
+  <slide>
+    <hgroup>
+      <h2>Expanded EU support</h2>
+    </hgroup>
+    <article>
+		<ul class="darker_font">
+			<li>13th December 2012 - Release of GAE 1.7.4</li>
+			<li>Expanded EU support 
+				<ul>
+					<li>Deployment of your GAE application to the European Union Datacenters</li>
+					<li>Ireland, Finland and Belgium</li>
+					<li><b>Advantage:</b> Smaller request times</li>
+				</ul>
+			</li>
+			<li>Only available for user which have enabled billing for their applications</li>
+			<li>Further support will be coming in the next months</li>
+			<li><a href="http://googleappengine.blogspot.de/2012/12/app-engine-174-released.html" target="_blank">Link to the 1.7.4 Release Notes</a></li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Console expansions</h2>
+	  <h3>Memcache Viewer</h3>
+    </hgroup>
+    <article class="darker_font">
+		<div class="half">
+			<ul>
+				<li><b>Shows</b> cache size</li>
+				<li><b>Shows</b> hit and miss count</li>
+				<li><b>Shows</b> item count</li>
+				<li><b>Shows</b> age of oldest item</li>
+				<li><b>Action</b> to flush the cache</li>
+				<li><b>Action</b> to search for an memcache item</li>
+			</ul>
+		</div
+		<div class="half">
+			<img src="images/console_expansions_memcache.PNG"/>
+		</div>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Console expansions</h2>
+	  <h3>Datastore Statistics</h3>
+    </hgroup>
+    <article>
+		<div class="half">
+			<img src="images/console_expansions_data_statistics.PNG"/>
+		</div>
+		<div class="half">
+			<ul class="darker_font">
+				<li><b>Shows</b> total size used by entity</li>
+				<li><b>Shows</b> average size use by one entity entry</li>
+				<li><b>Shows</b> amount of entries per entity</li>
+				<li><b>Shows</b> property type information of entity</li>
+				<li><b>Shows</b> attribute informations of entity</li>
+			</ul>
+		</div>
+	</article>
+  </slide>
+  
+  <slide class="fill nobackground" style="background-image: url(images/console_expansions_data_statistics.PNG)">
+    <hgroup>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>New APIs</h2>
+	  <h3>API lifecycle</h3>
+	</hgroup>
+    <article>
+		<ul class="darker_font">
+			<li>API only for Trusted Testers (<b>optional</b>)
+				<ul>
+					<li>API can only be used by a small group of developers</li>
+				</ul>
+			</li>
+			<li>API is experimental
+				<ul>
+					<li>API can have bugs</li>
+					<li>Chance of not getting the API to stable</li>
+				</ul>
+			</li>
+			<li>API is stable</li>
+			<li>API is deprecated
+				<ul>
+					<li><a href="http://googleappengine.blogspot.de/2012/04/app-engine-and-googles-new-deprecation.html" target="_blank">New Deprecation Policy</a> introduced in April 2012</li>
+					<li>The API will exist for one more year and then be deleted</li>
+				</ul>
+			</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>New APIs</h2>
+	  <h3>App Identity</h3>
+	</hgroup>
+    <article>
+		<ul class="darker_font">
+			<li><b>Experimental</b></li>
+			<li>Available for Java and Python</li>
+			<li>Guarantees the identity of the GAE application</li>
+			<li>Example: I only want my application 'test1' to be able to send a request to my other application 'test2'.</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>New APIs</h2>
+	  <h3>Capabilities API</h3>
+	</hgroup>
+    <article>
+		<ul class="darker_font">
+			<li><b>Stable</b></li>
+			<li>Available for Java, Python and Go</li>
+			<li>'Your application can detect outages and scheduled downtime for specific API capabilities'</li>
+			<pre class="prettyprint" data-lang="java">
+CapabilitiesService service =
+    CapabilitiesServiceFactory.getCapabilitiesService();
+CapabilityStatus status = 
+    service.getStatus(Capability.IMAGES).getStatus();
+
+if (status == CapabilityStatus.DISABLED) {
+    // Images API is not available.
+}
+			</pre>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>New APIs</h2>
+	  <h3>Google Cloud Endpoints</h3>
+	</hgroup>
+    <article>
+		<div class="half">
+			<a href="https://developers.google.com/appengine/docs/images/endpoints.png" target="_blank"><img src="images/cloud_endpoints.png"/></a>
+		</div>
+		<div class="half">
+			<ul class="darker_font">
+				<li><b>Experimental</b></li>
+				<li>Available for Java and Python</li>
+				<li>'Google Cloud Endpoints consists of tools, libraries and capabilities that allow you to generate Endpoints and 
+				client libraries from an App Engine backend to simplify client access to that web app'</li>
+				<li><b>A talk will follow ;-)</b></li>
+			</ul>
+		</div>
+	</article>
+  </slide>
+  
+  <slide class="fill nobackground" style="background-image: url(images/cloud_endpoints_full.png);">
+    <hgroup>
+    </hgroup>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>New APIs</h2>
+	  <h3>Prospective Search</h3>
+	</hgroup>
+    <article>
+		<ul class="darker_font">
+			<li><b>Experimental</b></li>
+			<li>Available for Java and Python</li>
+			<li>'Allows an application to register a large set of queries that are simultaneously matched against a stream of input documents'</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>New APIs</h2>
+	  <h3>Google Cloud Storage</h3>
+	</hgroup>
+    <article>
+		<ul class="darker_font">
+			<li><b>Experimental</b></li>
+			<li>Available for Java</li>
+			<li>Cloud Storage is used to store and serve large files</li>
+			<li>Cloud Storage has no file size limit</li>
+			<li>Can only be used if Billing is enabled</li>
+		</ul>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Google Cloud Messaging</h2>
+	</hgroup>
+    <article>
+		<div class="half">
+			<ul class="darker_font">
+				<li>Formerly known as <b>C2DM</b> - Cloud to Device Messaging</li>
+				<li>Pushes messages from your application server to android devices</li>
+				<li>Can be used on any application server</li>
+			</ul>
+			<p>Find more details by seeing the video of the <a href="http://youtu.be/j8HIs1JIOpw?t=13m53s">GDG Bremen regulars' table last december</a></p>
+		</div>
+		<div class="half">
+			<img src="images/gcm.PNG"/>
+		</div>
+	</article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>Java 7 and Maven</h2>
+	</hgroup>
+    <article>
+		<ul class="darker_font">
+			<li>Java 7 is supported since GAE 1.7.5</li>
+			<li>'In a future release, support for Java 6 will be removed'</li>
+			<li>New Apache Maven Plugin for GAE (since GAE 1.7.4)</li>
+			<pre class="prettyprint" data-lang="xml">
+&lt;plugin&gt;
+    &lt;groupId&gt;com.google.appengine&lt;/groupId&gt;
+    &lt;artifactId&gt;appengine-maven-plugin&lt;/artifactId&gt;
+&lt;/plugin&gt;			
+			</pre>
+		</ul>
+		<p>Check out the <a href="https://chili.hackerspace-bremen.de/projects/dienstags-workshop-themen/wiki#30042013-Maven">'Maven' talk</a> by <a href="">+Cornelius Lilge</a> at the Hackerspace Bremen on 30th april.</p>
+	</article>
+  </slide>
   
   <slide class="segue dark nobackground">
     <aside class="gdbar"><img src="images/GDG_Bremen_Q4.png"></aside>
     <hgroup class="auto-fadein">
-      <h2>Conclusion</h2>
+      <h2 class="text_border_huge">Conclusion</h2>
     </hgroup>
   </slide>
   
@@ -246,7 +474,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Learn to write GAE applications</h2>
     </hgroup>
     <article>
-		<ul>
+		<ul class="darker_font">
 			<li>Documentation on Google Developers
 				<ul>
 					<li><a href="https://developers.google.com/appengine/">developers.google.com/appengine/</a></li>
@@ -276,13 +504,11 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>My personal conclusion</h2>
     </hgroup>
     <article>
-		<ul>
+		<ul class="darker_font">
 			<li><b>I</b> really like it</li>
 			<li><b>I</b> use it often for small applications and prototypes</li>
 			<li><b>I</b> think it is perfect for freelancer, startups and small companies</li>
 		</ul>
-		<p><b>Sites which use GAE:</b></p>
-		<!-- TODO: Logos von Udacity, etc. -->
 	</article>
   </slide>
   
@@ -290,7 +516,7 @@ URL: https://code.google.com/p/io-2012-slides
     <hgroup>
       <h2>Do you want more?</h2>
     </hgroup>
-    <article>
+    <article class="darker_font">
 		<p><b>Are you interested in more Google cloud products?</b></p>
 		
 		<p><b>Are you interested in an GAE Java Workshop?</b></p>

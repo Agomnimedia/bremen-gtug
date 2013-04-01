@@ -92,13 +92,14 @@ $article-content-top-padding: 45px;
 }
 
 body {
-  background: black;
+  //background: black;
+  background: #3D92CE;
 }
 
 slides > slide {
   display: none;
   font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 26px;
+  font-size: 32px;
   color: $gray-3;
   //@include background(linear-gradient(white, white 85%, $gray-1));
   //background-color: white;
@@ -161,7 +162,7 @@ slides > slide {
   }
 
   &.dark {
-    background: $gray-4 !important;
+    background: #A0B2B9 !important;
   }
 
   &:not(.nobackground) {
@@ -317,15 +318,15 @@ h2 {
   font-size: 45px;
   line-height: 45px;
   letter-spacing: -2px;
-  color: $gray-4;
+  color: #3D92CE;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 36px;
   letter-spacing: -1px;
   line-height: 2;
   font-weight: inherit;
-  color: $gray-3;
+  color: #004990;
 }
 
 ul {
@@ -846,8 +847,8 @@ article.smaller {
   padding: $slide-left-right-padding $slide-left-right-padding * 2;
 
   h2 {
-    color: $gray-1;
-    font-size: 60px;
+    color: #004990;
+    font-size: 76px;
   }
   h3 {
     color: $gray-1;
@@ -888,7 +889,7 @@ aside.gdbar {
   left: -1px;
   top: 125px;
   @include border-radius(0 10px 10px 0);
-  @include background(linear-gradient(left, $gray-2, $gray-2) no-repeat);
+  @include background(linear-gradient(left, #70A5D6, #BFCFD6) no-repeat);
   @include background-size(0% 100%);
   @include transition(all 0.5s ease-out 0.5s); /* Better to transition only on background-size, but not sure how to do that with the mixin. */
 
@@ -1197,4 +1198,45 @@ aside.gdbar {
 
 #cal_iframe{
 	height:450px;
+}
+
+.darker_font{
+	li {
+		color: rgb(62, 62, 62);
+	}
+	
+	p{
+		color: rgb(62, 62, 62);
+	}
+}
+
+.agenda{
+	
+	a{
+		text-decoration:none;
+	}
+}
+
+.half{
+	float:left;
+	width:49% !important;
+	
+	img{
+		width:95%;
+	}
+}
+
+.quarter{
+	float:left;
+	width:24 !important;
+	
+	img{
+		width:95%;
+	}
+}
+
+.text_border_huge{
+	text-shadow: 0 0 8px #000; /* horizontal-offset vertical-offset 'blur' colour */
+	-moz-text-shadow: 0 0 8px #000;
+	-webkit-text-shadow: 0 0 8px #000;
 }
