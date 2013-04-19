@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="org.gtugs.bremen.workshop1.SecondActivity"
+            android:label="@string/title_activity_second"
+            android:parentActivityName="org.gtugs.bremen.workshop1.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.gtugs.bremen.workshop1.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
