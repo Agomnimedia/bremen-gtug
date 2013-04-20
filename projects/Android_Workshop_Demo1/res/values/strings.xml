@@ -3,7 +3,6 @@
 
     <string name="app_name">GDG Demo 1</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_second">Result</string>
     <string name="buttonOpenSecond">calculate &#8230;</string>
     <string name="buttonBack">new calculation &#8230;</string>
