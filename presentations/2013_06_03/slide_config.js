@@ -1,7 +1,7 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'GDG Bremen March 2013',
+    title: 'GDG Bremen June 2013',
     subtitle: "Regulars' table",
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
@@ -19,7 +19,7 @@ var SLIDE_CONFIG = {
   // Author information
   presenters: [{
     name: 'Steve Liedtke',
-	company: 'neusta software development GmbH',
+	//company: 'neusta software development GmbH',
     gplus: 'https://gplus.to/SteveLiedtke',
     twitter: '@dragondagda',
 	www: 'http://www.steveliedtke.de',
