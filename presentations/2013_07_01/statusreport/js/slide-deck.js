@@ -315,7 +315,10 @@ SlideDeck.prototype.loadConfig_ = function(config) {
   }
 
   if (settings.title) {
-    document.title = settings.title.replace(/<br\/?>/, ' ') + ' - Google IO 2012';
+    document.title = settings.title.replace(/<br\/?>/, ' ');
+    if (settings.eventTitle) {
+      document.title +=  ' - ' + settings.eventTitle;
+    }
     document.querySelector('[data-config-title]').innerHTML = settings.title;
   }
 
@@ -326,16 +329,12 @@ SlideDeck.prototype.loadConfig_ = function(config) {
   if (this.config_.presenters) {
     var presenters = this.config_.presenters;
     var dataConfigContact = document.querySelector('[data-config-contact]');
-	var dataConfigContactDark = document.querySelector('[data-config-contact-dark]');
 
     var html = [];
     if (presenters.length == 1) {
       var p = presenters[0];
 
       html = [p.name, p.company].join('<br>');
-
-      var mail = p.mail ? '<span>mail</span><a href="mailto:' + p.Mail +
-          '">' + p.mail.replace(/https?:\/\//, '') + '</a>' : ''; 
 
       var gplus = p.gplus ? '<span>g+</span><a href="' + p.gplus +
           '">' + p.gplus.replace(/https?:\/\//, '') + '</a>' : '';
@@ -350,13 +349,10 @@ SlideDeck.prototype.loadConfig_ = function(config) {
       var github = p.github ? '<span>github</span><a href="' + p.github +
           '">' + p.github.replace(/https?:\/\//, '') + '</a>' : '';
 
-      var html2 = [mail, gplus, twitter, www, github].join('<br>');
+      var html2 = [gplus, twitter, www, github].join('<br>');
 
       if (dataConfigContact) {
         dataConfigContact.innerHTML = html2;
-      }
-	  if (dataConfigContactDark) {
-        dataConfigContactDark.innerHTML = html2;
       }
     } else {
       for (var i = 0, p; p = presenters[i]; ++i) {
@@ -366,14 +362,15 @@ SlideDeck.prototype.loadConfig_ = function(config) {
       if (dataConfigContact) {
         dataConfigContact.innerHTML = html;
       }
-	  if (dataConfigContactDark) {
-        dataConfigContactDark.innerHTML = html;
-      }
     }
 
     var dataConfigPresenter = document.querySelector('[data-config-presenter]');
     if (dataConfigPresenter) {
-      document.querySelector('[data-config-presenter]').innerHTML = html;
+      dataConfigPresenter.innerHTML = html;
+      if (settings.eventTitle) {
+        dataConfigPresenter.innerHTML = dataConfigPresenter.innerHTML + '<br>' +
+                                        settings.eventTitle;
+      }
     }
   }
 
