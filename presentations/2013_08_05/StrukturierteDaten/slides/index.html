@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+Based on Google HTML5 slide template
+URL: http://code.google.com/p/html5slides/
+-->
+<html lang="en">
+    <head>
+        <title>Strukturierte Daten</title>
+        <meta name="author" content="Jan Stalhut" />
+		<meta name="description" content="Einführung in die Nutzung strukturierter Daten in HTML, zur optimierung der Verständlichkeit für Suchmaschinen." />
+        <meta charset="utf-8">
+		<!-- The Open Graph Protocol, http://ogp.me/ -->
+		<meta property="og:title" content="Strukturierte Daten" />
+		<meta property="og:site_name" content="GDG Bremen" />
+		<meta property="og:image" content="https://bremen-gtug.googlecode.com/svn/presentations/2013_08_05/StrukturierteDaten/images/html5-logo.png" />
+		<meta property="og:url" content="https://bremen-gtug.googlecode.com/svn/presentations/2013_08_05/StrukturierteDaten/slides/index.html" />
+		<meta property="og:description" content="Einführung in die Nutzung strukturierter Daten in HTML, zur optimierung der Verständlichkeit für Suchmaschinen." />
+		<meta property="og:locale" content="de_DE" />
+		<!-- presentation script -->
+		<script src="../slides.js">
+        </script>
+    </head>
+    <body style="display: none" class="html5-bg">
+        <section class="slides layout-regular template-html5">
+            <!-- layout-widescreen or layout-regular -->
+            
+			<article class="biglogo">
+            </article>
+
+            <article>
+                <h1>Strukturierte Daten</h1>
+                <p>Jan Stalhut
+				<br>5. August 2013</p>
+            </article>
+
+			<article id="slideOverview">
+                <h3>Übersicht</h3>
+                <ul>
+					<li onclick="gotoSlide('slideIntroduction');" style="cursor:pointer;">Einführung</li>
+					<li onclick="gotoSlide('slideFormats');" style="cursor:pointer;">Formate &amp; Standards</li>
+					<li onclick="gotoSlide('slideTools');" style="cursor:pointer;">Tools &amp; Demos</li>
+					<li onclick="gotoSlide('slideConclusion');" style="cursor:pointer;">Schluss</li>
+                </ul>
+            </article>
+			
+			<article id="slideIntroduction">
+                <h2>Einführung</h2>
+            </article>
+			
+			<article>
+                <h3>Worum geht's?</h3>
+				<ul class="build">
+					<li>Metadaten im HTML-Code hinterlegen</li>
+					<li>Verständlichkeit für Suchmaschinen optimieren</li>
+					<li>Gezieltere Filterung in Suchergebnissen</li>
+					<li>Integration in Google Now</li>
+					<li>HTML E-Mails</li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Beispiele</h3>
+				<ul class="build">
+					<li>Bewertungen/Rezensionen</li>
+					<li>Veranstaltungen</li>
+					<li>Kochrezepte</li>
+					<li>Produkte</li>
+					<li>Personen</li>
+					<li>Filme</li>
+					<li>Bücher</li>
+					<li>Musikgruppen</li>
+					<li>...</li>
+				</ul>
+            </article>
+			
+			<article id="slideFormats">
+                <h2>Formate &amp; Standards</h2>
+            </article>
+			
+			<article>
+                <h3>schema.org</h3>
+				<ul class="build">
+					<li>Sammlung von microdata-schemas</li>
+					<li>Offener Standard</li>
+					<li>Unterstützung durch alle gängigen Suchmaschinen</li>
+					<li>Webseite: <a href="http://schema.org">www.schema.org</a></li>
+				</ul>
+            </article>
+			
+			<article id="slideTools">
+                <h2>Tools &amp; Demos</h2>
+            </article>
+			
+			<article>
+                <h3>Testing Tool</h3>
+				<ul class="build">
+					<li>Überprüfung einzelner URLs</li>
+					<li>Anzeige der enthaltenen Strukturierten Daten</li>
+					<li>Hinweise auf fehlerhafte/unvollständige Daten</li>
+					<li>Vorschau des Rich Snippet</li>
+					<li><a href="http://www.google.de/webmasters/tools/richsnippets">www.google.de/webmasters/tools/richsnippets</a></li>
+					<li><i>Demo ...</i></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Dashboard</h3>
+				<ul class="build">
+					<li>Teil der Webmaster-Tools</li>
+					<li>Übersicht enthaltener Daten</li>
+					<li>Verlauf über die Zeit</li>
+					<li><i>Demo ...</i></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Data Highlighter</h3>
+				<ul class="build">
+					<li>Strukturierte Daten ohne Bearbeitung der Webseite</li>
+					<li>Taggen von Inhalten durch Markieren mit der Maus</li>
+					<li>Unterstützt: Veranstaltungen, Produkte, Unternehmen, Filme, Restaurants, Software, Fernsehsendungen</li>
+					<li>Integriert in Webmaster-Tools</li>
+					<li><i>Demo ...</i></li>
+				</ul>
+            </article>
+			
+			<article>
+                <h3>Markup Helper</h3>
+				<ul class="build">
+					<li>Vorgehen wie beim Data Highlighter</li>
+					<li>Generierung des HTML-Codes mit zusätzlichem Markup</li>
+					<li>Unterstützt: Veranstaltungen, Produkte, Unternehmen, Filme, Restaurants, Software, Fernsehsendungen</li>
+					<li><a href="https://www.google.de/webmasters/markup-helper/">www.google.de/webmasters/markup-helper</a></li>
+					<li><i>Demo ...</i></li>
+				</ul>
+            </article>
+			
+			<article id="slideConclusion">
+                <h2>Schluss</h2>
+            </article>
+			
+			<article>
+                <h3>Fazit</h3>
+				<ul class="build">
+					<li>schema.org wird von allen aktuellen Suchmaschinen unterstützt</li>
+					<li>Tools zum Teil nur für Google-Suche relevant</li>
+					<li>Offene Standards: Implementierung in weiteren (E-Mail-)Anwendungen</li>
+				</ul>
+			</article>
+			
+            <article>
+                <h3>Vielen Dank für eure Aufmerksamkeit!</h3>
+                <ul>
+					<li>Talks zum Thema auf der Google I/O 2013:
+						<br><a href="https://developers.google.com/events/io/sessions#t-knowledge-structured-data" target="_blank">developers.google.com/events/io/sessions#t-knowledge-structured-data</a></li>
+					<li>schema.org-Referenz:
+						<br><a href="http://www.schema.org/docs/schemas.html" target="_blank">www.schema.org/docs/schemas.html</a></li>
+                </ul>
+            </article>
+			
+            <div id="footerLeft" class="footer-left" onclick="gotoSlide('slideOverview');" style="cursor:pointer;">Strukturierte Daten{if_h2} | {/if_h2}{h2}</div>
+            <div id="footerRight" class="footer-right">Folie {#}</div>
+			<div id="copyright" class="copyright">© Jan Stalhut</div>
+        </section>
+    </body>
+</html>
