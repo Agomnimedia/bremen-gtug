@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Google Charts by Marco Pöhler</title>
+    
+    <meta name="description" content="" />
+    <meta name="author" content="Marco Pöhler" />
+
+    <link href='http://fonts.googleapis.com/css?family=Signika+Negative' rel='stylesheet' type='text/css'>
+
+    <link href="css/google-charts.css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+	
+	<div class="fallback-message">
+	    <p>Dein Browser<b> erfüllt nicht alle Voraussetzungen</b> für impress.js, deshalb siehst du eine vereinfachte Version diese Präsentation.</p>
+	    <p>Nimm' mal einen aktuellen Browser, zum Beispiel <b>Chrome</b>, <b>Safari</b> oder <b>Firefox</b>.</p>
+	</div>
+
+	<div id="impress">
+		<div id="start" class="step" data-x="500" data-y="500" data-scale="25">
+            <div style="width: 1100px">
+                <img src="img/google-developers.png" style="float: left"> <h1 style="font-size: 100px">Google Charts</h1>
+            </div>
+
+            <div class="plusbox">
+                <a href="http://plus.google.com/109683349215445798473"> 
+                    <img src="https://lh4.googleusercontent.com/--OMCrsoRi4k/UWVz4Q7TG3I/AAAAAAAAJMg/--4IHpA0SXs/s251-no/1315_kpv_pic_marco+%25281%2529.jpg" width="150" height="150"/> 
+                </a> 
+                <b>Marco Pöhler</b> <br/><br/>
+                <a href="https://plus.google.com/114226021900650933814/posts" target="_blank">+GDG Hamburg</a><br/> 
+                <a href="http://www.kontaktlinsen-preisvergleich.de" target="_blank">Kontaktlinsen Preisvergleich</a><br/>
+                <a href="https://plus.google.com/+MarcoPöhler/?rel=author" target="_blank">plus.google.com/+MarcoPöhler</a> 
+            </div>
+    	</div>
+
+         <div id="agenda" class="step darkbg" data-x="-9500" data-y="0">
+            <h1>Agenda</h1>
+            <ul> 
+                <li>Grundlagen</li>
+                <li>Datenquellen</li>
+                <li>Dashboards</li>
+            </ul>
+            Alles wird im <code>Code</code> gezeigt.<img src="img/Hammer-computer_klein.png"><br/>
+            Dauer: ca. 60 Minuten.
+
+        </div>
+
+    	 <div id="whatisgooglecharts" class="step darkbg" data-x="-9000" data-y="-1000">
+            <h1>Was ist Google Charts?</h1>
+            <ul> 
+                <li>JavaScript Bibliothek zur Daten-Visualisierung auf Webseiten</li>
+                <li><img src="img/HTML5_Logo_512.png" height="70" width="70"/> HTML5 / SVG </li>
+                <li>kostenlos!</li>
+                <li>Integration mit anderen Google Produkten</li>
+                <li><a href="https://developers.google.com/chart/interactive/docs/gallery" target="_cool">Gallery...</a></li>
+            </ul>
+        </div>
+
+        <div id="basics" class="step darkbg" data-x="-9000" data-y="1500">
+            <h1>Mein erstes Chart...</h1>
+            <ol>
+                <li>Libraries laden</li>
+                <li>Daten bereitstellen</li>
+                <li>Chart zeichnen</li>
+            </ol>
+            <a href="example/example.html" target="_cool">Beispiel...<img src="img/Hammer-computer_klein.png"></a><br/>
+            <a href="https://code.google.com/apis/ajax/playground/?type=visualization" target="_cool">Visualization Playground</a><br/>
+        </div>
+
+        <div id="datacontainer" class="step darkbg" data-x="-7000" data-y="-2000" data-rotate="120">
+            <h1>Datencontainer</h1>
+            <ul>
+                <li>Jedes Chart benutzt <code>DataTable</code> als Behälter für Daten</li>
+                <li>Format und Anzahl der Spalten abhängig vom Charttyp</li>
+                <!--
+                <li><code>DataView</code> ist eine Read-Only-Sicht auf einen <code>DataTable</code> mit der Möglichkeit Zeilen oder Spalten zu verstecken oder umzusortieren, ohne die Daten zu verändern.</li>
+                -->
+            </ul>
+        </div>
+
+        <div id="datatable" class="step darkbg" data-x="-1000" data-y="0" data-rotate="130">
+            <h1>Ein DataTable kann auf vier Arten erzeugt werden:</h1>            
+            <ol>
+                <li><code>DataTable</code> + addColumn() / addRows() / addRow() / setCell()</li>
+                <li>arrayToDataTable</li>
+                <li>JavaScript Literal Initializer</li>
+                <li>DataSource Query (Google Chart Datasource)</li>
+            </ol>
+        </div>
+
+        <div id="datasource" class="step" data-x="-2000" data-y="3000">
+            <h1>Google Chart Datasource</h1>
+            <ul>
+                <li>Man sendet eine SQL-ähnliche Abfrage and eine URL und bekommt eine DataTable-Instanz zurück.</li>
+                <li>Implementiert zum Beispiel durch Google Spreadsheet, Google Fusion Table oder SalesForce</li>
+                <li>Beispiel mit Google Spreadsheet <br/>
+                    <a href="https://drive.google.com" target="_cool">Google Spreadsheet anlegen und freigeben</a><br/>
+                    <a href="example/example.html" target="_cool">Beispiel umbauen</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="ownDatasources" class="step darkbg" data-x="-1000" data-y="1000">
+            <h1>Eigene Datenquellen</h1>
+            <ul>
+                <li>Man muss das Protokoll implementieren... <a href="https://developers.google.com/chart/interactive/docs/querylanguage" target="_cool">QL</a></li>
+                <li>Es gibt zum Glück Client Bibliotheken (für Java und Phyton zumindest)</li>
+                <li>Beispiel für Java: <a href="https://developers.google.com/chart/interactive/docs/dev/dsl_csv" target="_cool">Beispiel...<img src="img/Hammer-computer_klein.png"></a></li>
+            </ul>
+         </div>
+		 
+		 <div id="DatasourceThoughts" class="step" data-x="-1800" data-y="2100" data-rotate="30">
+		 	<h1>Überlegungen zu Datenquellen</h1> 
+			<ul>
+				<li>Wann nimmt man was?</li>
+				<li>Können alle Daten mit der Page geladen werden?</li>
+				<li>Müssen Daten nachgeladen werden?</li>
+			</ul>
+		 </div>
+
+        <div id="controlsanddashboards" class="step darkbg" data-x="-2000" data-y="-1500" data-rotate="230">
+           <h1>Controls und Dashboards</h1>
+            <ul>
+                <li>Ein einfacher Weg Charts miteinander zu verdrahten und mit Filtern auszustatten.</li>
+                <li>Dashboard - verteilt DataTable</li>
+                <li>Controls - werden an das Dashboard geheftet <a href="https://developers.google.com/chart/interactive/docs/gallery/controls?hl=de#gallery" target="_cool">Controls-Gallery</a></li>
+                <li><a href="example/example.html" target="_cool">Beispiel...<img src="img/Hammer-computer_klein.png"></a></li>
+            </ul>
+        </div>
+
+        <div id="summary" class="step darkbg" data-x="-7000" data-y="4000" data-rotate="180">
+            <h1>Zusammenfassung</h1>
+            <ul>
+                <li>Es ist einfach Charts zu erstellen!</li>
+                <li>Anbindung an Google Spreadsheet</li>
+                <li>Zusammenstellen von Dashboards</li>                        
+            </ul>
+        </div>
+
+        <div id="finish" class="step" data-x="3000" data-y="20000" data-scale="25" data-rotate="180">
+            Vielen Dank!
+        </div>
+
+        <script src="js/impress.js"></script>
+        <script>impress().init();</script>
+	</div>
+
+</body>
+</html>

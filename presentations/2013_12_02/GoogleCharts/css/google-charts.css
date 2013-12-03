@@ -1,0 +1,154 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    color: #6f6f6f;
+    font-family: 'Signika Negative', sans-serif;
+}    
+
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+.fallback-message p {
+    margin-bottom: 10px;
+}
+
+.impress-supported .fallback-message {
+    display: none;
+}
+
+a:link, a:visited  {
+    text-decoration: none;
+    color: #6f6f6f;
+}
+
+code {
+    font-family: "Monospace";
+}
+
+.darkbg {
+    color: white;
+}
+
+.darkbg a:link, .darkbg a:visited {
+    color: white;
+}
+
+.step h1 { 
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.step {
+    width: 900px;
+    font-size: 30px;
+}
+
+.step ol {
+    list-style-type: upper-roman;
+    line-height: 85px;
+    padding-top: 50px;
+}
+
+.step ul {
+    list-style-type: circle;
+    line-height: 85px;
+    padding-top: 50px;
+}
+
+.step li {
+    font-size: 35px;
+}
+
+
+#start {
+    font-family: serif;
+}
+
+#start img {
+    float: left;
+}
+
+#start h1 {
+    font-size: 136;  
+    font-weight: normal;  
+}
+
+#start .plusbox {
+    padding: 100px 0 0 0px;
+    font-size: 20px;
+}
+
+#start .plusbox img {
+    margin: 0 20px 0 20px;
+}
+
+#start .plusbox b {
+    font-size: 43px;
+}
+
+#finish {
+     font-size: 136px;
+}
+
+#whatisgooglecharts {
+}
+
+#summary ul li {
+    background: url(../img/thumbsUp.png) no-repeat left top;
+    padding: 20px 0px 3px 109px;
+    list-style: none;
+    margin: 0;
+}
+
