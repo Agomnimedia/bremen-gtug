@@ -32,7 +32,7 @@
 == July 2012 ==
 [http://www.youtube.com/watch?v=gZZt6bgD4KQ Video]<br>
 [http://bremen-gtug.googlecode.com/svn/presentations/2012_07_02/breminale/gdg_breminale_bjoern_ahlfeld.pdf Briminale App 2012] by [https://plus.google.com/103037284103944587172/ +Björn Ahlfeld]<br>
-[http://bremen-gtug.googlecode.com/svn/presentations/2012_07_02/Android%20Dev%20Tips%20-%20Error%20Reporting.pptx AndEngine] by [https://plus.google.com/113699977573984179010/ +Stefan Anca]<br><br>
+[http://bremen-gtug.googlecode.com/svn/presentations/2012_07_02/Android%20Dev%20Tips%20-%20Error%20Reporting.pptx Android Dev Tips: catch run-time exceptions, send crash reports and still remain user friendly] by [https://plus.google.com/113699977573984179010/ +Stefan Anca]<br><br>
 
 == August 2012 ==
 [http://www.youtube.com/watch?v=6s3CX74C84s Video]<br>
